@@ -213,6 +213,37 @@ kable(domain_tab, digits = 3)
 ```
 
 ```{r, echo=FALSE}
+hist <- filter(data, PITS>-5.01)
+hist <- ggplot(hist, aes(x = PITS, fill = PITS < -0.05)) +
+  geom_histogram(binwidth = 0.15, color = "black", alpha = 0.9) +
+  scale_fill_manual(values = c("FALSE" = "#f2db0d", "TRUE" = "#625e5e"), 
+                    labels = c("FALSE" = "PITS-VAS", "TRUE" = "Dead-VAS"),
+                    name = "Anchoring task") +
+  labs(x = "WAItE PITS utility",
+       y = "Frequency") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.2, face = "bold", size = 14),
+    axis.title.x = element_text(size = 14),
+    axis.title.y = element_text(size = 14),
+    legend.text = element_text(size = 12)
+  ) +
+  theme(
+    axis.title.x = element_text(size = 14, margin = margin(t = 10, r = 0, b = 0, l = 0)),
+    axis.title.y = element_text(size = 14, margin = margin(t = 0, r = 10, b = 0, l = 0)),
+    
+  )
+```
+
+```{r}
+hist
+```
+
+
+
+
+
+```{r, echo=FALSE}
 # Bootstrapping 
 #############################################################################
 #setseed
@@ -332,5 +363,9 @@ colnames(final_df) <- c("Dimension Level", "Mean (95% CI)", "Median (Q1; Q3)", "
 # Print the final table
 kable(final_df)
 ```
+```{r}
+kable(permanova_main)
+```
+
 
 

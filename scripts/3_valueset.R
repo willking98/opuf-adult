@@ -82,6 +82,7 @@ dcevas_valueset <- sapply(health_state_codes, calculate_score, dcevas_matrix)
 # -----------------------------------------------------------
 # Generating the individual value sets for each health state
 # -----------------------------------------------------------
+latent_coeff_array <- as.array(results_list)
 if (run_long_functions == 1) {
     # ------ Individually Anchored ----------
 
@@ -129,7 +130,9 @@ if (run_long_functions == 1) {
     }
     save(utils_list, file = here("data", "processed", "utils_list.RData"))
 }
-
+load(here("data", "processed", "ind_value_sets.RData"))
+load(here("data", "processed", "s_ind_value_sets.RData"))
+load(here("data", "processed", "utils_list.RData"))
 
 # -----------------------------------------------------------
 # Generating the individual value sets for each health state
