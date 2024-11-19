@@ -20,7 +20,7 @@ launch <- "main"
 
 # Decide whether to run long functions or load from file
 # long functs generate individual valuesets for each individual
-run_long_functions <- 1 # no=0, yes=1
+run_long_functions <- 0 # no=0, yes=1
 
 
 # TODO:

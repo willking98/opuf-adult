@@ -4,11 +4,11 @@
 # Newcastle University
 # 22 August 2024
 # ----------------------------
-source("3_valueset.R")
-library(vegan)
+# source("3_valueset.R")
+# library(vegan)
 
 # Merging in prolific data
-prolific <- read.csv("./Data/PROLIFIC_DATA.csv") # Replace this with the final data download from PROLIFIC
+prolific <- read.csv(here("data", "raw", "PROLIFIC_DATA.csv")) # Replace this with the final data download from PROLIFIC
 prolific <- rename(prolific, userId = Participant.id)
 data <- left_join(data, prolific, by = "userId") # All data together now with all variables and on n=300 sample
 
