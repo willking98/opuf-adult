@@ -8,6 +8,7 @@ library(dplyr)
 library(vegan)
 library(xtable)
 library(knitr)
+library(mice)
 
 #-------------------------
 # Global options
@@ -30,6 +31,6 @@ run_long_functions <- 0 # no=0, yes=1
 source(here("scripts", "1_latent_coefs.R"))
 source(here("scripts", "2_anchoring.R"))
 source(here("scripts", "3_valueset.R"))
-source(here("scripts", "4_heterogeneity.R"))
-source(here("scripts", "5_latex_graphs.R"))
-source(here("scripts", "6_latex_tables.R"))
+# source(here("scripts", "4_heterogeneity.R"))
+# source(here("scripts", "5_latex_graphs.R"))
+# source(here("scripts", "6_latex_tables.R"))
