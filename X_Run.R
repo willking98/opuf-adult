@@ -28,6 +28,7 @@ run_long_functions <- 0 # no=0, yes=1
 #-------------------------
 # Run the files
 #-------------------------
+source(here("scripts", "helpers", "utils.R"))
 source(here("scripts", "1_latent_coefs.R"))
 source(here("scripts", "2_anchoring.R"))
 source(here("scripts", "3_valueset.R"))
