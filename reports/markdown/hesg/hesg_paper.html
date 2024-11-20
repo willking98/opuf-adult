@@ -58,6 +58,10 @@ div.csl-indent {
 <script src="hesg_paper_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="hesg_paper_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="hesg_paper_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="hesg_paper_files/libs/kePrint-0.0.1/kePrint.js"></script>
+
+<link href="hesg_paper_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -157,7 +161,10 @@ window.Quarto = {
 <div>
   <div class="abstract">
     <div class="block-title">Abstract</div>
-    <p>Ipsum nostra facilisis sapien nullam. Facilisi himenaeos pharetra ultricies scelerisque non fusce quisque aliquam netus tellus. Dictum tellus et sociis quisque ornare ad a natoque magna blandit. Tortor duis aptent cursus lacus inceptos tristique magnis dictumst. Taciti varius nascetur aliquet hac ornare vitae ultricies. Rhoncus primis purus morbi aliquet quam cubilia nullam malesuada ridiculus.</p>
+    <p><strong>Background:</strong> Online personal utility functions (OPUF) present a new method for eliciting preferences. In this study we used the OPUF to elicit a health state utility value set for the Weight-specific Adolescent Instrument for Economic-evaluation (WAItE) with a representative sample of the UK adult population.</p>
+    <p><strong>Methods:</strong> WAItE OPUF survey design was informed by prior qualitative work. The survey consisted of the WAItE descriptive system, domain weighting, level rating (per domain) and a VAS anchoring task. Personal utility functions were estimated on the individual level for all participants. Personal utility functions were aggregated and combined with the anchoring factor to give the social utility function and utility value set. Preference heterogeneity was assessed using Euclidean distance and PERMANOVA to explore preference variation within the sample. An experimental sensitivity analysis dichotomised preference heterogeneity into anchoring variation and domain weighting/level rating variation.</p>
+    <p><strong>Results:</strong> A total of 300 participants completed the WAItE OPUF survey. The sample was broadly representative of the UK adult population. Participants, on average, took less than 10 minutes to complete the survey. The most important domains were tiredness and unhappiness, while least important domains were sports and embarrassment. Social utility values and the anchoring utility value estimated were comparable to previous studies. Preferences generally were heterogeneous, especially among different ages. Younger participants assigned lower utility values to WAItE health states and provided significantly lower scores on the VAS anchoring task compared to older participants.</p>
+    <p><strong>Conclusion:</strong> This study successfully elicited health state utility values for the WAItE using the OPUF. Preference heterogeneity analysis identified differences in preferences for different age groups and a further valuation study is ongoing to explore whether this heterogeneity exists between adults and adolescents.</p>
   </div>
 </div>
 
@@ -193,14 +200,117 @@ window.Quarto = {
 </section>
 <section id="sec-OPUF_methods" class="level2">
 <h2 class="anchored" data-anchor-id="sec-OPUF_methods">OPUF logic and mathematics</h2>
-<p>This section presents the logic and underlying mathematics required to convert the raw OPUF responses from one person into an anchored value set for the WAItE descriptive system. This example assumes that level ratings are obtained for each domain separately, therefore mathematics presented here differs to those presented elsewhere <span class="citation" data-cites="Schneider2022TheStates">(<a href="#ref-Schneider2022TheStates" role="doc-biblioref">P. P. Schneider et al. 2022</a>)</span>. Example response data are used for demonstration in this section and are presented in Table <span class="math inline">\(\ref{tab:example_raw_OPUF}\)</span>.</p>
+<p>This section presents the logic and underlying mathematics required to convert the raw OPUF responses from one person into an anchored value set for the WAItE descriptive system. This example assumes that level ratings are obtained for each domain separately, therefore mathematics presented here differs to those presented elsewhere <span class="citation" data-cites="Schneider2022TheStates">(<a href="#ref-Schneider2022TheStates" role="doc-biblioref">P. P. Schneider et al. 2022</a>)</span>. Example response data are used for demonstration in this section and are presented in <a href="#tbl-exampledata" class="quarto-xref">Table&nbsp;1</a>.</p>
 <section id="example-responses" class="level3">
 <h3 class="anchored" data-anchor-id="example-responses">Example responses</h3>
-<p>Level ratings (presented in Table <span class="math inline">\(\ref{tab:example_raw_OPUF}\)</span>) are converted to coefficients bounded between 0-1 (shown in Equation <span class="math inline">\(\ref{eq:level_rescale}\)</span>). Level rating coefficients are presented in Matrix <span class="math inline">\(\ref{level_matrix}\)</span>. Attribute weights (presented in Table <span class="math inline">\(\ref{tab:example_raw_OPUF}\)</span>) are then normalised to sum to the value of 1 by dividing each weight by the sum of all weights (shown in Equation <span class="math inline">\(\ref{eq:weight_normalise}\)</span>). Normalised attribute weights are presented in Vector <span class="math inline">\(\ref{weight_vector}\)</span>.</p>
-<p><span class="math display">\[\begin{equation}\label{eq:level_rescale}
+<div class="cell">
+<div id="tbl-exampledata" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-exampledata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Example individual responses to the OPUF
+</figcaption>
+<div aria-describedby="tbl-exampledata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Response</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Tired</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Walking</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Sports</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Concentration</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Embarrassment</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Unhappiness</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Treated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Level rating: Never</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Level rating: Almost Never</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Level rating: Sometimes</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">66</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Level rating: Often</td>
+<td style="text-align: right;">83</td>
+<td style="text-align: right;">82</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">91</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Level rating: Always</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Domain Weighting</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">56</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note: </span> <sup></sup> WAItE PITS better than dead = Yes <sup></sup> Anchoring Task Response = 20 <sup></sup> PITS Utility Value = 0.2</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Level ratings (presented in <a href="#tbl-exampledata" class="quarto-xref">Table&nbsp;1</a>) are converted to coefficients bounded between 0-1 (shown in <a href="#eq-level-rescale" class="quarto-xref">Equation&nbsp;1</a>). Level rating coefficients are presented in <a href="#eq-level-matrix" class="quarto-xref">Equation&nbsp;2</a>. Attribute weights (presented in <a href="#tbl-exampledata" class="quarto-xref">Table&nbsp;1</a>) are then normalised to sum to the value of 1 by dividing each weight by the sum of all weights (shown in <a href="#eq-weight-normalise" class="quarto-xref">Equation&nbsp;3</a>). Normalised attribute weights are presented in <a href="#eq-weight-vector" class="quarto-xref">Equation&nbsp;4</a>.</p>
+<p><span id="eq-level-rescale"><span class="math display">\[
     L_{ij} \cdot 0.01
-\end{equation}\]</span></p>
-<p><span class="math display">\[\begin{equation}\label{level_matrix}
+\tag{1}\]</span></span></p>
+<p><span id="eq-level-matrix"><span class="math display">\[
 L_{ij} =
 \begin{bmatrix}
 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
@@ -209,18 +319,20 @@ L_{ij} =
 0.83 &amp; 0.82 &amp; 0.85 &amp; 0.86 &amp; 0.64 &amp; 0.38 &amp; 0.91 \\
 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
 \end{bmatrix}
-\end{equation}\]</span> \ <span class="math display">\[\begin{equation}\label{eq:weight_normalise}
+\tag{2}\]</span></span></p>
+<p><span id="eq-weight-normalise"><span class="math display">\[
     \frac{w_{j}}{\sum{w_j}}
-\end{equation}\]</span></p>
-<p><span class="math display">\[\begin{equation}\label{weight_vector}
+\tag{3}\]</span></span></p>
+<p><span id="eq-weight-vector"><span class="math display">\[
 w_j = \begin{bmatrix}
     0.08&amp; 0.10&amp; 0.11&amp; 0.14&amp; 0.30&amp; 0.10&amp; 0.17
 \end{bmatrix}
-\end{equation}\]</span> \ %%%%%%%%%%% combining weights and levels Combining the attribute weights (Vector <span class="math inline">\(\ref{weight_vector}\)</span>) with the level coefficients (Matrix <span class="math inline">\(\ref{level_matrix}\)</span>) via element-wise multiplication (shown in Equation <span class="math inline">\(\ref{eq:element_wise_multiplication}\)</span> gives the coefficient matrix presented in Matrix <span class="math inline">\(\ref{coeff_matrix}\)</span>. Once the coefficient matrix has been estimated, preference values can be estimated on the 0-1 QALY scale where the worst health state (PITS state denoted 5555555) is zero and the best health state (denoted 1111111) is one. These latent coefficients must now be rescaled to incorporate the results from the PITS anchoring task so that the minimum utility value possible is equal to the PITS value.</p>
-<p><span class="math display">\[\begin{equation}\label{eq:element_wise_multiplication}
+\tag{4}\]</span></span></p>
+<p>Combining the attribute weights (<a href="#eq-weight-vector" class="quarto-xref">Equation&nbsp;4</a>) with the level coefficients (<a href="#eq-level-matrix" class="quarto-xref">Equation&nbsp;2</a>) via element-wise multiplication (shown in <a href="#eq-element-wise-multiplication" class="quarto-xref">Equation&nbsp;5</a> gives the coefficient matrix presented in <a href="#eq-coeff-matrix" class="quarto-xref">Equation&nbsp;6</a>}. Once the coefficient matrix has been estimated, preference values can be estimated on the 0-1 QALY scale where the worst health state (PITS state denoted 5555555) is zero and the best health state (denoted 1111111) is one. These latent coefficients must now be rescaled to incorporate the results from the PITS anchoring task so that the minimum utility value possible is equal to the PITS value.</p>
+<p><span id="eq-element-wise-multiplication"><span class="math display">\[
     L_{ij} \cdot  w_{j} = {\tilde{M}}_{ij}
-\end{equation}\]</span></p>
-<p><span class="math display">\[\begin{equation}\label{coeff_matrix}
+\tag{5}\]</span></span></p>
+<p><span id="eq-coeff-matrix"><span class="math display">\[
 \tilde{M}_{ij} =  
 \begin{bmatrix}
 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
@@ -229,11 +341,12 @@ w_j = \begin{bmatrix}
 0.07 &amp; 0.08 &amp; 0.09 &amp; 0.12 &amp; 0.19 &amp; 0.04 &amp; 0.15 \\
 0.08 &amp; 0.10 &amp; 0.11 &amp; 0.14 &amp; 0.30 &amp; 0.10 &amp; 0.17
 \end{bmatrix}
-\end{equation}\]</span> \ To rescale the latent coefficient matrix to incorporate the anchoring task, the coefficient matrix is multiplied by the compliment of the PITS value (shown in Equation <span class="math inline">\(\ref{eq:anchoring}\)</span>) to give the anchored coefficient matrix presented in Matrix <span class="math inline">\(\ref{ma:anchored_matrix}\)</span>.</p>
-<p><span class="math display">\[\begin{equation}\label{eq:anchoring}
+\tag{6}\]</span></span></p>
+<p>To rescale the latent coefficient matrix to incorporate the anchoring task, the coefficient matrix is multiplied by the compliment of the PITS value (shown in <a href="#eq-anchoring" class="quarto-xref">Equation&nbsp;7</a>) to give the anchored coefficient matrix presented in <a href="#eq-anchored-matrix" class="quarto-xref">Equation&nbsp;8</a>.</p>
+<p><span id="eq-anchoring"><span class="math display">\[
     \tilde{M}_{ij} \cdot (1-P) \quad \backepsilon \quad P = 0.2
-\end{equation}\]</span></p>
-<p><span class="math display">\[\begin{equation}\label{ma:anchored_matrix}
+\tag{7}\]</span></span></p>
+<p><span id="eq-anchored-matrix"><span class="math display">\[
 \tilde{V}_{ij} =  
 \begin{bmatrix}
 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
@@ -242,27 +355,113 @@ w_j = \begin{bmatrix}
 0.06 &amp; 0.06 &amp; 0.07 &amp; 0.10 &amp; 0.15 &amp; 0.03 &amp; 0.12 \\
 0.06 &amp; 0.08 &amp; 0.09 &amp; 0.11 &amp; 0.24 &amp; 0.08 &amp; 0.14 \\
 \end{bmatrix}
-\end{equation}\]</span> \</p>
-<p>Once the attribute and level labels are reintroduced to the anchored coefficient matrix this forms the value set which presents the disutility corresponding to each attribute level combination presented in the WAItE. Table <span class="math inline">\(\ref{example valueset}\)</span> presents the WAItE example PUF value set. Equations <span class="math inline">\(\ref{eq:HS1}\)</span> present examples of how to estimate a utility value given a specific WAItE health state.</p>
-<p><span class="math display">\[\begin{equation}\label{eq:HS1}
+\tag{8}\]</span></span></p>
+<p>Once the attribute and level labels are reintroduced to the anchored coefficient matrix this forms the value set which presents the disutility corresponding to each attribute level combination presented in the WAItE. <a href="#tbl-example-valueset" class="quarto-xref">Table&nbsp;2</a> presents the WAItE example PUF value set. <a href="#eq-HS123" class="quarto-xref">Equation&nbsp;9</a> present examples of how to estimate a utility value given a specific WAItE health state.</p>
+<div class="cell">
+<div id="tbl-example-valueset" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-example-valueset-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: WAItE example PUF value set
+</figcaption>
+<div aria-describedby="tbl-example-valueset-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<caption>WAItE example PUF value set</caption>
+<colgroup>
+<col style="width: 13%">
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">X.</th>
+<th style="text-align: right;">Tired</th>
+<th style="text-align: right;">Walking</th>
+<th style="text-align: right;">Sports</th>
+<th style="text-align: right;">Concentration</th>
+<th style="text-align: right;">Embarrassment</th>
+<th style="text-align: right;">Unhappiness</th>
+<th style="text-align: right;">Treated.Differently</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Never</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Almost Never</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.09</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">0.12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Always</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">0.14</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p><span id="eq-HS123"><span class="math display">\[
 \begin{aligned}
-    
     \text{Health State [5555555]} &amp;\Rightarrow 1 - (0.06 + 0.08 + 0.09 + 0.11 + 0.24 + 0.08 + 0.14) = 0.20
-    
     \text{Health State [5223445]} &amp;\Rightarrow 1 - (0.06 + 0.02 + 0.02 + 0.06 + 0.15 + 0.03 + 0.14) = 0.52
+    \text{Health State [2222222]} &amp;\Rightarrow 1 - (0.03 + 0.02 + 0.01 + 0.01 + 0.02 + 0.02 + 0.04) = 0.85
 \end{aligned}
-\end{equation}\]</span></p>
-<p>%<span class="math display">\[\begin{equation}\label{eq:HS2}
-    %\text{Health State [2222222]} \Rightarrow 1 - (0.03 + 0.02 + 0.01 + 0.01 + 0.02 + 0.02 + 0.04) = 0.85
-%\end{equation}
-
-## Aggregation to social utility function
-The OPUF is designed to be able to estimate personal utility functions and so estimation occurs on an individual basis. Aggregating personal utility functions to a social utility function (SUF) takes place by taking a mean of all the individual personal utility functions from your sample. This operation is presented in Equation \ref{eq:mean_valueset}.
-
-\begin{equation}\label{eq:mean_valueset}
-\bar{V}_{{ij}} = \frac{\sum_{\tilde{V}_{{ij}}}^{}}{N}
-\end{equation}\]</span></p>
+\tag{9}\]</span></span></p>
 </section>
+</section>
+<section id="aggregation-to-social-utility-function" class="level2">
+<h2 class="anchored" data-anchor-id="aggregation-to-social-utility-function">Aggregation to social utility function</h2>
+<p>The OPUF is designed to be able to estimate personal utility functions and so estimation occurs on an individual basis. Aggregating personal utility functions to a social utility function (SUF) takes place by taking a mean of all the individual personal utility functions from your sample. This operation is presented in <a href="#eq-meanvalueset" class="quarto-xref">Equation&nbsp;10</a>.</p>
+<p><span id="eq-meanvalueset"><span class="math display">\[
+\bar{V}_{{ij}} = \frac{\sum_{\tilde{V}_{{ij}}}^{}}{N}
+\tag{10}\]</span></span></p>
 </section>
 </section>
 <section id="methods" class="level1">
@@ -328,12 +527,12 @@ The OPUF is designed to be able to estimate personal utility functions and so es
 </section>
 <section id="survey-duration" class="level2">
 <h2 class="anchored" data-anchor-id="survey-duration">Survey duration</h2>
-<p>The mean (SD) and median (IQR) survey completion time in minutes was 9.66 (5.85) and 8.15 (5.88; 11.89). <a href="#tbl-time" class="quarto-xref">Table&nbsp;1</a> summarises how much time was spent completing each individual section of the survey.</p>
+<p>The mean (SD) and median (IQR) survey completion time in minutes was 9.66 (5.85) and 8.15 (5.88; 11.89). <a href="#tbl-time" class="quarto-xref">Table&nbsp;3</a> summarises how much time was spent completing each individual section of the survey.</p>
 <div class="cell">
 <div id="tbl-time" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-time-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Survey completion times (secs)
+Table&nbsp;3: Survey completion times (secs)
 </figcaption>
 <div aria-describedby="tbl-time-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -432,12 +631,12 @@ Table&nbsp;1: Survey completion times (secs)
 </section>
 <section id="level-ratings" class="level2">
 <h2 class="anchored" data-anchor-id="level-ratings">Level ratings</h2>
-<p>Level ratings are presented individually for each different domain in <a href="#tbl-level" class="quarto-xref">Table&nbsp;2</a>. The best and worst levels ( and ) were fixed at 0 and 100 respectively. The second best level () had the lowest VAS score in the Sports and Embarrassment domain, while the second worst level () had the highest VAS score in the Concentration domain. In this question, higher VAS scores indicate worse states of health.</p>
+<p>Level ratings are presented individually for each different domain in <a href="#tbl-level" class="quarto-xref">Table&nbsp;4</a>. The best and worst levels ( and ) were fixed at 0 and 100 respectively. The second best level () had the lowest VAS score in the Sports and Embarrassment domain, while the second worst level () had the highest VAS score in the Concentration domain. In this question, higher VAS scores indicate worse states of health.</p>
 <div class="cell">
 <div id="tbl-level" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-level-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2: Summary of OPUF level ratings by domain
+Table&nbsp;4: Summary of OPUF level ratings by domain
 </figcaption>
 <div aria-describedby="tbl-level-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -609,12 +808,12 @@ Table&nbsp;2: Summary of OPUF level ratings by domain
 </section>
 <section id="domain-weights" class="level2">
 <h2 class="anchored" data-anchor-id="domain-weights">Domain weights</h2>
-<p>Summary statistics of domain weightings are presented in <a href="#tbl-domain" class="quarto-xref">Table&nbsp;3</a>. On average, Tiredness (76.5) and Unhappiness (70) were considered to be more important to participants than Embarrassment (40.1) and Sports (42.3). There was less variability in domain weighting responses to Tiredness than responses to Treated differently or Embarrassment. %TODO: Add relative attribute importance section with normalised RAI score</p>
+<p>Summary statistics of domain weightings are presented in <a href="#tbl-domain" class="quarto-xref">Table&nbsp;5</a>. On average, Tiredness (76.5) and Unhappiness (70) were considered to be more important to participants than Embarrassment (40.1) and Sports (42.3). There was less variability in domain weighting responses to Tiredness than responses to Treated differently or Embarrassment. %TODO: Add relative attribute importance section with normalised RAI score</p>
 <div class="cell">
 <div id="tbl-domain" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-domain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3: Summary of OPUF domain weights and anchoring responses
+Table&nbsp;5: Summary of OPUF domain weights and anchoring responses
 </figcaption>
 <div aria-describedby="tbl-domain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -755,12 +954,12 @@ Figure&nbsp;1: Distribution of PITS utility values
 </section>
 <section id="social-utility-function-estimation" class="level2">
 <h2 class="anchored" data-anchor-id="social-utility-function-estimation">Social utility function estimation</h2>
-<p>Personal utility functions were estimated individually for each participant in our analysis sample via methods outlined in <a href="#sec-OPUF_methods" class="quarto-xref">Section&nbsp;1.4</a>. After this, individual PUFs were aggregated into a group utility function and anchored using the group PITS utility value (0.282) to give the social utility function. Descriptive statistics from the social utility function are presented in <a href="#tbl-suf" class="quarto-xref">Table&nbsp;4</a> whereby the mean values can be used to estimate utility values for WAItE health states.</p>
+<p>Personal utility functions were estimated individually for each participant in our analysis sample via methods outlined in <a href="#sec-OPUF_methods" class="quarto-xref">Section&nbsp;1.4</a>. After this, individual PUFs were aggregated into a group utility function and anchored using the group PITS utility value (0.282) to give the social utility function. Descriptive statistics from the social utility function are presented in <a href="#tbl-suf" class="quarto-xref">Table&nbsp;6</a> whereby the mean values can be used to estimate utility values for WAItE health states.</p>
 <div class="cell">
 <div id="tbl-suf" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-suf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4: Social utility function based on 300 PUFs
+Table&nbsp;6: Social utility function based on 300 PUFs
 </figcaption>
 <div aria-describedby="tbl-suf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -1018,12 +1217,12 @@ Figure&nbsp;3: Social and individual utility functions coloured by EUD
 </div>
 </div>
 </div>
-<p><a href="#tbl-permanova" class="quarto-xref">Table&nbsp;5</a> presents the PERMANOVA model results. Presented are within‐group sum‐of‐squares (SS(_W)) for each group individually and for all groups combined, and the corresponding R(^2), pseudo (F), and (p) values. Preference heterogeneity was significantly affected by age ((p) = 0.03), though the amount of variability in preferences that could be explained by age was relatively small (R(^2)=5.7%). <a href="#fig-age" class="quarto-xref">Figure&nbsp;4</a> presents the difference in preferences between different age groups. Generally, as age increases, health state utility values for each given WAItE health state are higher. That is, younger populations tend to place more disutility on WAItE health problems than older populations. While weight status was not significantly related to preference heterogeneity according to the PERMANOVA model, given the WAItE is a weight-specific measure, it was informative to explore the relationship between preferences and weight status. Though not statistically significant, we can observe a difference in preferences between normal weight and overweight individuals in <a href="#fig-weight" class="quarto-xref">Figure&nbsp;5</a>. For a given WAItE health state, overweight individuals in our sample placed less disutility on that state than did normal weight individuals.</p>
+<p><a href="#tbl-permanova" class="quarto-xref">Table&nbsp;7</a> presents the PERMANOVA model results. Presented are within‐group sum‐of‐squares (SS(_W)) for each group individually and for all groups combined, and the corresponding R(^2), pseudo (F), and (p) values. Preference heterogeneity was significantly affected by age ((p) = 0.03), though the amount of variability in preferences that could be explained by age was relatively small (R(^2)=5.7%). <a href="#fig-age" class="quarto-xref">Figure&nbsp;4</a> presents the difference in preferences between different age groups. Generally, as age increases, health state utility values for each given WAItE health state are higher. That is, younger populations tend to place more disutility on WAItE health problems than older populations. While weight status was not significantly related to preference heterogeneity according to the PERMANOVA model, given the WAItE is a weight-specific measure, it was informative to explore the relationship between preferences and weight status. Though not statistically significant, we can observe a difference in preferences between normal weight and overweight individuals in <a href="#fig-weight" class="quarto-xref">Figure&nbsp;5</a>. For a given WAItE health state, overweight individuals in our sample placed less disutility on that state than did normal weight individuals.</p>
 <div class="cell">
 <div id="tbl-permanova" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-permanova-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;5: Results of PERMANOVA – testing for differences in WAItE health state preferences between group characteristics
+Table&nbsp;7: Results of PERMANOVA – testing for differences in WAItE health state preferences between group characteristics
 </figcaption>
 <div aria-describedby="tbl-permanova-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -1127,12 +1326,12 @@ Figure&nbsp;4: Social and individual utility functions grouped by age status
 </section>
 <section id="sensitivity-analysis-1" class="level2">
 <h2 class="anchored" data-anchor-id="sensitivity-analysis-1">Sensitivity analysis</h2>
-<p>EUD2 was estimated for each pairwise comparison of individuals in our study. This yielded a [300 () 300] distance matrix with 44,850 unique pairwise comparisons. The mean (SD) and median (IQR) EUD were 34.30 (13.82) and 32.25 (24.54; 41.27). Results from the PERMANOVA2 analysis are presented in <a href="#tbl-permanova2" class="quarto-xref">Table&nbsp;6</a>. After exclusion of individual variation in anchoring responses, weight status and age had a significant impact upon heterogeneity within our sample; though the amount of heterogeneity that was explained by these variables was fairly small (4.9%).</p>
+<p>EUD2 was estimated for each pairwise comparison of individuals in our study. This yielded a [300 () 300] distance matrix with 44,850 unique pairwise comparisons. The mean (SD) and median (IQR) EUD were 34.30 (13.82) and 32.25 (24.54; 41.27). Results from the PERMANOVA2 analysis are presented in <a href="#tbl-permanova2" class="quarto-xref">Table&nbsp;8</a>. After exclusion of individual variation in anchoring responses, weight status and age had a significant impact upon heterogeneity within our sample; though the amount of heterogeneity that was explained by these variables was fairly small (4.9%).</p>
 <div class="cell">
 <div id="tbl-permanova2" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-permanova2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;6: Results of PERMANOVA2 – testing for differences in level rating and domain weighting preferences between group characteristics
+Table&nbsp;8: Results of PERMANOVA2 – testing for differences in level rating and domain weighting preferences between group characteristics
 </figcaption>
 <div aria-describedby="tbl-permanova2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">

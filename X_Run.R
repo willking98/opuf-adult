@@ -8,6 +8,7 @@ library(dplyr)
 library(vegan)
 library(xtable)
 library(knitr)
+library(kableExtra)
 library(mice)
 library(ggplot2)
 

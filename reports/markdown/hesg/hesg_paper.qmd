@@ -26,7 +26,13 @@ author:
     affiliations:
       - ref: uni
 abstract: |
-  Ipsum nostra facilisis sapien nullam. Facilisi himenaeos pharetra ultricies scelerisque non fusce quisque aliquam netus tellus. Dictum tellus et sociis quisque ornare ad a natoque magna blandit. Tortor duis aptent cursus lacus inceptos tristique magnis dictumst. Taciti varius nascetur aliquet hac ornare vitae ultricies. Rhoncus primis purus morbi aliquet quam cubilia nullam malesuada ridiculus.
+  **Background:** Online personal utility functions (OPUF) present a new method for eliciting preferences. In this study we used the OPUF to elicit a health state utility value set for the Weight-specific Adolescent Instrument for Economic-evaluation (WAItE) with a representative sample of the UK adult population. 
+  
+  **Methods:** WAItE OPUF survey design was informed by prior qualitative work. The survey consisted of the WAItE descriptive system, domain weighting, level rating (per domain) and a VAS anchoring task. Personal utility functions were estimated on the individual level for all participants. Personal utility functions were aggregated and combined with the anchoring factor to give the social utility function and utility value set. Preference heterogeneity was assessed using Euclidean distance and PERMANOVA to explore preference variation within the sample. An experimental sensitivity analysis dichotomised preference heterogeneity into anchoring variation and domain weighting/level rating variation.
+  
+  **Results:** A total of 300 participants completed the WAItE OPUF survey. The sample was broadly representative of the UK adult population. Participants, on average, took less than 10 minutes to complete the survey. The most important domains were tiredness and unhappiness, while least important domains were sports and embarrassment. Social utility values and the anchoring utility value estimated were comparable to previous studies. Preferences generally were heterogeneous, especially among different ages. Younger participants assigned lower utility values to WAItE health states and provided significantly lower scores on the VAS anchoring task compared to older participants.
+  
+  **Conclusion:** This study successfully elicited health state utility values for the WAItE using the OPUF. Preference heterogeneity analysis identified differences in preferences for different age groups and a further valuation study is ongoing to explore whether this heterogeneity exists between adults and adolescents.
 keywords: [template, demo]
 
 ## Bibliography meta-information ##
@@ -63,41 +69,45 @@ Personal utility functions were first used in the context of preference elicitat
 3. Anchoring factor: A task is required to rescale the latent coefficients estimated via combining level ratings and domain weights onto the QALY scale. Participants are presented with a binary choice between the PITS state (or another state) of a given descriptive system and "being dead". If the PITS state is chosen, participants are asked to rank the PITS state on a VAS from 1 (full health) to 0 (dead). If "being dead" is chosen, participants are asked to rank "being dead" on a VAS from 1 (full health) to 0 (PITS state). Responses to these respective questions provide the anchoring factor. Anchoring questions, such that PITS is preferred to dead, are presented in Figure \ref{fig:anchoring factor}.
 
 ## OPUF logic and mathematics {#sec-OPUF_methods}
-This section presents the logic and underlying mathematics required to convert the raw OPUF responses from one person into an anchored value set for the WAItE descriptive system. This example assumes that level ratings are obtained for each domain separately, therefore mathematics presented here differs to those presented elsewhere [@Schneider2022TheStates]. Example response data are used for demonstration in this section and are presented in Table \ref{tab:example_raw_OPUF}. 
+This section presents the logic and underlying mathematics required to convert the raw OPUF responses from one person into an anchored value set for the WAItE descriptive system. This example assumes that level ratings are obtained for each domain separately, therefore mathematics presented here differs to those presented elsewhere [@Schneider2022TheStates]. Example response data are used for demonstration in this section and are presented in @tbl-exampledata. 
 
 ### Example responses
-\begin{table}[ht]
-\centering
-\caption{Example individual responses to the OPUF}
-\label{tab:example_raw_OPUF}
-\footnotesize
-\begin{tabular}{p{2cm} p{0.6cm} p{0.9cm} p{0.6cm} p{1.8cm} p{2cm} p{1.6cm} p{2.8cm}}
-\toprule
-& Tired & Walking & Sports & Concentration & Embarrassment & Unhappiness & Treated Differently \\
-\midrule
-Never          & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
-Almost Never   & 14 & 26 & 21 & 15 & 16 & 12 & 19 \\
-Sometimes      & 57 & 55 & 63 & 54 & 38 & 26 & 66 \\
-Often          & 83 & 82 & 85 & 86 & 64 & 38 & 91 \\
-Always         & 100 & 100 & 100 & 100 & 100 & 100 & 100 \\
-\midrule
-Domain Weighting & 28 & 33 & 36 & 45 & 100 & 34 & 56 \\
-Normalised Weighting & 0.084 & 0.099 & 0.108 & 0.136 & 0.301 & 0.102 & 0.169 \\
-\midrule
-\multicolumn{8}{l}{WAItE PITS better than dead = Yes} \\
-\multicolumn{8}{l}{Anchoring Task Response = 20} \\
-\multicolumn{8}{l}{PITS Utility Value = 0.2} \\
-\bottomrule
-\end{tabular}
-\end{table}
+```{r, echo=FALSE}
+example_opuf_data <- data.frame(
+  Response = c("Level rating: Never", "Level rating: Almost Never", "Level rating: Sometimes", "Level rating: Often", "Level rating: Always", 
+               "Domain Weighting"),
+  Tired = c(0, 14, 57, 83, 100, 28),
+  Walking = c(0, 26, 55, 82, 100, 33),
+  Sports = c(0, 21, 63, 85, 100, 36),
+  Concentration = c(0, 15, 54, 86, 100, 45),
+  Embarrassment = c(0, 16, 38, 64, 100, 100),
+  Unhappiness = c(0, 12, 26, 38, 100, 34),
+  Treated = c(0, 19, 66, 91, 100, 56)
+)
 
-Level ratings (presented in Table \ref{tab:example_raw_OPUF})  are converted to coefficients bounded between 0-1 (shown in Equation \ref{eq:level_rescale}). Level rating coefficients are presented in Matrix \ref{level_matrix}. Attribute weights (presented in Table \ref{tab:example_raw_OPUF}) are then normalised to sum to the value of 1 by dividing each weight by the sum of all weights (shown in Equation \ref{eq:weight_normalise}). Normalised attribute weights are presented in Vector \ref{weight_vector}. 
+```
 
-\begin{equation}\label{eq:level_rescale}
+```{r, echo=FALSE}
+#| label: tbl-exampledata
+#| tbl-cap: Example individual responses to the OPUF
+# Create the table
+kable(example_opuf_data) %>%
+  footnote(
+    general = c("WAItE PITS better than dead = Yes",
+    "Anchoring Task Response = 20", 
+               "PITS Utility Value = 0.2"),
+    footnote_as_chunk = TRUE,
+    escape = FALSE
+  )
+```
+
+Level ratings (presented in @tbl-exampledata)  are converted to coefficients bounded between 0-1 (shown in @eq-level-rescale). Level rating coefficients are presented in @eq-level-matrix. Attribute weights (presented in @tbl-exampledata) are then normalised to sum to the value of 1 by dividing each weight by the sum of all weights (shown in @eq-weight-normalise). Normalised attribute weights are presented in @eq-weight-vector. 
+
+$$
     L_{ij} \cdot 0.01
-\end{equation}
+$$ {#eq-level-rescale}
 
-\begin{equation}\label{level_matrix}
+$$
 L_{ij} = 
 \begin{bmatrix}
 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
@@ -106,27 +116,26 @@ L_{ij} =
 0.83 & 0.82 & 0.85 & 0.86 & 0.64 & 0.38 & 0.91 \\
 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
 \end{bmatrix}
-\end{equation}
-\\
-\begin{equation}\label{eq:weight_normalise}
-    \frac{w_{j}}{\sum{w_j}}
-\end{equation}
+$$ {#eq-level-matrix}
 
-\begin{equation}\label{weight_vector}
+$$
+    \frac{w_{j}}{\sum{w_j}}
+$$ {#eq-weight-normalise}
+
+$$
 w_j = \begin{bmatrix}
     0.08& 0.10& 0.11& 0.14& 0.30& 0.10& 0.17
 \end{bmatrix} 
-\end{equation}
-\\
-%%%%%%%%%%% combining weights and levels 
-Combining the attribute weights (Vector \ref{weight_vector}) with the level coefficients (Matrix \ref{level_matrix}) via element-wise multiplication (shown in Equation \ref{eq:element_wise_multiplication} gives the coefficient matrix presented in Matrix \ref{coeff_matrix}. Once the coefficient matrix has been estimated, preference values can be estimated on the 0-1 QALY scale where the worst health state (PITS state denoted 5555555) is zero and the best health state (denoted 1111111) is one. These latent coefficients must now be rescaled to incorporate the results from the PITS anchoring task so that the minimum utility value possible is equal to the PITS value. 
+$$ {#eq-weight-vector}
 
 
-\begin{equation}\label{eq:element_wise_multiplication}
+Combining the attribute weights (@eq-weight-vector) with the level coefficients (@eq-level-matrix) via element-wise multiplication (shown in @eq-element-wise-multiplication gives the coefficient matrix presented in @eq-coeff-matrix}. Once the coefficient matrix has been estimated, preference values can be estimated on the 0-1 QALY scale where the worst health state (PITS state denoted 5555555) is zero and the best health state (denoted 1111111) is one. These latent coefficients must now be rescaled to incorporate the results from the PITS anchoring task so that the minimum utility value possible is equal to the PITS value. 
+
+$$
     L_{ij} \cdot  w_{j} = {\tilde{M}}_{ij}
-\end{equation}
+$$ {#eq-element-wise-multiplication}
 
-\begin{equation}\label{coeff_matrix}
+$$
 \tilde{M}_{ij} =  
 \begin{bmatrix}
 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
@@ -135,15 +144,15 @@ Combining the attribute weights (Vector \ref{weight_vector}) with the level coef
 0.07 & 0.08 & 0.09 & 0.12 & 0.19 & 0.04 & 0.15 \\
 0.08 & 0.10 & 0.11 & 0.14 & 0.30 & 0.10 & 0.17
 \end{bmatrix}
-\end{equation}
-\\
-To rescale the latent coefficient matrix to incorporate the anchoring task, the coefficient matrix is multiplied by the compliment of the PITS value (shown in Equation \ref{eq:anchoring}) to give the anchored coefficient matrix presented in Matrix \ref{ma:anchored_matrix}. 
+$$ {#eq-coeff-matrix}
 
-\begin{equation}\label{eq:anchoring}
+To rescale the latent coefficient matrix to incorporate the anchoring task, the coefficient matrix is multiplied by the compliment of the PITS value (shown in @eq-anchoring) to give the anchored coefficient matrix presented in @eq-anchored-matrix. 
+
+$$
     \tilde{M}_{ij} \cdot (1-P) \quad \backepsilon \quad P = 0.2 
-\end{equation}
+$$ {#eq-anchoring}
 
-\begin{equation}\label{ma:anchored_matrix}
+$$
 \tilde{V}_{ij} =  
 \begin{bmatrix}
 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
@@ -152,10 +161,29 @@ To rescale the latent coefficient matrix to incorporate the anchoring task, the 
 0.06 & 0.06 & 0.07 & 0.10 & 0.15 & 0.03 & 0.12 \\
 0.06 & 0.08 & 0.09 & 0.11 & 0.24 & 0.08 & 0.14 \\
 \end{bmatrix}
-\end{equation}
-\\
+$$ {#eq-anchored-matrix}
 
-Once the attribute and level labels are reintroduced to the anchored coefficient matrix this forms the value set which presents the disutility corresponding to each attribute level combination presented in the WAItE. Table \ref{example valueset} presents the WAItE example PUF value set. Equations \ref{eq:HS1} present examples of how to estimate a utility value given a specific WAItE health state. 
+Once the attribute and level labels are reintroduced to the anchored coefficient matrix this forms the value set which presents the disutility corresponding to each attribute level combination presented in the WAItE. @tbl-example-valueset presents the WAItE example PUF value set. @eq-HS123 present examples of how to estimate a utility value given a specific WAItE health state. 
+
+```{r, echo = FALSE}
+example_valueset <- data.frame(
+  " " = c("Never", "Almost Never", "Sometimes", "Often", "Always"),
+  Tired = c(0, 0.01, 0.04, 0.06, 0.06),
+  Walking = c(0, 0.02, 0.04, 0.06, 0.08),
+  Sports = c(0, 0.02, 0.06, 0.07, 0.09),
+  Concentration = c(0, 0.02, 0.06, 0.10, 0.11),
+  Embarrassment = c(0, 0.04, 0.09, 0.15, 0.24),
+  Unhappiness = c(0, 0.01, 0.02, 0.03, 0.08),
+  `Treated Differently` = c(0, 0.02, 0.09, 0.12, 0.14)
+)
+```
+
+```{r, echo = FALSE}
+#| label: tbl-example-valueset
+#| tbl-cap: WAItE example PUF value set
+kable(example_valueset, caption = "WAItE example PUF value set", digits = 2)
+```
+
 
 \begin{table}[ht]
 \centering
@@ -176,25 +204,21 @@ Always         & 0.06 & 0.08 & 0.09 & 0.11 & 0.24 & 0.08 & 0.14 \\
 \end{tabular}
 \end{table}
 
-\begin{equation}\label{eq:HS1}
+$$
 \begin{aligned}
-    
     \text{Health State [5555555]} &\Rightarrow 1 - (0.06 + 0.08 + 0.09 + 0.11 + 0.24 + 0.08 + 0.14) = 0.20 
-    
     \text{Health State [5223445]} &\Rightarrow 1 - (0.06 + 0.02 + 0.02 + 0.06 + 0.15 + 0.03 + 0.14) = 0.52
+    \text{Health State [2222222]} &\Rightarrow 1 - (0.03 + 0.02 + 0.01 + 0.01 + 0.02 + 0.02 + 0.04) = 0.85
 \end{aligned}
-\end{equation}
+$$ {#eq-HS123}
 
-%\begin{equation}\label{eq:HS2}
-    %\text{Health State [2222222]} \Rightarrow 1 - (0.03 + 0.02 + 0.01 + 0.01 + 0.02 + 0.02 + 0.04) = 0.85
-%\end{equation}
 
 ## Aggregation to social utility function
-The OPUF is designed to be able to estimate personal utility functions and so estimation occurs on an individual basis. Aggregating personal utility functions to a social utility function (SUF) takes place by taking a mean of all the individual personal utility functions from your sample. This operation is presented in Equation \ref{eq:mean_valueset}. 
+The OPUF is designed to be able to estimate personal utility functions and so estimation occurs on an individual basis. Aggregating personal utility functions to a social utility function (SUF) takes place by taking a mean of all the individual personal utility functions from your sample. This operation is presented in @eq-meanvalueset. 
 
-\begin{equation}\label{eq:mean_valueset}
+$$
 \bar{V}_{{ij}} = \frac{\sum_{\tilde{V}_{{ij}}}^{}}{N}
-\end{equation}  
+$$ {#eq-meanvalueset}
 
 # Methods
 ## Recruitment
@@ -230,7 +254,7 @@ As personal utility function are estimated on an individual basis, exploring pre
 \end{equation}
 
 ## Permutational analysis of variance
-Permutational analysis of variance (PERMANOVA), analogous to analysis of variance, is a geometric partitioning of variation across a multivariate data cloud, definied in the space of any given dissimilarity measure, in response to one or more groups [@Anderson2017; Anderson2013PERMANOVATesting]. This method of statistical testing has been used most commonly in ecological research to test for population dispersion among different subgroups [@Souza2013PopulationEstuary]. PERMANOVA decomposes the total distances between observations (SS\(_T\)) into within-groups (SS\(_W\)) and between groups sum-of-squares (SS\(_B\)). Equation \ref{eq:sumsquares} details the estimation of total and within-groups sum-of-squares. Mathematical notation presented here is reproduced from Schneider et al. (2024) [@Schneider2024ExploringLevel] for consistency.   
+Permutational analysis of variance (PERMANOVA), analogous to analysis of variance, is a geometric partitioning of variation across a multivariate data cloud, definied in the space of any given dissimilarity measure, in response to one or more groups [@Anderson2017; @Anderson2013PERMANOVATesting]. This method of statistical testing has been used most commonly in ecological research to test for population dispersion among different subgroups [@Souza2013PopulationEstuary]. PERMANOVA decomposes the total distances between observations (SS\(_T\)) into within-groups (SS\(_W\)) and between groups sum-of-squares (SS\(_B\)). Equation \ref{eq:sumsquares} details the estimation of total and within-groups sum-of-squares. Mathematical notation presented here is reproduced from Schneider et al. (2024) [@Schneider2024ExploringLevel] for consistency.   
 
 \begin{equation} \label{eq:sumsquares}
     SS_{T} = \frac{1}{N}\sum_{i=1}^{N-1}\sum_{j=i+1}^{N}d(i,j)^{2}; \quad SS_{W} = \sum_{i=1}^{N-1}\sum_{j=i+1}^{N}d(i,j)^{2}\epsilon_{ij}^{\ell}/n_{\ell}
