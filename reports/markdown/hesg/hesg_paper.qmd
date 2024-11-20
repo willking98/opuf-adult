@@ -35,8 +35,8 @@ bibliography: bibliography.bib
 # You an also use a local CSL file
 # csl: diabetologia.csl
 ## Formats ##
-format:
-  aog-article-pdf: default
+# format:
+  # aog-argticle-pdf: default
     # Set alternative fonts here
 ---
 
@@ -55,7 +55,7 @@ Preference elicitation methods generally speaking, fall into two categories: com
 Conversely, compositional methods seek to identify preferences for each domain weighting and level rating individually for the number of domains and levels in a given descriptive system. Therefore, statistical models to elicit coefficients for each individual domain and level are not required and responses to each domain weighting and level rating are combined (in addition to an anchoring factor) to yield dis/utility values for each domain and level in the descriptive system. Compositional approaches can take many forms from simple VAS scores to using semantic categories and ranking methods [@BanaECosta1999TheApplication; @Danner2011IntegratingPreferences; @Oliveira2018ValuingStates]. These approaches have been used successfully in multi-criteria decision analysis (MCDA), but have been used less extensively in the preference elicitation space. Since the development of the OPUF, compositional approaches to elicit preferences have become more commonplace and a number of countries are using the OPUF to elicit value sets specific to their population [@Brodszky2023PCR108States]. 
 
 ## From PUF to OPUF
-Personal utility functions were first used in the context of preference elicitation by Devlin et al. (2019) [@Devlin2019AFunctions] to estimate the feasibility for using this approach to estimate a value set for the EQ5D-5L. Since the feasibility for the underlying PUF methods were established, the approach has been expanded by Schneider and colleagues and converted into an online personal utility functions (OPUF) survey built initially using RShiny [@Schneider2022TheStates] and subsequently using Javascript (available \hyperlink{https://eq5d5l.me}{here}). Since the development of the OPUF, a number of descriptive systems and different research teams have begun utilising this method to elicit value sets [@Bray2024DevelopmentImpairment; @Brodszky2023PCR108States].  
+Personal utility functions were first used in the context of preference elicitation by Devlin et al. (2019) [@Devlin2019AFunctions] to estimate the feasibility for using this approach to estimate a value set for the EQ5D-5L. Since the feasibility for the underlying PUF methods were established, the approach has been expanded by Schneider and colleagues and converted into an online personal utility functions (OPUF) survey built initially using RShiny [@Schneider2022TheStates] and subsequently using Javascript (available [here](https://eq5d5l.me)). Since the development of the OPUF, a number of descriptive systems and different research teams have begun utilising this method to elicit value sets [@Bray2024DevelopmentImpairment; @Brodszky2023PCR108States].  
 
 ## An overview of the OPUF structure
 1. Domain weighting: This section is composed of two parts. First, domain ranking is completed where participants identify their most important domain. Second, respondents complete the domain weighting (swing weighting) where the relative importance of other domains is ascertained using their most important domain as a reference point. These questions are presented in Figure \ref{fig:domain weighting}. 
@@ -65,7 +65,7 @@ Personal utility functions were first used in the context of preference elicitat
 ## OPUF logic and mathematics {#sec-OPUF_methods}
 This section presents the logic and underlying mathematics required to convert the raw OPUF responses from one person into an anchored value set for the WAItE descriptive system. This example assumes that level ratings are obtained for each domain separately, therefore mathematics presented here differs to those presented elsewhere [@Schneider2022TheStates]. Example response data are used for demonstration in this section and are presented in Table \ref{tab:example_raw_OPUF}. 
 
-\subsubsection{Example responses}
+### Example responses
 \begin{table}[ht]
 \centering
 \caption{Example individual responses to the OPUF}

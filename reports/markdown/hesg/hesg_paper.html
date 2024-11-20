@@ -91,11 +91,10 @@ window.Quarto = {
 
 </head>
 
-<body>
+<body class="fullcontent">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="..\..\..\..\..\OneDrive - Newcastle University\hesg_paper.pdf"><i class="bi bi-file-pdf"></i>PDF (aog-article)</a></li></ul></div></div>
+
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -182,7 +181,7 @@ window.Quarto = {
 </section>
 <section id="from-puf-to-opuf" class="level2">
 <h2 class="anchored" data-anchor-id="from-puf-to-opuf">From PUF to OPUF</h2>
-<p>Personal utility functions were first used in the context of preference elicitation by Devlin et al.&nbsp;(2019) <span class="citation" data-cites="Devlin2019AFunctions">(<a href="#ref-Devlin2019AFunctions" role="doc-biblioref">Devlin et al. 2019</a>)</span> to estimate the feasibility for using this approach to estimate a value set for the EQ5D-5L. Since the feasibility for the underlying PUF methods were established, the approach has been expanded by Schneider and colleagues and converted into an online personal utility functions (OPUF) survey built initially using RShiny <span class="citation" data-cites="Schneider2022TheStates">(<a href="#ref-Schneider2022TheStates" role="doc-biblioref">P. P. Schneider et al. 2022</a>)</span> and subsequently using Javascript (available ). Since the development of the OPUF, a number of descriptive systems and different research teams have begun utilising this method to elicit value sets <span class="citation" data-cites="Bray2024DevelopmentImpairment Brodszky2023PCR108States">(<a href="#ref-Bray2024DevelopmentImpairment" role="doc-biblioref">Bray, Tudor Edwards, and Schneider 2024</a>; <a href="#ref-Brodszky2023PCR108States" role="doc-biblioref">Brodszky et al. 2023</a>)</span>.</p>
+<p>Personal utility functions were first used in the context of preference elicitation by Devlin et al.&nbsp;(2019) <span class="citation" data-cites="Devlin2019AFunctions">(<a href="#ref-Devlin2019AFunctions" role="doc-biblioref">Devlin et al. 2019</a>)</span> to estimate the feasibility for using this approach to estimate a value set for the EQ5D-5L. Since the feasibility for the underlying PUF methods were established, the approach has been expanded by Schneider and colleagues and converted into an online personal utility functions (OPUF) survey built initially using RShiny <span class="citation" data-cites="Schneider2022TheStates">(<a href="#ref-Schneider2022TheStates" role="doc-biblioref">P. P. Schneider et al. 2022</a>)</span> and subsequently using Javascript (available <a href="https://eq5d5l.me">here</a>). Since the development of the OPUF, a number of descriptive systems and different research teams have begun utilising this method to elicit value sets <span class="citation" data-cites="Bray2024DevelopmentImpairment Brodszky2023PCR108States">(<a href="#ref-Bray2024DevelopmentImpairment" role="doc-biblioref">Bray, Tudor Edwards, and Schneider 2024</a>; <a href="#ref-Brodszky2023PCR108States" role="doc-biblioref">Brodszky et al. 2023</a>)</span>.</p>
 </section>
 <section id="an-overview-of-the-opuf-structure" class="level2">
 <h2 class="anchored" data-anchor-id="an-overview-of-the-opuf-structure">An overview of the OPUF structure</h2>
@@ -195,6 +194,8 @@ window.Quarto = {
 <section id="sec-OPUF_methods" class="level2">
 <h2 class="anchored" data-anchor-id="sec-OPUF_methods">OPUF logic and mathematics</h2>
 <p>This section presents the logic and underlying mathematics required to convert the raw OPUF responses from one person into an anchored value set for the WAItE descriptive system. This example assumes that level ratings are obtained for each domain separately, therefore mathematics presented here differs to those presented elsewhere <span class="citation" data-cites="Schneider2022TheStates">(<a href="#ref-Schneider2022TheStates" role="doc-biblioref">P. P. Schneider et al. 2022</a>)</span>. Example response data are used for demonstration in this section and are presented in Table <span class="math inline">\(\ref{tab:example_raw_OPUF}\)</span>.</p>
+<section id="example-responses" class="level3">
+<h3 class="anchored" data-anchor-id="example-responses">Example responses</h3>
 <p>Level ratings (presented in Table <span class="math inline">\(\ref{tab:example_raw_OPUF}\)</span>) are converted to coefficients bounded between 0-1 (shown in Equation <span class="math inline">\(\ref{eq:level_rescale}\)</span>). Level rating coefficients are presented in Matrix <span class="math inline">\(\ref{level_matrix}\)</span>. Attribute weights (presented in Table <span class="math inline">\(\ref{tab:example_raw_OPUF}\)</span>) are then normalised to sum to the value of 1 by dividing each weight by the sum of all weights (shown in Equation <span class="math inline">\(\ref{eq:weight_normalise}\)</span>). Normalised attribute weights are presented in Vector <span class="math inline">\(\ref{weight_vector}\)</span>.</p>
 <p><span class="math display">\[\begin{equation}\label{eq:level_rescale}
     L_{ij} \cdot 0.01
@@ -261,6 +262,7 @@ The OPUF is designed to be able to estimate personal utility functions and so es
 \begin{equation}\label{eq:mean_valueset}
 \bar{V}_{{ij}} = \frac{\sum_{\tilde{V}_{{ij}}}^{}}{N}
 \end{equation}\]</span></p>
+</section>
 </section>
 </section>
 <section id="methods" class="level1">
