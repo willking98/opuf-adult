@@ -36,7 +36,7 @@ if (run_scripts == 1) {
 	source(here("scripts", "2_anchoring.R"))
 	source(here("scripts", "3_valueset.R"))
 	source(here("scripts", "4_heterogeneity.R"))
-	# source(here("scripts", "5_latex_graphs.R"))
+	source(here("scripts", "5_latex_graphs.R"))
 	# source(here("scripts", "6_latex_tables.R"))
 	# source(here("scripts", "7_comparison.R"))
 	# source(here("scripts", "8_kmeans.R"))

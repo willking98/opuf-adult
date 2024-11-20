@@ -6,9 +6,6 @@
 # ---------------------------------------------
 #source("4_heterogeneity.R")
 
-library(xtable) # latex table package
-library(ggplot2) # latex plot package
-
 # ---------------------------------------------
 # Graphs
 # ---------------------------------------------
@@ -40,7 +37,7 @@ sample_hs <- round(seq(1,length(social_values), length.out = n_states))
 hs_ranks = rank(-social_values, ties.method = "random")
 indices = hs_ranks %in% sample_hs
 
-ggplot() +
+simple_chart <- ggplot() +
   geom_hline(yintercept = 0, size = 0.5, color = "gray") +
   geom_point(aes(x = hs_ranks[indices], y= social_values[indices]),shape = 10, col = "cadetblue", fill ="red") +
   geom_line(aes(x = hs_ranks[indices], y= social_values[indices]), col = "cadetblue")  +
@@ -75,7 +72,7 @@ sample_hs_labels <- round(seq(1,length(social_values), length.out = 10))
 hs_ranks_labels = rank(-social_values, ties.method = "random")
 indices_labels = hs_ranks_labels %in% sample_hs_labels
 
-plain <- ggplot() +
+plain_chart <- ggplot() +
   # Add individual lines for each person in light grey
   geom_line(data = individual_utilities_df, aes(x = rep(hs_ranks[indices], ncol(individual_utilities_subset)), y = Score, group = Individual), 
             color = "black", size = 0.1, alpha = 0.2) +
@@ -111,7 +108,7 @@ scale_x_continuous(
     axis.title.y = element_text(size = 14, margin = margin(t = 0, r = 10, b = 0, l = 0))
   ) 
 
-ggsave("plain_plot.png", plot = plain, width = 12, height = 8)
+# ggsave("plain_plot.png", plot = plain, width = 12, height = 8)
 
 # -------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------
@@ -231,7 +228,7 @@ waite_comparisons <- ggplot() +
 
 
 
-ggsave("Plots/waite_comparisons_plot.png", plot = waite_comparisons, width = 12, height = 8)
+# ggsave("Plots/waite_comparisons_plot.png", plot = waite_comparisons, width = 12, height = 8)
 # -------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------
@@ -245,7 +242,7 @@ individual_utilities_df$Distance <- rep(EUD_from_mean, each = length(sample_hs))
 
 
 
-p <- ggplot() +
+eud_chart <- ggplot() +
   # Add individual lines for each person, colored by Euclidean distance
   geom_line(data = individual_utilities_df, aes(x = rep(hs_ranks[indices], ncol(individual_utilities_subset)), 
                                                 y = Score, group = Individual, color = Distance), 
@@ -289,7 +286,7 @@ scale_color_viridis_c(
     oob = scales::squish  # Handle out of bounds by squishing values to the nearest boundary
   )
 
-  ggsave("EUD_plot.png", plot = p, width = 12, height = 8)
+  # ggsave("EUD_plot.png", plot = p, width = 12, height = 8)
 
 
 
@@ -310,7 +307,7 @@ individual_utilities_df <- data.frame(
   Individual = rep(1:ncol(individual_utilities_subset), each = length(sample_hs))
 )
 
-weight_plot <- ggplot() +
+weight_chart <- ggplot() +
   # Add individual lines for each person in light grey
   geom_line(data = individual_utilities_df, aes(x = rep(hs_ranks[indices], ncol(individual_utilities_subset)), y = Score, group = Individual), 
             color = "#000000", size = 0.1, alpha = 0.1) +
@@ -361,7 +358,7 @@ scale_x_continuous(
     legend.text = element_text(size = 12)
   )
 
-  ggsave("weight_plot.png", plot = weight_plot, width = 12, height = 8)
+  # ggsave("weight_plot.png", plot = weight_plot, width = 12, height = 8)
 
 # -------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------
@@ -380,7 +377,7 @@ individual_utilities_df <- data.frame(
   Individual = rep(1:ncol(individual_utilities_subset), each = length(sample_hs))
 )
 
-age_plot <- ggplot() +
+age_chart <- ggplot() +
   # Add individual lines for each person in light grey
   geom_line(data = individual_utilities_df, aes(x = rep(hs_ranks[indices], ncol(individual_utilities_subset)), y = Score, group = Individual), 
             color = "#000000", size = 0.1, alpha = 0.1) +
@@ -435,7 +432,7 @@ scale_x_continuous(
     legend.text = element_text(size = 12)
   )
 
-  ggsave("age_plot.png", plot = age_plot, width = 12, height = 8)
+  # ggsave("age_plot.png", plot = age_plot, width = 12, height = 8)
 
 # -------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------
@@ -463,7 +460,7 @@ hist <- ggplot(hist, aes(x = PITS, fill = PITS < -0.05)) +
   )
 
 
-ggsave("hist.png", plot = hist, width = 10, height = 6)
+# ggsave("hist.png", plot = hist, width = 10, height = 6)
 
 
 
@@ -601,9 +598,9 @@ differences <- ggplot(summary_df, aes(x = response, y = percentage, fill = respo
   )
 
 
-ggsave("Plots/understand.png", plot = understand, width = 8, height = 10)
-ggsave("Plots/decide.png", plot = decide, width = 8, height = 10)
-ggsave("Plots/differences.png", plot = differences, width = 8, height = 10)
+# ggsave("Plots/understand.png", plot = understand, width = 8, height = 10)
+# ggsave("Plots/decide.png", plot = decide, width = 8, height = 10)
+# ggsave("Plots/differences.png", plot = differences, width = 8, height = 10)
 
 
 # -------------------------------------------------------------------------------------------------------------------
@@ -626,8 +623,8 @@ gamma_model <- glm(PITS_shifted ~ Age, data = data, family = Gamma(link = "log")
 inv_gaussian_model <- glm(PITS_shifted ~ Age, data = data, family = inverse.gaussian(link = "log"))
 
 # Compare models using AIC and BIC
-aic_values <- AIC(gamma_model, inv_gaussian_model, tweedie_model)
-bic_values <- BIC(gamma_model, inv_gaussian_model, tweedie_model)
+aic_values <- AIC(gamma_model, inv_gaussian_model)
+bic_values <- BIC(gamma_model, inv_gaussian_model)
 print(aic_values)
 print(bic_values)
 
@@ -684,7 +681,6 @@ ggplot(data_for_clustering, aes(x = Age, y = PITS, color = Cluster)) +
 
 
 # Summary statistics for each cluster
-library(dplyr)
 
 data_for_clustering %>%
   group_by(Cluster) %>%
@@ -719,6 +715,9 @@ glm_table_clusters <- xtable(model_summary_clusters,
 data_for_glm <- cbind(data$PITS_shifted, m_covariates)
 data_for_glm <- na.omit(data_for_glm)
 data_for_glm <- data.frame(data_for_glm)
+# Convert all columns to numeric (if possible)
+data_for_glm[] <- lapply(data_for_glm, function(x) as.numeric(as.character(x)))
+
 names(data_for_glm) <- c("pits", "age", "weightdata", "educationdata", "occupationdata", "genderdata", "ethnicitydata")
 # Now fit the Gamma model with the shifted data
 gamma_multivar_model <- glm(pits ~ age + educationdata + occupationdata + genderdata + ethnicitydata, 
@@ -727,4 +726,4 @@ gamma_multivar_model <- glm(pits ~ age + educationdata + occupationdata + gender
 
 AIC(gamma_multivar_model)
 BIC(gamma_multivar_model)
-xtable(summary(gamma_multivar_model)$coefficients, digits = 4)
+# xtable(summary(gamma_multivar_model)$coefficients, digits = 4)
