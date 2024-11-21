@@ -11,6 +11,7 @@ library(knitr)
 library(kableExtra)
 library(mice)
 library(ggplot2)
+library(viridis)
 
 #-------------------------
 # Global options
