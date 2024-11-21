@@ -1,51 +1,54 @@
 ---
-## Paper meta-information ##
 title: "Development of a value-based scoring system for the WAItE using the OPUF in a sample of adults"
-# shorttitle and shortauthors information will show in the header (not required)
-shorttitle: "Valuation of the WAItE: OPUF"
-shortauthors: King & Robinson
 author:
   - name: Will King
-    orcid: 0000-0000-0000-0000
     email: w.king2@newcastle.ac.uk
+    affiliations: 
+        - id: ncl
+          name: Newcastle University
+          department: Health Economics Group
+          address: University, Barras Bridge
+          city: Newcastle upon Tyne
+          state: Tyne and Wear
+          postal-code: NE1 7RU
     attributes:
-      corresponding: true
-    affiliations:
-      - id: uni
-        name: Newcastle University
-        department: Health Economics Group 
+        corresponding: true
   - name: Tomos Robinson
     affiliations:
-      - ref: uni
+        - id: ncl
   - name: Angela Bate
-    affiliations:
-      - id: uni_northumbria
-      - name: Northumbria University
-      - department: Nursing, Midwifery & Health
+    affiliations: 
+        - id: north
+          name: Northumbria University
+          department: Nursing, Midwifery and Health
+          address: University, Barras Bridge
+          city: Newcastle upon Tyne
+          state: Tyne and Wear
+          postal-code: NE1 7RU
   - name: Laura Ternent
     affiliations:
-      - ref: uni
+        - id: ncl
 abstract: |
   **Background:** Online personal utility functions (OPUF) present a new method for eliciting preferences. In this study we used the OPUF to elicit a health state utility value set for the Weight-specific Adolescent Instrument for Economic-evaluation (WAItE) with a representative sample of the UK adult population. 
-  
   **Methods:** WAItE OPUF survey design was informed by prior qualitative work. The survey consisted of the WAItE descriptive system, domain weighting, level rating (per domain) and a VAS anchoring task. Personal utility functions were estimated on the individual level for all participants. Personal utility functions were aggregated and combined with the anchoring factor to give the social utility function and utility value set. Preference heterogeneity was assessed using Euclidean distance and PERMANOVA to explore preference variation within the sample. An experimental sensitivity analysis dichotomised preference heterogeneity into anchoring variation and domain weighting/level rating variation.
-  
   **Results:** A total of 300 participants completed the WAItE OPUF survey. The sample was broadly representative of the UK adult population. Participants, on average, took less than 10 minutes to complete the survey. The most important domains were tiredness and unhappiness, while least important domains were sports and embarrassment. Social utility values and the anchoring utility value estimated were comparable to previous studies. Preferences generally were heterogeneous, especially among different ages. Younger participants assigned lower utility values to WAItE health states and provided significantly lower scores on the VAS anchoring task compared to older participants.
-  
   **Conclusion:** This study successfully elicited health state utility values for the WAItE using the OPUF. Preference heterogeneity analysis identified differences in preferences for different age groups and a further valuation study is ongoing to explore whether this heterogeneity exists between adults and adolescents.
-keywords: [template, demo]
-
-## Bibliography meta-information ##
-reference-section-title: Bibliography  # adjust name of reference section
+keywords: 
+  - preference elicitation
+  - quality of life
+date: last-modified
 bibliography: bibliography.bib
-# You an also use a local CSL file
-csl: vancouver.csl
-## Formats ##
-# format:
-  # aog-argticle-pdf: default
-    # Set alternative fonts here
+format:
+  elsevier-pdf:
+    keep-tex: true
+    journal:
+      name: Health Economics Study Group
+      formatting: preprint
+      # model: 3p # Don't set a model with preprint
+      cite-style: authoryear
+header-includes:
+  - \usepackage[a4paper,margin=1in,textwidth=6.5in]{geometry}
 ---
-
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
 setwd("~/Dropbox/opuf-adult") # convert this to here for reproducibility
 source("X_Run.R")
@@ -68,9 +71,9 @@ Personal utility functions were first used in the context of preference elicitat
 
 ::: {#fig-domain layout-ncol=2}
 
-![Most important domain](../../../outputs/figures/relative_importance.png){#fig-importantdomain}
+![Most important domain](../../outputs/figures/relative_importance.png){#fig-importantdomain}
 
-![Swing rating](../../../outputs/figures/swing_rating.png){#fig-swing}
+![Swing rating](../../outputs/figures/swing_rating.png){#fig-swing}
 
 Domain weighting
 :::
@@ -79,9 +82,9 @@ Domain weighting
 
 ::: {#fig-level layout-ncol=2}
 
-![Level rating: Tiredness](../../../outputs/figures/level_rating.png){#fig-levelrating}
+![Level rating: Tiredness](../../outputs/figures/level_rating.png){#fig-levelrating}
 
-![Level rating: Treated differently](../../../outputs/figures/level_rating2.png){#fig-levelrating2}
+![Level rating: Treated differently](../../outputs/figures/level_rating2.png){#fig-levelrating2}
 
 Level rating
 :::
@@ -90,9 +93,9 @@ Level rating
 
 ::: {#fig-anchoring layout-ncol=2}
 
-![PITS-dead](../../../outputs/figures/anchor1.png){#fig-anchor1}
+![PITS-dead](../../outputs/figures/anchor1.png){#fig-anchor1}
 
-![PITS-VAS](../../../outputs/figures/anchor2.png){#fig-anchor2}
+![PITS-VAS](../../outputs/figures/anchor2.png){#fig-anchor2}
 
 Anchoring factor
 :::
