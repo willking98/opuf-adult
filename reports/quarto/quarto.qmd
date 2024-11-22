@@ -976,7 +976,6 @@ tab_valuesets[31,] <- cell_spec(tab_valuesets[31,], bold = TRUE)
 #| label: tab-WAItEvalsets
 #| tab-cap: Comparison of WAItE utility value sets
 kable(tab_valuesets, digits = 3)
-
 ```
 
 
