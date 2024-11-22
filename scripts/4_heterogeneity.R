@@ -17,12 +17,38 @@ load(here("data", "processed", "ind_value_sets.RData"))
 load(here("data", "processed", "s_ind_value_sets.RData"))
 load(here("data", "processed", "utils_list.RData"))
 
-# Calculate the Euclidean distances between individual valuesets
-distance_vector <- dist(t(s_ind_value_sets), method = "euclidean")
-distance_matrix <- as.matrix(distance_vector)
+if(run_long_functions==1){
+  # EUD
+  # Calculate the Euclidean distances between individual valuesets anchored with their own pits
+  distance_vector <- dist(t(ind_value_sets), method = "euclidean")
+  distance_matrix <- as.matrix(distance_vector)
+  mean_eud <- mean(distance_vector)
+  sd_eud <- sd(distance_vector)
+  median_eud <- median(distance_vector)
+  q1_eud <- quantile(distance_vector, prob = 0.25)
+  q3_eud <- quantile(distance_vector, prob = 0.75)
 
+  eud_summary <- c(mean_eud, sd_eud, median_eud, q1_eud, q3_eud)
+
+  # EUD2
+  # Calculate the Euclidean distances between individual valuesets anchored with the social pits
+  distance_vector2 <- dist(t(s_ind_value_sets), method = "euclidean")
+  distance_matrix2 <- as.matrix(distance_vector2)
+  mean_eud2 <- mean(distance_vector2)
+  sd_eud2 <- sd(distance_vector2)
+  median_eud2 <- median(distance_vector2)
+  q1_eud2 <- quantile(distance_vector2, prob = 0.25)
+  q3_eud2 <- quantile(distance_vector2, prob = 0.75)
+
+  eud2_summary <- c(mean_eud2, sd_eud2, median_eud2, q1_eud2, q3_eud2)
+
+  save(distance_vector, distance_vector2, eud_summary, eud2_summary, file = here("data", "processed", "distance_objects.RData"))
+
+}
+
+load(here("data", "processed", "distance_objects.RData"))
+### Code for the graphs
 # Calculate the Euclidean distances between individual valuesets and the social valueset
-
 EUD_from_mean <- rep(0, length = 300)
 for(i in 1:300){
     x <- ind_value_sets[,i]
@@ -31,7 +57,6 @@ for(i in 1:300){
 }
 
 # Calculate the Euclidean distances between socially anchored individual valuesets and the social valueset 
-
 EUD_socially_anchored_from_mean <- rep(0, 300)
 for(i in 1:300){
     x <- s_ind_value_sets[,i]
@@ -40,7 +65,6 @@ for(i in 1:300){
 }
 
 # Calculate the Euclidean distances between unanchored individual valuesets and the unanchored social valueset 
-
 EUD_unanchored_from_mean <- rep(0, 300)
 for(i in 1:300){
     x <- utils_list[,i]
@@ -57,10 +81,9 @@ for(i in 1:300){
 }
 
 # Calculate the Euclidean distances between latent coefficients
-distance_vector2 <- dist(latent_matrix, method = "euclidean")
-distance_matrix2 <- as.matrix(distance_vector2)
+distance_vector3 <- dist(latent_matrix, method = "euclidean")
+distance_matrix3 <- as.matrix(distance_vector3)
 
-summary(distance_vector)
 
 # --------------------------------
 # Cleaning covariates in permanova 
@@ -82,7 +105,7 @@ age_df$age_factor <- ifelse(is.na(age_df$age_factor), 7, age_df$age_factor)
 age_factor <- as.factor(age_df$age_factor)
 
 weightdata <- as.factor(ifelse(data$AdditionalDemographicQuestions_weightstatus_value=="normal",1,0))
-weightdata <- as.factor(data$AdditionalDemographicQuestions_weightstatus_value)
+# weightdata <- as.factor(data$AdditionalDemographicQuestions_weightstatus_value)
 educationdata <- as.factor(data$AdditionalDemographicQuestions_education_value)
 occupationdata <- as.factor(data$AdditionalDemographicQuestions_employment_value)
 genderdata <- as.factor(data$AdditionalDemographicQuestions_gender_value)
@@ -94,10 +117,17 @@ m_covariates <- cbind(data$Age, weightdata, educationdata, occupationdata, gende
 # save RData to run permanova in R not VSCode
 # save.image(file='permanovaworkspace.RData')
 
-# PERMANOVA
-set.seed(1998)
-permanova_main <- adonis2(distance_vector ~ age_factor + weightdata + educationdata + occupationdata + genderdata + ethnicitydata, permutations = 10000)
+if (run_long_functions==1){
+  # PERMANOVA
+  set.seed(1998)
+  permanova_main <- adonis2(distance_vector ~ age_factor + weightdata + educationdata + occupationdata + genderdata + ethnicitydata, permutations = 10000)
+  # PERMANOVA2
+  set.seed(1998)
+  permanova2 <- adonis2(distance_vector2 ~ age_factor + weightdata + educationdata + occupationdata + genderdata + ethnicitydata, permutations = 10000)
+  save(permanova_main, permanova2, file = here("data", "processed", "permanova_objects.RData"))
+}
 
+load(here("data", "processed", "permanova_objects.RData"))
 
 
 # --------------------------------

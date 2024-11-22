@@ -80,7 +80,7 @@ plain_chart <- ggplot() +
   # Add the mean line (as before)
   geom_hline(yintercept = 0, size = 0.5, color = "gray") +
   #geom_point(aes(x = hs_ranks[indices], y = social_values[indices]), shape = 10, col = "cadetblue", fill = "red") +
-  geom_line(aes(x = hs_ranks[indices], y = social_values[indices]), col = "#000000", size = 1.25) +
+  geom_line(aes(x = hs_ranks[indices], y = social_values[indices]), col = "#000000", size = 1) +
   
   # Customize x-axis with selected labels
 scale_x_continuous(
@@ -101,7 +101,7 @@ scale_x_continuous(
   coord_cartesian(ylim = c(0, 1)) +
   
   # Customize theme
-  theme(legend.position = "bottom", axis.text.x = element_text(angle = 0)) +
+  theme(legend.position = "bottom", axis.text.x = element_text(angle = 22.5)) +
   # Adjust the axis labels' position
   theme(
     axis.title.x = element_text(size = 14, margin = margin(t = 10, r = 0, b = 0, l = 0)),
@@ -272,7 +272,7 @@ scale_x_continuous(
   coord_cartesian(ylim = c(0, 1)) +
   
   # Customize theme
-  theme(legend.position = "bottom", axis.text.x = element_text(angle = 0)) +
+  theme(legend.position = "bottom", axis.text.x = element_text(angle = 22.5)) +
   # Adjust the axis labels' position
   theme(
     axis.title.x = element_text(size = 14, margin = margin(t = 10, r = 0, b = 0, l = 0)),
@@ -316,9 +316,9 @@ weight_chart <- ggplot() +
   geom_hline(yintercept = 0, size = 0.5, color = "gray") +
   
   # Add lines for different weight status subgroups with a color aesthetic for the legend
-  geom_line(aes(x = hs_ranks[indices], y = normal_valueset[indices], color = "Normal"), size = 1) +
-  geom_line(aes(x = hs_ranks[indices], y = social_values[indices]), col = "#000000", size =1.25) +
-  geom_line(aes(x = hs_ranks[indices], y = over_valueset[indices], color = "Overweight"), size = 1) +
+  geom_line(aes(x = hs_ranks[indices], y = normal_valueset[indices], color = "Normal"), size = 0.75) +
+  geom_line(aes(x = hs_ranks[indices], y = social_values[indices]), col = "#000000", size =1) +
+  geom_line(aes(x = hs_ranks[indices], y = over_valueset[indices], color = "Overweight"), size = 0.75) +
   #geom_line(aes(x = hs_ranks[indices], y = obese_valueset[indices], color = "Obese"), size = 1) +
   
  # Customize x-axis with selected labels
@@ -354,7 +354,7 @@ scale_x_continuous(
   theme(
     legend.position = "bottom", 
     legend.title = element_blank(),
-    axis.text.x = element_text(angle = 0),
+    axis.text.x = element_text(angle = 22.5),
     legend.text = element_text(size = 12)
   )
 
@@ -386,13 +386,13 @@ age_chart <- ggplot() +
   geom_hline(yintercept = 0, size = 0.5, color = "gray") +
   
   # Add lines for different weight status subgroups with a color aesthetic for the legend
-  geom_line(aes(x = hs_ranks[indices], y = social_values[indices]), col = "#000000", size = 1.25) +
-  geom_line(aes(x = hs_ranks[indices], y = age18_valueset[indices], color = "18"), size = 1) +
-  geom_line(aes(x = hs_ranks[indices], y = age25_valueset[indices], col = "25"), size =1) +
-  geom_line(aes(x = hs_ranks[indices], y = age35_valueset[indices], color = "35"), size = 1) +
-  geom_line(aes(x = hs_ranks[indices], y = age45_valueset[indices], color = "45"), size = 1) +
-  geom_line(aes(x = hs_ranks[indices], y = age55_valueset[indices], color = "55"), size = 1) +
-  geom_line(aes(x = hs_ranks[indices], y = age65_valueset[indices], color = "65"), size = 1) +
+  geom_line(aes(x = hs_ranks[indices], y = social_values[indices]), col = "#000000", size = 1) +
+  geom_line(aes(x = hs_ranks[indices], y = age18_valueset[indices], color = "18"), size = 0.75) +
+  geom_line(aes(x = hs_ranks[indices], y = age25_valueset[indices], col = "25"), size =0.75) +
+  geom_line(aes(x = hs_ranks[indices], y = age35_valueset[indices], color = "35"), size = 0.75) +
+  geom_line(aes(x = hs_ranks[indices], y = age45_valueset[indices], color = "45"), size = 0.75) +
+  geom_line(aes(x = hs_ranks[indices], y = age55_valueset[indices], color = "55"), size = 0.75) +
+  geom_line(aes(x = hs_ranks[indices], y = age65_valueset[indices], color = "65"), size = 0.75) +
   
  # Customize x-axis with selected labels
 scale_x_continuous(
@@ -428,7 +428,7 @@ scale_x_continuous(
   theme(
     legend.position = "bottom", 
     legend.title = element_text(size = 12),
-    axis.text.x = element_text(angle = 0),
+    axis.text.x = element_text(angle = 22.5),
     legend.text = element_text(size = 12)
   )
 

@@ -121,6 +121,7 @@ for (m in results_list) {
 # Divide the sum by the number of matrices to get the average
 average_matrix <- sum_matrix / length(results_list)
 
+results_list_df <- as.data.frame(t(sapply(results_list, as.vector)))
 
 ############################################################################
 ############################################################################

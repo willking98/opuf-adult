@@ -4,7 +4,7 @@
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
-  authoryear,
+  number,
   preprint]{elsarticle}
 
 \usepackage{amsmath,amssymb}
@@ -105,7 +105,6 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
-\usepackage[a4paper,margin=1in,textwidth=6.5in]{geometry}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -153,14 +152,13 @@
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 \usepackage[]{natbib}
-\bibliographystyle{elsarticle-harv}
+\bibliographystyle{elsarticle-num}
 \usepackage{bookmark}
 
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={Development of a value-based scoring system for the WAItE using the OPUF in a sample of adults},
-  pdfauthor={Will King; Tomos Robinson; Angela Bate; Laura Ternent},
   pdfkeywords={preference elicitation, quality of life},
   colorlinks=true,
   linkcolor={blue},
@@ -176,36 +174,15 @@
 \begin{frontmatter}
 \title{Development of a value-based scoring system for the WAItE using
 the OPUF in a sample of adults}
-\author[1]{Will King%
-\corref{cor1}%
-}
- \ead{w.king2@newcastle.ac.uk} 
-\author[1]{Tomos Robinson%
-%
-}
-
-\author[3]{Angela Bate%
-%
-}
-
-\author[1]{Laura Ternent%
-%
-}
-
 
 \affiliation[1]{organization={Newcastle University, Health Economics
 Group},addressline={University, Barras Bridge},city={Newcastle upon
 Tyne},postcode={NE1 7RU},postcodesep={}}
-\affiliation[2]{organization={},,postcodesep={}}
-\affiliation[3]{organization={Northumbria University, Nursing, Midwifery
-and Health},addressline={University, Barras Bridge},city={Newcastle upon
-Tyne},postcode={NE1 7RU},postcodesep={}}
+\affiliation[2]{organization={Northumbria University, Nursing, Midwifery
+and Health},addressline={Ellison Pl},city={Newcastle upon
+Tyne},postcode={NE1 8ST},postcodesep={}}
 
 \cortext[cor1]{Corresponding author}
-
-
-
-
         
 \begin{abstract}
 \textbf{Background:} Online personal utility functions (OPUF) present a
@@ -215,19 +192,19 @@ Adolescent Instrument for Economic-evaluation (WAItE) with a
 representative sample of the UK adult population. \textbf{Methods:}
 WAItE OPUF survey design was informed by prior qualitative work. The
 survey consisted of the WAItE descriptive system, domain weighting,
-level rating (per domain) and a VAS anchoring task. Personal utility
+level rating (per attribute) and a VAS anchoring task. Personal utility
 functions were estimated on the individual level for all participants.
 Personal utility functions were aggregated and combined with the
 anchoring factor to give the social utility function and utility value
 set. Preference heterogeneity was assessed using Euclidean distance and
 PERMANOVA to explore preference variation within the sample. An
 experimental sensitivity analysis dichotomised preference heterogeneity
-into anchoring variation and domain weighting/level rating variation.
+into anchoring variation and attribute weighting/level rating variation.
 \textbf{Results:} A total of 300 participants completed the WAItE OPUF
 survey. The sample was broadly representative of the UK adult
 population. Participants, on average, took less than 10 minutes to
-complete the survey. The most important domains were tiredness and
-unhappiness, while least important domains were sports and
+complete the survey. The most important attributes were tiredness and
+unhappiness, while least important attributes were sports and
 embarrassment. Social utility values and the anchoring utility value
 estimated were comparable to previous studies. Preferences generally
 were heterogeneous, especially among different ages. Younger
@@ -267,23 +244,23 @@ categories: compositional and decompositional
 \citep{Keeney1979DecisionsTrade-Offs, Marsh2016MultipleForce, Belton2002MultipleAnalysis}.
 That is, methods like DCE, BWS and TTO elicit preference orderings from
 individuals for an entire health state (composed of a combination of
-domains and levels) and then responses are decomposed to identify
-marginal contributions of each domain and level in each health state.
+attributes and levels) and then responses are decomposed to identify
+marginal contributions of each attribute and level in each health state.
 Models like multinomial logit, mixed logit and latent class are
 frequently used to decompose responses to decompositional preference
 elicitation tasks \citep{Hauber2016StatisticalForce}. Coefficients
 estimated in these models form the basis of dis/utility values for each
-domain and level in a descriptive system.
+attribute and level in a descriptive system.
 
 Conversely, compositional methods seek to identify preferences for each
-domain weighting and level rating individually for the number of domains
-and levels in a given descriptive system. Therefore, statistical models
-to elicit coefficients for each individual domain and level are not
-required and responses to each domain weighting and level rating are
-combined (in addition to an anchoring factor) to yield dis/utility
-values for each domain and level in the descriptive system.
-Compositional approaches can take many forms from simple VAS scores to
-using semantic categories and ranking methods
+attribute weighting and level rating individually for the number of
+attributes and levels in a given descriptive system. Therefore,
+statistical models to elicit coefficients for each individual attribute
+and level are not required and responses to each attribute weighting and
+level rating are combined (in addition to an anchoring factor) to yield
+dis/utility values for each attribute and level in the descriptive
+system. Compositional approaches can take many forms from simple VAS
+scores to using semantic categories and ranking methods
 \citep{BanaECosta1999TheApplication, Danner2011IntegratingPreferences, Oliveira2018ValuingStates}.
 These approaches have been used successfully in multi-criteria decision
 analysis (MCDA), but have been used less extensively in the preference
@@ -310,18 +287,15 @@ begun utilising this method to elicit value sets
 \subsection{An overview of the OPUF
 structure}\label{an-overview-of-the-opuf-structure}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Domain weighting: This section is composed of two parts. First, domain
-  ranking is completed where participants identify their most important
-  domain (Figure~\ref{fig-importantdomain}). Second, respondents
-  complete the domain weighting (swing weighting) where the relative
-  importance of other domains is ascertained using their most important
-  domain as a reference point (Figure~\ref{fig-swing}). These questions
-  are presented in Figure~\ref{fig-domain}.
-\end{enumerate}
+\subsubsection{Attribute weighting}\label{attribute-weighting}
+
+This section is composed of two parts. First, attribute ranking is
+completed where participants identify their most important attribute
+(Figure~\ref{fig-importantattribute}). Second, respondents complete the
+attribute weighting (swing weighting) where the relative importance of
+other attributes is ascertained using their most important attribute as
+a reference point (Figure~\ref{fig-swing}). These questions are
+presented in Figure~\ref{fig-attribute}.
 
 \begin{figure}
 
@@ -333,7 +307,7 @@ structure}\label{an-overview-of-the-opuf-structure}
 
 }
 
-\subcaption{\label{fig-importantdomain}Most important domain}
+\subcaption{\label{fig-importantattribute}Most important attribute}
 
 \end{minipage}%
 %
@@ -349,27 +323,22 @@ structure}\label{an-overview-of-the-opuf-structure}
 
 \end{minipage}%
 
-\caption{\label{fig-domain}Domain weighting}
+\caption{\label{fig-attribute}attribute weighting}
 
 \end{figure}%
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  Level ratings: This element of the OPUF has varied across different
-  iterations of the survey. Schnieder et al.~(2022)
-  \citep{Schneider2022TheStates} asked participants to rank the levels
-  within the descriptive system generally (i.e.~for any given domain),
-  while other iterations have administered separate level rating
-  questions for each domain in the descriptive system
-  \citep{Bray2024DevelopmentImpairment}. Selection of method requires a
-  trade-off between participant burden and sensitivity of level ratings
-  to each domain. Figure~\ref{fig-level} presents the level rating
-  question for the tiredness and treated differently domains of the
-  WAItE.
-\end{enumerate}
+\subsubsection{Level ratings}\label{level-ratings}
+
+This element of the OPUF has varied across different iterations of the
+survey. Schnieder et al.~(2022) \citep{Schneider2022TheStates} asked
+participants to rank the levels within the descriptive system generally
+(i.e.~for any given attribute), while other iterations have administered
+separate level rating questions for each attribute in the descriptive
+system \citep{Bray2024DevelopmentImpairment}. Selection of method
+requires a trade-off between participant burden and sensitivity of level
+ratings to each attribute. Figure~\ref{fig-level} presents the level
+rating question for the tiredness and treated differently attributes of
+the WAItE.
 
 \begin{figure}
 
@@ -401,24 +370,19 @@ structure}\label{an-overview-of-the-opuf-structure}
 
 \end{figure}%
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  Anchoring factor: A task is required to rescale the latent
-  coefficients estimated via combining level ratings and domain weights
-  onto the QALY scale. Participants are presented with a binary choice
-  between the PITS state (or another state) of a given descriptive
-  system and ``being dead'' (Figure~\ref{fig-anchor1}). If the PITS
-  state is chosen, participants are asked to rank the PITS state on a
-  VAS from 1 (full health) to 0 (dead). If ``being dead'' is chosen,
-  participants are asked to rank ``being dead'' on a VAS from 1 (full
-  health) to 0 (PITS state) (Figure~\ref{fig-anchor2}). Responses to
-  these respective questions provide the anchoring factor. Anchoring
-  questions, such that PITS is preferred to dead, are presented in
-  Figure~\ref{fig-anchoring}.
-\end{enumerate}
+\subsubsection{Anchoring factor}\label{anchoring-factor}
+
+A task is required to rescale the latent coefficients estimated via
+combining level ratings and attribute weights onto the QALY scale.
+Participants are presented with a binary choice between the PITS state
+(or another state) of a given descriptive system and ``being dead''
+(Figure~\ref{fig-anchor1}). If the PITS state is chosen, participants
+are asked to rank the PITS state on a VAS from 1 (full health) to 0
+(dead). If ``being dead'' is chosen, participants are asked to rank
+``being dead'' on a VAS from 1 (full health) to 0 (PITS state)
+(Figure~\ref{fig-anchor2}). Responses to these respective questions
+provide the anchoring factor. Anchoring questions, such that PITS is
+preferred to dead, are presented in Figure~\ref{fig-anchoring}.
 
 \begin{figure}
 
@@ -455,8 +419,8 @@ structure}\label{an-overview-of-the-opuf-structure}
 This section presents the logic and underlying mathematics required to
 convert the raw OPUF responses from one person into an anchored value
 set for the WAItE descriptive system. This example assumes that level
-ratings are obtained for each domain separately, therefore mathematics
-presented here differs to those presented elsewhere
+ratings are obtained for each attribute separately, therefore
+mathematics presented here differs to those presented elsewhere
 \citep{Schneider2022TheStates}. Example response data are used for
 demonstration in this section and are presented in
 Table~\ref{tbl-exampledata}.
@@ -479,7 +443,7 @@ Level rating: Sometimes & 57 & 55 & 63 & 54 & 38 & 26 & 66\\
 Level rating: Often & 83 & 82 & 85 & 86 & 64 & 38 & 91\\
 Level rating: Always & 100 & 100 & 100 & 100 & 100 & 100 & 100\\
 \addlinespace
-Domain Weighting & 28 & 33 & 36 & 45 & 100 & 34 & 56\\
+attribute Weighting & 28 & 33 & 36 & 45 & 100 & 34 & 56\\
 \bottomrule
 \multicolumn{8}{l}{\rule{0pt}{1em}\textit{Note: } WAItE PITS better than dead = Yes Anchoring Task Response = 20 PITS Utility Value = 0.2}\\
 
@@ -587,27 +551,6 @@ to estimate a utility value given a specific WAItE health state.
 
 \tabularnewline
 
-\caption{WAItE example PUF value set}\tabularnewline
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Attribute level
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-Tired
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-Walking
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-Sports
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-Concentration
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-Embarrassment
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-Unhappiness
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-Treated differently
-\end{minipage} \\
-\midrule\noalign{}
-\endfirsthead
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Attribute level
@@ -637,25 +580,6 @@ Often & 0.06 & 0.06 & 0.07 & 0.10 & 0.15 & 0.03 & 0.12 \\
 Always & 0.06 & 0.08 & 0.09 & 0.11 & 0.24 & 0.08 & 0.14 \\
 
 \end{longtable}
-
-\begin{table}[ht]
-\centering
-\caption{WAItE example PUF value set}
-
-\footnotesize
-\begin{tabular}{p{2cm} p{0.6cm} p{0.9cm} p{0.6cm} p{1.8cm} p{2cm} p{1.6cm} p{2.8cm}}
-\toprule
-& Tired & Walking & Sports & Concentration & Embarrassment & Unhappiness & Treated Differently \\
-\midrule
-Never          & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
-Almost Never   & 0.01 & 0.02 & 0.02 & 0.02 & 0.04 & 0.01 & 0.02 \\
-Sometimes      & 0.04 & 0.04 & 0.06 & 0.06 & 0.09 & 0.02 & 0.09 \\
-Often          & 0.06 & 0.06 & 0.07 & 0.10 & 0.15 & 0.03 & 0.12 \\
-Always         & 0.06 & 0.08 & 0.09 & 0.11 & 0.24 & 0.08 & 0.14 \\
-\bottomrule
-\multicolumn{8}{l}{*Coefficients anchored by a PITS utility value of 0.2}
-\end{tabular}
-\end{table}
 
 \begin{equation}\phantomsection\label{eq-HS123}{
 \begin{aligned}
@@ -827,9 +751,9 @@ size for group \(\ell\). Then, SS\(_B\) can then be calculated as
 SS\(_B\) = SS\(_T\) -- SS\(_W\), which allows calculating the pseudo F
 statistic for \(p\) groups:
 
-\begin{equation}
-    F= \frac{(\frac{SS_B}{p-1})}{(\frac{SS_W}{N-p})}
-\end{equation}
+\begin{equation}\phantomsection\label{eq-ssb}{
+F= \frac{(\frac{SS_B}{p-1})}{(\frac{SS_W}{N-p})}
+}\end{equation}
 
 Further details about the mathematical and statistical properties of
 PERMANOVA are available elsewhere
@@ -848,15 +772,15 @@ functions anchored using the social PITS utility value (henceforth
 referred to as EUD2). This differed to prior preference heterogeneity
 estimation as individual variation in PITS utility values were not
 included in the EUD2 estimation. EUD2 was entirely composed by
-differences in level ratings and domain weights. Further details on the
-derivation of EUD2 are presented in \citet{appendix}.
+differences in level ratings and attribute weights. Further details on
+the derivation of EUD2 are presented in Section~\ref{sec-appendix1}.
 
 \section{Results}\label{results}
 
 \subsection{Study participants}\label{study-participants}
 
 A sample of 334 individuals were approached to participate in the study
-via the survey company \hyperlink{https://www.prolific.com}{Prolific}.
+via the survey company \href{https://www.prolific.com}{Prolific}.
 Individuals that successfully inputted their unique Prolific ID and
 obtained a correct completion code from the end of the study were
 included in the analysis sample and received a small payment (£2.50) for
@@ -923,20 +847,87 @@ Total (mins) & 9.66 (5.85) & 8.15 (5.88; 11.89) & 2.11 & 62.3 \\
 
 Responses to the WAItE descriptive system are presented in Table
 \ref{tab:demographicdataadultOPUF}. Feeling tired and avoiding doing
-sport were the domains that were most frequently experienced by
+sport were the attributes that were most frequently experienced by
 participants in our analysis sample. WAItE summary statistics were in
 line with results from previous studies
 \citep{Robinson2019EstimatingEvaluation}.
 
-\subsection{Level ratings}\label{level-ratings}
+\begin{longtable*}[t]{>{}lr}
+\toprule
+\multicolumn{1}{c}{Participant Characteristics (N=300)} & \multicolumn{1}{c}{N (\%)} \\
+\cmidrule(l{3pt}r{3pt}){1-1} \cmidrule(l{3pt}r{3pt}){2-2}
+Participant\_Characteristics & N\_Percent\\
+\midrule
+\textbf{Age} & \\
+\textbf{18-24} & 32 (10.9\%)\\
+\textbf{25-34} & 50 (17\%)\\
+\textbf{35-44} & 48 (16.3\%)\\
+\textbf{45-54} & 49 (16.7\%)\\
+\addlinespace
+\textbf{55-64} & 81 (27.6\%)\\
+\textbf{65-90} & 34 (11.6\%)\\
+\textbf{Not Stated} & 6 (2.0\%)\\
+\textbf{Gender} & \\
+\textbf{Female} & 154 (51\%)\\
+\addlinespace
+\textbf{Male} & 144 (48\%)\\
+\textbf{Non-binary} & 1 (0\%)\\
+\textbf{Ethnicity} & \\
+\textbf{White} & 251 (84\%)\\
+\textbf{Asian} & 23 (8\%)\\
+\addlinespace
+\textbf{Black} & 11 (4\%)\\
+\textbf{Mixed} & 10 (3\%)\\
+\textbf{Other} & 5 (2\%)\\
+\textbf{Weight Status} & \\
+\textbf{Normal} & 154 (51\%)\\
+\addlinespace
+\textbf{Overweight} & 104 (35\%)\\
+\textbf{Obese} & 30 (10\%)\\
+\textbf{Underweight} & 8 (3\%)\\
+\textbf{Prefer not to say} & 4 (1\%)\\
+\textbf{Education} & \\
+\addlinespace
+\textbf{Degree} & 147 (49\%)\\
+\textbf{A Level} & 64 (21\%)\\
+\textbf{Higher Education} & 46 (15\%)\\
+\textbf{Other} & 20 (7\%)\\
+\textbf{GCSE A-C} & 18 (6\%)\\
+\addlinespace
+\textbf{GCSE D-G} & 5 (2\%)\\
+\textbf{Occupation} & \\
+\textbf{Full-time} & 130 (43\%)\\
+\textbf{Part-time} & 62 (21\%)\\
+\textbf{Not Paid} & 30 (10\%)\\
+\addlinespace
+\textbf{Other} & 31 (10\%)\\
+\textbf{Student} & 17 (6\%)\\
+\textbf{Unemployed} & 18 (6\%)\\
+\textbf{Not Stated} & 9 (3\%)\\
+\textbf{Starting a New Job} & 3 (1\%)\\
+\addlinespace
+\textbf{WAItE} & Mean (SD)\\
+\textbf{Tiredness} & 3.4 (0.8)\\
+\textbf{Walking} & 2.1 (1.1)\\
+\textbf{Sport} & 3.3 (1.3)\\
+\textbf{Concentration} & 2.7 (1.0)\\
+\addlinespace
+\textbf{Embarrassment} & 2.2 (1.2)\\
+\textbf{Unhappiness} & 2.3 (1.0)\\
+\textbf{Treated differently} & 1.9 (0.9)\\
+\textbf{Total} & 17.8 (4.8)\\
+\bottomrule
+\end{longtable*}
 
-Level ratings are presented individually for each different domain in
+\subsection{Level ratings}\label{level-ratings-1}
+
+Level ratings are presented individually for each different attribute in
 Table~\ref{tbl-level}. The best and worst levels (\textit{Always} and
 \textit{Never}) were fixed at 0 and 100 respectively. The second best
 level (\textit{Almost never}) had the lowest VAS score in the Sports and
-Embarrassment domain, while the second worst level (\textit{Often}) had
-the highest VAS score in the Concentration domain. In this question,
-higher VAS scores indicate worse states of health.
+Embarrassment attribute, while the second worst level (\textit{Often})
+had the highest VAS score in the Concentration attribute. In this
+question, higher VAS scores indicate worse states of health.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.3580}}
@@ -945,7 +936,7 @@ higher VAS scores indicate worse states of health.
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1235}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1235}}@{}}
 
-\caption{\label{tbl-level}Summary of OPUF level ratings by domain}
+\caption{\label{tbl-level}Summary of OPUF level ratings by attribute}
 
 \tabularnewline
 
@@ -999,15 +990,15 @@ Often & 55.857 (30.552) & 60.5 (31; 80) & 0 & 100 \\
 
 \end{longtable}
 
-\subsection{Domain weights}\label{domain-weights}
+\subsection{Attribute weights}\label{attribute-weights}
 
-Summary statistics of domain weightings are presented in
-Table~\ref{tbl-domain}. On average, Tiredness (76.5) and Unhappiness
+Summary statistics of attribute weightings are presented in
+Table~\ref{tbl-attribute}. On average, Tiredness (76.5) and Unhappiness
 (70) were considered to be more important to participants than
 Embarrassment (40.1) and Sports (42.3). There was less variability in
-domain weighting responses to Tiredness than responses to Treated
+attribute weighting responses to Tiredness than responses to Treated
 differently or Embarrassment. Figure~\ref{fig-rai} illustrates the
-relative attribute importance (RAI) among WAItE domains.
+relative attribute importance (RAI) among WAItE attributes.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.3077}}
@@ -1016,8 +1007,8 @@ relative attribute importance (RAI) among WAItE domains.
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1282}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1282}}@{}}
 
-\caption{\label{tbl-domain}Summary of OPUF domain weights and anchoring
-responses}
+\caption{\label{tbl-attribute}Summary of OPUF attribute weights and
+anchoring responses}
 
 \tabularnewline
 
@@ -1131,57 +1122,46 @@ Max
 \bottomrule\noalign{}
 \endlastfoot
 \textbf{Tired} & \textbf{} & \textbf{} & \textbf{} & \textbf{} \\
-Almost never & 0.029 (0.025; 0.033) & 0.029 (0.027; 0.03) & 0.021 &
-0.039 \\
-Sometimes & 0.052 (0.048; 0.057) & 0.052 (0.05; 0.054) & 0.042 &
-0.062 \\
-Often & 0.088 (0.082; 0.094) & 0.088 (0.085; 0.09) & 0.077 & 0.103 \\
-Always & 0.14 (0.133; 0.148) & 0.14 (0.137; 0.143) & 0.125 & 0.157 \\
+Almost never & 0.029 (0.025; 0.033) & 0.016 (0.007; 0.033) & 0 &
+0.279 \\
+Sometimes & 0.052 (0.048; 0.057) & 0.043 (0.024; 0.07) & 0 & 0.311 \\
+Often & 0.088 (0.082; 0.094) & 0.086 (0.052; 0.112) & 0 & 0.359 \\
+Always & 0.14 (0.133; 0.148) & 0.126 (0.101; 0.161) & 0.006 & 0.479 \\
 \textbf{Walking} & \textbf{} & \textbf{} & \textbf{} & \textbf{} \\
-Almost never & 0.021 (0.018; 0.024) & 0.021 (0.02; 0.022) & 0.016 &
-0.027 \\
-Sometimes & 0.045 (0.041; 0.049) & 0.045 (0.043; 0.046) & 0.037 &
-0.052 \\
-Often & 0.075 (0.069; 0.082) & 0.075 (0.073; 0.077) & 0.064 & 0.087 \\
-Always & 0.116 (0.108; 0.124) & 0.115 (0.113; 0.118) & 0.101 & 0.131 \\
+Almost never & 0.021 (0.018; 0.024) & 0.013 (0.006; 0.026) & 0 &
+0.179 \\
+Sometimes & 0.045 (0.041; 0.049) & 0.04 (0.019; 0.062) & 0 & 0.192 \\
+Often & 0.075 (0.069; 0.082) & 0.074 (0.028; 0.102) & 0 & 0.428 \\
+Always & 0.116 (0.108; 0.124) & 0.11 (0.084; 0.141) & 0 & 0.57 \\
 \textbf{Sports} & \textbf{} & \textbf{} & \textbf{} & \textbf{} \\
-Almost never & 0.012 (0.01; 0.015) & 0.012 (0.012; 0.013) & 0.009 &
-0.017 \\
-Sometimes & 0.023 (0.02; 0.025) & 0.023 (0.022; 0.024) & 0.018 &
-0.029 \\
-Often & 0.038 (0.034; 0.044) & 0.038 (0.037; 0.04) & 0.029 & 0.052 \\
-Always & 0.069 (0.063; 0.076) & 0.069 (0.067; 0.071) & 0.058 & 0.084 \\
+Almost never & 0.012 (0.01; 0.015) & 0.006 (0.001; 0.016) & 0 & 0.127 \\
+Sometimes & 0.023 (0.02; 0.025) & 0.015 (0.004; 0.036) & 0 & 0.126 \\
+Often & 0.038 (0.034; 0.044) & 0.026 (0.008; 0.059) & 0 & 0.461 \\
+Always & 0.069 (0.063; 0.076) & 0.064 (0.029; 0.103) & 0 & 0.524 \\
 \textbf{Concentration} & \textbf{} & \textbf{} & \textbf{} &
 \textbf{} \\
-Almost never & 0.026 (0.023; 0.03) & 0.026 (0.025; 0.028) & 0.019 &
-0.034 \\
-Sometimes & 0.051 (0.047; 0.055) & 0.051 (0.049; 0.052) & 0.044 &
-0.06 \\
-Often & 0.08 (0.074; 0.086) & 0.08 (0.078; 0.082) & 0.069 & 0.093 \\
-Always & 0.121 (0.114; 0.128) & 0.121 (0.118; 0.123) & 0.107 & 0.138 \\
+Almost never & 0.026 (0.023; 0.03) & 0.014 (0.006; 0.032) & 0 & 0.229 \\
+Sometimes & 0.051 (0.047; 0.055) & 0.044 (0.024; 0.068) & 0 & 0.261 \\
+Often & 0.08 (0.074; 0.086) & 0.076 (0.039; 0.107) & 0 & 0.28 \\
+Always & 0.121 (0.114; 0.128) & 0.113 (0.088; 0.142) & 0 & 0.532 \\
 \textbf{Embarrassment} & \textbf{} & \textbf{} & \textbf{} &
 \textbf{} \\
-Almost never & 0.012 (0.01; 0.014) & 0.012 (0.011; 0.013) & 0.008 &
-0.017 \\
-Sometimes & 0.022 (0.019; 0.025) & 0.022 (0.021; 0.023) & 0.016 &
-0.027 \\
-Often & 0.034 (0.03; 0.038) & 0.034 (0.032; 0.035) & 0.025 & 0.043 \\
-Always & 0.061 (0.056; 0.067) & 0.061 (0.059; 0.063) & 0.051 & 0.072 \\
+Almost never & 0.012 (0.01; 0.014) & 0.004 (0; 0.013) & 0 & 0.138 \\
+Sometimes & 0.022 (0.019; 0.025) & 0.012 (0.002; 0.031) & 0 & 0.18 \\
+Often & 0.034 (0.03; 0.038) & 0.019 (0.004; 0.053) & 0 & 0.359 \\
+Always & 0.061 (0.056; 0.067) & 0.053 (0.019; 0.1) & 0 & 0.359 \\
 \textbf{Unhappiness} & \textbf{} & \textbf{} & \textbf{} & \textbf{} \\
-Almost never & 0.025 (0.022; 0.029) & 0.025 (0.024; 0.026) & 0.019 &
-0.033 \\
-Sometimes & 0.054 (0.049; 0.059) & 0.054 (0.052; 0.056) & 0.045 &
-0.064 \\
-Often & 0.083 (0.076; 0.09) & 0.083 (0.081; 0.086) & 0.07 & 0.101 \\
-Always & 0.124 (0.117; 0.133) & 0.124 (0.122; 0.127) & 0.11 & 0.142 \\
+Almost never & 0.025 (0.022; 0.029) & 0.015 (0.006; 0.031) & 0 &
+0.208 \\
+Sometimes & 0.054 (0.049; 0.059) & 0.044 (0.022; 0.073) & 0 & 0.371 \\
+Often & 0.083 (0.076; 0.09) & 0.081 (0.036; 0.112) & 0 & 0.368 \\
+Always & 0.124 (0.117; 0.133) & 0.117 (0.087; 0.146) & 0 & 0.463 \\
 \textbf{Treated differently} & \textbf{} & \textbf{} & \textbf{} &
 \textbf{} \\
-Almost never & 0.019 (0.016; 0.022) & 0.019 (0.017; 0.02) & 0.013 &
-0.025 \\
-Sometimes & 0.035 (0.03; 0.039) & 0.035 (0.033; 0.036) & 0.026 &
-0.043 \\
-Often & 0.052 (0.047; 0.058) & 0.052 (0.05; 0.054) & 0.041 & 0.063 \\
-Always & 0.087 (0.079; 0.095) & 0.087 (0.084; 0.089) & 0.071 & 0.101 \\
+Almost never & 0.019 (0.016; 0.022) & 0.01 (0.002; 0.022) & 0 & 0.157 \\
+Sometimes & 0.035 (0.03; 0.039) & 0.025 (0.006; 0.051) & 0 & 0.359 \\
+Often & 0.052 (0.047; 0.058) & 0.04 (0.009; 0.082) & 0 & 0.376 \\
+Always & 0.087 (0.079; 0.095) & 0.085 (0.038; 0.117) & 0 & 0.553 \\
 
 \end{longtable}
 
@@ -1212,8 +1192,8 @@ PITS utility value.
 After estimating individual PUFs for all participants, pairwise EUD was
 estimated between all participants. This yielded a {[}300 \(\times\)
 300{]} distance matrix with 44,850 unique pairwise comparisons. The mean
-(SD) and median (IQR) EUD were 47.60 (19.40) and 44.81 (34.06; 57.40).
-The highest and lowest observed EUD were 189.16 and 0.
+(SD) and median (IQR) EUD were 115.7255744 (253.07) and 61.08 (33.17;
+100.31). The highest and lowest observed EUD were 2150.75 and 0.
 Figure~\ref{fig-eud} illustrates the relationship between EUD and WAItE
 health states. EUD tends to increase as WAItE health states worsen. That
 is, as the severity of WAItE health states increases, the more
@@ -1263,19 +1243,19 @@ characteristics}
 \tabularnewline
 
 \toprule\noalign{}
-Variable & df & SSw & R2 & F & Pr(\textgreater F) \\
+Variable & df & \(SS_W\) & \(R^2\) & F & Pr(\textgreater F) \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-age\_factor & 6 & 8103.932 & 0.040 & 2.012 & 0.001 \\
-weightdata & 4 & 2957.825 & 0.014 & 1.102 & 0.321 \\
-educationdata & 5 & 4307.037 & 0.021 & 1.283 & 0.136 \\
-occupationdata & 7 & 4180.638 & 0.020 & 0.890 & 0.659 \\
-genderdata & 3 & 723.163 & 0.004 & 0.359 & 0.986 \\
-ethnicitydata & 4 & 2963.218 & 0.014 & 1.104 & 0.312 \\
-Residual & 270 & 181227.225 & 0.886 & NA & NA \\
-Total & 299 & 204463.039 & 1.000 & NA & NA \\
+Age & 6 & 663590.648 & 0.057 & 3.018 & 0.030 \\
+Weight status & 1 & 6892.412 & 0.001 & 0.188 & 0.724 \\
+Education & 5 & 33542.464 & 0.003 & 0.183 & 0.968 \\
+Occupation & 7 & 290563.598 & 0.025 & 1.133 & 0.270 \\
+Gender & 3 & 57313.577 & 0.005 & 0.521 & 0.361 \\
+Ethnicity & 4 & 521334.829 & 0.045 & 3.557 & 0.056 \\
+Residual & 273 & 10003165.515 & 0.864 & & \\
+Total & 299 & 11576403.042 & 1.000 & & \\
 
 \end{longtable}
 
@@ -1307,25 +1287,25 @@ small (4.9\%).
 \begin{longtable}[]{@{}lrrrrr@{}}
 
 \caption{\label{tbl-permanova2}Results of PERMANOVA2 -- testing for
-differences in level rating and domain weighting preferences between
+differences in level rating and attribute weighting preferences between
 group characteristics}
 
 \tabularnewline
 
 \toprule\noalign{}
-& Df & SumOfSqs & R2 & F & Pr(\textgreater F) \\
+Variable & df & \(SS_W\) & \(R^2\) & F & Pr(\textgreater F) \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-age\_factor & 6 & 8103.932 & 0.040 & 2.012 & 0.001 \\
-weightdata & 4 & 2957.825 & 0.014 & 1.102 & 0.321 \\
-educationdata & 5 & 4307.037 & 0.021 & 1.283 & 0.136 \\
-occupationdata & 7 & 4180.638 & 0.020 & 0.890 & 0.659 \\
-genderdata & 3 & 723.163 & 0.004 & 0.359 & 0.986 \\
-ethnicitydata & 4 & 2963.218 & 0.014 & 1.104 & 0.312 \\
-Residual & 270 & 181227.225 & 0.886 & NA & NA \\
-Total & 299 & 204463.039 & 1.000 & NA & NA \\
+Age & 6 & 8103.932 & 0.040 & 2.021 & 0.001 \\
+Weight status & 1 & 1928.488 & 0.009 & 2.885 & 0.011 \\
+Education & 5 & 4105.321 & 0.020 & 1.228 & 0.175 \\
+Occupation & 7 & 4031.824 & 0.020 & 0.862 & 0.707 \\
+Gender & 3 & 751.841 & 0.004 & 0.375 & 0.983 \\
+Ethnicity & 4 & 3077.187 & 0.015 & 1.151 & 0.265 \\
+Residual & 273 & 182464.444 & 0.892 & & \\
+Total & 299 & 204463.039 & 1.000 & & \\
 
 \end{longtable}
 
@@ -1335,8 +1315,8 @@ This study is the first time that the OPUF has been used to estimate
 health state utility values for the WAItE. We obtained a representative
 sample of high quality data from Prolific, a survey company known for
 their high quality respondents \citep{Peer2022DataResearch}. Our average
-domain weightings and implied ordering were similar to those exhibited
-in Robinson et al.~(XX VIH).
+attribute weightings and implied ordering were similar to those
+exhibited in Robinson et al.~(2024) \citep{Robinson2024AUKValue}.
 
 Anchoring of the WAItE PITS state was a difficult procedure that
 required a number of methodological decisions. We decided to use
@@ -1353,23 +1333,24 @@ responses.
 The social utility function elicited through this study, and underlying
 utility value set, present monotonic preferences which behave as we
 would have expected ex-ante (based on qualitative piloting work).
-Tiredness and Unhappiness were considered the most important domains
+Tiredness and Unhappiness were considered the most important attributes
 while Embarrassment and Sports the least. This finding concurs with
 qualitative work conducted prior and also is in accordance with previous
-valuation work done with the WAItE (XX VIH). Prior valuation work, which
-used a DCE to elicit preferences, yielded latent coefficients which
-violated the rational choice axiom of monotonicity. In the OPUF,
-monotonicity is somewhat forced through the choice architecture of the
-level rating and through the additional prompt to reconsider responses
-that are not monotonic. Forced monotonicity, in this context, could be
-problematic for eliciting unbiased preferences if preferences for
-certain health states are truly not monotonic. For example, prior
-qualitative work has suggested that ``I almost never get tired'' might
-be preferable to ``I never get tired'' in some circumstances where
-respondents are thinking about experiencing insomnia and sleep quality.
-This being said, the WAItE descriptive system was designed to be a
-monotonic descriptive system, validated using Rasch analysis, and so
-having a monotonic utility value set makes logical sense.
+valuation work done with the WAItE \citep{Robinson2024AUKValue}. Prior
+valuation work, which used a DCE to elicit preferences, yielded latent
+coefficients which violated the rational choice axiom of monotonicity.
+In the OPUF, monotonicity is somewhat forced through the choice
+architecture of the level rating and through the additional prompt to
+reconsider responses that are not monotonic. Forced monotonicity, in
+this context, could be problematic for eliciting unbiased preferences if
+preferences for certain health states are truly not monotonic. For
+example, prior qualitative work has suggested that ``I almost never get
+tired'' might be preferable to ``I never get tired'' in some
+circumstances where respondents are thinking about experiencing insomnia
+and sleep quality. This being said, the WAItE descriptive system was
+designed to be a monotonic descriptive system, validated using Rasch
+analysis, and so having a monotonic utility value set makes logical
+sense.
 
 Preferences elicited through this study were considerably heterogeneous.
 This can be understood through the mean EUD value (47.6) but also
@@ -1381,13 +1362,13 @@ individual value sets for all 78125 WAItE health states. The implication
 of estimating distance (preference heterogeneity) by using individual
 value sets allows for much of the preference heterogeneity that exists
 to be composed of differences in individual anchoring values (PITS state
-responses) rather than differences in level ratings and domain
+responses) rather than differences in level ratings and attribute
 weightings. This methodological decision, ultimately, results in the
 majority of EUD being composed of differences in anchoring values and
 this finding is important to acknowledge. Anchoring differences are
 important to present and explore, though in this preference
 heterogeneity analysis could be drowning out the heterogeneity in level
-ratings and domain weighting. An example of this can be shown through
+ratings and attribute weighting. An example of this can be shown through
 the age preference heterogeneity in Figure~\ref{fig-age}. Preference
 heterogeneity is evident between individuals above and below age 35 and
 if we consider the mean PITS values for those two subgroups (age \(<\)
@@ -1399,12 +1380,12 @@ limit the influence that anchoring variation has on the overall
 preference heterogeneity. We considered this to be a strength of the
 research as it offers a new approach to decompose preference
 heterogeneity into anchoring variation and the difference in level
-ratings and domain weightings. After exclusion of individual variation
-in anchoring responses, weight status and age were found to have a
-significant impact on preference heterogeneity within our sample; though
-the amount of variation that could be explained was limited. Preference
-heterogeneity between those of normal weight and those who were
-overweight is illustrated in Figure Figure~\ref{fig-weight}.
+ratings and attribute weightings. After exclusion of individual
+variation in anchoring responses, weight status and age were found to
+have a significant impact on preference heterogeneity within our sample;
+though the amount of variation that could be explained was limited.
+Preference heterogeneity between those of normal weight and those who
+were overweight is illustrated in Figure Figure~\ref{fig-weight}.
 
 \begin{figure}
 
@@ -1442,10 +1423,66 @@ range of 0.059. Interestingly, the EQ-VAS anchoring task mean (0.289)
 was remarkably similar to the OPUF VAS anchoring task mean (0.282) again
 supporting the use of VAS for elicitation of PITS utility values.
 
+\begin{figure}
+
+\centering{
+
+\begin{longtable*}[]{@{}llll@{}}
+\toprule\noalign{}
+Attribute.level & OPUF & DCE.TTO & DCE.VAS \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Tired} & \textbf{} & \textbf{} & \textbf{} \\
+Almost never & 0.029 & 0.064 & 0.059 \\
+Sometimes & 0.052 & 0.064 & 0.059 \\
+Often & 0.088 & 0.064 & 0.059 \\
+Always & 0.14 & 0.148 & 0.137 \\
+\textbf{Walking} & \textbf{} & \textbf{} & \textbf{} \\
+Almost never & 0.021 & 0.015 & 0.013 \\
+Sometimes & 0.045 & 0.015 & 0.013 \\
+Often & 0.075 & 0.054 & 0.05 \\
+Always & 0.116 & 0.106 & 0.098 \\
+\textbf{Sports} & \textbf{} & \textbf{} & \textbf{} \\
+Almost never & 0.012 & 0.021 & 0.019 \\
+Sometimes & 0.023 & 0.021 & 0.019 \\
+Often & 0.038 & 0.021 & 0.019 \\
+Always & 0.069 & 0.058 & 0.053 \\
+\textbf{Concentration} & \textbf{} & \textbf{} & \textbf{} \\
+Almost never & 0.026 & 0.009 & 0.008 \\
+Sometimes & 0.051 & 0.053 & 0.049 \\
+Often & 0.08 & 0.067 & 0.062 \\
+Always & 0.121 & 0.13 & 0.12 \\
+\textbf{Embarrassment} & \textbf{} & \textbf{} & \textbf{} \\
+Almost never & 0.012 & 0.007 & 0.007 \\
+Sometimes & 0.022 & 0.025 & 0.023 \\
+Often & 0.034 & 0.056 & 0.051 \\
+Always & 0.061 & 0.069 & 0.064 \\
+\textbf{Unhappiness} & \textbf{} & \textbf{} & \textbf{} \\
+Almost never & 0.025 & 0.001 & 0.001 \\
+Sometimes & 0.054 & 0.039 & 0.036 \\
+Often & 0.083 & 0.076 & 0.07 \\
+Always & 0.124 & 0.145 & 0.134 \\
+\textbf{Treated differently} & \textbf{} & \textbf{} & \textbf{} \\
+Almost never & 0.019 & 0.01 & 0.009 \\
+Sometimes & 0.035 & 0.03 & 0.028 \\
+Often & 0.052 & 0.075 & 0.069 \\
+Always & 0.087 & 0.114 & 0.105 \\
+\end{longtable*}
+
+}
+
+\caption{\label{fig-WAItEvalsets}Comparison of WAItE utility value sets}
+
+\end{figure}%
+
 \subsection{Appendix}\label{appendix}
 
+\subsubsection{Derivation of EUD2}\label{sec-appendix1}
+
 Matrices \(\tilde{M}_{1ij}\) and \(\tilde{M}_{2ij}\) denote latent
-coefficient matrices from individual 1 and 2, for domains \(i\) and
+coefficient matrices from individual 1 and 2, for attributes \(i\) and
 levels \(j\), from the analysis sample. Matrices \(\tilde{M}_{1ij}\) and
 \(\tilde{M}_{2ij}\) were then anchored using the social PITS utility
 value 0.282 (shown in Equation~\ref{eq-anchoring-matrices}).
