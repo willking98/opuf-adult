@@ -1,64 +1,10 @@
 ---
-title: "Development of a value-based scoring system for the WAItE using the OPUF in a sample of adults"
-author:
-  - name: Will King
-    email: w.king2@newcastle.ac.uk
-    affiliations: 
-  - id: ncl
-    attributes:
-        corresponding: true
-  - name: Tomos Robinson
-    affiliations:
-        - id: ncl
-  - name: Angela Bate
-    affiliations: 
-        - id: north
-  - name: Laura Ternent
-    affiliations:
-        - id: ncl
-affiliations:
-  - id: ncl
-    name: Newcastle University
-    department: Health Economics Group
-    address: University, Barras Bridge
-    city: Newcastle upon Tyne
-    state: Tyne and Wear
-    postal-code: NE1 7RU
-  - id: north
-    name: Northumbria University
-    department: Nursing, Midwifery and Health
-    address: Ellison Pl
-    city: Newcastle upon Tyne
-    state: Tyne and Wear
-    postal-code: NE1 8ST
-abstract: |
-  **Background:** Online personal utility functions (OPUF) present a new method for eliciting preferences. In this study we used the OPUF to elicit a health state utility value set for the Weight-specific Adolescent Instrument for Economic-evaluation (WAItE) with a representative sample of the UK adult population. 
-  **Methods:** WAItE OPUF survey design was informed by prior qualitative work. The survey consisted of the WAItE descriptive system, domain weighting, level rating (per attribute) and a VAS anchoring task. Personal utility functions were estimated on the individual level for all participants. Personal utility functions were aggregated and combined with the anchoring factor to give the social utility function and utility value set. Preference heterogeneity was assessed using Euclidean distance and PERMANOVA to explore preference variation within the sample. An experimental sensitivity analysis dichotomised preference heterogeneity into anchoring variation and attribute weighting/level rating variation.
-  **Results:** A total of 300 participants completed the WAItE OPUF survey. The sample was broadly representative of the UK adult population. Participants, on average, took less than 10 minutes to complete the survey. The most important attributes were tiredness and unhappiness, while least important attributes were sports and embarrassment. Social utility values and the anchoring utility value estimated were comparable to previous studies. Preferences generally were heterogeneous, especially among different ages. Younger participants assigned lower utility values to WAItE health states and provided significantly lower scores on the VAS anchoring task compared to older participants.
-  **Conclusion:** This study successfully elicited health state utility values for the WAItE using the OPUF. Preference heterogeneity analysis identified differences in preferences for different age groups and a further valuation study is ongoing to explore whether this heterogeneity exists between adults and adolescents.
-keywords: 
-  - preference elicitation
-  - quality of life
-date: last-modified
-bibliography: bibliography.bib
-csl: vancouver.csl
+title: "My Document"
 format:
-  html:
+  docx:
     toc: true
-    toc-location: left
-# format:
-#   docx:
-#     toc: true
-#     number-sections: true
-#     highlight-style: github
-# format:
-#   elsevier-pdf:
-#     keep-tex: true
-#     journal:
-#       name: Health Economics Study Group
-#       formatting: preprint
-#       # model: 3p # Don't set a model with preprint
-#       cite-style: number
+    number-sections: true
+    highlight-style: github
 ---
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
 setwd("~/Dropbox/opuf-adult") # convert this to here for reproducibility
@@ -87,7 +33,7 @@ This section is composed of two parts. First, attribute ranking is completed whe
 
 ![Swing rating](../../outputs/figures/swing_rating.png){#fig-swing}
 
-Attribute weighting
+attribute weighting
 :::
 
 ### Level ratings 
@@ -114,8 +60,6 @@ A task is required to rescale the latent coefficients estimated via combining le
 Anchoring factor
 :::
 
-
-
 ## OPUF logic and mathematics {#sec-OPUF_methods}
 This section presents the logic and underlying mathematics required to convert the raw OPUF responses from one person into an anchored value set for the WAItE descriptive system. This example assumes that level ratings are obtained for each attribute separately, therefore mathematics presented here differs to those presented elsewhere [@Schneider2022TheStates]. Example response data are used for demonstration in this section and are presented in @tbl-exampledata. 
 
@@ -123,7 +67,7 @@ This section presents the logic and underlying mathematics required to convert t
 ```{r, echo=FALSE}
 example_opuf_data <- data.frame(
   Response = c("Level rating: Never", "Level rating: Almost Never", "Level rating: Sometimes", "Level rating: Often", "Level rating: Always", 
-               "Attribute Weighting"),
+               "attribute Weighting"),
   Tired = c(0, 14, 57, 83, 100, 28),
   Walking = c(0, 26, 55, 82, 100, 33),
   Sports = c(0, 21, 63, 85, 100, 36),
@@ -139,13 +83,6 @@ example_opuf_data <- data.frame(
 #| label: tbl-exampledata
 #| tbl-cap: Example individual responses to the OPUF
 kable(example_opuf_data) 
-# footnote(
-#     general = c("WAItE PITS better than dead = Yes",
-#     "Anchoring Task Response = 20", 
-#                "PITS Utility Value = 0.2"),
-#     footnote_as_chunk = TRUE,
-#     escape = FALSE
-#   )
 ```
 
 Level ratings (presented in @tbl-exampledata)  are converted to coefficients bounded between 0-1 (shown in @eq-level-rescale). Level rating coefficients are presented in @eq-level-matrix. Attribute weights (presented in @tbl-exampledata) are then normalised to sum to the value of 1 by dividing each weight by the sum of all weights (shown in @eq-weight-normalise). Normalised attribute weights are presented in @eq-weight-vector. 
@@ -243,6 +180,11 @@ $$ {#eq-HS123}
 ## Aggregation to social utility function
 The OPUF is designed to be able to estimate personal utility functions and so estimation occurs on an individual basis. Aggregating personal utility functions to a social utility function (SUF) takes place by taking a mean of all the individual personal utility functions from your sample. This operation is presented in @eq-meanvalueset. 
 
+
+
+## Aggregation to social utility function
+The OPUF is designed to be able to estimate personal utility functions and so estimation occurs on an individual basis. Aggregating personal utility functions to a social utility function (SUF) takes place by taking a mean of all the individual personal utility functions from your sample. This operation is presented in @eq-meanvalueset. 
+
 $$
 \bar{V}_{{ij}} = \frac{\sum_{\tilde{V}_{{ij}}}^{}}{N}
 $$ {#eq-meanvalueset}
@@ -254,7 +196,7 @@ This study recruited (n=300) adults to respond to a quality-of-life survey hoste
 ## Survey structure {#sec-surveystructure}
 1. Consent and Prolific ID: Participants were asked to consent to participate and enter their unique Prolific ID. This enables demographic information held by Prolific on their participants to be linked to each respondent. 
 2. WAItE descriptive system: Participants were asked to complete the WAItE descriptive system (presented in Figure \ref{fig:waite_descriptive})to describe their current health state. 
-3. Dimension selection: Participants were presented with the worst level for each WAItE dimension and asked to choose which health problem would have the most negative impact on their quality of life. The dimension chosen is then used in the subsequent dimension swing weighting task.   
+3. Dimension selection}: Participants were presented with the worst level for each WAItE dimension and asked to choose which health problem would have the most negative impact on their quality of life. The dimension chosen is then used in the subsequent dimension swing weighting task.   
 4. Dimension swing weighting: Participants were presented with each dimension in the WAItE and asked to consider an improvement from the worst level of that dimension to the best level of that dimension. Participants were asked to rank this improvement on a visual slider from 0-100 where the most important dimension (chosen in the previous task) is fixed at 100. Participants were reminded to use their most important dimension as a reference point.  
 5. Level rating: Participants were presented with a specific dimension of the WAItE and shown each level within that dimension. Levels best and worst (never and always) were fixed at 0 and 100 respectively. Participants were asked to rank the intermediate levels within each dimension using the fixed levels as a reference point. 
 6. Anchoring: Participants were presented with a binary choice asking whether they prefer the worst state of the WAItE (PITS state) or death. If participants choose the worst state of the WAItE, a second question is asked which asks them to rank the WAITE PITS state on a visual analogue scale where zero is labelled as being dead and one hundred is labelled as no health problems. If participants choose death in the binary choice, they were asked to rank being dead on a visual analogue scale where zero is labelled as the WAItE PITS state and one hundred is labelled as no health problems. 
@@ -271,6 +213,7 @@ This study recruited (n=300) adults to respond to a quality-of-life survey hoste
 </iframe>
 ```
 :::
+
 
 ## Missing data
 Through the survey design process the potential for large amounts of missing data has been mitigated by ensuring responses were compulsory to certain questions. However for ethical reasons, we allowed participants to not answer the questions relating to death. For participants who do not provide responses to the anchoring questions, their responses were imputed using multiple imputation by chained equations (MICE) [@White2011MultiplePractice] which were informed by demographic information and dimension weighting responses. 
@@ -305,7 +248,7 @@ In an experimental sensitivity analysis, preference heterogeneity was assessed u
 
 # Results
 ## Study participants
-A sample of 334 individuals were approached to participate in the study via the survey company [Prolific](https://www.prolific.com). Individuals that successfully inputted their unique Prolific ID and obtained a correct completion code from the end of the study were included in the analysis sample and received a small payment (£2.50) for their participation. Seven participants were excluded from the study as they had an incorrect completion code and did not enter the correct unique Prolific ID. Therefore no data was available on those seven participants and so they were excluded from the analysis. An additional participant was excluded from the analysis due to completing the survey in eighteen seconds (well under the prespecified minimum time limit of 2 minutes). Two respondents timed-out while completing the survey and were therefore not included. Twenty-four individuals chose not complete the study (referred to by Prolific as 'returned' participants). This left an analysis sample of N=300 participants who successfully completed the survey. A representative sample based on UK census data was obtained from Prolific. A summary of demographic information collected in the OPUF are presented in @tab-demographic.  
+A sample of 334 individuals were approached to participate in the study via the survey company [Prolific](https://www.prolific.com). Individuals that successfully inputted their unique Prolific ID and obtained a correct completion code from the end of the study were included in the analysis sample and received a small payment (£2.50) for their participation. Seven participants were excluded from the study as they had an incorrect completion code and did not enter the correct unique Prolific ID. Therefore no data was available on those seven participants and so they were excluded from the analysis. An additional participant was excluded from the analysis due to completing the survey in eighteen seconds (well under the prespecified minimum time limit of 2 minutes). Two respondents timed-out while completing the survey and were therefore not included. Twenty-four individuals chose not complete the study (referred to by Prolific as 'returned' participants). This left an analysis sample of N=300 participants who successfully completed the survey. A representative sample based on UK census data was obtained from Prolific. A summary of demographic information collected in the OPUF are presented in Table \ref{tab:demographicdataadultOPUF}.  
 
 
 ## Survey duration
@@ -413,7 +356,7 @@ kable(time_tab, digits = 3)
 ```
 
 ## WAItE descriptive system
-Responses to the WAItE descriptive system are presented in Table @tab-demographic. Feeling tired and avoiding doing sport were the attributes that were most frequently experienced by participants in our analysis sample. WAItE summary statistics were in line with results from previous studies [@Robinson2019EstimatingEvaluation].
+Responses to the WAItE descriptive system are presented in Table \ref{tab:demographicdataadultOPUF}. Feeling tired and avoiding doing sport were the attributes that were most frequently experienced by participants in our analysis sample. WAItE summary statistics were in line with results from previous studies [@Robinson2019EstimatingEvaluation].
 ```{r, echo = FALSE}
 # Data preparation
 demographic_data <- data.frame(
@@ -440,24 +383,20 @@ demographic_data <- data.frame(
     "2.2 (1.2)", "2.3 (1.0)", "1.9 (0.9)", "17.8 (4.8)"
   )
 )
-```
-```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
-#| label: tbl-demographic
-#| tbl-cap: Summary of demographic information collected in the OPUF
 
 # Create table
 kable(demographic_data)
-# , align = c("l", "r"), escape = FALSE) %>%
-#   kable_styling(full_width = FALSE, position = "center") %>%
-#   column_spec(1, bold = TRUE) %>%
-#   add_header_above(c("Participant Characteristics (N=300)" = 1, "N (%)" = 1))
 ```
+
 
 
 ## Level ratings
 Level ratings are presented individually for each different attribute in @tbl-level. The best and worst levels (\textit{Always} and \textit{Never}) were fixed at 0 and 100 respectively. The second best level (\textit{Almost never}) had the lowest VAS score in the Sports and Embarrassment attribute, while the second worst level (\textit{Often}) had the highest VAS score in the Concentration attribute. In this question, higher VAS scores indicate worse states of health.
 
 
+```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
+# kable(anchored_matrix, digits = 3)
+```
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
 # Initialize the level_tab matrix
 level_tab <- matrix(NA, nrow = 21, ncol = 5)
@@ -582,6 +521,7 @@ rai_data <- data.frame(
 rai_data$Category <- factor(rai_data$Category, levels = unique(rai_data$Category))
 ```
 
+
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
 #| label: fig-rai
 #| fig-cap: Relative attribute importance
@@ -593,7 +533,6 @@ ggplot(rai_data, aes(x = Category, y = Value, fill = Category)) +  # Categories 
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 22.5, hjust = 1))       # Rotate x-axis labels by 45 degrees
 ```
-
 
 
 
@@ -872,6 +811,7 @@ plot(eud_chart)
 @tbl-permanova presents the PERMANOVA model results. Presented are within‐group sum‐of‐squares (SS$_W$) for each group individually and for all groups combined, and the corresponding R$^2$, pseudo $F$, and $p$ values. Preference heterogeneity was significantly affected by age ($p$ = 0.03), though the amount of variability in preferences that could be explained by age was relatively small (R$^2$=5.7\%). @fig-age presents the difference in preferences between different age groups. Generally, as age increases, health state utility values for each given WAItE health state are higher. That is, younger populations tend to place more disutility on WAItE health problems than older populations. While weight status was not significantly related to preference heterogeneity according to the PERMANOVA model, given the WAItE is a weight-specific measure, it was informative to explore the relationship between preferences and weight status. Though not statistically significant, we can observe a difference in preferences between normal weight and overweight individuals in @fig-weight. For a given WAItE health state, overweight individuals in our sample placed less disutility on that state than did normal weight individuals. 
 
 
+
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
 #| label: tbl-permanova
 #| tbl-cap: Results of PERMANOVA – testing for differences in WAItE health state preferences between group characteristics
@@ -888,6 +828,7 @@ plot(age_chart)
 ```
 ## Sensitivity analysis
 EUD2 was estimated for each pairwise comparison of individuals in our study. This yielded a [300 $\times$ 300] distance matrix with 44,850 unique pairwise comparisons. The mean (SD) and median (IQR) EUD were 34.30 (13.82) and 32.25 (24.54; 41.27). Results from the PERMANOVA2 analysis are presented in @tbl-permanova2. After exclusion of individual variation in anchoring responses, weight status and age had a significant impact upon heterogeneity within our sample; though the amount of heterogeneity that was explained by these variables was fairly small (4.9\%). 
+
 
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
 #| label: tbl-permanova2
@@ -907,7 +848,7 @@ The social utility function elicited through this study, and underlying utility 
 
 Preferences elicited through this study were considerably heterogeneous. This can be understood through the mean EUD value (47.6) but also illustrated in @fig-sufplain through the deviations of individual PUFs from the social utility function. Following on from prior work [@Schneider2024ExploringLevel], we estimated EUD by calculating a distance matrix between each pairwise comparison of individual value sets for all 78125 WAItE health states. The implication of estimating distance (preference heterogeneity) by using individual value sets allows for much of the preference heterogeneity that exists to be composed of differences in individual anchoring values (PITS state responses) rather than differences in level ratings and attribute weightings. This methodological decision, ultimately, results in the majority of EUD being composed of differences in anchoring values and this finding is important to acknowledge. Anchoring differences are important to present and explore, though in this preference heterogeneity analysis could be drowning out the heterogeneity in level ratings and attribute weighting. An example of this can be shown through the age preference heterogeneity in @fig-age. Preference heterogeneity is evident between individuals above and below age 35 and if we consider the mean PITS values for those two subgroups (age $<$ 35 = -0.281; age $>$ 34 = 0.487) we can see that a clear difference in anchoring responses is evident. 
 
-A methodological exploration was conducted as a sensitivity analysis to limit the influence that anchoring variation has on the overall preference heterogeneity. We considered this to be a strength of the research as it offers a new approach to decompose preference heterogeneity into anchoring variation and the difference in level ratings and attribute weightings. After exclusion of individual variation in anchoring responses, weight status and age were found to have a significant impact on preference heterogeneity within our sample; though the amount of variation that could be explained was limited. Preference heterogeneity between those of normal weight and those who were overweight is illustrated in @fig-weight.
+A methodological exploration was conducted as a sensitivity analysis to limit the influence that anchoring variation has on the overall preference heterogeneity. We considered this to be a strength of the research as it offers a new approach to decompose preference heterogeneity into anchoring variation and the difference in level ratings and attribute weightings. After exclusion of individual variation in anchoring responses, weight status and age were found to have a significant impact on preference heterogeneity within our sample; though the amount of variation that could be explained was limited. Preference heterogeneity between those of normal weight and those who were overweight is illustrated in Figure @fig-weight.
 
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
 #| label: fig-weight
@@ -916,9 +857,11 @@ plot(weight_chart)
 ```
 This method of estimating preference heterogeneity should not be considered the gold standard, as only part of the variation in preferences is explored here. It can however be considered an additional option for future researchers that wish to isolate the effect of anchoring responses on overall preference heterogeneity. It is also, to our knowledge, the first time preference heterogeneity has been decomposed in this way with the OPUF. 
 
-The value set estimated here offers an alternative choice of preference values to the existing value sets estimated using DCE (shown in @tab-WAItEvalsets}). When comparing the anchored coefficients between value sets, one of the key areas of divergence is where levels have been collapsed in the DCE value set. In the OPUF, "I almost never get tired" is given 0.029 compared to 0.064 in the DCE due to collapsing levels. Generally the difference between coefficients that have not been 'collapsed' between the value sets is small suggesting that there is comparability to an extent between the value sets. Anchoring values were broadly similar between studies too. The mean PITS utility values between studies were broadly comparable with a maximum range of 0.059. Interestingly, the EQ-VAS anchoring task mean (0.289) was remarkably similar to the OPUF VAS anchoring task mean (0.282) again supporting the use of VAS for elicitation of PITS utility values. 
+The value set estimated here offers an alternative choice of preference values to the existing value sets estimated using DCE (shown in Figure \ref{tab:WAITE val sets}). When comparing the anchored coefficients between value sets, one of the key areas of divergence is where levels have been collapsed in the DCE value set. In the OPUF, "I almost never get tired" is given 0.029 compared to 0.064 in the DCE due to collapsing levels. Generally the difference between coefficients that have not been 'collapsed' between the value sets is small suggesting that there is comparability to an extent between the value sets. Anchoring values were broadly similar between studies too. The mean PITS utility values between studies were broadly comparable with a maximum range of 0.059. Interestingly, the EQ-VAS anchoring task mean (0.289) was remarkably similar to the OPUF VAS anchoring task mean (0.282) again supporting the use of VAS for elicitation of PITS utility values. 
 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
+```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
+#| label: fig-WAItEvalsets
+#| fig-cap: Comparison of WAItE utility value sets
 
 v_anchored <- round(as.vector(anchored_matrix[2:5,]), 3)
 for(i in c(31, 26, 21, 16, 11, 6, 1)){
@@ -969,17 +912,9 @@ tab_valuesets[21,] <- cell_spec(tab_valuesets[21,], bold = TRUE)
 tab_valuesets[26,] <- cell_spec(tab_valuesets[26,], bold = TRUE) 
 tab_valuesets[31,] <- cell_spec(tab_valuesets[31,], bold = TRUE) 
 # Print the table using kable
+kable(tab_valuesets)
 
 ```
-
-```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
-#| label: tab-WAItEvalsets
-#| tab-cap: Comparison of WAItE utility value sets
-kable(tab_valuesets, digits = 3)
-
-```
-
-
 
 ## Appendix {.appendix}
 
@@ -1058,8 +993,5 @@ d_{EUD2}(i,j) = \sqrt{\{(1-1)^2+(0.98-0.97)^2+(0.96-0.95)^2+ ... +(0.282-0.282)^
 $$ {#eq-pairwiseEUD2}
 
 Pairwise EUD2 was estimated for all possible combinations of individuals in our analysis sample. EUD2 was stored in a distance matrix of dimensions [300 $\times$ 300], where coordinates [3,7] represents the EUD2 between individual 3 and 7. The mean of the distance matrix provides the overall measure of disimilarity/heterogeneity within the analysis sample.  
-
-
-
 
 
