@@ -115,8 +115,6 @@ A task is required to rescale the latent coefficients estimated via combining le
 Anchoring factor
 :::
 
-
-
 ## OPUF logic and mathematics {#sec-OPUF_methods}
 This section presents the logic and underlying mathematics required to convert the raw OPUF responses from one person into an anchored value set for the WAItE descriptive system. This example assumes that level ratings are obtained for each attribute separately, therefore mathematics presented here differs to those presented elsewhere [@Schneider2022TheStates]. Example response data are used for demonstration in this section and are presented in @tbl-exampledata. 
 
@@ -240,7 +238,6 @@ $$
 \end{aligned}
 $$ {#eq-HS123}
 
-
 ## Aggregation to social utility function
 The OPUF is designed to be able to estimate personal utility functions and so estimation occurs on an individual basis. Aggregating personal utility functions to a social utility function (SUF) takes place by taking a mean of all the individual personal utility functions from your sample. This operation is presented in @eq-meanvalueset. 
 
@@ -262,6 +259,7 @@ This study recruited (n=300) adults to respond to a quality-of-life survey hoste
 7. Survey feedback and demographic questions: Participants were asked about how difficult they found the task to complete and demographic information on age, gender, ethnicity, education, employment and weight status.
 
 ::: {.content-visible when-format="html"}
+
 ## Live Survey {#sec-livesurvey}
 ```{=html}
 <iframe 
@@ -307,7 +305,6 @@ In an experimental sensitivity analysis, preference heterogeneity was assessed u
 # Results
 ## Study participants
 A sample of 334 individuals were approached to participate in the study via the survey company [Prolific](https://www.prolific.com). Individuals that successfully inputted their unique Prolific ID and obtained a correct completion code from the end of the study were included in the analysis sample and received a small payment (£2.50) for their participation. Seven participants were excluded from the study as they had an incorrect completion code and did not enter the correct unique Prolific ID. Therefore no data was available on those seven participants and so they were excluded from the analysis. An additional participant was excluded from the analysis due to completing the survey in eighteen seconds (well under the prespecified minimum time limit of 2 minutes). Two respondents timed-out while completing the survey and were therefore not included. Twenty-four individuals chose not complete the study (referred to by Prolific as 'returned' participants). This left an analysis sample of N=300 participants who successfully completed the survey. A representative sample based on UK census data was obtained from Prolific. A summary of demographic information collected in the OPUF are presented in @tab-demographic.  
-
 
 ## Survey duration
 The mean (SD) and median (IQR) survey completion time in minutes was 9.66 (5.85) and 8.15 (5.88; 11.89). @tbl-time summarises how much time was spent completing each individual section of the survey.
@@ -454,7 +451,6 @@ kable(demographic_data)
 #   add_header_above(c("Participant Characteristics (N=300)" = 1, "N (%)" = 1))
 ```
 
-
 ## Level ratings
 Level ratings are presented individually for each different attribute in @tbl-level. The best and worst levels (\textit{Always} and \textit{Never}) were fixed at 0 and 100 respectively. The second best level (\textit{Almost never}) had the lowest VAS score in the Sports and Embarrassment attribute, while the second worst level (\textit{Often}) had the highest VAS score in the Concentration attribute. In this question, higher VAS scores indicate worse states of health.
 
@@ -519,7 +515,6 @@ colnames(level_tab2) <- colnames(time_tab)
 #| tbl-cap: Summary of OPUF level ratings by attribute
 kable(level_tab2, digits = 3)
 ```
-
 
 ## Attribute weights
 Summary statistics of attribute weightings are presented in @tbl-attribute. On average, Tiredness (76.5) and Unhappiness (70) were considered to be more important to participants than Embarrassment (40.1) and Sports (42.3). There was less variability in attribute weighting responses to Tiredness than responses to Treated differently or Embarrassment. @fig-rai illustrates the relative attribute importance (RAI) among WAItE attributes.     
@@ -595,9 +590,6 @@ ggplot(rai_data, aes(x = Category, y = Value, fill = Category)) +  # Categories 
   theme(axis.text.x = element_text(angle = 22.5, hjust = 1))       # Rotate x-axis labels by 45 degrees
 ```
 
-
-
-
 ## Anchoring
 The majority of respondents in the sample preferred the WAItE PITS state to being dead (87\%). Therefore, 13\% of participants answered the dead-VAS and 87\% answered the PITS-VAS. A proportion of participants did not answer the anchoring task (1.67\%). After winsorizing extreme values (top and bottom 0.1\%) [@2003ApplyingTechniques] and conducting multiple imputation by chained equations on the missing values, the mean (SD) and median (IQR) PITS utility value was 0.282 (1.456) and 0.5 (0.6). The distribution of WAItE PITS utility values (after winsorizing and imputation) is presented in @fig-hist.
 
@@ -629,7 +621,6 @@ hist <- ggplot(hist, aes(x = PITS, fill = PITS < -0.05)) +
 #| fig-cap: Distribution of PITS utility values
 plot(hist)
 ```
-
 
 ## Social utility function estimation
 Personal utility functions were estimated individually for each participant in our analysis sample via methods outlined in @sec-OPUF_methods. After this, individual PUFs were aggregated into a group utility function and anchored using the group PITS utility value (0.282) to give the social utility function. Descriptive statistics from the social utility function are presented in @tbl-suf whereby the mean values can be used to estimate utility values for WAItE health states. 
@@ -887,6 +878,7 @@ kable(permanova_main, col.names = c("Variable", "df", "$SS_W$", "$R^2$", "F", "P
 #| fig-cap: Social and individual utility functions grouped by age status
 plot(age_chart)
 ```
+
 ## Sensitivity analysis
 EUD2 was estimated for each pairwise comparison of individuals in our study. This yielded a [300 $\times$ 300] distance matrix with 44,850 unique pairwise comparisons. The mean (SD) and median (IQR) EUD were 34.30 (13.82) and 32.25 (24.54; 41.27). Results from the PERMANOVA2 analysis are presented in @tbl-permanova2. After exclusion of individual variation in anchoring responses, weight status and age had a significant impact upon heterogeneity within our sample; though the amount of heterogeneity that was explained by these variables was fairly small (4.9\%). 
 
