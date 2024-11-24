@@ -3,34 +3,42 @@ title: "Development of a value-based scoring system for the WAItE using the OPUF
 author:
   - name: Will King
     email: w.king2@newcastle.ac.uk
-    affiliations: 
-  - id: ncl
-    attributes:
-        corresponding: true
+    affiliations:
+      - id: ncl
+        name: Newcastle University
+        department: Health Economics Group
+        address: University, Barras Bridge
+        city: Newcastle upon Tyne
+        state: Tyne and Wear
+        postal-code: NE1 7RU
   - name: Tomos Robinson
     affiliations:
-        - id: ncl
+      - id: ncl
+        name: Newcastle University
+        department: Health Economics Group
+        address: University, Barras Bridge
+        city: Newcastle upon Tyne
+        state: Tyne and Wear
+        postal-code: NE1 7RU
   - name: Angela Bate
-    affiliations: 
-        - id: north
+    affiliations:
+      - id: north
+        name: Northumbria University
+        department: Nursing, Midwifery and Health
+        address: Ellison Pl
+        city: Newcastle upon Tyne
+        state: Tyne and Wear
+        postal-code: NE1 8ST
   - name: Laura Ternent
     affiliations:
-        - id: ncl
-affiliations:
-  - id: ncl
-    name: Newcastle University
-    department: Health Economics Group
-    address: University, Barras Bridge
-    city: Newcastle upon Tyne
-    state: Tyne and Wear
-    postal-code: NE1 7RU
-  - id: north
-    name: Northumbria University
-    department: Nursing, Midwifery and Health
-    address: Ellison Pl
-    city: Newcastle upon Tyne
-    state: Tyne and Wear
-    postal-code: NE1 8ST
+      - id: ncl
+        name: Newcastle University
+        department: Health Economics Group
+        address: University, Barras Bridge
+        city: Newcastle upon Tyne
+        state: Tyne and Wear
+        postal-code: NE1 7RU
+
 abstract: |
   **Background:** Online personal utility functions (OPUF) present a new method for eliciting preferences. In this study we used the OPUF to elicit a health state utility value set for the Weight-specific Adolescent Instrument for Economic-evaluation (WAItE) with a representative sample of the UK adult population. 
   **Methods:** WAItE OPUF survey design was informed by prior qualitative work. The survey consisted of the WAItE descriptive system, domain weighting, level rating (per attribute) and a VAS anchoring task. Personal utility functions were estimated on the individual level for all participants. Personal utility functions were aggregated and combined with the anchoring factor to give the social utility function and utility value set. Preference heterogeneity was assessed using Euclidean distance and PERMANOVA to explore preference variation within the sample. An experimental sensitivity analysis dichotomised preference heterogeneity into anchoring variation and attribute weighting/level rating variation.
@@ -45,7 +53,7 @@ csl: vancouver.csl
 # format:
 #   html:
 #     toc: true
-#     toc-location: left
+#     toc-location: right
 # Enable the below sections if you want pdf or docx
 # format:
 #   docx:
@@ -60,6 +68,8 @@ format:
       formatting: preprint
       # model: 3p # Don't set a model with preprint
       cite-style: number
+    header-includes:
+      - \usepackage[a4paper,margin=1in,textwidth=6.5in]{geometry}
 ---
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
 setwd("~/Dropbox/opuf-adult") # convert this to here for reproducibility
@@ -416,7 +426,7 @@ kable(time_tab, digits = 3)
 ```
 
 ## WAItE descriptive system
-Responses to the WAItE descriptive system are presented in Table @tab-demographic. Feeling tired and avoiding doing sport were the attributes that were most frequently experienced by participants in our analysis sample. WAItE summary statistics were in line with results from previous studies [@Robinson2019EstimatingEvaluation].
+Responses to the WAItE descriptive system are presented in @tbl-demographic. Feeling tired and avoiding doing sport were the attributes that were most frequently experienced by participants in our analysis sample. WAItE summary statistics were in line with results from previous studies [@Robinson2019EstimatingEvaluation].
 ```{r, echo = FALSE}
 # Data preparation
 demographic_data <- data.frame(
@@ -457,7 +467,7 @@ kable(demographic_data, col.names = c("Participant Characteristics (N=300)", "N 
 ```
 
 ## Level ratings
-Level ratings are presented individually for each different attribute in @tbl-level. The best and worst levels (\textit{Always} and \textit{Never}) were fixed at 0 and 100 respectively. The second best level (\textit{Almost never}) had the lowest VAS score in the Sports and Embarrassment attribute, while the second worst level (\textit{Often}) had the highest VAS score in the Concentration attribute. In this question, higher VAS scores indicate worse states of health.
+Level ratings are presented individually for each different attribute in @tbl-level. The best and worst levels (*Always* and *Never*) were fixed at 0 and 100 respectively. The second best level (*Almost never*) had the lowest VAS score in the Sports and Embarrassment attribute, while the second worst level (*Often*) had the highest VAS score in the Concentration attribute. In this question, higher VAS scores indicate worse states of health.
 
 
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
@@ -912,7 +922,7 @@ Anchoring of the WAItE PITS state was a difficult procedure that required a numb
 
 The social utility function elicited through this study, and underlying utility value set, present monotonic preferences which behave as we would have expected ex-ante (based on qualitative piloting work). Tiredness and Unhappiness were considered the most important attributes while Embarrassment and Sports the least. This finding concurs with qualitative work conducted prior and also is in accordance with previous valuation work done with the WAItE @Robinson2024AUKValue. Prior valuation work, which used a DCE to elicit preferences, yielded latent coefficients which violated the rational choice axiom of monotonicity. In the OPUF, monotonicity is somewhat forced through the choice architecture of the level rating and through the additional prompt to reconsider responses that are not monotonic. Forced monotonicity, in this context, could be problematic for eliciting unbiased preferences if preferences for certain health states are truly not monotonic. For example, prior qualitative work has suggested that "I almost never get tired" might be preferable to "I never get tired" in some circumstances where respondents are thinking about experiencing insomnia and sleep quality. This being said, the WAItE descriptive system was designed to be a monotonic descriptive system, validated using Rasch analysis, and so having a monotonic utility value set makes logical sense. 
 
-Preferences elicited through this study were considerably heterogeneous. This can be understood through the mean EUD value (47.6) but also illustrated in @fig-sufplain through the deviations of individual PUFs from the social utility function. Following on from prior work [@Schneider2024ExploringLevel], we estimated EUD by calculating a distance matrix between each pairwise comparison of individual value sets for all 78125 WAItE health states. The implication of estimating distance (preference heterogeneity) by using individual value sets allows for much of the preference heterogeneity that exists to be composed of differences in individual anchoring values (PITS state responses) rather than differences in level ratings and attribute weightings. This methodological decision, ultimately, results in the majority of EUD being composed of differences in anchoring values and this finding is important to acknowledge. Anchoring differences are important to present and explore, though in this preference heterogeneity analysis could be drowning out the heterogeneity in level ratings and attribute weighting. An example of this can be shown through the age preference heterogeneity in @fig-age. Preference heterogeneity is evident between individuals above and below age 35 and if we consider the mean PITS values for those two subgroups (age $<$ 35 = -0.281; age $>$ 34 = 0.487) we can see that a clear difference in anchoring responses is evident. 
+Preferences elicited through this study were considerably heterogeneous. This can be understood through the mean EUD value (47.6) but also illustrated in @fig-sufplain through the deviations of individual PUFs from the social utility function. Following on from prior work [@Schneider2024ExploringLevel], we estimated EUD by calculating a distance matrix between each pairwise comparison of individual value sets for all 78125 WAItE health states. The implication of estimating distance (preference heterogeneity) by using individual value sets allows for much of the preference heterogeneity that exists to be composed of differences in individual anchoring values (PITS state responses) rather than differences in level ratings and attribute weightings. This methodological decision, ultimately, results in the majority of EUD being composed of differences in anchoring values and this finding is important to acknowledge. Anchoring differences are important to present and explore, though in this preference heterogeneity analysis could be drowning out the heterogeneity in level ratings and attribute weighting. An example of this can be shown through the age preference heterogeneity in @fig-age and @tbl-glmpits. Preference heterogeneity is evident between individuals above and below age 35 and if we consider the mean PITS values for those two subgroups (age $<$ 35 = -0.281; age $>$ 34 = 0.487) we can see that a clear difference in anchoring responses is evident. 
 
 A methodological exploration was conducted as a sensitivity analysis to limit the influence that anchoring variation has on the overall preference heterogeneity. We considered this to be a strength of the research as it offers a new approach to decompose preference heterogeneity into anchoring variation and the difference in level ratings and attribute weightings. After exclusion of individual variation in anchoring responses, weight status and age were found to have a significant impact on preference heterogeneity within our sample; though the amount of variation that could be explained was limited. Preference heterogeneity between those of normal weight and those who were overweight is illustrated in @fig-weight.
 

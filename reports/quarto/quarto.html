@@ -6,6 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Will King">
+<meta name="author" content="Tomos Robinson">
+<meta name="author" content="Angela Bate">
+<meta name="author" content="Laura Ternent">
 <meta name="dcterms.date" content="2024-11-24">
 <meta name="keywords" content="preference elicitation, quality of life">
 
@@ -89,8 +93,8 @@ window.Quarto = {
 
 <body>
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
-<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
   <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
@@ -141,8 +145,6 @@ window.Quarto = {
   </ul>
 </nav>
 </div>
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -155,6 +157,38 @@ window.Quarto = {
   <div class="quarto-title-meta-heading">Authors</div>
   <div class="quarto-title-meta-heading">Affiliations</div>
   
+    <div class="quarto-title-meta-contents">
+    <p class="author">Will King <a href="mailto:w.king2@newcastle.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Newcastle University
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Tomos Robinson </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Newcastle University
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Angela Bate </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Northumbria University
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Laura Ternent </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Newcastle University
+          </p>
+      </div>
   </div>
 
 <div class="quarto-title-meta">
@@ -590,7 +624,7 @@ Table&nbsp;2: WAItE example PUF value set
 <h2 class="anchored" data-anchor-id="sec-surveystructure">Survey structure</h2>
 <ol type="1">
 <li>Consent and Prolific ID: Participants were asked to consent to participate and enter their unique Prolific ID. This enables demographic information held by Prolific on their participants to be linked to each respondent.</li>
-<li>WAItE descriptive system: Participants were asked to complete the WAItE descriptive system (presented in Figure <span class="math inline">\(\ref{fig:waite_descriptive}\)</span>)to describe their current health state.</li>
+<li>WAItE descriptive system: Participants were asked to complete the WAItE descriptive system (presented in <a href="#fig-waite-descriptive" class="quarto-xref">Figure&nbsp;4</a>)to describe their current health state.</li>
 <li>Dimension selection: Participants were presented with the worst level for each WAItE dimension and asked to choose which health problem would have the most negative impact on their quality of life. The dimension chosen is then used in the subsequent dimension swing weighting task.<br>
 </li>
 <li>Dimension swing weighting: Participants were presented with each dimension in the WAItE and asked to consider an improvement from the worst level of that dimension to the best level of that dimension. Participants were asked to rank this improvement on a visual slider from 0-100 where the most important dimension (chosen in the previous task) is fixed at 100. Participants were reminded to use their most important dimension as a reference point.<br>
@@ -599,6 +633,16 @@ Table&nbsp;2: WAItE example PUF value set
 <li>Anchoring: Participants were presented with a binary choice asking whether they prefer the worst state of the WAItE (PITS state) or death. If participants choose the worst state of the WAItE, a second question is asked which asks them to rank the WAITE PITS state on a visual analogue scale where zero is labelled as being dead and one hundred is labelled as no health problems. If participants choose death in the binary choice, they were asked to rank being dead on a visual analogue scale where zero is labelled as the WAItE PITS state and one hundred is labelled as no health problems.</li>
 <li>Survey feedback and demographic questions: Participants were asked about how difficult they found the task to complete and demographic information on age, gender, ethnicity, education, employment and weight status.</li>
 </ol>
+<div id="fig-waite-descriptive" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-waite-descriptive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../outputs/figures/WAItE%20descriptive.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-waite-descriptive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: WAItE descriptive system
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="sec-livesurvey" class="level2">
 <h2 class="anchored" data-anchor-id="sec-livesurvey">Live Survey</h2>
@@ -634,13 +678,14 @@ F= \frac{(\frac{SS_B}{p-1})}{(\frac{SS_W}{N-p})}
 <section id="sensitivity-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="sensitivity-analysis">Sensitivity analysis</h2>
 <p>In an experimental sensitivity analysis, preference heterogeneity was assessed using EUD estimated based on individual’s personal utility functions anchored using the social PITS utility value (henceforth referred to as EUD2). This differed to prior preference heterogeneity estimation as individual variation in PITS utility values were not included in the EUD2 estimation. EUD2 was entirely composed by differences in level ratings and attribute weights. Further details on the derivation of EUD2 are presented in <a href="#sec-appendix1" class="quarto-xref">Section&nbsp;4.1.1</a>.</p>
+<p>An additional analysis of preference heterogeneity in anchoring values was conducted using a generalised linear model. A multivariate Gamma GLM (with log-link function) was constructed to explore the relationship between PITS utility values and demographic information. This facilitated exploration into how anchoring preferences differed among different demographic subgroups in our sample.</p>
 </section>
 </section>
 <section id="results" class="level1">
 <h1>Results</h1>
 <section id="study-participants" class="level2">
 <h2 class="anchored" data-anchor-id="study-participants">Study participants</h2>
-<p>A sample of 334 individuals were approached to participate in the study via the survey company <a href="https://www.prolific.com">Prolific</a>. Individuals that successfully inputted their unique Prolific ID and obtained a correct completion code from the end of the study were included in the analysis sample and received a small payment (£2.50) for their participation. Seven participants were excluded from the study as they had an incorrect completion code and did not enter the correct unique Prolific ID. Therefore no data was available on those seven participants and so they were excluded from the analysis. An additional participant was excluded from the analysis due to completing the survey in eighteen seconds (well under the prespecified minimum time limit of 2 minutes). Two respondents timed-out while completing the survey and were therefore not included. Twenty-four individuals chose not complete the study (referred to by Prolific as ‘returned’ participants). This left an analysis sample of N=300 participants who successfully completed the survey. A representative sample based on UK census data was obtained from Prolific. A summary of demographic information collected in the OPUF are presented in <span class="citation" data-cites="tab-demographic">(<a href="#ref-tab-demographic" role="doc-biblioref"><strong>tab-demographic?</strong></a>)</span>.</p>
+<p>A sample of 334 individuals were approached to participate in the study via the survey company <a href="https://www.prolific.com">Prolific</a>. Individuals that successfully inputted their unique Prolific ID and obtained a correct completion code from the end of the study were included in the analysis sample and received a small payment (£2.50) for their participation. Seven participants were excluded from the study as they had an incorrect completion code and did not enter the correct unique Prolific ID. Therefore no data was available on those seven participants and so they were excluded from the analysis. An additional participant was excluded from the analysis due to completing the survey in eighteen seconds (well under the prespecified minimum time limit of 2 minutes). Two respondents timed-out while completing the survey and were therefore not included. Twenty-four individuals chose not complete the study (referred to by Prolific as ‘returned’ participants). This left an analysis sample of N=300 participants who successfully completed the survey. A representative sample based on UK census data was obtained from Prolific. A summary of demographic information collected in the OPUF are presented in <a href="#tbl-demographic" class="quarto-xref">Table&nbsp;4</a>.</p>
 </section>
 <section id="survey-duration" class="level2">
 <h2 class="anchored" data-anchor-id="survey-duration">Survey duration</h2>
@@ -744,7 +789,7 @@ Table&nbsp;3: Survey completion times (secs)
 </section>
 <section id="waite-descriptive-system" class="level2">
 <h2 class="anchored" data-anchor-id="waite-descriptive-system">WAItE descriptive system</h2>
-<p>Responses to the WAItE descriptive system are presented in Table <span class="citation" data-cites="tab-demographic">(<a href="#ref-tab-demographic" role="doc-biblioref"><strong>tab-demographic?</strong></a>)</span>. Feeling tired and avoiding doing sport were the attributes that were most frequently experienced by participants in our analysis sample. WAItE summary statistics were in line with results from previous studies <span class="citation" data-cites="Robinson2019EstimatingEvaluation">(<a href="#ref-Robinson2019EstimatingEvaluation" role="doc-biblioref">17</a>)</span>.</p>
+<p>Responses to the WAItE descriptive system are presented in <a href="#tbl-demographic" class="quarto-xref">Table&nbsp;4</a>. Feeling tired and avoiding doing sport were the attributes that were most frequently experienced by participants in our analysis sample. WAItE summary statistics were in line with results from previous studies <span class="citation" data-cites="Robinson2019EstimatingEvaluation">(<a href="#ref-Robinson2019EstimatingEvaluation" role="doc-biblioref">17</a>)</span>.</p>
 <div class="cell">
 <div id="tbl-demographic" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -756,8 +801,8 @@ Table&nbsp;4: Summary of demographic information collected in the OPUF
 <table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: left;">Participant.Characteristics</th>
-<th style="text-align: left;">N….</th>
+<th style="text-align: left;">Participant Characteristics (N=300)</th>
+<th style="text-align: left;">N (%)</th>
 </tr>
 </thead>
 <tbody>
@@ -967,7 +1012,7 @@ Table&nbsp;4: Summary of demographic information collected in the OPUF
 </section>
 <section id="level-ratings-1" class="level2">
 <h2 class="anchored" data-anchor-id="level-ratings-1">Level ratings</h2>
-<p>Level ratings are presented individually for each different attribute in <a href="#tbl-level" class="quarto-xref">Table&nbsp;5</a>. The best and worst levels ( and ) were fixed at 0 and 100 respectively. The second best level () had the lowest VAS score in the Sports and Embarrassment attribute, while the second worst level () had the highest VAS score in the Concentration attribute. In this question, higher VAS scores indicate worse states of health.</p>
+<p>Level ratings are presented individually for each different attribute in <a href="#tbl-level" class="quarto-xref">Table&nbsp;5</a>. The best and worst levels (<em>Always</em> and <em>Never</em>) were fixed at 0 and 100 respectively. The second best level (<em>Almost never</em>) had the lowest VAS score in the Sports and Embarrassment attribute, while the second worst level (<em>Often</em>) had the highest VAS score in the Concentration attribute. In this question, higher VAS scores indicate worse states of health.</p>
 <div class="cell">
 <div id="tbl-level" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -1200,7 +1245,7 @@ Table&nbsp;5: Summary of OPUF level ratings by attribute
 </section>
 <section id="attribute-weights" class="level2">
 <h2 class="anchored" data-anchor-id="attribute-weights">Attribute weights</h2>
-<p>Summary statistics of attribute weightings are presented in <a href="#tbl-attribute" class="quarto-xref">Table&nbsp;6</a>. On average, Tiredness (76.5) and Unhappiness (70) were considered to be more important to participants than Embarrassment (40.1) and Sports (42.3). There was less variability in attribute weighting responses to Tiredness than responses to Treated differently or Embarrassment. <a href="#fig-rai" class="quarto-xref">Figure&nbsp;4</a> illustrates the relative attribute importance (RAI) among WAItE attributes.</p>
+<p>Summary statistics of attribute weightings are presented in <a href="#tbl-attribute" class="quarto-xref">Table&nbsp;6</a>. On average, Tiredness (76.5) and Unhappiness (70) were considered to be more important to participants than Embarrassment (40.1) and Sports (42.3). There was less variability in attribute weighting responses to Tiredness than responses to Treated differently or Embarrassment. <a href="#fig-rai" class="quarto-xref">Figure&nbsp;5</a> illustrates the relative attribute importance (RAI) among WAItE attributes.</p>
 <div class="cell">
 <div id="tbl-attribute" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -1340,7 +1385,7 @@ Table&nbsp;6: Summary of OPUF attribute weights and anchoring responses
 <img src="quarto_files/figure-html/fig-rai-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Relative attribute importance
+Figure&nbsp;5: Relative attribute importance
 </figcaption>
 </figure>
 </div>
@@ -1349,7 +1394,7 @@ Figure&nbsp;4: Relative attribute importance
 </section>
 <section id="anchoring" class="level2">
 <h2 class="anchored" data-anchor-id="anchoring">Anchoring</h2>
-<p>The majority of respondents in the sample preferred the WAItE PITS state to being dead (87%). Therefore, 13% of participants answered the dead-VAS and 87% answered the PITS-VAS. A proportion of participants did not answer the anchoring task (1.67%). After winsorizing extreme values (top and bottom 0.1%) <span class="citation" data-cites="2003ApplyingTechniques">(<a href="#ref-2003ApplyingTechniques" role="doc-biblioref">18</a>)</span> and conducting multiple imputation by chained equations on the missing values, the mean (SD) and median (IQR) PITS utility value was 0.282 (1.456) and 0.5 (0.6). The distribution of WAItE PITS utility values (after winsorizing and imputation) is presented in <a href="#fig-hist" class="quarto-xref">Figure&nbsp;5</a>.</p>
+<p>The majority of respondents in the sample preferred the WAItE PITS state to being dead (87%). Therefore, 13% of participants answered the dead-VAS and 87% answered the PITS-VAS. A proportion of participants did not answer the anchoring task (1.67%). After winsorizing extreme values (top and bottom 0.1%) <span class="citation" data-cites="2003ApplyingTechniques">(<a href="#ref-2003ApplyingTechniques" role="doc-biblioref">18</a>)</span> and conducting multiple imputation by chained equations on the missing values, the mean (SD) and median (IQR) PITS utility value was 0.282 (1.456) and 0.5 (0.6). The distribution of WAItE PITS utility values (after winsorizing and imputation) is presented in <a href="#fig-hist" class="quarto-xref">Figure&nbsp;6</a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-hist" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1358,7 +1403,7 @@ Figure&nbsp;4: Relative attribute importance
 <img src="quarto_files/figure-html/fig-hist-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Distribution of PITS utility values
+Figure&nbsp;6: Distribution of PITS utility values
 </figcaption>
 </figure>
 </div>
@@ -1646,7 +1691,7 @@ Table&nbsp;7: Social utility function based on 300 PUFs
 </figure>
 </div>
 </div>
-<p><a href="#fig-sufplain" class="quarto-xref">Figure&nbsp;6</a> presents the mean social utility function (thick line) alongside individual personal utility functions (thin lines) for a selection of 100 WAItE health states ordered from high to low utility according to the social preference. Deviations of individual utility functions from the social preference illustrate the heterogeneity of preference within our analysis sample. Individual personal utility functions shown in <a href="#fig-sufplain" class="quarto-xref">Figure&nbsp;6</a> are anchored using individual PITS utility values rather than the social PITS utility value.</p>
+<p><a href="#fig-sufplain" class="quarto-xref">Figure&nbsp;7</a> presents the mean social utility function (thick line) alongside individual personal utility functions (thin lines) for a selection of 100 WAItE health states ordered from high to low utility according to the social preference. Deviations of individual utility functions from the social preference illustrate the heterogeneity of preference within our analysis sample. Individual personal utility functions shown in <a href="#fig-sufplain" class="quarto-xref">Figure&nbsp;7</a> are anchored using individual PITS utility values rather than the social PITS utility value.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-sufplain" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1655,7 +1700,7 @@ Table&nbsp;7: Social utility function based on 300 PUFs
 <img src="quarto_files/figure-html/fig-sufplain-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sufplain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: Social and individual utility functions
+Figure&nbsp;7: Social and individual utility functions
 </figcaption>
 </figure>
 </div>
@@ -1664,7 +1709,7 @@ Figure&nbsp;6: Social and individual utility functions
 </section>
 <section id="preference-heterogeneity-1" class="level2">
 <h2 class="anchored" data-anchor-id="preference-heterogeneity-1">Preference heterogeneity</h2>
-<p>After estimating individual PUFs for all participants, pairwise EUD was estimated between all participants. This yielded a [300 <span class="math inline">\(\times\)</span> 300] distance matrix with 44,850 unique pairwise comparisons. The mean (SD) and median (IQR) EUD were 115.7255744 (253.07) and 61.08 (33.17; 100.31). The highest and lowest observed EUD were 2150.75 and 0. <a href="#fig-eud" class="quarto-xref">Figure&nbsp;7</a> illustrates the relationship between EUD and WAItE health states. EUD tends to increase as WAItE health states worsen. That is, as the severity of WAItE health states increases, the more heterogeneous preferences become among our sample.</p>
+<p>After estimating individual PUFs for all participants, pairwise EUD was estimated between all participants. This yielded a [300 <span class="math inline">\(\times\)</span> 300] distance matrix with 44,850 unique pairwise comparisons. The mean (SD) and median (IQR) EUD were 115.7255744 (253.07) and 61.08 (33.17; 100.31). The highest and lowest observed EUD were 2150.75 and 0. <a href="#fig-eud" class="quarto-xref">Figure&nbsp;8</a> illustrates the relationship between EUD and WAItE health states. EUD tends to increase as WAItE health states worsen. That is, as the severity of WAItE health states increases, the more heterogeneous preferences become among our sample.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-eud" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1673,7 +1718,7 @@ Figure&nbsp;6: Social and individual utility functions
 <img src="quarto_files/figure-html/fig-eud-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eud-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: Social and individual utility functions coloured by EUD
+Figure&nbsp;8: Social and individual utility functions coloured by EUD
 </figcaption>
 </figure>
 </div>
@@ -1682,7 +1727,7 @@ Figure&nbsp;7: Social and individual utility functions coloured by EUD
 </section>
 <section id="permanova" class="level2">
 <h2 class="anchored" data-anchor-id="permanova">PERMANOVA</h2>
-<p><a href="#tbl-permanova" class="quarto-xref">Table&nbsp;8</a> presents the PERMANOVA model results. Presented are within‐group sum‐of‐squares (SS<span class="math inline">\(_W\)</span>) for each group individually and for all groups combined, and the corresponding R<span class="math inline">\(^2\)</span>, pseudo <span class="math inline">\(F\)</span>, and <span class="math inline">\(p\)</span> values. Preference heterogeneity was significantly affected by age (<span class="math inline">\(p\)</span> = 0.03), though the amount of variability in preferences that could be explained by age was relatively small (R<span class="math inline">\(^2\)</span>=5.7%). <a href="#fig-age" class="quarto-xref">Figure&nbsp;8</a> presents the difference in preferences between different age groups. Generally, as age increases, health state utility values for each given WAItE health state are higher. That is, younger populations tend to place more disutility on WAItE health problems than older populations. While weight status was not significantly related to preference heterogeneity according to the PERMANOVA model, given the WAItE is a weight-specific measure, it was informative to explore the relationship between preferences and weight status. Though not statistically significant, we can observe a difference in preferences between normal weight and overweight individuals in <a href="#fig-weight" class="quarto-xref">Figure&nbsp;9</a>. For a given WAItE health state, overweight individuals in our sample placed less disutility on that state than did normal weight individuals.</p>
+<p><a href="#tbl-permanova" class="quarto-xref">Table&nbsp;8</a> presents the PERMANOVA model results. Presented are within‐group sum‐of‐squares (SS<span class="math inline">\(_W\)</span>) for each group individually and for all groups combined, and the corresponding R<span class="math inline">\(^2\)</span>, pseudo <span class="math inline">\(F\)</span>, and <span class="math inline">\(p\)</span> values. Preference heterogeneity was significantly affected by age (<span class="math inline">\(p\)</span> = 0.03), though the amount of variability in preferences that could be explained by age was relatively small (R<span class="math inline">\(^2\)</span> = 5.7%). <a href="#fig-age" class="quarto-xref">Figure&nbsp;9</a> presents the difference in preferences between different age groups. Generally, as age increases, health state utility values for each given WAItE health state are higher. That is, younger populations tend to place more disutility on WAItE health problems than older populations. While weight status was not significantly related to preference heterogeneity according to the PERMANOVA model, given the WAItE is a weight-specific measure, it was informative to explore the relationship between preferences and weight status. Though not statistically significant, we can observe a difference in preferences between normal weight and overweight individuals in <a href="#fig-weight" class="quarto-xref">Figure&nbsp;10</a>. For a given WAItE health state, overweight individuals in our sample placed less disutility on that state than did normal weight individuals.</p>
 <div class="cell">
 <div id="tbl-permanova" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -1782,7 +1827,7 @@ Table&nbsp;8: Results of PERMANOVA – testing for differences in WAItE health s
 <img src="quarto_files/figure-html/fig-age-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8: Social and individual utility functions grouped by age status
+Figure&nbsp;9: Social and individual utility functions grouped by age status
 </figcaption>
 </figure>
 </div>
@@ -1796,7 +1841,7 @@ Figure&nbsp;8: Social and individual utility functions grouped by age status
 <div id="tbl-permanova2" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-permanova2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;9: Results of PERMANOVA2 – testing for differences in level rating and attribute weighting preferences between group characteristics
+Table&nbsp;9: PERMANOVA2 – testing for differences in level rating and attribute weighting preferences between group characteristics
 </figcaption>
 <div aria-describedby="tbl-permanova2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -1883,6 +1928,75 @@ Table&nbsp;9: Results of PERMANOVA2 – testing for differences in level rating 
 </figure>
 </div>
 </div>
+<p>A multivariate Gamma GLM model was constructed to explore preference heterogeneity in anchoring values (presented in <a href="#tbl-glmpits" class="quarto-xref">Table&nbsp;10</a>). Demographic characteristics were regressed on PITS utility values to examine how demographic information was related to anchoring values. Age, had a significant impact on anchoring preference heterogeneity (<span class="math inline">\(p\)</span> = 0.003), though the point estimate indicated a relatively small effect size.</p>
+<div class="cell">
+<div id="tbl-glmpits" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-glmpits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;10: Multivariate Gamma GLM Model – exploring the relationship between PITS utility value and demographic characteristics
+</figcaption>
+<div aria-describedby="tbl-glmpits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Estimate</th>
+<th style="text-align: right;">Std. Error</th>
+<th style="text-align: right;">t value</th>
+<th style="text-align: right;">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Intercept</td>
+<td style="text-align: right;">2.696</td>
+<td style="text-align: right;">0.031</td>
+<td style="text-align: right;">88.072</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Age</td>
+<td style="text-align: right;">0.001</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">3.007</td>
+<td style="text-align: right;">0.003</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Education</td>
+<td style="text-align: right;">-0.001</td>
+<td style="text-align: right;">0.004</td>
+<td style="text-align: right;">-0.186</td>
+<td style="text-align: right;">0.853</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Occupation</td>
+<td style="text-align: right;">-0.002</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">-0.979</td>
+<td style="text-align: right;">0.329</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gender</td>
+<td style="text-align: right;">-0.012</td>
+<td style="text-align: right;">0.011</td>
+<td style="text-align: right;">-1.143</td>
+<td style="text-align: right;">0.254</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ethnicity</td>
+<td style="text-align: right;">0.006</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">1.268</td>
+<td style="text-align: right;">0.206</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
 </section>
 </section>
 <section id="discussion" class="level1">
@@ -1890,8 +2004,8 @@ Table&nbsp;9: Results of PERMANOVA2 – testing for differences in level rating 
 <p>This study is the first time that the OPUF has been used to estimate health state utility values for the WAItE. We obtained a representative sample of high quality data from Prolific, a survey company known for their high quality respondents <span class="citation" data-cites="Peer2022DataResearch">(<a href="#ref-Peer2022DataResearch" role="doc-biblioref">19</a>)</span>. Our average attribute weightings and implied ordering were similar to those exhibited in Robinson et al.&nbsp;(2024) <span class="citation" data-cites="Robinson2024AUKValue">(<a href="#ref-Robinson2024AUKValue" role="doc-biblioref">20</a>)</span>.</p>
 <p>Anchoring of the WAItE PITS state was a difficult procedure that required a number of methodological decisions. We decided to use uncensored responses to the Dead-VAS task which meant that data from one respondent (-99) skewed the mean PITS utility value quite substantially. To mitigate the impact of extreme values on the mean, we conducted winsorization of values lying in the outer 0.1% of the distribution. This practice, while effective at limiting the influence of extreme values on the mean, could understate the genuine variability in the data. Though, it is likely that exclusion of this participant would have had a more detrimental effect to presenting the genuine variability of responses.</p>
 <p>The social utility function elicited through this study, and underlying utility value set, present monotonic preferences which behave as we would have expected ex-ante (based on qualitative piloting work). Tiredness and Unhappiness were considered the most important attributes while Embarrassment and Sports the least. This finding concurs with qualitative work conducted prior and also is in accordance with previous valuation work done with the WAItE <span class="citation" data-cites="Robinson2024AUKValue">(<a href="#ref-Robinson2024AUKValue" role="doc-biblioref">20</a>)</span>. Prior valuation work, which used a DCE to elicit preferences, yielded latent coefficients which violated the rational choice axiom of monotonicity. In the OPUF, monotonicity is somewhat forced through the choice architecture of the level rating and through the additional prompt to reconsider responses that are not monotonic. Forced monotonicity, in this context, could be problematic for eliciting unbiased preferences if preferences for certain health states are truly not monotonic. For example, prior qualitative work has suggested that “I almost never get tired” might be preferable to “I never get tired” in some circumstances where respondents are thinking about experiencing insomnia and sleep quality. This being said, the WAItE descriptive system was designed to be a monotonic descriptive system, validated using Rasch analysis, and so having a monotonic utility value set makes logical sense.</p>
-<p>Preferences elicited through this study were considerably heterogeneous. This can be understood through the mean EUD value (47.6) but also illustrated in <a href="#fig-sufplain" class="quarto-xref">Figure&nbsp;6</a> through the deviations of individual PUFs from the social utility function. Following on from prior work <span class="citation" data-cites="Schneider2024ExploringLevel">(<a href="#ref-Schneider2024ExploringLevel" role="doc-biblioref">13</a>)</span>, we estimated EUD by calculating a distance matrix between each pairwise comparison of individual value sets for all 78125 WAItE health states. The implication of estimating distance (preference heterogeneity) by using individual value sets allows for much of the preference heterogeneity that exists to be composed of differences in individual anchoring values (PITS state responses) rather than differences in level ratings and attribute weightings. This methodological decision, ultimately, results in the majority of EUD being composed of differences in anchoring values and this finding is important to acknowledge. Anchoring differences are important to present and explore, though in this preference heterogeneity analysis could be drowning out the heterogeneity in level ratings and attribute weighting. An example of this can be shown through the age preference heterogeneity in <a href="#fig-age" class="quarto-xref">Figure&nbsp;8</a>. Preference heterogeneity is evident between individuals above and below age 35 and if we consider the mean PITS values for those two subgroups (age <span class="math inline">\(&lt;\)</span> 35 = -0.281; age <span class="math inline">\(&gt;\)</span> 34 = 0.487) we can see that a clear difference in anchoring responses is evident.</p>
-<p>A methodological exploration was conducted as a sensitivity analysis to limit the influence that anchoring variation has on the overall preference heterogeneity. We considered this to be a strength of the research as it offers a new approach to decompose preference heterogeneity into anchoring variation and the difference in level ratings and attribute weightings. After exclusion of individual variation in anchoring responses, weight status and age were found to have a significant impact on preference heterogeneity within our sample; though the amount of variation that could be explained was limited. Preference heterogeneity between those of normal weight and those who were overweight is illustrated in <a href="#fig-weight" class="quarto-xref">Figure&nbsp;9</a>.</p>
+<p>Preferences elicited through this study were considerably heterogeneous. This can be understood through the mean EUD value (47.6) but also illustrated in <a href="#fig-sufplain" class="quarto-xref">Figure&nbsp;7</a> through the deviations of individual PUFs from the social utility function. Following on from prior work <span class="citation" data-cites="Schneider2024ExploringLevel">(<a href="#ref-Schneider2024ExploringLevel" role="doc-biblioref">13</a>)</span>, we estimated EUD by calculating a distance matrix between each pairwise comparison of individual value sets for all 78125 WAItE health states. The implication of estimating distance (preference heterogeneity) by using individual value sets allows for much of the preference heterogeneity that exists to be composed of differences in individual anchoring values (PITS state responses) rather than differences in level ratings and attribute weightings. This methodological decision, ultimately, results in the majority of EUD being composed of differences in anchoring values and this finding is important to acknowledge. Anchoring differences are important to present and explore, though in this preference heterogeneity analysis could be drowning out the heterogeneity in level ratings and attribute weighting. An example of this can be shown through the age preference heterogeneity in <a href="#fig-age" class="quarto-xref">Figure&nbsp;9</a> and <a href="#tbl-glmpits" class="quarto-xref">Table&nbsp;10</a>. Preference heterogeneity is evident between individuals above and below age 35 and if we consider the mean PITS values for those two subgroups (age <span class="math inline">\(&lt;\)</span> 35 = -0.281; age <span class="math inline">\(&gt;\)</span> 34 = 0.487) we can see that a clear difference in anchoring responses is evident.</p>
+<p>A methodological exploration was conducted as a sensitivity analysis to limit the influence that anchoring variation has on the overall preference heterogeneity. We considered this to be a strength of the research as it offers a new approach to decompose preference heterogeneity into anchoring variation and the difference in level ratings and attribute weightings. After exclusion of individual variation in anchoring responses, weight status and age were found to have a significant impact on preference heterogeneity within our sample; though the amount of variation that could be explained was limited. Preference heterogeneity between those of normal weight and those who were overweight is illustrated in <a href="#fig-weight" class="quarto-xref">Figure&nbsp;10</a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-weight" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1900,18 +2014,23 @@ Table&nbsp;9: Results of PERMANOVA2 – testing for differences in level rating 
 <img src="quarto_files/figure-html/fig-weight-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-weight-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9: Social and individual utility functions grouped by weight status
+Figure&nbsp;10: Social and individual utility functions grouped by weight status
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>This method of estimating preference heterogeneity should not be considered the gold standard, as only part of the variation in preferences is explored here. It can however be considered an additional option for future researchers that wish to isolate the effect of anchoring responses on overall preference heterogeneity. It is also, to our knowledge, the first time preference heterogeneity has been decomposed in this way with the OPUF.</p>
-<p>The value set estimated here offers an alternative choice of preference values to the existing value sets estimated using DCE (shown in <span class="citation" data-cites="tab-WAItEvalsets">(<a href="#ref-tab-WAItEvalsets" role="doc-biblioref"><strong>tab-WAItEvalsets?</strong></a>)</span>}). When comparing the anchored coefficients between value sets, one of the key areas of divergence is where levels have been collapsed in the DCE value set. In the OPUF, “I almost never get tired” is given 0.029 compared to 0.064 in the DCE due to collapsing levels. Generally the difference between coefficients that have not been ‘collapsed’ between the value sets is small suggesting that there is comparability to an extent between the value sets. Anchoring values were broadly similar between studies too. The mean PITS utility values between studies were broadly comparable with a maximum range of 0.059. Interestingly, the EQ-VAS anchoring task mean (0.289) was remarkably similar to the OPUF VAS anchoring task mean (0.282) again supporting the use of VAS for elicitation of PITS utility values.</p>
+<p>The value set estimated here offers an alternative choice of preference values to the existing value sets estimated using DCE (shown in <a href="#tbl-WAItEvalsets" class="quarto-xref">Table&nbsp;11</a>). When comparing the anchored coefficients between value sets, one of the key areas of divergence is where levels have been collapsed in the DCE value set. In the OPUF, “I almost never get tired” is given 0.029 compared to 0.064 in the DCE due to collapsing levels. Generally the difference between coefficients that have not been ‘collapsed’ between the value sets is small suggesting that there is comparability to an extent between the value sets. Anchoring values were broadly similar between studies too. The mean PITS utility values between studies were broadly comparable with a maximum range of 0.059. Interestingly, the EQ-VAS anchoring task mean (0.289) was remarkably similar to the OPUF VAS anchoring task mean (0.282) again supporting the use of VAS for elicitation of PITS utility values.</p>
 <div class="cell">
+<div id="tbl-WAItEvalsets" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-WAItEvalsets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11: Comparison of WAItE utility value sets
+</figcaption>
+<div aria-describedby="tbl-WAItEvalsets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Comparison of WAItE utility value sets</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 31%">
 <col style="width: 22%">
@@ -2139,6 +2258,9 @@ Figure&nbsp;9: Social and individual utility functions grouped by weight status
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+</figure>
 </div>
 </div>
 
