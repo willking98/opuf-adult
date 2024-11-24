@@ -812,6 +812,13 @@ included in the EUD2 estimation. EUD2 was entirely composed by
 differences in level ratings and attribute weights. Further details on
 the derivation of EUD2 are presented in Section~\ref{sec-appendix1}.
 
+An additional analysis of preference heterogeneity in anchoring values
+was conducted using a generalised linear model. A multivariate Gamma GLM
+(with log-link function) was constructed to explore the relationship
+between PITS utility values and demographic information. This
+facilitated exploration into how anchoring preferences differed among
+different demographic subgroups in our sample.
+
 \section{Results}\label{results}
 
 \subsection{Study participants}\label{study-participants}
@@ -1254,7 +1261,7 @@ individually and for all groups combined, and the corresponding R\(^2\),
 pseudo \(F\), and \(p\) values. Preference heterogeneity was
 significantly affected by age (\(p\) = 0.03), though the amount of
 variability in preferences that could be explained by age was relatively
-small (R\(^2\)=5.7\%). Figure~\ref{fig-age} presents the difference in
+small (R\(^2\) = 5.7\%). Figure~\ref{fig-age} presents the difference in
 preferences between different age groups. Generally, as age increases,
 health state utility values for each given WAItE health state are
 higher. That is, younger populations tend to place more disutility on
@@ -1343,6 +1350,14 @@ Total & 299 & 204463.039 & 1.000 & & \\
 
 \end{longtable}
 
+A multivariate Gamma GLM model was constructed to explore preference
+heterogeneity in anchoring values (presented in
+Table~\ref{tbl-glmpits}). Demographic characteristics were regressed on
+PITS utility values to examine how demographic information was related
+to anchoring values. Age, had a significant impact on anchoring
+preference heterogeneity (\(p\) = 0.003), though the point estimate
+indicated a relatively small effect size.
+
 \begin{longtable}[]{@{}lrrrr@{}}
 
 \caption{\label{tbl-glmpits}Multivariate Gamma GLM Model -- exploring
@@ -1358,12 +1373,12 @@ Pr(\textgreater\textbar t\textbar) \\
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Intercept & 2.6957 & 0.0306 & 88.0719 & 0.0000 \\
-Age & 0.0011 & 0.0004 & 3.0071 & 0.0029 \\
-Education & -0.0007 & 0.0037 & -0.1858 & 0.8527 \\
-Occupation & -0.0022 & 0.0023 & -0.9787 & 0.3285 \\
-Gender & -0.0122 & 0.0107 & -1.1425 & 0.2542 \\
-Ethnicity & 0.0059 & 0.0047 & 1.2677 & 0.2059 \\
+Intercept & 2.696 & 0.031 & 88.072 & 0.000 \\
+Age & 0.001 & 0.000 & 3.007 & 0.003 \\
+Education & -0.001 & 0.004 & -0.186 & 0.853 \\
+Occupation & -0.002 & 0.002 & -0.979 & 0.329 \\
+Gender & -0.012 & 0.011 & -1.143 & 0.254 \\
+Ethnicity & 0.006 & 0.005 & 1.268 & 0.206 \\
 
 \end{longtable}
 
@@ -1468,7 +1483,7 @@ decomposed in this way with the OPUF.
 
 The value set estimated here offers an alternative choice of preference
 values to the existing value sets estimated using DCE (shown in
-\citep{tab-WAItEvalsets}). When comparing the anchored coefficients
+Table~\ref{tbl-WAItEvalsets}). When comparing the anchored coefficients
 between value sets, one of the key areas of divergence is where levels
 have been collapsed in the DCE value set. In the OPUF, ``I almost never
 get tired'' is given 0.029 compared to 0.064 in the DCE due to
@@ -1482,11 +1497,11 @@ was remarkably similar to the OPUF VAS anchoring task mean (0.282) again
 supporting the use of VAS for elicitation of PITS utility values.
 
 \begin{longtable}[]{@{}llll@{}}
-\caption{Comparison of WAItE utility value sets}\tabularnewline
-\toprule\noalign{}
-Attribute.level & OPUF & DCE.TTO & DCE.VAS \\
-\midrule\noalign{}
-\endfirsthead
+
+\caption{\label{tbl-WAItEvalsets}Comparison of WAItE utility value sets}
+
+\tabularnewline
+
 \toprule\noalign{}
 Attribute.level & OPUF & DCE.TTO & DCE.VAS \\
 \midrule\noalign{}
@@ -1528,6 +1543,7 @@ Almost never & 0.019 & 0.01 & 0.009 \\
 Sometimes & 0.035 & 0.03 & 0.028 \\
 Often & 0.052 & 0.075 & 0.069 \\
 Always & 0.087 & 0.114 & 0.105 \\
+
 \end{longtable}
 
 \subsection{Appendix}\label{appendix}
