@@ -251,12 +251,15 @@ This study recruited (n=300) adults to respond to a quality-of-life survey hoste
 
 ## Survey structure {#sec-surveystructure}
 1. Consent and Prolific ID: Participants were asked to consent to participate and enter their unique Prolific ID. This enables demographic information held by Prolific on their participants to be linked to each respondent. 
-2. WAItE descriptive system: Participants were asked to complete the WAItE descriptive system (presented in Figure \ref{fig:waite_descriptive})to describe their current health state. 
+2. WAItE descriptive system: Participants were asked to complete the WAItE descriptive system (presented in @fig-waite-descriptive)to describe their current health state. 
 3. Dimension selection: Participants were presented with the worst level for each WAItE dimension and asked to choose which health problem would have the most negative impact on their quality of life. The dimension chosen is then used in the subsequent dimension swing weighting task.   
 4. Dimension swing weighting: Participants were presented with each dimension in the WAItE and asked to consider an improvement from the worst level of that dimension to the best level of that dimension. Participants were asked to rank this improvement on a visual slider from 0-100 where the most important dimension (chosen in the previous task) is fixed at 100. Participants were reminded to use their most important dimension as a reference point.  
 5. Level rating: Participants were presented with a specific dimension of the WAItE and shown each level within that dimension. Levels best and worst (never and always) were fixed at 0 and 100 respectively. Participants were asked to rank the intermediate levels within each dimension using the fixed levels as a reference point. 
 6. Anchoring: Participants were presented with a binary choice asking whether they prefer the worst state of the WAItE (PITS state) or death. If participants choose the worst state of the WAItE, a second question is asked which asks them to rank the WAITE PITS state on a visual analogue scale where zero is labelled as being dead and one hundred is labelled as no health problems. If participants choose death in the binary choice, they were asked to rank being dead on a visual analogue scale where zero is labelled as the WAItE PITS state and one hundred is labelled as no health problems. 
 7. Survey feedback and demographic questions: Participants were asked about how difficult they found the task to complete and demographic information on age, gender, ethnicity, education, employment and weight status.
+
+
+![WAItE descriptive system](../../outputs/figures/WAItE descriptive.png){#fig-waite-descriptive}
 
 ::: {.content-visible when-format="html"}
 
@@ -304,7 +307,7 @@ In an experimental sensitivity analysis, preference heterogeneity was assessed u
 
 # Results
 ## Study participants
-A sample of 334 individuals were approached to participate in the study via the survey company [Prolific](https://www.prolific.com). Individuals that successfully inputted their unique Prolific ID and obtained a correct completion code from the end of the study were included in the analysis sample and received a small payment (£2.50) for their participation. Seven participants were excluded from the study as they had an incorrect completion code and did not enter the correct unique Prolific ID. Therefore no data was available on those seven participants and so they were excluded from the analysis. An additional participant was excluded from the analysis due to completing the survey in eighteen seconds (well under the prespecified minimum time limit of 2 minutes). Two respondents timed-out while completing the survey and were therefore not included. Twenty-four individuals chose not complete the study (referred to by Prolific as 'returned' participants). This left an analysis sample of N=300 participants who successfully completed the survey. A representative sample based on UK census data was obtained from Prolific. A summary of demographic information collected in the OPUF are presented in @tab-demographic.  
+A sample of 334 individuals were approached to participate in the study via the survey company [Prolific](https://www.prolific.com). Individuals that successfully inputted their unique Prolific ID and obtained a correct completion code from the end of the study were included in the analysis sample and received a small payment (£2.50) for their participation. Seven participants were excluded from the study as they had an incorrect completion code and did not enter the correct unique Prolific ID. Therefore no data was available on those seven participants and so they were excluded from the analysis. An additional participant was excluded from the analysis due to completing the survey in eighteen seconds (well under the prespecified minimum time limit of 2 minutes). Two respondents timed-out while completing the survey and were therefore not included. Twenty-four individuals chose not complete the study (referred to by Prolific as 'returned' participants). This left an analysis sample of N=300 participants who successfully completed the survey. A representative sample based on UK census data was obtained from Prolific. A summary of demographic information collected in the OPUF are presented in @tbl-demographic.  
 
 ## Survey duration
 The mean (SD) and median (IQR) survey completion time in minutes was 9.66 (5.85) and 8.15 (5.88; 11.89). @tbl-time summarises how much time was spent completing each individual section of the survey.
@@ -444,7 +447,7 @@ demographic_data <- data.frame(
 #| tbl-cap: Summary of demographic information collected in the OPUF
 
 # Create table
-kable(demographic_data)
+kable(demographic_data, col.names = c("Participant Characteristics (N=300)", "N (%)"))
 # , align = c("l", "r"), escape = FALSE) %>%
 #   kable_styling(full_width = FALSE, position = "center") %>%
 #   column_spec(1, bold = TRUE) %>%
@@ -884,13 +887,21 @@ EUD2 was estimated for each pairwise comparison of individuals in our study. Thi
 
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
 #| label: tbl-permanova2
-#| tbl-cap: Results of PERMANOVA2 – testing for differences in level rating and attribute weighting preferences between group characteristics
+#| tbl-cap: PERMANOVA2 – testing for differences in level rating and attribute weighting preferences between group characteristics
 permanova2 <- as.data.frame(permanova2)
 rownames(permanova2) <- c("Age", "Weight status", "Education", "Occupation", "Gender", "Ethnicity", "Residual", "Total")
 options(knitr.kable.NA = '')
 kable(permanova2, col.names = c("Variable", "df", "$SS_W$", "$R^2$", "F", "Pr(>F)"), digits = 3)
 ```
 
+```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
+#| label: tbl-glmpits
+#| tbl-cap: Multivariate Gamma GLM Model – exploring the relationship between PITS utility value and demographic characteristics
+glm <- summary(gamma_multivar_model)$coefficients
+rownames(glm) <- c("Intercept", "Age", "Education", "Occupation", "Gender", "Ethnicity")
+kable(glm, digits = 4)
+# include footnotes with AIC(gamma_multivar_model BIC(gamma_multivar_model)
+```
 # Discussion
 This study is the first time that the OPUF has been used to estimate health state utility values for the WAItE. We obtained a representative sample of high quality data from Prolific, a survey company known for their high quality respondents [@Peer2022DataResearch]. Our average attribute weightings and implied ordering were similar to those exhibited in Robinson et al. (2024) @Robinson2024AUKValue. 
 
@@ -909,7 +920,7 @@ plot(weight_chart)
 ```
 This method of estimating preference heterogeneity should not be considered the gold standard, as only part of the variation in preferences is explored here. It can however be considered an additional option for future researchers that wish to isolate the effect of anchoring responses on overall preference heterogeneity. It is also, to our knowledge, the first time preference heterogeneity has been decomposed in this way with the OPUF. 
 
-The value set estimated here offers an alternative choice of preference values to the existing value sets estimated using DCE (shown in @tab-WAItEvalsets}). When comparing the anchored coefficients between value sets, one of the key areas of divergence is where levels have been collapsed in the DCE value set. In the OPUF, "I almost never get tired" is given 0.029 compared to 0.064 in the DCE due to collapsing levels. Generally the difference between coefficients that have not been 'collapsed' between the value sets is small suggesting that there is comparability to an extent between the value sets. Anchoring values were broadly similar between studies too. The mean PITS utility values between studies were broadly comparable with a maximum range of 0.059. Interestingly, the EQ-VAS anchoring task mean (0.289) was remarkably similar to the OPUF VAS anchoring task mean (0.282) again supporting the use of VAS for elicitation of PITS utility values. 
+The value set estimated here offers an alternative choice of preference values to the existing value sets estimated using DCE (shown in @tab-WAItEvalsets). When comparing the anchored coefficients between value sets, one of the key areas of divergence is where levels have been collapsed in the DCE value set. In the OPUF, "I almost never get tired" is given 0.029 compared to 0.064 in the DCE due to collapsing levels. Generally the difference between coefficients that have not been 'collapsed' between the value sets is small suggesting that there is comparability to an extent between the value sets. Anchoring values were broadly similar between studies too. The mean PITS utility values between studies were broadly comparable with a maximum range of 0.059. Interestingly, the EQ-VAS anchoring task mean (0.289) was remarkably similar to the OPUF VAS anchoring task mean (0.282) again supporting the use of VAS for elicitation of PITS utility values. 
 
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
 

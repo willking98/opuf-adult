@@ -666,8 +666,9 @@ detailed in Section~\ref{sec-surveystructure}.
   linked to each respondent.
 \item
   WAItE descriptive system: Participants were asked to complete the
-  WAItE descriptive system (presented in Figure
-  \ref{fig:waite_descriptive})to describe their current health state.
+  WAItE descriptive system (presented in
+  Figure~\ref{fig-waite-descriptive})to describe their current health
+  state.
 \item
   Dimension selection: Participants were presented with the worst level
   for each WAItE dimension and asked to choose which health problem
@@ -704,6 +705,18 @@ detailed in Section~\ref{sec-surveystructure}.
   information on age, gender, ethnicity, education, employment and
   weight status.
 \end{enumerate}
+
+\begin{figure}
+
+\centering{
+
+\includegraphics{../../outputs/figures/WAItE descriptive.png}
+
+}
+
+\caption{\label{fig-waite-descriptive}WAItE descriptive system}
+
+\end{figure}%
 
 \subsection{Missing data}\label{missing-data}
 
@@ -820,7 +833,7 @@ study (referred to by Prolific as `returned' participants). This left an
 analysis sample of N=300 participants who successfully completed the
 survey. A representative sample based on UK census data was obtained
 from Prolific. A summary of demographic information collected in the
-OPUF are presented in \citep{tab-demographic}.
+OPUF are presented in Table~\ref{tbl-demographic}.
 
 \subsection{Survey duration}\label{survey-duration}
 
@@ -883,7 +896,7 @@ collected in the OPUF}
 \tabularnewline
 
 \toprule\noalign{}
-Participant.Characteristics & N\ldots. \\
+Participant Characteristics (N=300) & N (\%) \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -1307,9 +1320,9 @@ small (4.9\%).
 
 \begin{longtable}[]{@{}lrrrrr@{}}
 
-\caption{\label{tbl-permanova2}Results of PERMANOVA2 -- testing for
-differences in level rating and attribute weighting preferences between
-group characteristics}
+\caption{\label{tbl-permanova2}PERMANOVA2 -- testing for differences in
+level rating and attribute weighting preferences between group
+characteristics}
 
 \tabularnewline
 
@@ -1327,6 +1340,30 @@ Gender & 3 & 751.841 & 0.004 & 0.375 & 0.983 \\
 Ethnicity & 4 & 3077.187 & 0.015 & 1.151 & 0.265 \\
 Residual & 273 & 182464.444 & 0.892 & & \\
 Total & 299 & 204463.039 & 1.000 & & \\
+
+\end{longtable}
+
+\begin{longtable}[]{@{}lrrrr@{}}
+
+\caption{\label{tbl-glmpits}Multivariate Gamma GLM Model -- exploring
+the relationship between PITS utility value and demographic
+characteristics}
+
+\tabularnewline
+
+\toprule\noalign{}
+& Estimate & Std. Error & t value &
+Pr(\textgreater\textbar t\textbar) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Intercept & 2.6957 & 0.0306 & 88.0719 & 0.0000 \\
+Age & 0.0011 & 0.0004 & 3.0071 & 0.0029 \\
+Education & -0.0007 & 0.0037 & -0.1858 & 0.8527 \\
+Occupation & -0.0022 & 0.0023 & -0.9787 & 0.3285 \\
+Gender & -0.0122 & 0.0107 & -1.1425 & 0.2542 \\
+Ethnicity & 0.0059 & 0.0047 & 1.2677 & 0.2059 \\
 
 \end{longtable}
 
@@ -1431,7 +1468,7 @@ decomposed in this way with the OPUF.
 
 The value set estimated here offers an alternative choice of preference
 values to the existing value sets estimated using DCE (shown in
-\citep{tab-WAItEvalsets}\}). When comparing the anchored coefficients
+\citep{tab-WAItEvalsets}). When comparing the anchored coefficients
 between value sets, one of the key areas of divergence is where levels
 have been collapsed in the DCE value set. In the OPUF, ``I almost never
 get tired'' is given 0.029 compared to 0.064 in the DCE due to
