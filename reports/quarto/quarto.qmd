@@ -415,7 +415,7 @@ Responses to the WAItE descriptive system are presented in Table @tab-demographi
 ```{r, echo = FALSE}
 # Data preparation
 demographic_data <- data.frame(
-  Participant_Characteristics = c(
+  `Participant Characteristics`= c(
     "Age", "18-24", "25-34", "35-44", "45-54", "55-64", "65-90", "Not Stated",
     "Gender", "Female", "Male", "Non-binary",
     "Ethnicity", "White", "Asian", "Black", "Mixed", "Other",
@@ -426,7 +426,7 @@ demographic_data <- data.frame(
     "WAItE", "Tiredness", "Walking", "Sport", "Concentration", 
     "Embarrassment", "Unhappiness", "Treated differently", "Total"
   ),
-  N_Percent = c(
+   `N (%)`= c(
     "", "32 (10.9%)", "50 (17%)", "48 (16.3%)", "49 (16.7%)", "81 (27.6%)", "34 (11.6%)", "6 (2.0%)",
     "", "154 (51%)", "144 (48%)", "1 (0%)",
     "", "251 (84%)", "23 (8%)", "11 (4%)", "10 (3%)", "5 (2%)",
