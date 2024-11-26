@@ -59,21 +59,21 @@ csl: vancouver.csl
 #     toc: true
 #     toc-location: right
 # Enable the below sections if you want pdf or docx
-# format:
-#   docx:
-#     toc: true
-#     number-sections: true
-#     highlight-style: github
 format:
-  elsevier-pdf:
-    keep-tex: true
-    journal:
-      name: Health Economics Study Group
-      formatting: preprint
-      # model: 3p # Don't set a model with preprint
-      cite-style: number
-    header-includes:
-      - \usepackage[a4paper,margin=1in,textwidth=6.5in]{geometry}
+  docx:
+    toc: true
+    number-sections: true
+    highlight-style: github
+# format:
+#   elsevier-pdf:
+#     keep-tex: true
+#     journal:
+#       name: Health Economics Study Group
+#       formatting: preprint
+#       # model: 3p # Don't set a model with preprint
+#       cite-style: number
+#     header-includes:
+#       - \usepackage[a4paper,margin=1in,textwidth=6.5in]{geometry}
 ---
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
 setwd("~/Dropbox/opuf-adult") # convert this to here for reproducibility

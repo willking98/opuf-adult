@@ -4,9 +4,8 @@
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
-  letterpaper,
-  DIV=11,
-  numbers=noendperiod]{scrartcl}
+  number,
+  preprint]{elsarticle}
 
 \usepackage{amsmath,amssymb}
 \usepackage{iftex}
@@ -41,7 +40,7 @@
 \makeatother
 \usepackage{xcolor}
 \setlength{\emergencystretch}{3em} % prevent overfull lines
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\setcounter{secnumdepth}{5}
 % Make \paragraph and \subparagraph free-standing
 \makeatletter
 \ifx\paragraph\undefined\else
@@ -91,39 +90,6 @@
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
-% definitions for citeproc citations
-\NewDocumentCommand\citeproctext{}{}
-\NewDocumentCommand\citeproc{mm}{%
-  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
-\makeatletter
- % allow citations to break across lines
- \let\@cite@ofmt\@firstofone
- % avoid brackets around text for \cite:
- \def\@biblabel#1{}
- \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
-\makeatother
-\newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
-\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
- {\begin{list}{}{%
-  \setlength{\itemindent}{0pt}
-  \setlength{\leftmargin}{0pt}
-  \setlength{\parsep}{0pt}
-  % turn on hanging indent if param 1 is 1
-  \ifodd #1
-   \setlength{\leftmargin}{\cslhangindent}
-   \setlength{\itemindent}{-1\cslhangindent}
-  \fi
-  % set entry spacing
-  \setlength{\itemsep}{#2\baselineskip}}}
- {\end{list}}
-\usepackage{calc}
-\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
-\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \usepackage{booktabs}
 \usepackage{longtable}
@@ -139,7 +105,7 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
-\KOMAoption{captions}{tableheading}
+\usepackage[a4paper,margin=1in,textwidth=6.5in]{geometry}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -181,10 +147,13 @@
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
+\journal{Health Economics Study Group}
 
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
+\usepackage[]{natbib}
+\bibliographystyle{elsarticle-num}
 \usepackage{bookmark}
 
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
@@ -201,14 +170,42 @@
   pdfcreator={LaTeX via pandoc}}
 
 
+\setlength{\parindent}{6pt}
+\begin{document}
+
+\begin{frontmatter}
 \title{Development of a value-based scoring system for the WAItE using
 the OPUF in a sample of adults}
-\author{Will King* \and Tomos Robinson \and Angela Bate \and Laura
-Ternent}
-\date{2024-11-24}
+\author[1]{Will King*%
+%
+}
+ \ead{w.king2@newcastle.ac.uk} 
+\author[1]{Tomos Robinson%
+%
+}
 
-\begin{document}
-\maketitle
+\author[2]{Angela Bate%
+%
+}
+
+\author[1]{Laura Ternent%
+%
+}
+
+
+\affiliation[1]{organization={Newcastle University, Health Economics
+Group},addressline={University, Barras Bridge},city={Newcastle upon
+Tyne},postcode={NE1 7RU},postcodesep={}}
+\affiliation[2]{organization={Northumbria University, Nursing, Midwifery
+and Health},addressline={Ellison Pl},city={Newcastle upon
+Tyne},postcode={NE1 8ST},postcodesep={}}
+
+\cortext[cor1]{Corresponding author}
+
+
+
+
+        
 \begin{abstract}
 \textbf{Background:} Online personal utility functions (OPUF) present a
 new method for eliciting preferences. In this study we used the OPUF to
@@ -248,6 +245,16 @@ heterogeneity exists between adults and adolescents.
 \end{abstract}
 
 
+
+
+
+\begin{keyword}
+    preference elicitation \sep 
+    quality of life
+\end{keyword}
+\end{frontmatter}
+    
+
 \section{Introduction}\label{sec-introduction}
 
 This chapter presents the introduction, methods, results and discussion
@@ -259,15 +266,17 @@ sample of UK adults.
 methods}\label{compositional-preference-elicitation-methods}
 
 Preference elicitation methods generally speaking, fall into two
-categories: compositional and decompositional (1--3). That is, methods
-like DCE, BWS and TTO elicit preference orderings from individuals for
-an entire health state (composed of a combination of attributes and
-levels) and then responses are decomposed to identify marginal
-contributions of each attribute and level in each health state. Models
-like multinomial logit, mixed logit and latent class are frequently used
-to decompose responses to decompositional preference elicitation tasks
-(4). Coefficients estimated in these models form the basis of
-dis/utility values for each attribute and level in a descriptive system.
+categories: compositional and decompositional
+\citep{Keeney1979DecisionsTrade-Offs, Marsh2016MultipleForce, Belton2002MultipleAnalysis}.
+That is, methods like DCE, BWS and TTO elicit preference orderings from
+individuals for an entire health state (composed of a combination of
+attributes and levels) and then responses are decomposed to identify
+marginal contributions of each attribute and level in each health state.
+Models like multinomial logit, mixed logit and latent class are
+frequently used to decompose responses to decompositional preference
+elicitation tasks \citep{Hauber2016StatisticalForce}. Coefficients
+estimated in these models form the basis of dis/utility values for each
+attribute and level in a descriptive system.
 
 Conversely, compositional methods seek to identify preferences for each
 attribute weighting and level rating individually for the number of
@@ -277,26 +286,29 @@ and level are not required and responses to each attribute weighting and
 level rating are combined (in addition to an anchoring factor) to yield
 dis/utility values for each attribute and level in the descriptive
 system. Compositional approaches can take many forms from simple VAS
-scores to using semantic categories and ranking methods (5--7). These
-approaches have been used successfully in multi-criteria decision
+scores to using semantic categories and ranking methods
+\citep{BanaECosta1999TheApplication, Danner2011IntegratingPreferences, Oliveira2018ValuingStates}.
+These approaches have been used successfully in multi-criteria decision
 analysis (MCDA), but have been used less extensively in the preference
 elicitation space. Since the development of the OPUF, compositional
 approaches to elicit preferences have become more commonplace and a
 number of countries are using the OPUF to elicit value sets specific to
-their population (8).
+their population \citep{Brodszky2023PCR108States}.
 
 \subsection{From PUF to OPUF}\label{from-puf-to-opuf}
 
 Personal utility functions were first used in the context of preference
-elicitation by Devlin et al.~(2019) (9) to estimate the feasibility for
-using this approach to estimate a value set for the EQ5D-5L. Since the
-feasibility for the underlying PUF methods were established, the
-approach has been expanded by Schneider and colleagues and converted
-into an online personal utility functions (OPUF) survey built initially
-using RShiny (10) and subsequently using Javascript (available
-\href{https://eq5d5l.me}{here}). Since the development of the OPUF, a
-number of descriptive systems and different research teams have begun
-utilising this method to elicit value sets (8,11).
+elicitation by Devlin et al.~(2019) \citep{Devlin2019AFunctions} to
+estimate the feasibility for using this approach to estimate a value set
+for the EQ5D-5L. Since the feasibility for the underlying PUF methods
+were established, the approach has been expanded by Schneider and
+colleagues and converted into an online personal utility functions
+(OPUF) survey built initially using RShiny
+\citep{Schneider2022TheStates} and subsequently using Javascript
+(available \href{https://eq5d5l.me}{here}). Since the development of the
+OPUF, a number of descriptive systems and different research teams have
+begun utilising this method to elicit value sets
+\citep{Bray2024DevelopmentImpairment, Brodszky2023PCR108States}.
 
 \subsection{An overview of the OPUF
 structure}\label{an-overview-of-the-opuf-structure}
@@ -344,14 +356,15 @@ presented in Figure~\ref{fig-attribute}.
 \subsubsection{Level ratings}\label{level-ratings}
 
 This element of the OPUF has varied across different iterations of the
-survey. Schnieder et al.~(2022) (10) asked participants to rank the
-levels within the descriptive system generally (i.e.~for any given
-attribute), while other iterations have administered separate level
-rating questions for each attribute in the descriptive system (11).
-Selection of method requires a trade-off between participant burden and
-sensitivity of level ratings to each attribute. Figure~\ref{fig-level}
-presents the level rating question for the tiredness and treated
-differently attributes of the WAItE.
+survey. Schnieder et al.~(2022) \citep{Schneider2022TheStates} asked
+participants to rank the levels within the descriptive system generally
+(i.e.~for any given attribute), while other iterations have administered
+separate level rating questions for each attribute in the descriptive
+system \citep{Bray2024DevelopmentImpairment}. Selection of method
+requires a trade-off between participant burden and sensitivity of level
+ratings to each attribute. Figure~\ref{fig-level} presents the level
+rating question for the tiredness and treated differently attributes of
+the WAItE.
 
 \begin{figure}
 
@@ -433,9 +446,10 @@ This section presents the logic and underlying mathematics required to
 convert the raw OPUF responses from one person into an anchored value
 set for the WAItE descriptive system. This example assumes that level
 ratings are obtained for each attribute separately, therefore
-mathematics presented here differs to those presented elsewhere (10).
-Example response data are used for demonstration in this section and are
-presented in Table~\ref{tbl-exampledata}.
+mathematics presented here differs to those presented elsewhere
+\citep{Schneider2022TheStates}. Example response data are used for
+demonstration in this section and are presented in
+Table~\ref{tbl-exampledata}.
 
 \subsubsection{Example responses}\label{example-responses}
 
@@ -657,7 +671,8 @@ Participants who withdrew were not paid and their data deleted.
 Participation in this survey was estimated to take approximately fifteen
 minutes to complete and participants received £2.50 as a payment upon
 completion. This is in line with reimbursements rates from other OPUF
-studies (10,11) and is in line with recommended reimbursement rates from
+studies \citep{Schneider2022TheStates, Bray2024DevelopmentImpairment}
+and is in line with recommended reimbursement rates from
 \href{https://www.prolific.com}{Prolific}. The survey was designed to be
 an unassisted survey administered online (no face-to-face contact) and
 no identifiable data was collected. Statistical analysis was conducted
@@ -736,9 +751,9 @@ missing data has been mitigated by ensuring responses were compulsory to
 certain questions. However for ethical reasons, we allowed participants
 to not answer the questions relating to death. For participants who do
 not provide responses to the anchoring questions, their responses were
-imputed using multiple imputation by chained equations (MICE) (12) which
-were informed by demographic information and dimension weighting
-responses.
+imputed using multiple imputation by chained equations (MICE)
+\citep{White2011MultiplePractice} which were informed by demographic
+information and dimension weighting responses.
 
 \subsection{Preference heterogeneity}\label{preference-heterogeneity}
 
@@ -746,20 +761,21 @@ As personal utility function are estimated on an individual basis,
 exploring preference heterogeneity between individuals in the sample is
 straightforward. Investigating the heterogeneity of preferences between
 individuals, requires a measure of dis/similarity to quantify how far
-apart two PUFs are (13). The measurement and estimation of preference
-heterogeneity in this section will follow methods detailed by Schneider
-et al.~(2024) (13). Each PUF estimated in this study was represented by
-a vector of 78,125 health state utility values for each respondent in
-the sample. In order to assess the dis/similarity between these PUFs, we
-used the euclidean difference measure (EUD). Analogous to a line between
-two points on a two dimensional plane, the EUD between two PUFs denotes
-the shortest path length in a 78,125 dimensional space. It is computed
-as the square root of the sum of the squared differences between the
-PUFs of individuals \(i\) and \(j\) (presented in
-Equation~\ref{eq-EUD}). Once PUFs have been estimated for all
-individuals in the sample, pairwise EUD was estimated for all possible
-pairwise combinations within the sample. Pairwise EUD was stored in an
-{[}N \(\times\) N{]} distance matrix.
+apart two PUFs are \citep{Schneider2024ExploringLevel}. The measurement
+and estimation of preference heterogeneity in this section will follow
+methods detailed by Schneider et al.~(2024)
+\citep{Schneider2024ExploringLevel}. Each PUF estimated in this study
+was represented by a vector of 78,125 health state utility values for
+each respondent in the sample. In order to assess the dis/similarity
+between these PUFs, we used the euclidean difference measure (EUD).
+Analogous to a line between two points on a two dimensional plane, the
+EUD between two PUFs denotes the shortest path length in a 78,125
+dimensional space. It is computed as the square root of the sum of the
+squared differences between the PUFs of individuals \(i\) and \(j\)
+(presented in Equation~\ref{eq-EUD}). Once PUFs have been estimated for
+all individuals in the sample, pairwise EUD was estimated for all
+possible pairwise combinations within the sample. Pairwise EUD was
+stored in an {[}N \(\times\) N{]} distance matrix.
 
 \begin{equation}\phantomsection\label{eq-EUD}{ 
   \begin{aligned}
@@ -774,14 +790,17 @@ variance}\label{permutational-analysis-of-variance}
 Permutational analysis of variance (PERMANOVA), analogous to analysis of
 variance, is a geometric partitioning of variation across a multivariate
 data cloud, definied in the space of any given dissimilarity measure, in
-response to one or more groups (14,15). This method of statistical
-testing has been used most commonly in ecological research to test for
-population dispersion among different subgroups (16). PERMANOVA
-decomposes the total distances between observations (SS\(_T\)) into
-within-groups (SS\(_W\)) and between groups sum-of-squares (SS\(_B\)).
+response to one or more groups
+\citep{Anderson2017, Anderson2013PERMANOVATesting}. This method of
+statistical testing has been used most commonly in ecological research
+to test for population dispersion among different subgroups
+\citep{Souza2013PopulationEstuary}. PERMANOVA decomposes the total
+distances between observations (SS\(_T\)) into within-groups (SS\(_W\))
+and between groups sum-of-squares (SS\(_B\)).
 Equation~\ref{eq-sumsquares} details the estimation of total and
 within-groups sum-of-squares. Mathematical notation presented here is
-reproduced from Schneider et al.~(2024) (13) for consistency.
+reproduced from Schneider et al.~(2024)
+\citep{Schneider2024ExploringLevel} for consistency.
 
 \begin{equation}\phantomsection\label{eq-sumsquares}{ 
     SS_{T} = \frac{1}{N}\sum_{i=1}^{N-1}\sum_{j=i+1}^{N}d(i,j)^{2}; \quad SS_{W} = \sum_{i=1}^{N-1}\sum_{j=i+1}^{N}d(i,j)^{2}\epsilon_{ij}^{\ell}/n_{\ell}
@@ -800,11 +819,13 @@ F= \frac{(\frac{SS_B}{p-1})}{(\frac{SS_W}{N-p})}
 }\end{equation}
 
 Further details about the mathematical and statistical properties of
-PERMANOVA are available elsewhere (13--15). In this study, we used
-PERMANOVA to explore the variability in WAItE health state preferences
-(individual value sets) between various subgroups. A multivariate
-PERMANOVA model was estimated with subgroups of: age, gender,
-self-reported weight status, education, employment status and ethncity.
+PERMANOVA are available elsewhere
+\citep{Schneider2024ExploringLevel, Anderson2017, Anderson2013PERMANOVATesting}.
+In this study, we used PERMANOVA to explore the variability in WAItE
+health state preferences (individual value sets) between various
+subgroups. A multivariate PERMANOVA model was estimated with subgroups
+of: age, gender, self-reported weight status, education, employment
+status and ethncity.
 
 \subsection{Sensitivity analysis}\label{sensitivity-analysis}
 
@@ -898,7 +919,7 @@ Responses to the WAItE descriptive system are presented in
 Table~\ref{tbl-demographic}. Feeling tired and avoiding doing sport were
 the attributes that were most frequently experienced by participants in
 our analysis sample. WAItE summary statistics were in line with results
-from previous studies (17).
+from previous studies \citep{Robinson2019EstimatingEvaluation}.
 
 \begin{longtable}[]{@{}ll@{}}
 
@@ -1095,7 +1116,7 @@ PITS Utility Value & 0.282 (1.456) & 0.5 (0.2; 0.8) & -14.3 & 1 \\
 
 \centering{
 
-\includegraphics{quarto_files/figure-latex/fig-rai-1.pdf}
+\includegraphics{quarto_files/figure-pdf/fig-rai-1.pdf}
 
 }
 
@@ -1109,17 +1130,18 @@ The majority of respondents in the sample preferred the WAItE PITS state
 to being dead (87\%). Therefore, 13\% of participants answered the
 dead-VAS and 87\% answered the PITS-VAS. A proportion of participants
 did not answer the anchoring task (1.67\%). After winsorizing extreme
-values (top and bottom 0.1\%) (18) and conducting multiple imputation by
-chained equations on the missing values, the mean (SD) and median (IQR)
-PITS utility value was 0.282 (1.456) and 0.5 (0.6). The distribution of
-WAItE PITS utility values (after winsorizing and imputation) is
-presented in Figure~\ref{fig-hist}.
+values (top and bottom 0.1\%) \citep{2003ApplyingTechniques} and
+conducting multiple imputation by chained equations on the missing
+values, the mean (SD) and median (IQR) PITS utility value was 0.282
+(1.456) and 0.5 (0.6). The distribution of WAItE PITS utility values
+(after winsorizing and imputation) is presented in
+Figure~\ref{fig-hist}.
 
 \begin{figure}
 
 \centering{
 
-\includegraphics{quarto_files/figure-latex/fig-hist-1.pdf}
+\includegraphics{quarto_files/figure-pdf/fig-hist-1.pdf}
 
 }
 
@@ -1224,7 +1246,7 @@ PITS utility value.
 
 \centering{
 
-\includegraphics{quarto_files/figure-latex/fig-sufplain-1.pdf}
+\includegraphics{quarto_files/figure-pdf/fig-sufplain-1.pdf}
 
 }
 
@@ -1248,7 +1270,7 @@ heterogeneous preferences become among our sample.
 
 \centering{
 
-\includegraphics{quarto_files/figure-latex/fig-eud-1.pdf}
+\includegraphics{quarto_files/figure-pdf/fig-eud-1.pdf}
 
 }
 
@@ -1308,7 +1330,7 @@ Total & 299 & 11576403.042 & 1.000 & & \\
 
 \centering{
 
-\includegraphics{quarto_files/figure-latex/fig-age-1.pdf}
+\includegraphics{quarto_files/figure-pdf/fig-age-1.pdf}
 
 }
 
@@ -1391,9 +1413,9 @@ Ethnicity & 0.006 & 0.005 & 1.268 & 0.206 \\
 This study is the first time that the OPUF has been used to estimate
 health state utility values for the WAItE. We obtained a representative
 sample of high quality data from Prolific, a survey company known for
-their high quality respondents (19). Our average attribute weightings
-and implied ordering were similar to those exhibited in Robinson et
-al.~(2024) (20).
+their high quality respondents \citep{Peer2022DataResearch}. Our average
+attribute weightings and implied ordering were similar to those
+exhibited in Robinson et al.~(2024) \citep{Robinson2024AUKValue}.
 
 Anchoring of the WAItE PITS state was a difficult procedure that
 required a number of methodological decisions. We decided to use
@@ -1413,43 +1435,45 @@ would have expected ex-ante (based on qualitative piloting work).
 Tiredness and Unhappiness were considered the most important attributes
 while Embarrassment and Sports the least. This finding concurs with
 qualitative work conducted prior and also is in accordance with previous
-valuation work done with the WAItE (20). Prior valuation work, which
-used a DCE to elicit preferences, yielded latent coefficients which
-violated the rational choice axiom of monotonicity. In the OPUF,
-monotonicity is somewhat forced through the choice architecture of the
-level rating and through the additional prompt to reconsider responses
-that are not monotonic. Forced monotonicity, in this context, could be
-problematic for eliciting unbiased preferences if preferences for
-certain health states are truly not monotonic. For example, prior
-qualitative work has suggested that ``I almost never get tired'' might
-be preferable to ``I never get tired'' in some circumstances where
-respondents are thinking about experiencing insomnia and sleep quality.
-This being said, the WAItE descriptive system was designed to be a
-monotonic descriptive system, validated using Rasch analysis, and so
-having a monotonic utility value set makes logical sense.
+valuation work done with the WAItE \citep{Robinson2024AUKValue}. Prior
+valuation work, which used a DCE to elicit preferences, yielded latent
+coefficients which violated the rational choice axiom of monotonicity.
+In the OPUF, monotonicity is somewhat forced through the choice
+architecture of the level rating and through the additional prompt to
+reconsider responses that are not monotonic. Forced monotonicity, in
+this context, could be problematic for eliciting unbiased preferences if
+preferences for certain health states are truly not monotonic. For
+example, prior qualitative work has suggested that ``I almost never get
+tired'' might be preferable to ``I never get tired'' in some
+circumstances where respondents are thinking about experiencing insomnia
+and sleep quality. This being said, the WAItE descriptive system was
+designed to be a monotonic descriptive system, validated using Rasch
+analysis, and so having a monotonic utility value set makes logical
+sense.
 
 Preferences elicited through this study were considerably heterogeneous.
 This can be understood through the mean EUD value (47.6) but also
 illustrated in Figure~\ref{fig-sufplain} through the deviations of
 individual PUFs from the social utility function. Following on from
-prior work (13), we estimated EUD by calculating a distance matrix
-between each pairwise comparison of individual value sets for all 78125
-WAItE health states. The implication of estimating distance (preference
-heterogeneity) by using individual value sets allows for much of the
-preference heterogeneity that exists to be composed of differences in
-individual anchoring values (PITS state responses) rather than
-differences in level ratings and attribute weightings. This
-methodological decision, ultimately, results in the majority of EUD
-being composed of differences in anchoring values and this finding is
-important to acknowledge. Anchoring differences are important to present
-and explore, though in this preference heterogeneity analysis could be
-drowning out the heterogeneity in level ratings and attribute weighting.
-An example of this can be shown through the age preference heterogeneity
-in Figure~\ref{fig-age} and Table~\ref{tbl-glmpits}. Preference
-heterogeneity is evident between individuals above and below age 35 and
-if we consider the mean PITS values for those two subgroups (age \(<\)
-35 = -0.281; age \(>\) 34 = 0.487) we can see that a clear difference in
-anchoring responses is evident.
+prior work \citep{Schneider2024ExploringLevel}, we estimated EUD by
+calculating a distance matrix between each pairwise comparison of
+individual value sets for all 78125 WAItE health states. The implication
+of estimating distance (preference heterogeneity) by using individual
+value sets allows for much of the preference heterogeneity that exists
+to be composed of differences in individual anchoring values (PITS state
+responses) rather than differences in level ratings and attribute
+weightings. This methodological decision, ultimately, results in the
+majority of EUD being composed of differences in anchoring values and
+this finding is important to acknowledge. Anchoring differences are
+important to present and explore, though in this preference
+heterogeneity analysis could be drowning out the heterogeneity in level
+ratings and attribute weighting. An example of this can be shown through
+the age preference heterogeneity in Figure~\ref{fig-age} and
+Table~\ref{tbl-glmpits}. Preference heterogeneity is evident between
+individuals above and below age 35 and if we consider the mean PITS
+values for those two subgroups (age \(<\) 35 = -0.281; age \(>\) 34 =
+0.487) we can see that a clear difference in anchoring responses is
+evident.
 
 A methodological exploration was conducted as a sensitivity analysis to
 limit the influence that anchoring variation has on the overall
@@ -1467,7 +1491,7 @@ were overweight is illustrated in Figure~\ref{fig-weight}.
 
 \centering{
 
-\includegraphics{quarto_files/figure-latex/fig-weight-1.pdf}
+\includegraphics{quarto_files/figure-pdf/fig-weight-1.pdf}
 
 }
 
@@ -1646,155 +1670,8 @@ represents the EUD2 between individual 3 and 7. The mean of the distance
 matrix provides the overall measure of disimilarity/heterogeneity within
 the analysis sample.
 
-\phantomsection\label{refs}
-\begin{CSLReferences}{0}{1}
-\bibitem[\citeproctext]{ref-Keeney1979DecisionsTrade-Offs}
-\CSLLeftMargin{1. }%
-\CSLRightInline{Keeney RL, Raiffa H.
-\href{https://doi.org/10.1109/TSMC.1979.4310245}{{Decisions with
-Multiple Objectives: Preferences and Value Trade-Offs}}. Vol. 9. 1979. }
 
-\bibitem[\citeproctext]{ref-Marsh2016MultipleForce}
-\CSLLeftMargin{2. }%
-\CSLRightInline{Marsh K, Ijzerman M, Thokala P, Baltussen R, Boysen M,
-Kaló Z, et al.
-\href{https://doi.org/10.1016/j.jval.2015.12.016}{{Multiple Criteria
-Decision Analysis for Health Care Decision Making - Emerging Good
-Practices: Report 2 of the ISPOR MCDA Emerging Good Practices Task
-Force}}. Value in Health. 2016;19(2). }
-
-\bibitem[\citeproctext]{ref-Belton2002MultipleAnalysis}
-\CSLLeftMargin{3. }%
-\CSLRightInline{Belton V, Stewart TJ.
-\href{https://doi.org/10.1007/978-1-4615-1495-4}{{Multiple Criteria
-Decision Analysis}}. Springer US; 2002. }
-
-\bibitem[\citeproctext]{ref-Hauber2016StatisticalForce}
-\CSLLeftMargin{4. }%
-\CSLRightInline{Hauber AB, González JM, Groothuis-Oudshoorn CGM, Prior
-T, Marshall DA, Cunningham C, et al.
-\href{https://doi.org/10.1016/j.jval.2016.04.004}{{Statistical Methods
-for the Analysis of Discrete Choice Experiments: A Report of the ISPOR
-Conjoint Analysis Good Research Practices Task Force}}. Value in Health.
-2016;19(4). }
-
-\bibitem[\citeproctext]{ref-BanaECosta1999TheApplication}
-\CSLLeftMargin{5. }%
-\CSLRightInline{Bana E Costa CA, Vansnick JC.
-\href{https://doi.org/10.1007/978-94-017-0647-6\%7B/_\%7D9}{{The MACBETH
-Approach: Basic Ideas, Software, and an Application}}. In 1999. }
-
-\bibitem[\citeproctext]{ref-Danner2011IntegratingPreferences}
-\CSLLeftMargin{6. }%
-\CSLRightInline{Danner M, Hummel JM, Volz F, Van Manen JG, Wiegard B,
-Dintsios CM, et al.
-\href{https://doi.org/10.1017/S0266462311000523}{{Integrating patients'
-views into health technology assessment: Analytic hierarchy process
-(AHP) as a method to elicit patient preferences}}. International Journal
-of Technology Assessment in Health Care. 2011;27(4). }
-
-\bibitem[\citeproctext]{ref-Oliveira2018ValuingStates}
-\CSLLeftMargin{7. }%
-\CSLRightInline{Oliveira MD, Agostinho A, Ferreira L, Nicola P, Bana E
-Costa C. \href{https://doi.org/10.1186/s12955-018-1056-y}{{Valuing
-health states: Is the MACBETH approach useful for valuing EQ-5D-3L
-health states?}} Health and Quality of Life Outcomes. 2018;16(1). }
-
-\bibitem[\citeproctext]{ref-Brodszky2023PCR108States}
-\CSLLeftMargin{8. }%
-\CSLRightInline{Brodszky V, Plankó S, Schneider P, Devlin N.
-\href{https://doi.org/10.1016/j.jval.2023.09.2547}{{PCR108 Pilot Testing
-the Hungarian Version of Online Elicitation of Personal Utility
-Functions Tool for Valuing EQ-5D-5L Health States}}. Value in Health.
-2023 Dec;26(12):S469. }
-
-\bibitem[\citeproctext]{ref-Devlin2019AFunctions}
-\CSLLeftMargin{9. }%
-\CSLRightInline{Devlin NJ, Shah KK, Mulhern BJ, Pantiri K, Hout B van.
-\href{https://doi.org/10.1007/s10198-018-0993-z}{{A new method for
-valuing health: directly eliciting personal utility functions}}.
-European Journal of Health Economics. 2019;20(2). }
-
-\bibitem[\citeproctext]{ref-Schneider2022TheStates}
-\CSLLeftMargin{10. }%
-\CSLRightInline{Schneider PP, Hout B van, Heisen M, Brazier J, Devlin N.
-\href{https://doi.org/10.12688/wellcomeopenres.17518.1}{{The Online
-Elicitation of Personal Utility Functions (OPUF) tool: a new method for
-valuing health states}}. Wellcome Open Res. 2022;7:14. }
-
-\bibitem[\citeproctext]{ref-Bray2024DevelopmentImpairment}
-\CSLLeftMargin{11. }%
-\CSLRightInline{Bray N, Tudor Edwards R, Schneider P. {Development of a
-value-based scoring system for the MobQoL-7D: a novel tool for measuring
-quality-adjusted life years in the context of mobility impairment}.
-Disability and Rehabilitation {[}Internet{]}. 2024;1--10. Available
-from: \url{https://doi.org/10.1080/09638288.2023.2297929}}
-
-\bibitem[\citeproctext]{ref-White2011MultiplePractice}
-\CSLLeftMargin{12. }%
-\CSLRightInline{White IR, Royston P, Wood AM.
-\href{https://doi.org/10.1002/sim.4067}{{Multiple imputation using
-chained equations: Issues and guidance for practice}}. Statistics in
-Medicine. 2011;30(4). }
-
-\bibitem[\citeproctext]{ref-Schneider2024ExploringLevel}
-\CSLLeftMargin{13. }%
-\CSLRightInline{Schneider P, Devlin N, Hout B van, Brazier J.
-\href{https://doi.org/10.1002/hec.4805}{{Exploring health preference
-heterogeneity in the UK: Using the online elicitation of personal
-utility functions approach to construct EQ-5D-5L value functions on
-societal, group and individual level}}. Health Economics (United
-Kingdom). 2024;33(5). }
-
-\bibitem[\citeproctext]{ref-Anderson2017}
-\CSLLeftMargin{14. }%
-\CSLRightInline{Anderson
-MJ.\href{https://doi.org/10.1002/9781118445112.stat07841}{{Permutational
-Multivariate Analysis of Variance ( PERMANOVA ) }}. In: Wiley StatsRef:
-Statistics reference online. 2017. }
-
-\bibitem[\citeproctext]{ref-Anderson2013PERMANOVATesting}
-\CSLLeftMargin{15. }%
-\CSLRightInline{Anderson MJ, Walsh DCI.
-\href{https://doi.org/10.1890/12-2010.1}{{PERMANOVA, ANOSIM, and the
-Mantel test in the face of heterogeneous dispersions: What null
-hypothesis are you testing?}} Ecological Monographs. 2013;83(4). }
-
-\bibitem[\citeproctext]{ref-Souza2013PopulationEstuary}
-\CSLLeftMargin{16. }%
-\CSLRightInline{Souza AT, Dias E, Nogueira A, Campos J, Marques JC,
-Martins I.
-\href{https://doi.org/10.1016/j.seares.2013.01.005}{{Population ecology
-and habitat preferences of juvenile flounder Platichthys flesus
-(Actinopterygii: Pleuronectidae) in a temperate estuary}}. Journal of
-Sea Research. 2013;79. }
-
-\bibitem[\citeproctext]{ref-Robinson2019EstimatingEvaluation}
-\CSLLeftMargin{17. }%
-\CSLRightInline{Robinson T, Oluboyede Y.
-\href{https://doi.org/10.1016/j.jval.2018.09.2839}{{Estimating CHU-9D
-Utility Scores from the WAItE: A Mapping Algorithm for Economic
-Evaluation}}. Value in Health. 2019;22(2). }
-
-\bibitem[\citeproctext]{ref-2003ApplyingTechniques}
-\CSLLeftMargin{18. }%
-\CSLRightInline{\href{https://doi.org/10.1016/b978-0-12-751541-0.x5021-4}{{Applying
-Contemporary Statistical Techniques}}. 2003. }
-
-\bibitem[\citeproctext]{ref-Peer2022DataResearch}
-\CSLLeftMargin{19. }%
-\CSLRightInline{Peer E, Rothschild D, Gordon A, Evernden Z, Damer E.
-\href{https://doi.org/10.3758/s13428-021-01694-3}{{Data quality of
-platforms and panels for online behavioral research}}. Behavior Research
-Methods. 2022;54(4). }
-
-\bibitem[\citeproctext]{ref-Robinson2024AUKValue}
-\CSLLeftMargin{20. }%
-\CSLRightInline{Robinson T, Oluboyede Y. A UK value set for the WAItE.
-2024. }
-
-\end{CSLReferences}
-
+  \bibliography{bibliography.bib}
 
 
 
