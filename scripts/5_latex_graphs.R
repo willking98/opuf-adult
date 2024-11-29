@@ -104,8 +104,8 @@ scale_x_continuous(
   theme(legend.position = "bottom", axis.text.x = element_text(angle = 22.5)) +
   # Adjust the axis labels' position
   theme(
-    axis.title.x = element_text(size = 14, margin = margin(t = 10, r = 0, b = 0, l = 0)),
-    axis.title.y = element_text(size = 14, margin = margin(t = 0, r = 10, b = 0, l = 0))
+    axis.title.x = element_text(size = 10, margin = margin(t = 10, r = 0, b = 0, l = 0)),
+    axis.title.y = element_text(size = 10, margin = margin(t = 0, r = 10, b = 0, l = 0))
   ) 
 
 # ggsave("plain_plot.png", plot = plain, width = 12, height = 8)
@@ -166,8 +166,8 @@ scale_x_continuous(
   theme(legend.position = "bottom", axis.text.x = element_text(angle = 0)) +
   # Adjust the axis labels' position
   theme(
-    axis.title.x = element_text(size = 14, margin = margin(t = 10, r = 0, b = 0, l = 0)),
-    axis.title.y = element_text(size = 14, margin = margin(t = 0, r = 10, b = 0, l = 0))
+    axis.title.x = element_text(size = 10, margin = margin(t = 10, r = 0, b = 0, l = 0)),
+    axis.title.y = element_text(size = 10, margin = margin(t = 0, r = 10, b = 0, l = 0))
   ) 
 library(viridis)
 
@@ -275,8 +275,8 @@ scale_x_continuous(
   theme(legend.position = "bottom", axis.text.x = element_text(angle = 22.5)) +
   # Adjust the axis labels' position
   theme(
-    axis.title.x = element_text(size = 14, margin = margin(t = 10, r = 0, b = 0, l = 0)),
-    axis.title.y = element_text(size = 14, margin = margin(t = 0, r = 10, b = 0, l = 0))
+    axis.title.x = element_text(size = 10, margin = margin(t = 10, r = 0, b = 0, l = 0)),
+    axis.title.y = element_text(size = 10, margin = margin(t = 0, r = 10, b = 0, l = 0))
   ) +
 
 scale_color_viridis_c(
@@ -338,8 +338,8 @@ scale_x_continuous(
   
   # Adjust the axis labels' position
   theme(
-    axis.title.x = element_text(size = 14, margin = margin(t = 10, r = 0, b = 0, l = 0)),
-    axis.title.y = element_text(size = 14, margin = margin(t = 0, r = 10, b = 0, l = 0))
+    axis.title.x = element_text(size = 10, margin = margin(t = 10, r = 0, b = 0, l = 0)),
+    axis.title.y = element_text(size = 10, margin = margin(t = 0, r = 10, b = 0, l = 0))
   ) +
 
   # Use viridis colors for the legend
@@ -353,9 +353,7 @@ scale_x_continuous(
   # Adjust theme to show the legend
   theme(
     legend.position = "bottom", 
-    legend.title = element_blank(),
-    axis.text.x = element_text(angle = 22.5),
-    legend.text = element_text(size = 12)
+    axis.text.x = element_text(angle = 22.5)
   )
 
   # ggsave("weight_plot.png", plot = weight_plot, width = 12, height = 8)
@@ -411,8 +409,8 @@ scale_x_continuous(
   
   # Adjust the axis labels' position
   theme(
-    axis.title.x = element_text(size = 14, margin = margin(t = 10, r = 0, b = 0, l = 0)),
-    axis.title.y = element_text(size = 14, margin = margin(t = 0, r = 10, b = 0, l = 0))
+    axis.title.x = element_text(size = 10, margin = margin(t = 10, r = 0, b = 0, l = 0)),
+    axis.title.y = element_text(size = 10, margin = margin(t = 0, r = 10, b = 0, l = 0))
   ) +
 
   # Use viridis colors for the legend
@@ -427,9 +425,7 @@ scale_x_continuous(
   # Adjust theme to show the legend
   theme(
     legend.position = "bottom", 
-    legend.title = element_text(size = 12),
-    axis.text.x = element_text(angle = 22.5),
-    legend.text = element_text(size = 12)
+    axis.text.x = element_text(angle = 22.5)
   )
 
   # ggsave("age_plot.png", plot = age_plot, width = 12, height = 8)
@@ -448,14 +444,13 @@ hist <- ggplot(hist, aes(x = PITS, fill = PITS < -0.05)) +
        y = "Frequency") +
   theme_minimal() +
   theme(
-    plot.title = element_text(hjust = 0.2, face = "bold", size = 14),
-    axis.title.x = element_text(size = 14),
-    axis.title.y = element_text(size = 14),
-    legend.text = element_text(size = 12)
+    axis.title.x = element_text(size = 10),
+    axis.title.y = element_text(size = 10),
+    legend.text = element_text(size = 10)
   ) +
   theme(
-    axis.title.x = element_text(size = 14, margin = margin(t = 10, r = 0, b = 0, l = 0)),
-    axis.title.y = element_text(size = 14, margin = margin(t = 0, r = 10, b = 0, l = 0)),
+    axis.title.x = element_text(size = 10, margin = margin(t = 10, r = 0, b = 0, l = 0)),
+    axis.title.y = element_text(size = 10, margin = margin(t = 0, r = 10, b = 0, l = 0)),
     
   )
 
