@@ -176,7 +176,7 @@
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={Development of a value-based scoring system for the WAItE using the OPUF in a sample of adults},
-  pdfauthor={Will King*; Tomos Robinson; Angela Bate; Laura Ternent},
+  pdfauthor={William King*; Tomos Robinson; Angela Bate; Laura Ternent},
   pdfkeywords={Health state valuation, preference elicitation, quality
 of life},
   colorlinks=true,
@@ -193,7 +193,7 @@ of life},
 \begin{frontmatter}
 \title{Development of a value-based scoring system for the WAItE using
 the OPUF in a sample of adults}
-\author[1]{Will King*%
+\author[1]{William King*%
 %
 }
  \ead{w.king2@newcastle.ac.uk} 
@@ -280,8 +280,10 @@ supported by the NIHR-ARC and Newcastle University.
 Valorem Health for collaborating on this project.
 
 \emph{Code availability:} An interactive document (HTML) which includes
-the live survey is available \href{}{here}. Source code for this study
-is available \href{}{here}.
+the live survey is available
+\href{https://willking98.github.io/opuf-adult/}{here}. Source code for
+the analysis and this Quarto generated PDF are available
+\href{https://github.com/willking98/opuf-adult}{here}.
 
 \section{Introduction}\label{sec-introduction}
 
@@ -321,14 +323,14 @@ value sets specific to their population
 
 \subsection{From PUF to OPUF}\label{from-puf-to-opuf}
 
-Personal utility functions were first used in the context of preference
-elicitation by Devlin et al.~(2019) \citep{Devlin2019AFunctions} to
-estimate the feasibility for using this approach to estimate a value set
-for the EQ-5D-5L. Since the feasibility for the underlying PUF methods
-were established, the approach has been expanded by Schneider and
-colleagues \citep{Schneider2022TheStates} and converted into an online
-personal utility functions (OPUF) survey built initially using RShiny
-and subsequently using Javascript (available
+Personal utility functions (PUF) were first used in the context of
+preference elicitation by Devlin et al.~(2019)
+\citep{Devlin2019AFunctions} to estimate the feasibility for using this
+approach to estimate a value set for the EQ-5D-5L. Since the feasibility
+for the underlying PUF methods were established, the approach has been
+expanded by Schneider and colleagues \citep{Schneider2022TheStates} and
+converted into an online personal utility functions (OPUF) survey built
+initially using RShiny and subsequently using Javascript (available
 \href{https://eq5d5l.me}{here}). Since the development of the OPUF, a
 number of descriptive systems and different research teams have begun
 using this method to elicit value sets
@@ -612,7 +614,7 @@ Once the attribute and level labels are reintroduced to the anchored
 coefficient matrix this forms the value set which presents the
 disutility corresponding to each attribute level combination presented
 in the WAItE. Table~\ref{tbl-example-valueset} presents the WAItE
-example PUF value set. Equation~\ref{eq-HS123} present examples of how
+example PUF value set. Equation~\ref{eq-HS123} provides examples of how
 to estimate a utility value given a specific WAItE health state.
 
 \begin{longtable}[]{@{}
@@ -689,10 +691,8 @@ hosted online. Study participants were recruited based on specific
 quotas (age, ethnicity and gender) to form a representative sample based
 on UK census data. The survey was hosted on the
 \href{https://www.prolific.com}{Prolific} platform which invited paid
-respondents to complete the Weight-specific Adolescent Instrument for
-Economic evaluation (WAItE) version of the Online Personal Utility
-Functions (OPUF) survey. A demonstration of the OPUF survey and
-questions is available
+respondents to complete the WAItE version of the OPUF survey. A
+demonstration of the OPUF survey and questions is available
 \href{https://survey.valorem.health/waite_opuf_adult2}{here}. Informed
 consent was obtained at the outset of the survey and participants
 reserved the right to withdraw at any point without giving a reason.
@@ -775,8 +775,8 @@ detailed in Section~\ref{sec-surveystructure}.
 
 \subsection{Missing data}\label{missing-data}
 
-Through the survey design process the potential for large amounts of
-missing data has been mitigated by ensuring responses were compulsory to
+Through the survey design process, the potential for large amounts of
+missing data was mitigated by ensuring responses were compulsory to
 certain questions. However for ethical reasons, we allowed participants
 to not answer the questions relating to death. For participants who do
 not provide responses to the anchoring questions, their responses were
@@ -786,25 +786,24 @@ information and attribute weighting responses.
 
 \subsection{Preference heterogeneity}\label{preference-heterogeneity}
 
-As personal utility function are estimated on an individual basis,
-exploring preference heterogeneity between individuals in the sample is
-straightforward. Investigating the heterogeneity of preferences between
-individuals, requires a measure of dis/similarity to quantify how far
-apart two PUFs are \citep{Schneider2024ExploringLevel}. The measurement
-and estimation of preference heterogeneity in this section will follow
-methods detailed by Schneider et al.~(2024)
-\citep{Schneider2024ExploringLevel}. Each PUF estimated in this study
-was represented by a vector of 78,125 health state utility values for
-each respondent in the sample. In order to assess the dis/similarity
-between these PUFs, we used the euclidean difference measure (EUD).
-Analogous to a line between two points on a two dimensional plane, the
-EUD between two PUFs denotes the shortest path length in a 78,125
-dimensional space. It is computed as the square root of the sum of the
-squared differences between the PUFs of individuals \(i\) and \(j\)
-(presented in Equation~\ref{eq-EUD}). Once PUFs have been estimated for
-all individuals in the sample, pairwise EUD was estimated for all
-possible pairwise combinations within the sample. Pairwise EUD was
-stored in an {[}N \(\times\) N{]} distance matrix.
+As PUFs are estimated on an individual basis, exploring preference
+heterogeneity between individuals in the sample is straightforward.
+Investigating the heterogeneity of preferences between individuals,
+requires a measure of dis/similarity to quantify how far apart two PUFs
+are \citep{Schneider2024ExploringLevel}. The measurement and estimation
+of preference heterogeneity in this section will follow methods detailed
+by Schneider et al.~(2024) \citep{Schneider2024ExploringLevel}. Each PUF
+estimated in this study was represented by a vector of 78,125 health
+state utility values for each respondent in the sample. In order to
+assess the dis/similarity between these PUFs, we used the euclidean
+difference measure (EUD). Analogous to a line between two points on a
+two dimensional plane, the EUD between two PUFs denotes the shortest
+path length in a 78,125 dimensional space. It is computed as the square
+root of the sum of the squared differences between the PUFs of
+individuals \(i\) and \(j\) (presented in Equation~\ref{eq-EUD}). Once
+PUFs have been estimated for all individuals in the sample, pairwise EUD
+was estimated for all possible pairwise combinations within the sample.
+Pairwise EUD was stored in an {[}N \(\times\) N{]} distance matrix.
 
 \begin{equation}\phantomsection\label{eq-EUD}{ 
   \begin{aligned}
@@ -865,7 +864,8 @@ referred to as EUD2). This differed to prior preference heterogeneity
 estimation as individual variation in PITS utility values were not
 included in the EUD2 estimation. EUD2 was entirely composed by
 differences in level ratings and attribute weights. Further details on
-the derivation of EUD2 are presented in the online version Appendix.
+the derivation of EUD2 are presented in the online
+\href{https://willking98.github.io/opuf-adult/}{Appendix}.
 
 An additional analysis of preference heterogeneity in anchoring values
 was conducted using a generalised linear model. A multivariate Gamma GLM
@@ -905,10 +905,10 @@ much time was spent completing each individual section of the survey.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2941}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2059}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.3088}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.0882}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1029}}@{}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2059}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.3088}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.0882}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1029}}@{}}
 
 \caption{\label{tbl-time}Survey completion times (secs)}
 
@@ -917,13 +917,13 @@ much time was spent completing each individual section of the survey.
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Section
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 Mean (SD)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 Median (Q1; Q3)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 Min
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 Max
 \end{minipage} \\
 \midrule\noalign{}
@@ -1041,10 +1041,10 @@ Total & 17.8 (4.8)\\
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.3671}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1519}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2278}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1266}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1266}}@{}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1519}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2278}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1266}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1266}}@{}}
 
 \caption{\label{tbl-level}Summary of OPUF level ratings by attribute}
 
@@ -1053,13 +1053,13 @@ Total & 17.8 (4.8)\\
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Section
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 Mean (SD)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 Median (Q1; Q3)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 Min
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 Max
 \end{minipage} \\
 \midrule\noalign{}
@@ -1112,10 +1112,10 @@ relative attribute importance (RAI) among WAItE attributes.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.3000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1875}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2625}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1250}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1250}}@{}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1875}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1250}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1250}}@{}}
 
 \caption{\label{tbl-attribute}Summary of OPUF attribute weights and
 anchoring responses}
@@ -1125,13 +1125,13 @@ anchoring responses}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Section
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 Mean (SD)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 Median (Q1; Q3)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 Min
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 Max
 \end{minipage} \\
 \midrule\noalign{}
@@ -1219,10 +1219,10 @@ PITS utility value.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.3187}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2308}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2308}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1099}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1099}}@{}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2308}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2308}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1099}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1099}}@{}}
 
 \caption{\label{tbl-suf}Social utility function based on 300 PUFs}
 
@@ -1231,13 +1231,13 @@ PITS utility value.
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Attribute Level
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 Mean (95\% CI)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 Median (Q1; Q3)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 Min
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 Max
 \end{minipage} \\
 \midrule\noalign{}
@@ -1577,7 +1577,7 @@ anchoring task mean (0.289) was notably similar to the OPUF VAS
 anchoring task mean (0.282) again supporting the use of VAS for
 elicitation of PITS utility values.
 
-\begin{longtable}[]{@{}llll@{}}
+\begin{longtable}[]{@{}lrrr@{}}
 
 \caption{\label{tbl-WAItEvalsets}Comparison of WAItE utility value sets}
 

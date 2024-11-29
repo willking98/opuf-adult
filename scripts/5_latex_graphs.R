@@ -344,6 +344,7 @@ scale_x_continuous(
 
   # Use viridis colors for the legend
   scale_color_viridis_d(
+    name = "Weight status: ",
     option = "C", # Choose a viridis color palette option ("A", "B", "C", "D", "E")
     labels = c("Normal" = "Normal Weight (n=154)", "Overweight" = "Overweight (n=104)")
   ) +
