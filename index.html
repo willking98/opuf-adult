@@ -11,7 +11,7 @@
 <meta name="author" content="Angela Bate">
 <meta name="author" content="Laura Ternent">
 <meta name="dcterms.date" content="2024-11-29">
-<meta name="keywords" content="preference elicitation, quality of life">
+<meta name="keywords" content="Health state valuation, preference elicitation, quality of life">
 
 <title>Development of a value-based scoring system for the WAItE using the OPUF in a sample of adults</title>
 <style>
@@ -136,7 +136,11 @@ window.Quarto = {
   <li><a href="#social-utility-function-estimation" id="toc-social-utility-function-estimation" class="nav-link" data-scroll-target="#social-utility-function-estimation">Social utility function estimation</a></li>
   <li><a href="#preference-heterogeneity-1" id="toc-preference-heterogeneity-1" class="nav-link" data-scroll-target="#preference-heterogeneity-1">Preference heterogeneity</a></li>
   <li><a href="#permanova" id="toc-permanova" class="nav-link" data-scroll-target="#permanova">PERMANOVA</a></li>
-  <li><a href="#sensitivity-analysis-1" id="toc-sensitivity-analysis-1" class="nav-link" data-scroll-target="#sensitivity-analysis-1">Sensitivity analysis</a></li>
+  <li><a href="#sensitivity-analysis-1" id="toc-sensitivity-analysis-1" class="nav-link" data-scroll-target="#sensitivity-analysis-1">Sensitivity analysis</a>
+  <ul class="collapse">
+  <li><a href="#attribute-weighting-and-level-rating-preference-heterogeneity" id="toc-attribute-weighting-and-level-rating-preference-heterogeneity" class="nav-link" data-scroll-target="#attribute-weighting-and-level-rating-preference-heterogeneity">Attribute weighting and level rating preference heterogeneity</a></li>
+  <li><a href="#anchoring-preference-heterogeneity" id="toc-anchoring-preference-heterogeneity" class="nav-link" data-scroll-target="#anchoring-preference-heterogeneity">Anchoring preference heterogeneity</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a>
   <ul class="collapse">
@@ -208,7 +212,7 @@ window.Quarto = {
   <div class="abstract">
     <div class="block-title">Abstract</div>
     <p><strong>Background:</strong> Online personal utility functions (OPUF) present a new method for eliciting preferences. In this study we used the OPUF to elicit a health state utility value set for the Weight-specific Adolescent Instrument for Economic-evaluation (WAItE) with a representative sample of the UK adult population.</p>
-    <p><strong>Methods:</strong> WAItE OPUF survey design was informed by prior qualitative work. The survey consisted of the WAItE descriptive system, domain weighting, level rating (per attribute) and a VAS anchoring task. Personal utility functions were estimated on the individual level for all participants. Personal utility functions were aggregated and combined with the anchoring factor to give the social utility function and utility value set. Preference heterogeneity was assessed using Euclidean distance and PERMANOVA to explore preference variation within the sample. An experimental sensitivity analysis dichotomised preference heterogeneity into anchoring variation and attribute weighting/level rating variation.</p>
+    <p><strong>Methods:</strong> WAItE OPUF survey design was informed by prior qualitative work. The survey consisted of the WAItE descriptive system, attribute weighting, level rating (per attribute) and a VAS anchoring task. Personal utility functions were estimated on the individual level for all participants. Personal utility functions were aggregated and combined with the anchoring factor to give the social utility function and utility value set. Preference heterogeneity was assessed using Euclidean distance and PERMANOVA to explore preference variation within the sample. An experimental sensitivity analysis dichotomised preference heterogeneity into anchoring variation and attribute weighting/level rating variation.</p>
     <p><strong>Results:</strong> A total of 300 participants completed the WAItE OPUF survey. The sample was broadly representative of the UK adult population. Participants, on average, took less than 10 minutes to complete the survey. The most important attributes were tiredness and unhappiness, while least important attributes were sports and embarrassment. Social utility values and the anchoring utility value estimated were comparable to previous studies. Preferences generally were heterogeneous, especially among different ages. Younger participants assigned lower utility values to WAItE health states and provided significantly lower scores on the VAS anchoring task compared to older participants.</p>
     <p><strong>Conclusion:</strong> This study successfully elicited health state utility values for the WAItE using the OPUF. Preference heterogeneity analysis identified differences in preferences for different age groups and a further valuation study is ongoing to explore whether this heterogeneity exists between adults and adolescents.</p>
   </div>
@@ -217,13 +221,16 @@ window.Quarto = {
 <div>
   <div class="keywords">
     <div class="block-title">Keywords</div>
-    <p>preference elicitation, quality of life</p>
+    <p>Health state valuation, preference elicitation, quality of life</p>
   </div>
 </div>
 
 </header>
 
 
+<p><em>Disclaimer:</em> This is a work-in-progress, please do not redistribute or cite without the authors permission. This work was supported by the NIHR-ARC and Newcastle University.</p>
+<p><em>Acknowledgements:</em> We would like to thank Paul Schneider and Valorem Health for collaborating on this project.</p>
+<p><em>Code availability:</em> An interactive document (HTML) which includes the live survey is available <a href="">here</a>. Source code for this study is available <a href="">here</a>.</p>
 <section id="sec-introduction" class="level1">
 <h1>Introduction</h1>
 <section id="compositional-preference-elicitation-methods" class="level2">
@@ -314,6 +321,7 @@ Figure&nbsp;2: Level rating
 </figcaption>
 </figure>
 </div>
+<div style="page-break-after: always;"></div>
 </section>
 <section id="anchoring-factor" class="level3">
 <h3 class="anchored" data-anchor-id="anchoring-factor">Anchoring factor</h3>
@@ -358,6 +366,7 @@ Figure&nbsp;3: Anchoring factor
 <section id="sec-OPUF_methods" class="level2">
 <h2 class="anchored" data-anchor-id="sec-OPUF_methods">OPUF logic and mathematics</h2>
 <p>This section presents the logic and underlying mathematics required to convert the raw OPUF responses from one person into an anchored value set for the WAItE descriptive system. This example assumes that level ratings are obtained for each attribute separately, therefore the mathematics presented here differs to those presented elsewhere <span class="citation" data-cites="Schneider2022TheStates">(<a href="#ref-Schneider2022TheStates" role="doc-biblioref">10</a>)</span>. Example response data are used for demonstration in this section and are presented in <a href="#tbl-exampledata" class="quarto-xref">Table&nbsp;1</a>.</p>
+<div style="page-break-after: always;"></div>
 <section id="example-responses" class="level3">
 <h3 class="anchored" data-anchor-id="example-responses">Example responses</h3>
 <div class="cell">
@@ -375,7 +384,7 @@ Table&nbsp;1: Example individual responses to the OPUF
 <col style="width: 8%">
 <col style="width: 7%">
 <col style="width: 14%">
-<col style="width: 14%">
+<col style="width: 12%">
 <col style="width: 12%">
 <col style="width: 8%">
 </colgroup>
@@ -386,7 +395,7 @@ Table&nbsp;1: Example individual responses to the OPUF
 <th style="text-align: right;">Walking</th>
 <th style="text-align: right;">Sports</th>
 <th style="text-align: right;">Concentration</th>
-<th style="text-align: right;">Embarrassment</th>
+<th style="text-align: right;">Embarrassed</th>
 <th style="text-align: right;">Unhappiness</th>
 <th style="text-align: right;">Treated</th>
 </tr>
@@ -483,10 +492,10 @@ w_j = \begin{bmatrix}
 \tag{4}\]</span></span></p>
 <p>Combining the attribute weights (<a href="#eq-weight-vector" class="quarto-xref">Equation&nbsp;4</a>) with the level coefficients (<a href="#eq-level-matrix" class="quarto-xref">Equation&nbsp;2</a>) via element-wise multiplication (shown in <a href="#eq-element-wise-multiplication" class="quarto-xref">Equation&nbsp;5</a> gives the coefficient matrix presented in <a href="#eq-coeff-matrix" class="quarto-xref">Equation&nbsp;6</a>. Once the coefficient matrix has been estimated, preference values can be estimated on the 0-1 QALY scale where the worst health state (PITS state denoted 5555555) is zero and the best health state (denoted 1111111) is one. These latent coefficients must now be rescaled to incorporate the results from the PITS anchoring task so that the minimum utility value possible is equal to the PITS value.</p>
 <p><span id="eq-element-wise-multiplication"><span class="math display">\[
-    L_{ij} \cdot  w_{j} = {\tilde{M}}_{ij}
+    L_{ij} \cdot  w_{j} = {M}_{ij}
 \tag{5}\]</span></span></p>
 <p><span id="eq-coeff-matrix"><span class="math display">\[
-\tilde{M}_{ij} =  
+M_{ij} =  
 \begin{bmatrix}
 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 0.01 &amp; 0.03 &amp; 0.02 &amp; 0.02 &amp; 0.05 &amp; 0.01 &amp; 0.03 \\
@@ -497,10 +506,10 @@ w_j = \begin{bmatrix}
 \tag{6}\]</span></span></p>
 <p>To rescale the latent coefficient matrix to incorporate the anchoring task, the coefficient matrix is multiplied by the compliment of the PITS value (shown in <a href="#eq-anchoring" class="quarto-xref">Equation&nbsp;7</a>) to give the anchored coefficient matrix presented in <a href="#eq-anchored-matrix" class="quarto-xref">Equation&nbsp;8</a>.</p>
 <p><span id="eq-anchoring"><span class="math display">\[
-    \tilde{M}_{ij} \cdot (1-P) \quad \backepsilon \quad P = 0.2
+    M_{ij} \cdot (1-P) \quad \backepsilon \quad P = 0.2
 \tag{7}\]</span></span></p>
 <p><span id="eq-anchored-matrix"><span class="math display">\[
-\tilde{V}_{ij} =  
+V_{ij} =  
 \begin{bmatrix}
 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 0.01 &amp; 0.02 &amp; 0.02 &amp; 0.02 &amp; 0.04 &amp; 0.01 &amp; 0.02 \\
@@ -520,14 +529,14 @@ Table&nbsp;2: WAItE example PUF value set
 <div class="cell-output-display">
 <table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 6%">
-<col style="width: 8%">
+<col style="width: 19%">
 <col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 8%">
+<col style="width: 16%">
 <col style="width: 14%">
 <col style="width: 14%">
-<col style="width: 12%">
-<col style="width: 20%">
+<col style="width: 9%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -536,9 +545,9 @@ Table&nbsp;2: WAItE example PUF value set
 <th style="text-align: right;">Walking</th>
 <th style="text-align: right;">Sports</th>
 <th style="text-align: right;">Concentration</th>
-<th style="text-align: right;">Embarrassment</th>
+<th style="text-align: right;">Embarrassed</th>
 <th style="text-align: right;">Unhappiness</th>
-<th style="text-align: right;">Treated differently</th>
+<th style="text-align: right;">Treated</th>
 </tr>
 </thead>
 <tbody>
@@ -612,7 +621,7 @@ Table&nbsp;2: WAItE example PUF value set
 <h2 class="anchored" data-anchor-id="aggregation-to-social-utility-function">Aggregation to social utility function</h2>
 <p>The OPUF is designed to be able to estimate personal utility functions and so estimation occurs on an individual basis. Aggregating personal utility functions to a social utility function (SUF) takes place by taking a mean of all the individual personal utility functions from your sample. This operation is presented in <a href="#eq-meanvalueset" class="quarto-xref">Equation&nbsp;10</a>.</p>
 <p><span id="eq-meanvalueset"><span class="math display">\[
-\bar{V}_{{ij}} = \frac{\sum_{\tilde{V}_{{ij}}}^{}}{N}
+\bar{V}_{{ij}} = \frac{\sum_{V_{{ij}}}^{}}{N}
 \tag{10}\]</span></span></p>
 </section>
 </section>
@@ -626,19 +635,17 @@ Table&nbsp;2: WAItE example PUF value set
 <h2 class="anchored" data-anchor-id="sec-surveystructure">Survey structure</h2>
 <ol type="1">
 <li>Consent and Prolific ID: Participants were asked to consent to participate and enter their unique Prolific ID. This enables demographic information held by Prolific on their participants to be linked to each respondent.</li>
-<li>WAItE descriptive system: Participants were asked to complete the WAItE descriptive system (presented in <a href="#fig-waite-descriptive" class="quarto-xref">Figure&nbsp;4</a>)to describe their current health state.</li>
-<li>Dimension selection: Participants were presented with the worst level for each WAItE dimension and asked to choose which health problem would have the most negative impact on their quality of life. The dimension chosen is then used in the subsequent dimension swing weighting task.<br>
-</li>
-<li>Dimension swing weighting: Participants were presented with each dimension in the WAItE and asked to consider an improvement from the worst level of that dimension to the best level of that dimension. Participants were asked to rank this improvement on a visual slider from 0-100 where the most important dimension (chosen in the previous task) is fixed at 100. Participants were reminded to use their most important dimension as a reference point.<br>
-</li>
-<li>Level rating: Participants were presented with a specific dimension of the WAItE and shown each level within that dimension. Levels best and worst (never and always) were fixed at 0 and 100 respectively. Participants were asked to rank the intermediate levels within each dimension using the fixed levels as a reference point.</li>
+<li>WAItE descriptive system: Participants were asked to complete the WAItE descriptive system (presented in <a href="#fig-waite-descriptive" class="quarto-xref">Figure&nbsp;4</a>) to describe their current health state.</li>
+<li>Attribute selection: Participants were presented with the worst level for each WAItE attribute and asked to choose which health problem would have the most negative impact on their quality of life. The attribute chosen is then used in the subsequent attribute swing weighting task.</li>
+<li>Attribute swing weighting: Participants were presented with each attribute in the WAItE and asked to consider an improvement from the worst level of that attribute to the best level of that attribute. Participants were asked to rank this improvement on a visual slider from 0-100 where the most important attribute (chosen in the previous task) is fixed at 100. Participants were reminded to use their most important attribute as a reference point.</li>
+<li>Level rating: Participants were presented with a specific attribute of the WAItE and shown each level within that attribute. Levels best and worst (never and always) were fixed at 0 and 100 respectively. Participants were asked to rank the intermediate levels within each attribute using the fixed levels as a reference point.</li>
 <li>Anchoring: Participants were presented with a binary choice asking whether they prefer the worst state of the WAItE (PITS state) or death. If participants choose the worst state of the WAItE, a second question is asked which asks them to rank the WAITE PITS state on a visual analogue scale where zero is labelled as being dead and one hundred is labelled as no health problems. If participants choose death in the binary choice, they were asked to rank being dead on a visual analogue scale where zero is labelled as the WAItE PITS state and one hundred is labelled as no health problems.</li>
 <li>Survey feedback and demographic questions: Participants were asked about how difficult they found the task to complete and demographic information on age, gender, ethnicity, education, employment and weight status.</li>
 </ol>
 <div id="fig-waite-descriptive" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-waite-descriptive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../../outputs/figures/WAItE%20descriptive.png" class="img-fluid figure-img">
+<img src="../../outputs/figures/WAItE%20descriptive.png" class="img-fluid figure-img" width="400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-waite-descriptive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: WAItE descriptive system
@@ -668,7 +675,7 @@ Live Survey
 </section>
 <section id="missing-data" class="level2">
 <h2 class="anchored" data-anchor-id="missing-data">Missing data</h2>
-<p>Through the survey design process the potential for large amounts of missing data has been mitigated by ensuring responses were compulsory to certain questions. However for ethical reasons, we allowed participants to not answer the questions relating to death. For participants who do not provide responses to the anchoring questions, their responses were imputed using multiple imputation by chained equations (MICE) <span class="citation" data-cites="White2011MultiplePractice">(<a href="#ref-White2011MultiplePractice" role="doc-biblioref">12</a>)</span> which were informed by demographic information and dimension weighting responses.</p>
+<p>Through the survey design process the potential for large amounts of missing data has been mitigated by ensuring responses were compulsory to certain questions. However for ethical reasons, we allowed participants to not answer the questions relating to death. For participants who do not provide responses to the anchoring questions, their responses were imputed using multiple imputation by chained equations (MICE) <span class="citation" data-cites="White2011MultiplePractice">(<a href="#ref-White2011MultiplePractice" role="doc-biblioref">12</a>)</span> which were informed by demographic information and attribute weighting responses.</p>
 </section>
 <section id="preference-heterogeneity" class="level2">
 <h2 class="anchored" data-anchor-id="preference-heterogeneity">Preference heterogeneity</h2>
@@ -694,7 +701,7 @@ F= \frac{(\frac{SS_B}{p-1})}{(\frac{SS_W}{N-p})}
 </section>
 <section id="sensitivity-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="sensitivity-analysis">Sensitivity analysis</h2>
-<p>In an experimental sensitivity analysis, preference heterogeneity was assessed using EUD estimated based on individual’s personal utility functions anchored using the social PITS utility value (henceforth referred to as EUD2). This differed to prior preference heterogeneity estimation as individual variation in PITS utility values were not included in the EUD2 estimation. EUD2 was entirely composed by differences in level ratings and attribute weights. Further details on the derivation of EUD2 are presented in <a href="#sec-appendix1" class="quarto-xref">Section&nbsp;4.1.1</a>.</p>
+<p>In an experimental sensitivity analysis, preference heterogeneity was assessed using EUD estimated based on individual’s personal utility functions anchored using the social PITS utility value (henceforth referred to as EUD2). This differed to prior preference heterogeneity estimation as individual variation in PITS utility values were not included in the EUD2 estimation. EUD2 was entirely composed by differences in level ratings and attribute weights. Further details on the derivation of EUD2 are presented in the online version Appendix.</p>
 <p>An additional analysis of preference heterogeneity in anchoring values was conducted using a generalised linear model. A multivariate Gamma GLM (with log-link function) was constructed to explore the relationship between PITS utility values and demographic information. This facilitated exploration into how anchoring preferences differed among different demographic subgroups in our sample.</p>
 </section>
 </section>
@@ -735,66 +742,59 @@ Table&nbsp;3: Survey completion times (secs)
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">WAItE</td>
-<td style="text-align: left;">73 (90.1)</td>
-<td style="text-align: left;">53 (38; 77)</td>
-<td style="text-align: left;">10</td>
-<td style="text-align: left;">1066</td>
+<td style="text-align: left;">73.0 (90.1)</td>
+<td style="text-align: left;">53.0 (38.0; 77.0)</td>
+<td style="text-align: left;">10.0</td>
+<td style="text-align: left;">1066.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Dimension ranking</td>
+<td style="text-align: left;">Attribute ranking</td>
 <td style="text-align: left;">35.4 (50.6)</td>
-<td style="text-align: left;">26 (16; 40)</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">741</td>
+<td style="text-align: left;">26.0 (16.0; 40.0)</td>
+<td style="text-align: left;">2.0</td>
+<td style="text-align: left;">741.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Dimension weighting</td>
+<td style="text-align: left;">Attribute weighting</td>
 <td style="text-align: left;">115.7 (94.9)</td>
 <td style="text-align: left;">91.5 (69.8; 142.2)</td>
-<td style="text-align: left;">18</td>
-<td style="text-align: left;">1380</td>
+<td style="text-align: left;">18.0</td>
+<td style="text-align: left;">1380.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Level rating</td>
 <td style="text-align: left;">220.5 (206.4)</td>
-<td style="text-align: left;">171 (119; 249)</td>
-<td style="text-align: left;">34</td>
-<td style="text-align: left;">2158</td>
+<td style="text-align: left;">171.0 (119.0; 249.0)</td>
+<td style="text-align: left;">34.0</td>
+<td style="text-align: left;">2158.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">PITS vs death</td>
 <td style="text-align: left;">25.5 (45.4)</td>
-<td style="text-align: left;">16.5 (11; 25.2)</td>
-<td style="text-align: left;">4</td>
-<td style="text-align: left;">620</td>
+<td style="text-align: left;">16.5 (11.0; 25.2)</td>
+<td style="text-align: left;">4.0</td>
+<td style="text-align: left;">620.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">PITS-VAS</td>
 <td style="text-align: left;">37.3 (39.2)</td>
-<td style="text-align: left;">29 (21; 45)</td>
-<td style="text-align: left;">5</td>
-<td style="text-align: left;">605</td>
+<td style="text-align: left;">29.0 (21.0; 45.0)</td>
+<td style="text-align: left;">5.0</td>
+<td style="text-align: left;">605.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">PITS-VAS</td>
-<td style="text-align: left;">37.3 (39.2)</td>
-<td style="text-align: left;">29 (21; 45)</td>
-<td style="text-align: left;">5</td>
-<td style="text-align: left;">605</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">Total (secs)</td>
 <td style="text-align: left;">579.5 (351.1)</td>
 <td style="text-align: left;">489.2 (352.5; 713.4)</td>
 <td style="text-align: left;">126.7</td>
 <td style="text-align: left;">3738.2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Total (mins)</td>
 <td style="text-align: left;">9.66 (5.85)</td>
 <td style="text-align: left;">8.15 (5.88; 11.89)</td>
 <td style="text-align: left;">2.11</td>
-<td style="text-align: left;">62.3</td>
+<td style="text-align: left;">62.30</td>
 </tr>
 </tbody>
 </table>
@@ -807,6 +807,11 @@ Table&nbsp;3: Survey completion times (secs)
 <section id="waite-descriptive-system" class="level2">
 <h2 class="anchored" data-anchor-id="waite-descriptive-system">WAItE descriptive system</h2>
 <p>Responses to the WAItE descriptive system are presented in <a href="#tbl-demographic" class="quarto-xref">Table&nbsp;4</a>. Feeling tired and avoiding doing sport were the attributes that were most frequently experienced by participants in our analysis sample. WAItE summary statistics were in line with results from previous studies <span class="citation" data-cites="Robinson2019EstimatingEvaluation">(<a href="#ref-Robinson2019EstimatingEvaluation" role="doc-biblioref">17</a>)</span>.</p>
+</section>
+<section id="level-ratings-1" class="level2">
+<h2 class="anchored" data-anchor-id="level-ratings-1">Level ratings</h2>
+<p>Level ratings are presented individually for each different attribute in <a href="#tbl-level" class="quarto-xref">Table&nbsp;5</a>. The best and worst levels (<em>Always</em> and <em>Never</em>) were fixed at 0 and 100 respectively. The second best level (<em>Almost never</em>) had the lowest VAS score in the Sports and Embarrassment attribute, while the second worst level (<em>Often</em>) had the highest VAS score in the Concentration attribute. In this question, higher VAS scores indicate worse states of health.</p>
+<div style="page-break-after: always;"></div>
 <div class="cell">
 <div id="tbl-demographic" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -815,221 +820,12 @@ Table&nbsp;4: Summary of demographic information collected in the OPUF
 </figcaption>
 <div aria-describedby="tbl-demographic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Participant Characteristics (N=300)</th>
-<th style="text-align: left;">N (%)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Age</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">18-24</td>
-<td style="text-align: left;">32 (10.9%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">25-34</td>
-<td style="text-align: left;">50 (17%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">35-44</td>
-<td style="text-align: left;">48 (16.3%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">45-54</td>
-<td style="text-align: left;">49 (16.7%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">55-64</td>
-<td style="text-align: left;">81 (27.6%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">65-90</td>
-<td style="text-align: left;">34 (11.6%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Not Stated</td>
-<td style="text-align: left;">6 (2.0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Gender</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Female</td>
-<td style="text-align: left;">154 (51%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Male</td>
-<td style="text-align: left;">144 (48%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Non-binary</td>
-<td style="text-align: left;">1 (0%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Ethnicity</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">White</td>
-<td style="text-align: left;">251 (84%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Asian</td>
-<td style="text-align: left;">23 (8%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Black</td>
-<td style="text-align: left;">11 (4%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Mixed</td>
-<td style="text-align: left;">10 (3%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Other</td>
-<td style="text-align: left;">5 (2%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Weight Status</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Normal</td>
-<td style="text-align: left;">154 (51%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Overweight</td>
-<td style="text-align: left;">104 (35%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Obese</td>
-<td style="text-align: left;">30 (10%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Underweight</td>
-<td style="text-align: left;">8 (3%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Prefer not to say</td>
-<td style="text-align: left;">4 (1%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Education</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Degree</td>
-<td style="text-align: left;">147 (49%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">A Level</td>
-<td style="text-align: left;">64 (21%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Higher Education</td>
-<td style="text-align: left;">46 (15%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Other</td>
-<td style="text-align: left;">20 (7%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">GCSE A-C</td>
-<td style="text-align: left;">18 (6%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">GCSE D-G</td>
-<td style="text-align: left;">5 (2%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Occupation</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Full-time</td>
-<td style="text-align: left;">130 (43%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Part-time</td>
-<td style="text-align: left;">62 (21%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Not Paid</td>
-<td style="text-align: left;">30 (10%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Other</td>
-<td style="text-align: left;">31 (10%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Student</td>
-<td style="text-align: left;">17 (6%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Unemployed</td>
-<td style="text-align: left;">18 (6%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Not Stated</td>
-<td style="text-align: left;">9 (3%)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Starting a New Job</td>
-<td style="text-align: left;">3 (1%)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">WAItE</td>
-<td style="text-align: left;">Mean (SD)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Tiredness</td>
-<td style="text-align: left;">3.4 (0.8)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Walking</td>
-<td style="text-align: left;">2.1 (1.1)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Sport</td>
-<td style="text-align: left;">3.3 (1.3)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Concentration</td>
-<td style="text-align: left;">2.7 (1.0)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Embarrassment</td>
-<td style="text-align: left;">2.2 (1.2)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Unhappiness</td>
-<td style="text-align: left;">2.3 (1.0)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Treated differently</td>
-<td style="text-align: left;">1.9 (0.9)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Total</td>
-<td style="text-align: left;">17.8 (4.8)</td>
-</tr>
-</tbody>
-</table>
+
 </div>
 </div>
 </figure>
 </div>
 </div>
-</section>
-<section id="level-ratings-1" class="level2">
-<h2 class="anchored" data-anchor-id="level-ratings-1">Level ratings</h2>
-<p>Level ratings are presented individually for each different attribute in <a href="#tbl-level" class="quarto-xref">Table&nbsp;5</a>. The best and worst levels (<em>Always</em> and <em>Never</em>) were fixed at 0 and 100 respectively. The second best level (<em>Almost never</em>) had the lowest VAS score in the Sports and Embarrassment attribute, while the second worst level (<em>Often</em>) had the highest VAS score in the Concentration attribute. In this question, higher VAS scores indicate worse states of health.</p>
 <div class="cell">
 <div id="tbl-level" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -1065,22 +861,22 @@ Table&nbsp;5: Summary of OPUF level ratings by attribute
 </tr>
 <tr class="even">
 <td style="text-align: left;">Almost never</td>
-<td style="text-align: left;">20.323 (23.208)</td>
-<td style="text-align: left;">10 (5; 25)</td>
+<td style="text-align: left;">20.3 (23.2)</td>
+<td style="text-align: left;">10.0 (5.0; 25.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Sometimes</td>
-<td style="text-align: left;">36.31 (19.185)</td>
-<td style="text-align: left;">33.5 (20; 50)</td>
+<td style="text-align: left;">36.3 (19.2)</td>
+<td style="text-align: left;">33.5 (20.0; 50.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Often</td>
-<td style="text-align: left;">62.217 (23.934)</td>
-<td style="text-align: left;">70 (50; 80)</td>
+<td style="text-align: left;">62.2 (23.9)</td>
+<td style="text-align: left;">70.0 (50.0; 80.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
@@ -1093,22 +889,22 @@ Table&nbsp;5: Summary of OPUF level ratings by attribute
 </tr>
 <tr class="even">
 <td style="text-align: left;">Almost never</td>
-<td style="text-align: left;">19.39 (21.839)</td>
-<td style="text-align: left;">10 (6; 21)</td>
+<td style="text-align: left;">19.4 (21.8)</td>
+<td style="text-align: left;">10.0 (6.0; 21.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Sometimes</td>
-<td style="text-align: left;">37.677 (19.373)</td>
-<td style="text-align: left;">40 (24; 50)</td>
+<td style="text-align: left;">37.7 (19.4)</td>
+<td style="text-align: left;">40.0 (24.0; 50.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Often</td>
-<td style="text-align: left;">62.967 (26.167)</td>
-<td style="text-align: left;">71 (50; 80)</td>
+<td style="text-align: left;">63.0 (26.2)</td>
+<td style="text-align: left;">71.0 (50.0; 80.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
@@ -1121,22 +917,22 @@ Table&nbsp;5: Summary of OPUF level ratings by attribute
 </tr>
 <tr class="even">
 <td style="text-align: left;">Almost never</td>
-<td style="text-align: left;">16.63 (20.978)</td>
-<td style="text-align: left;">10 (5; 20)</td>
+<td style="text-align: left;">16.6 (21.0)</td>
+<td style="text-align: left;">10.0 (5.0; 20.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Sometimes</td>
-<td style="text-align: left;">29.487 (22.015)</td>
-<td style="text-align: left;">25 (10; 45)</td>
+<td style="text-align: left;">29.5 (22.0)</td>
+<td style="text-align: left;">25.0 (10.0; 45.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Often</td>
-<td style="text-align: left;">49.843 (29.624)</td>
-<td style="text-align: left;">50.5 (24.5; 75)</td>
+<td style="text-align: left;">49.8 (29.6)</td>
+<td style="text-align: left;">50.5 (24.5; 75.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
@@ -1149,22 +945,22 @@ Table&nbsp;5: Summary of OPUF level ratings by attribute
 </tr>
 <tr class="even">
 <td style="text-align: left;">Almost never</td>
-<td style="text-align: left;">21.393 (22.1)</td>
-<td style="text-align: left;">14 (7; 25)</td>
+<td style="text-align: left;">21.4 (22.1)</td>
+<td style="text-align: left;">14.0 (7.0; 25.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Sometimes</td>
-<td style="text-align: left;">41.56 (20.101)</td>
-<td style="text-align: left;">40 (25.8; 53.2)</td>
+<td style="text-align: left;">41.6 (20.1)</td>
+<td style="text-align: left;">40.0 (25.8; 53.2)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Often</td>
-<td style="text-align: left;">64.503 (26.195)</td>
-<td style="text-align: left;">73 (50; 80.2)</td>
+<td style="text-align: left;">64.5 (26.2)</td>
+<td style="text-align: left;">73.0 (50.0; 80.2)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
@@ -1177,22 +973,22 @@ Table&nbsp;5: Summary of OPUF level ratings by attribute
 </tr>
 <tr class="even">
 <td style="text-align: left;">Almost never</td>
-<td style="text-align: left;">16.59 (22.292)</td>
-<td style="text-align: left;">10 (4; 20)</td>
+<td style="text-align: left;">16.6 (22.3)</td>
+<td style="text-align: left;">10.0 (4.0; 20.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Sometimes</td>
-<td style="text-align: left;">29.417 (21.615)</td>
-<td style="text-align: left;">25 (10; 50)</td>
+<td style="text-align: left;">29.4 (21.6)</td>
+<td style="text-align: left;">25.0 (10.0; 50.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Often</td>
-<td style="text-align: left;">47.91 (30.445)</td>
-<td style="text-align: left;">50 (20; 75)</td>
+<td style="text-align: left;">47.9 (30.4)</td>
+<td style="text-align: left;">50.0 (20.0; 75.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
@@ -1205,22 +1001,22 @@ Table&nbsp;5: Summary of OPUF level ratings by attribute
 </tr>
 <tr class="even">
 <td style="text-align: left;">Almost never</td>
-<td style="text-align: left;">21.13 (22.235)</td>
-<td style="text-align: left;">13 (6; 25)</td>
+<td style="text-align: left;">21.1 (22.2)</td>
+<td style="text-align: left;">13.0 (6.0; 25.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Sometimes</td>
-<td style="text-align: left;">41.363 (22.128)</td>
-<td style="text-align: left;">41.5 (25; 56)</td>
+<td style="text-align: left;">41.4 (22.1)</td>
+<td style="text-align: left;">41.5 (25.0; 56.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Often</td>
-<td style="text-align: left;">63.557 (28.187)</td>
-<td style="text-align: left;">75 (50; 85)</td>
+<td style="text-align: left;">63.6 (28.2)</td>
+<td style="text-align: left;">75.0 (50.0; 85.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
@@ -1233,22 +1029,22 @@ Table&nbsp;5: Summary of OPUF level ratings by attribute
 </tr>
 <tr class="even">
 <td style="text-align: left;">Almost never</td>
-<td style="text-align: left;">20.93 (24.366)</td>
-<td style="text-align: left;">11 (5; 25)</td>
+<td style="text-align: left;">20.9 (24.4)</td>
+<td style="text-align: left;">11.0 (5.0; 25.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Sometimes</td>
-<td style="text-align: left;">35.52 (22.774)</td>
-<td style="text-align: left;">34.5 (19.8; 50)</td>
+<td style="text-align: left;">35.5 (22.8)</td>
+<td style="text-align: left;">34.5 (19.8; 50.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Often</td>
-<td style="text-align: left;">55.857 (30.552)</td>
-<td style="text-align: left;">60.5 (31; 80)</td>
+<td style="text-align: left;">55.9 (30.6)</td>
+<td style="text-align: left;">60.5 (31.0; 80.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
@@ -1291,50 +1087,50 @@ Table&nbsp;6: Summary of OPUF attribute weights and anchoring responses
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Tired</td>
-<td style="text-align: left;">76.513 (28.358)</td>
-<td style="text-align: left;">90 (60; 100)</td>
+<td style="text-align: left;">76.5 (28.4)</td>
+<td style="text-align: left;">90.0 (60.0; 100.0)</td>
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Walking</td>
-<td style="text-align: left;">65.53 (32.49)</td>
-<td style="text-align: left;">75 (40; 100)</td>
+<td style="text-align: left;">65.5 (32.5)</td>
+<td style="text-align: left;">75.0 (40.0; 100.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Sports</td>
-<td style="text-align: left;">42.32 (32.81)</td>
-<td style="text-align: left;">35 (11; 70)</td>
+<td style="text-align: left;">42.3 (32.8)</td>
+<td style="text-align: left;">35.0 (11.0; 70.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Concentration</td>
-<td style="text-align: left;">67.897 (30.949)</td>
-<td style="text-align: left;">80 (44; 99.2)</td>
+<td style="text-align: left;">67.9 (30.9)</td>
+<td style="text-align: left;">80.0 (44.0; 99.2)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Embarrassment</td>
-<td style="text-align: left;">40.143 (34.344)</td>
-<td style="text-align: left;">30 (9; 70)</td>
+<td style="text-align: left;">40.1 (34.3)</td>
+<td style="text-align: left;">30.0 (9.0; 70.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Unhappiness</td>
-<td style="text-align: left;">69.997 (31.946)</td>
-<td style="text-align: left;">80 (50; 100)</td>
+<td style="text-align: left;">70.0 (31.9)</td>
+<td style="text-align: left;">80.0 (50.0; 100.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Treated differently</td>
-<td style="text-align: left;">52.093 (35.564)</td>
-<td style="text-align: left;">50 (15.8; 86)</td>
+<td style="text-align: left;">52.1 (35.6)</td>
+<td style="text-align: left;">50.0 (15.8; 86.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
@@ -1347,43 +1143,43 @@ Table&nbsp;6: Summary of OPUF attribute weights and anchoring responses
 </tr>
 <tr class="odd">
 <td style="text-align: left;">PITS preferred to death</td>
-<td style="text-align: left;">0.879 (0.327)</td>
-<td style="text-align: left;">1 (1; 1)</td>
+<td style="text-align: left;">0.9 (0.3)</td>
+<td style="text-align: left;">1.0 (1.0; 1.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">1</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">PITS-VAS</td>
-<td style="text-align: left;">56.057 (31.287)</td>
-<td style="text-align: left;">54 (30; 85)</td>
+<td style="text-align: left;">56.1 (31.3)</td>
+<td style="text-align: left;">54.0 (30.0; 85.0)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Dead-VAS</td>
-<td style="text-align: left;">42.528 (31.583)</td>
+<td style="text-align: left;">42.5 (31.6)</td>
 <td style="text-align: left;">38.5 (13.2; 63.5)</td>
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">100</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">PITS VAS uncensored</td>
-<td style="text-align: left;">-0.025 (5.95)</td>
-<td style="text-align: left;">0.5 (0.2; 0.8)</td>
+<td style="text-align: left;">-0.025 (5.950)</td>
+<td style="text-align: left;">0.500 (0.200; 0.800)</td>
 <td style="text-align: left;">-99</td>
 <td style="text-align: left;">1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">PITS VAS censored</td>
 <td style="text-align: left;">0.431 (0.485)</td>
-<td style="text-align: left;">0.5 (0.2; 0.8)</td>
+<td style="text-align: left;">0.500 (0.200; 0.800)</td>
 <td style="text-align: left;">-1</td>
 <td style="text-align: left;">1</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">PITS Utility Value</td>
 <td style="text-align: left;">0.282 (1.456)</td>
-<td style="text-align: left;">0.5 (0.2; 0.8)</td>
+<td style="text-align: left;">0.500 (0.200; 0.800)</td>
 <td style="text-align: left;">-14.3</td>
 <td style="text-align: left;">1</td>
 </tr>
@@ -1426,10 +1222,12 @@ Figure&nbsp;6: Distribution of PITS utility values
 </div>
 </div>
 </div>
+<div style="page-break-after: always;"></div>
 </section>
 <section id="social-utility-function-estimation" class="level2">
 <h2 class="anchored" data-anchor-id="social-utility-function-estimation">Social utility function estimation</h2>
-<p>Personal utility functions were estimated individually for each participant in our analysis sample via methods outlined in <a href="#sec-OPUF_methods" class="quarto-xref">Section&nbsp;1.4</a>. After this, individual PUFs were aggregated into a group utility function and anchored using the group PITS utility value (0.282) to give the social utility function. Descriptive statistics from the social utility function are presented in <a href="#tbl-suf" class="quarto-xref">Table&nbsp;7</a> whereby the mean values can be used to estimate utility values for WAItE health states.</p>
+<p>Personal utility functions were estimated individually for each participant in our analysis sample via methods outlined in <a href="#sec-OPUF_methods" class="quarto-xref">Section&nbsp;1.4</a>. After this, individual PUFs were aggregated into a group utility function and anchored using the group PITS utility value (0.282) to give the social utility function. Descriptive statistics from the social utility function are presented in <a href="#tbl-suf" class="quarto-xref">Table&nbsp;7</a> whereby the mean values can be used to estimate utility values for WAItE health states. Confidence intervals were estimated from bootstrap resampling with 10,000 iterations.</p>
+<p><a href="#fig-sufplain" class="quarto-xref">Figure&nbsp;7</a> presents the mean social utility function (thick line) alongside individual personal utility functions (thin lines) for a selection of 100 WAItE health states ordered from high to low utility according to the social preference. Deviations of individual utility functions from the social preference illustrate the heterogeneity of preference within our analysis sample. Individual personal utility functions shown in <a href="#fig-sufplain" class="quarto-xref">Figure&nbsp;7</a> are anchored using individual PITS utility values rather than the social PITS utility value.</p>
 <div class="cell">
 <div id="tbl-suf" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -1448,7 +1246,7 @@ Table&nbsp;7: Social utility function based on 300 PUFs
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Dimension Level</th>
+<th style="text-align: left;">Attribute Level</th>
 <th style="text-align: left;">Mean (95% CI)</th>
 <th style="text-align: left;">Median (Q1; Q3)</th>
 <th style="text-align: left;">Min</th>
@@ -1473,7 +1271,7 @@ Table&nbsp;7: Social utility function based on 300 PUFs
 <tr class="odd">
 <td style="text-align: left;">Sometimes</td>
 <td style="text-align: left;">0.052 (0.048; 0.057)</td>
-<td style="text-align: left;">0.043 (0.024; 0.07)</td>
+<td style="text-align: left;">0.043 (0.024; 0.070)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">0.311</td>
 </tr>
@@ -1486,7 +1284,7 @@ Table&nbsp;7: Social utility function based on 300 PUFs
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Always</td>
-<td style="text-align: left;">0.14 (0.133; 0.148)</td>
+<td style="text-align: left;">0.140 (0.133; 0.148)</td>
 <td style="text-align: left;">0.126 (0.101; 0.161)</td>
 <td style="text-align: left;">0.006</td>
 <td style="text-align: left;">0.479</td>
@@ -1508,7 +1306,7 @@ Table&nbsp;7: Social utility function based on 300 PUFs
 <tr class="even">
 <td style="text-align: left;">Sometimes</td>
 <td style="text-align: left;">0.045 (0.041; 0.049)</td>
-<td style="text-align: left;">0.04 (0.019; 0.062)</td>
+<td style="text-align: left;">0.040 (0.019; 0.062)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">0.192</td>
 </tr>
@@ -1522,9 +1320,9 @@ Table&nbsp;7: Social utility function based on 300 PUFs
 <tr class="even">
 <td style="text-align: left;">Always</td>
 <td style="text-align: left;">0.116 (0.108; 0.124)</td>
-<td style="text-align: left;">0.11 (0.084; 0.141)</td>
+<td style="text-align: left;">0.110 (0.084; 0.141)</td>
 <td style="text-align: left;">0</td>
-<td style="text-align: left;">0.57</td>
+<td style="text-align: left;">0.570</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span style=" font-weight: bold;    ">Sports</span></td>
@@ -1535,14 +1333,14 @@ Table&nbsp;7: Social utility function based on 300 PUFs
 </tr>
 <tr class="even">
 <td style="text-align: left;">Almost never</td>
-<td style="text-align: left;">0.012 (0.01; 0.015)</td>
+<td style="text-align: left;">0.012 (0.010; 0.015)</td>
 <td style="text-align: left;">0.006 (0.001; 0.016)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">0.127</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Sometimes</td>
-<td style="text-align: left;">0.023 (0.02; 0.025)</td>
+<td style="text-align: left;">0.023 (0.020; 0.025)</td>
 <td style="text-align: left;">0.015 (0.004; 0.036)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">0.126</td>
@@ -1570,7 +1368,7 @@ Table&nbsp;7: Social utility function based on 300 PUFs
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Almost never</td>
-<td style="text-align: left;">0.026 (0.023; 0.03)</td>
+<td style="text-align: left;">0.026 (0.023; 0.030)</td>
 <td style="text-align: left;">0.014 (0.006; 0.032)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">0.229</td>
@@ -1584,10 +1382,10 @@ Table&nbsp;7: Social utility function based on 300 PUFs
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Often</td>
-<td style="text-align: left;">0.08 (0.074; 0.086)</td>
+<td style="text-align: left;">0.080 (0.074; 0.086)</td>
 <td style="text-align: left;">0.076 (0.039; 0.107)</td>
 <td style="text-align: left;">0</td>
-<td style="text-align: left;">0.28</td>
+<td style="text-align: left;">0.280</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Always</td>
@@ -1605,8 +1403,8 @@ Table&nbsp;7: Social utility function based on 300 PUFs
 </tr>
 <tr class="even">
 <td style="text-align: left;">Almost never</td>
-<td style="text-align: left;">0.012 (0.01; 0.014)</td>
-<td style="text-align: left;">0.004 (0; 0.013)</td>
+<td style="text-align: left;">0.012 (0.010; 0.014)</td>
+<td style="text-align: left;">0.004 (0.000; 0.013)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">0.138</td>
 </tr>
@@ -1615,11 +1413,11 @@ Table&nbsp;7: Social utility function based on 300 PUFs
 <td style="text-align: left;">0.022 (0.019; 0.025)</td>
 <td style="text-align: left;">0.012 (0.002; 0.031)</td>
 <td style="text-align: left;">0</td>
-<td style="text-align: left;">0.18</td>
+<td style="text-align: left;">0.180</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Often</td>
-<td style="text-align: left;">0.034 (0.03; 0.038)</td>
+<td style="text-align: left;">0.034 (0.030; 0.038)</td>
 <td style="text-align: left;">0.019 (0.004; 0.053)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">0.359</td>
@@ -1627,7 +1425,7 @@ Table&nbsp;7: Social utility function based on 300 PUFs
 <tr class="odd">
 <td style="text-align: left;">Always</td>
 <td style="text-align: left;">0.061 (0.056; 0.067)</td>
-<td style="text-align: left;">0.053 (0.019; 0.1)</td>
+<td style="text-align: left;">0.053 (0.019; 0.100)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">0.359</td>
 </tr>
@@ -1654,7 +1452,7 @@ Table&nbsp;7: Social utility function based on 300 PUFs
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Often</td>
-<td style="text-align: left;">0.083 (0.076; 0.09)</td>
+<td style="text-align: left;">0.083 (0.076; 0.090)</td>
 <td style="text-align: left;">0.081 (0.036; 0.112)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">0.368</td>
@@ -1676,13 +1474,13 @@ Table&nbsp;7: Social utility function based on 300 PUFs
 <tr class="even">
 <td style="text-align: left;">Almost never</td>
 <td style="text-align: left;">0.019 (0.016; 0.022)</td>
-<td style="text-align: left;">0.01 (0.002; 0.022)</td>
+<td style="text-align: left;">0.010 (0.002; 0.022)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">0.157</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Sometimes</td>
-<td style="text-align: left;">0.035 (0.03; 0.039)</td>
+<td style="text-align: left;">0.035 (0.030; 0.039)</td>
 <td style="text-align: left;">0.025 (0.006; 0.051)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">0.359</td>
@@ -1690,7 +1488,7 @@ Table&nbsp;7: Social utility function based on 300 PUFs
 <tr class="even">
 <td style="text-align: left;">Often</td>
 <td style="text-align: left;">0.052 (0.047; 0.058)</td>
-<td style="text-align: left;">0.04 (0.009; 0.082)</td>
+<td style="text-align: left;">0.040 (0.009; 0.082)</td>
 <td style="text-align: left;">0</td>
 <td style="text-align: left;">0.376</td>
 </tr>
@@ -1708,7 +1506,10 @@ Table&nbsp;7: Social utility function based on 300 PUFs
 </figure>
 </div>
 </div>
-<p><a href="#fig-sufplain" class="quarto-xref">Figure&nbsp;7</a> presents the mean social utility function (thick line) alongside individual personal utility functions (thin lines) for a selection of 100 WAItE health states ordered from high to low utility according to the social preference. Deviations of individual utility functions from the social preference illustrate the heterogeneity of preference within our analysis sample. Individual personal utility functions shown in <a href="#fig-sufplain" class="quarto-xref">Figure&nbsp;7</a> are anchored using individual PITS utility values rather than the social PITS utility value.</p>
+</section>
+<section id="preference-heterogeneity-1" class="level2">
+<h2 class="anchored" data-anchor-id="preference-heterogeneity-1">Preference heterogeneity</h2>
+<p>After estimating individual PUFs for all participants, pairwise EUD was estimated between all participants. This yielded a [300 <span class="math inline">\(\times\)</span> 300] distance matrix with 44,850 unique pairwise comparisons. The mean (SD) and median (IQR) EUD were 115.73 (253.07) and 61.08 (33.17; 100.31). The highest and lowest observed EUD were 2150.75 and 0. <a href="#fig-eud" class="quarto-xref">Figure&nbsp;8</a> illustrates the relationship between EUD and WAItE health states. EUD tends to increase as WAItE health states worsen. That is, as the severity of WAItE health states increases, the more heterogeneous preferences become among our sample.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-sufplain" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1723,10 +1524,6 @@ Figure&nbsp;7: Social and individual utility functions
 </div>
 </div>
 </div>
-</section>
-<section id="preference-heterogeneity-1" class="level2">
-<h2 class="anchored" data-anchor-id="preference-heterogeneity-1">Preference heterogeneity</h2>
-<p>After estimating individual PUFs for all participants, pairwise EUD was estimated between all participants. This yielded a [300 <span class="math inline">\(\times\)</span> 300] distance matrix with 44,850 unique pairwise comparisons. The mean (SD) and median (IQR) EUD were 115.7255744 (253.07) and 61.08 (33.17; 100.31). The highest and lowest observed EUD were 2150.75 and 0. <a href="#fig-eud" class="quarto-xref">Figure&nbsp;8</a> illustrates the relationship between EUD and WAItE health states. EUD tends to increase as WAItE health states worsen. That is, as the severity of WAItE health states increases, the more heterogeneous preferences become among our sample.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-eud" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1836,23 +1633,11 @@ Table&nbsp;8: Results of PERMANOVA – testing for differences in WAItE health s
 </figure>
 </div>
 </div>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-age" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="quarto_files/figure-html/fig-age-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9: Social and individual utility functions grouped by age status
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
 </section>
 <section id="sensitivity-analysis-1" class="level2">
 <h2 class="anchored" data-anchor-id="sensitivity-analysis-1">Sensitivity analysis</h2>
+<section id="attribute-weighting-and-level-rating-preference-heterogeneity" class="level3">
+<h3 class="anchored" data-anchor-id="attribute-weighting-and-level-rating-preference-heterogeneity">Attribute weighting and level rating preference heterogeneity</h3>
 <p>EUD2 was estimated for each pairwise comparison of individuals in our study. The mean (SD) and median (IQR) EUD were 34.30 (13.82) and 32.25 (24.54; 41.27). Results from the PERMANOVA2 analysis are presented in <a href="#tbl-permanova2" class="quarto-xref">Table&nbsp;9</a>. After exclusion of individual variation in anchoring responses, weight status and age had a significant impact upon heterogeneity within our sample; though the amount of heterogeneity that was explained by these variables was fairly small (4.9%).</p>
 <div class="cell">
 <div id="tbl-permanova2" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -1945,6 +1730,23 @@ Table&nbsp;9: PERMANOVA2 – testing for differences in level rating and attribu
 </figure>
 </div>
 </div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-age" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="quarto_files/figure-html/fig-age-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Social and individual utility functions grouped by age status
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="anchoring-preference-heterogeneity" class="level3">
+<h3 class="anchored" data-anchor-id="anchoring-preference-heterogeneity">Anchoring preference heterogeneity</h3>
 <p>A multivariate Gamma GLM model was estimated to explore preference heterogeneity in anchoring values (presented in <a href="#tbl-glmpits" class="quarto-xref">Table&nbsp;10</a>). Demographic characteristics were regressed on PITS utility values to examine how demographic information was related to anchoring values. Age, had a significant impact on anchoring preference heterogeneity (<span class="math inline">\(p\)</span> = 0.003), though the point estimate indicated a relatively small effect size.</p>
 <div class="cell">
 <div id="tbl-glmpits" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -1957,10 +1759,10 @@ Table&nbsp;10: Multivariate Gamma GLM Model – exploring the relationship betwe
 <table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Estimate</th>
-<th style="text-align: right;">Std. Error</th>
-<th style="text-align: right;">t value</th>
+<th style="text-align: left;">Variable</th>
+<th style="text-align: right;"><span class="math inline">\(\beta\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(SE\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(t\)</span></th>
 <th style="text-align: right;">Pr(&gt;|t|)</th>
 </tr>
 </thead>
@@ -2016,6 +1818,7 @@ Table&nbsp;10: Multivariate Gamma GLM Model – exploring the relationship betwe
 </div>
 </section>
 </section>
+</section>
 <section id="discussion" class="level1">
 <h1>Discussion</h1>
 <p>This study is the first time that the OPUF has been used to estimate health state utility values for the WAItE. We obtained a representative sample of high quality data from Prolific, a survey company known for their high quality respondents <span class="citation" data-cites="Peer2022DataResearch">(<a href="#ref-Peer2022DataResearch" role="doc-biblioref">19</a>)</span>. Our average attribute weightings and implied ordering were similar to those exhibited in Robinson et al.&nbsp;(2024) <span class="citation" data-cites="Robinson2024AUKValue">(<a href="#ref-Robinson2024AUKValue" role="doc-biblioref">20</a>)</span>.</p>
@@ -2056,10 +1859,10 @@ Table&nbsp;11: Comparison of WAItE utility value sets
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Attribute.level</th>
+<th style="text-align: left;">Attribute Level</th>
 <th style="text-align: left;">OPUF</th>
-<th style="text-align: left;">DCE.TTO</th>
-<th style="text-align: left;">DCE.VAS</th>
+<th style="text-align: left;">DCE-TTO</th>
+<th style="text-align: left;">DCE-VAS</th>
 </tr>
 </thead>
 <tbody>
@@ -2089,7 +1892,7 @@ Table&nbsp;11: Comparison of WAItE utility value sets
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Always</td>
-<td style="text-align: left;">0.14</td>
+<td style="text-align: left;">0.140</td>
 <td style="text-align: left;">0.148</td>
 <td style="text-align: left;">0.137</td>
 </tr>
@@ -2115,7 +1918,7 @@ Table&nbsp;11: Comparison of WAItE utility value sets
 <td style="text-align: left;">Often</td>
 <td style="text-align: left;">0.075</td>
 <td style="text-align: left;">0.054</td>
-<td style="text-align: left;">0.05</td>
+<td style="text-align: left;">0.050</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Always</td>
@@ -2173,15 +1976,15 @@ Table&nbsp;11: Comparison of WAItE utility value sets
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Often</td>
-<td style="text-align: left;">0.08</td>
+<td style="text-align: left;">0.080</td>
 <td style="text-align: left;">0.067</td>
 <td style="text-align: left;">0.062</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Always</td>
 <td style="text-align: left;">0.121</td>
-<td style="text-align: left;">0.13</td>
-<td style="text-align: left;">0.12</td>
+<td style="text-align: left;">0.130</td>
+<td style="text-align: left;">0.120</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span style=" font-weight: bold;    ">Embarrassment</span></td>
@@ -2235,7 +2038,7 @@ Table&nbsp;11: Comparison of WAItE utility value sets
 <td style="text-align: left;">Often</td>
 <td style="text-align: left;">0.083</td>
 <td style="text-align: left;">0.076</td>
-<td style="text-align: left;">0.07</td>
+<td style="text-align: left;">0.070</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Always</td>
@@ -2252,13 +2055,13 @@ Table&nbsp;11: Comparison of WAItE utility value sets
 <tr class="even">
 <td style="text-align: left;">Almost never</td>
 <td style="text-align: left;">0.019</td>
-<td style="text-align: left;">0.01</td>
+<td style="text-align: left;">0.010</td>
 <td style="text-align: left;">0.009</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Sometimes</td>
 <td style="text-align: left;">0.035</td>
-<td style="text-align: left;">0.03</td>
+<td style="text-align: left;">0.030</td>
 <td style="text-align: left;">0.028</td>
 </tr>
 <tr class="even">

@@ -55,27 +55,33 @@ keywords:
 date: last-modified
 bibliography: bibliography.bib
 csl: vancouver.csl
-# format:
-#   html:
-#     toc: true
-#     toc-location: right
+format:
+  html:
+    toc: true
+    toc-location: right
 # Enable the below sections if you want pdf or docx
 # format:
 #   docx:
 #     toc: false
 #     number-sections: true
 #     highlight-style: github
-format:
-  elsevier-pdf:
-    keep-tex: true
-    journal:
-      name: Health Economics Study Group
-      formatting: preprint
-      # model: 3p # Don't set a model with preprint
-      cite-style: number
-    header-includes:
-      - \usepackage[a4paper,margin=1in,textwidth=6.5in]{geometry}
+# format:
+#   elsevier-pdf:
+#     keep-tex: true
+#     journal:
+#       name: Health Economics Study Group
+#       formatting: preprint
+#       # model: 3p # Don't set a model with preprint
+#       cite-style: number
+#     header-includes:
+#       - \usepackage[a4paper,margin=1in,textwidth=6.5in]{geometry}
 ---
+
+*Disclaimer:* This is a work-in-progress, please do not redistribute or cite without the authors permission. This work was supported by the NIHR-ARC and Newcastle University. 
+
+*Acknowledgements:* We would like to thank Paul Schneider and Valorem Health for collaborating on this project.
+
+*Code availability:* An interactive document (HTML) which includes the live survey is available [here](). Source code for this study is available [here]().
 
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
 setwd("~/Dropbox/opuf-adult") # convert this to here for reproducibility
@@ -357,81 +363,179 @@ data$time_taken <- as.numeric(
   units = "secs"
 )
 
-time_tab <- matrix(NA, nrow = 9, ncol = 5)
-    
-time_tab[1,] <- c(
+# time_tab <- matrix(NA, nrow = 9, ncol = 5)
+#
+# time_tab[1,] <- c(
+#   "WAItE",
+#   paste(format(round(mean(data$timeTracker_EPRO1_seconds), 1), nsmall = 1), " (", format(round(sd(data$timeTracker_EPRO1_seconds), 1), nsmall = 1), ")", sep = ""),
+#   paste(format(round(median(data$timeTracker_EPRO1_seconds), 1), nsmall = 1), " (", format(round(quantile(data$timeTracker_EPRO1_seconds, 0.25), 1), nsmall = 1), "; ", format(round(quantile(data$timeTracker_EPRO1_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
+#   format(round(min(data$timeTracker_EPRO1_seconds), 1), nsmall = 1),
+#   format(round(max(data$timeTracker_EPRO1_seconds), 1), nsmall = 1)
+# )
+#
+# time_tab[2,] <- c(
+#   "Attribute ranking",
+#   paste(format(round(mean(data$timeTracker_OPUFRanking1_seconds), 1), nsmall = 1), " (", format(round(sd(data$timeTracker_OPUFRanking1_seconds), 1), nsmall = 1), ")", sep = ""),
+#   paste(format(round(median(data$timeTracker_OPUFRanking1_seconds), 1), nsmall = 1), " (", format(round(quantile(data$timeTracker_OPUFRanking1_seconds, 0.25), 1), nsmall = 1), "; ", format(round(quantile(data$timeTracker_OPUFRanking1_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
+#   format(round(min(data$timeTracker_OPUFRanking1_seconds), 1), nsmall = 1),
+#   format(round(max(data$timeTracker_OPUFRanking1_seconds), 1), nsmall = 1)
+# )
+#
+# time_tab[3,] <- c(
+#   "Attribute weighting",
+#   paste(format(round(mean(data$timeTracker_OPUFSwingWeight1_seconds), 1), nsmall = 1), " (", format(round(sd(data$timeTracker_OPUFSwingWeight1_seconds), 1), nsmall = 1), ")", sep = ""),
+#   paste(format(round(median(data$timeTracker_OPUFSwingWeight1_seconds), 1), nsmall = 1), " (", format(round(quantile(data$timeTracker_OPUFSwingWeight1_seconds, 0.25), 1), nsmall = 1), "; ", format(round(quantile(data$timeTracker_OPUFSwingWeight1_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
+#   format(round(min(data$timeTracker_OPUFSwingWeight1_seconds), 1), nsmall = 1),
+#   format(round(max(data$timeTracker_OPUFSwingWeight1_seconds), 1), nsmall = 1)
+# )
+#
+# time_tab[4,] <- c(
+#   "Level rating",
+#   paste(format(round(mean(data$timeTracker_OPUFLevelRating_seconds, na.rm=T), 1), nsmall = 1), " (", format(round(sd(data$timeTracker_OPUFLevelRating_seconds, na.rm=T), 1), nsmall = 1), ")", sep = ""),
+#   paste(format(round(median(data$timeTracker_OPUFLevelRating_seconds, na.rm=T), 1), nsmall = 1), " (", format(round(quantile(data$timeTracker_OPUFLevelRating_seconds, 0.25, na.rm=T), 1), nsmall = 1), "; ", format(round(quantile(data$timeTracker_OPUFLevelRating_seconds, 0.75, na.rm=T), 1), nsmall = 1), ")", sep = ""),
+#   format(round(min(data$timeTracker_OPUFLevelRating_seconds, na.rm=T), 1), nsmall = 1),
+#   format(round(max(data$timeTracker_OPUFLevelRating_seconds, na.rm=T), 1), nsmall = 1)
+# )
+#
+# time_tab[5,] <- c(
+#   "PITS vs death",
+#   paste(format(round(mean(data$timeTracker_OPUFDeadChoice_seconds), 1), nsmall = 1), " (", format(round(sd(data$timeTracker_OPUFDeadChoice_seconds), 1), nsmall = 1), ")", sep = ""),
+#   paste(format(round(median(data$timeTracker_OPUFDeadChoice_seconds), 1), nsmall = 1), " (", format(round(quantile(data$timeTracker_OPUFDeadChoice_seconds, 0.25), 1), nsmall = 1), "; ", format(round(quantile(data$timeTracker_OPUFDeadChoice_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
+#   format(round(min(data$timeTracker_OPUFDeadChoice_seconds), 1), nsmall = 1),
+#   format(round(max(data$timeTracker_OPUFDeadChoice_seconds), 1), nsmall = 1)
+# )
+#
+# time_tab[6,] <- c(
+#   "PITS-VAS",
+#   paste(format(round(mean(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1), " (", format(round(sd(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1), ")", sep = ""),
+#   format(paste(format(round(median(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1), " (", format(round(quantile(data$timeTracker_OPUFVasAnchoring_seconds, 0.25), 1), nsmall = 1), "; ", format(round(quantile(data$timeTracker_OPUFVasAnchoring_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
+#   format(round(min(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1),
+#   format(round(max(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1)
+# ))
+#
+# time_tab[7,] <- c(
+#   "PITS-VAS",
+#   paste(format(round(mean(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1), " (", format(round(sd(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1), ")", sep = ""),
+#   paste(format(round(median(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1), " (", format(round(quantile(data$timeTracker_OPUFVasAnchoring_seconds, 0.25), 1), nsmall = 1), "; ", format(round(quantile(data$timeTracker_OPUFVasAnchoring_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
+#   format(round(min(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1),
+#   format(round(max(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1)
+# )
+#
+# time_tab[8,] <- c(
+#   "Total (secs)",
+#   paste(format(round(mean(data$time_taken), 1), nsmall = 1), " (", format(round(sd(data$time_taken), 1), nsmall = 1), ")", sep = ""),
+#   paste(format(round(median(data$time_taken), 1), nsmall = 1), " (", format(round(quantile(data$time_taken, 0.25), 1), nsmall = 1), "; ", format(round(quantile(data$time_taken, 0.75), 1), nsmall = 1), ")", sep = ""),
+#   format(round(min(data$time_taken), 1), nsmall = 1)
+#   format(round(max(data$time_taken), 1), nsmall = 1)
+# )
+#
+# time_tab[9,] <- c(
+#   "Total (mins)",
+#   paste(format(round(mean(data$time_taken_minutes), 2), nsmall = 2), " (", format(round(sd(data$time_taken_minutes), 2), nsmall = 2), ")", sep = ""),
+#   paste(format(round(median(data$time_taken_minutes), 2), nsmall = 2), " (", format(round(quantile(data$time_taken_minutes, 0.25), 2), nsmall = 2), "; ", format(round(quantile(data$time_taken_minutes, 0.75), 2), nsmall = 2), ")", sep = ""),
+#   format(round(min(data$time_taken_minutes), 2), nsmall = 2),
+#   format(round(max(data$time_taken_minutes), 2), nsmall = 2)
+# )
+
+# Initialize the matrix
+time_tab <- matrix(NA, nrow = 8, ncol = 5)
+
+# Row 1: WAItE
+time_tab[1, ] <- c(
   "WAItE",
-  paste(round(mean(data$timeTracker_EPRO1_seconds), 1), " (", round(sd(data$timeTracker_EPRO1_seconds), 1), ")", sep = ""),
-  paste(round(median(data$timeTracker_EPRO1_seconds), 1), " (", round(quantile(data$timeTracker_EPRO1_seconds, 0.25), 1), "; ", round(quantile(data$timeTracker_EPRO1_seconds, 0.75), 1), ")", sep = ""),
-  round(min(data$timeTracker_EPRO1_seconds), 1),
-  round(max(data$timeTracker_EPRO1_seconds), 1)
+  paste(format(round(mean(data$timeTracker_EPRO1_seconds), 1), nsmall = 1), 
+        " (", format(round(sd(data$timeTracker_EPRO1_seconds), 1), nsmall = 1), ")", sep = ""),
+  paste(format(round(median(data$timeTracker_EPRO1_seconds), 1), nsmall = 1), 
+        " (", format(round(quantile(data$timeTracker_EPRO1_seconds, 0.25), 1), nsmall = 1), "; ", 
+        format(round(quantile(data$timeTracker_EPRO1_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
+  format(round(min(data$timeTracker_EPRO1_seconds), 1), nsmall = 1),
+  format(round(max(data$timeTracker_EPRO1_seconds), 1), nsmall = 1)
 )
 
-time_tab[2,] <- c(
+# Row 2: Attribute ranking
+time_tab[2, ] <- c(
   "Attribute ranking",
-  paste(round(mean(data$timeTracker_OPUFRanking1_seconds), 1), " (", round(sd(data$timeTracker_OPUFRanking1_seconds), 1), ")", sep = ""),
-  paste(round(median(data$timeTracker_OPUFRanking1_seconds), 1), " (", round(quantile(data$timeTracker_OPUFRanking1_seconds, 0.25), 1), "; ", round(quantile(data$timeTracker_OPUFRanking1_seconds, 0.75), 1), ")", sep = ""),
-  round(min(data$timeTracker_OPUFRanking1_seconds), 1),
-  round(max(data$timeTracker_OPUFRanking1_seconds), 1)
+  paste(format(round(mean(data$timeTracker_OPUFRanking1_seconds), 1), nsmall = 1), 
+        " (", format(round(sd(data$timeTracker_OPUFRanking1_seconds), 1), nsmall = 1), ")", sep = ""),
+  paste(format(round(median(data$timeTracker_OPUFRanking1_seconds), 1), nsmall = 1), 
+        " (", format(round(quantile(data$timeTracker_OPUFRanking1_seconds, 0.25), 1), nsmall = 1), "; ", 
+        format(round(quantile(data$timeTracker_OPUFRanking1_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
+  format(round(min(data$timeTracker_OPUFRanking1_seconds), 1), nsmall = 1),
+  format(round(max(data$timeTracker_OPUFRanking1_seconds), 1), nsmall = 1)
 )
 
-time_tab[3,] <- c(
+# Row 3: Attribute weighting
+time_tab[3, ] <- c(
   "Attribute weighting",
-  paste(round(mean(data$timeTracker_OPUFSwingWeight1_seconds), 1), " (", round(sd(data$timeTracker_OPUFSwingWeight1_seconds), 1), ")", sep = ""),
-  paste(round(median(data$timeTracker_OPUFSwingWeight1_seconds), 1), " (", round(quantile(data$timeTracker_OPUFSwingWeight1_seconds, 0.25), 1), "; ", round(quantile(data$timeTracker_OPUFSwingWeight1_seconds, 0.75), 1), ")", sep = ""),
-  round(min(data$timeTracker_OPUFSwingWeight1_seconds), 1),
-  round(max(data$timeTracker_OPUFSwingWeight1_seconds), 1)
+  paste(format(round(mean(data$timeTracker_OPUFSwingWeight1_seconds), 1), nsmall = 1), 
+        " (", format(round(sd(data$timeTracker_OPUFSwingWeight1_seconds), 1), nsmall = 1), ")", sep = ""),
+  paste(format(round(median(data$timeTracker_OPUFSwingWeight1_seconds), 1), nsmall = 1), 
+        " (", format(round(quantile(data$timeTracker_OPUFSwingWeight1_seconds, 0.25), 1), nsmall = 1), "; ", 
+        format(round(quantile(data$timeTracker_OPUFSwingWeight1_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
+  format(round(min(data$timeTracker_OPUFSwingWeight1_seconds), 1), nsmall = 1),
+  format(round(max(data$timeTracker_OPUFSwingWeight1_seconds), 1), nsmall = 1)
 )
 
-time_tab[4,] <- c(
+# Row 4: Level rating
+time_tab[4, ] <- c(
   "Level rating",
-  paste(round(mean(data$timeTracker_OPUFLevelRating_seconds, na.rm=T), 1), " (", round(sd(data$timeTracker_OPUFLevelRating_seconds, na.rm=T), 1), ")", sep = ""),
-  paste(round(median(data$timeTracker_OPUFLevelRating_seconds, na.rm=T), 1), " (", round(quantile(data$timeTracker_OPUFLevelRating_seconds, 0.25, na.rm=T), 1), "; ", round(quantile(data$timeTracker_OPUFLevelRating_seconds, 0.75, na.rm=T), 1), ")", sep = ""),
-  round(min(data$timeTracker_OPUFLevelRating_seconds, na.rm=T), 1),
-  round(max(data$timeTracker_OPUFLevelRating_seconds, na.rm=T), 1)
+  paste(format(round(mean(data$timeTracker_OPUFLevelRating_seconds, na.rm = TRUE), 1), nsmall = 1), 
+        " (", format(round(sd(data$timeTracker_OPUFLevelRating_seconds, na.rm = TRUE), 1), nsmall = 1), ")", sep = ""),
+  paste(format(round(median(data$timeTracker_OPUFLevelRating_seconds, na.rm = TRUE), 1), nsmall = 1), 
+        " (", format(round(quantile(data$timeTracker_OPUFLevelRating_seconds, 0.25, na.rm = TRUE), 1), nsmall = 1), "; ", 
+        format(round(quantile(data$timeTracker_OPUFLevelRating_seconds, 0.75, na.rm = TRUE), 1), nsmall = 1), ")", sep = ""),
+  format(round(min(data$timeTracker_OPUFLevelRating_seconds, na.rm = TRUE), 1), nsmall = 1),
+  format(round(max(data$timeTracker_OPUFLevelRating_seconds, na.rm = TRUE), 1), nsmall = 1)
 )
 
-time_tab[5,] <- c(
+# Row 5: PITS vs death
+time_tab[5, ] <- c(
   "PITS vs death",
-  paste(round(mean(data$timeTracker_OPUFDeadChoice_seconds), 1), " (", round(sd(data$timeTracker_OPUFDeadChoice_seconds), 1), ")", sep = ""),
-  paste(round(median(data$timeTracker_OPUFDeadChoice_seconds), 1), " (", round(quantile(data$timeTracker_OPUFDeadChoice_seconds, 0.25), 1), "; ", round(quantile(data$timeTracker_OPUFDeadChoice_seconds, 0.75), 1), ")", sep = ""),
-  round(min(data$timeTracker_OPUFDeadChoice_seconds), 1),
-  round(max(data$timeTracker_OPUFDeadChoice_seconds), 1)
+  paste(format(round(mean(data$timeTracker_OPUFDeadChoice_seconds), 1), nsmall = 1), 
+        " (", format(round(sd(data$timeTracker_OPUFDeadChoice_seconds), 1), nsmall = 1), ")", sep = ""),
+  paste(format(round(median(data$timeTracker_OPUFDeadChoice_seconds), 1), nsmall = 1), 
+        " (", format(round(quantile(data$timeTracker_OPUFDeadChoice_seconds, 0.25), 1), nsmall = 1), "; ", 
+        format(round(quantile(data$timeTracker_OPUFDeadChoice_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
+  format(round(min(data$timeTracker_OPUFDeadChoice_seconds), 1), nsmall = 1),
+  format(round(max(data$timeTracker_OPUFDeadChoice_seconds), 1), nsmall = 1)
 )
 
-time_tab[6,] <- c(
+# Row 6: PITS-VAS
+time_tab[6, ] <- c(
   "PITS-VAS",
-  paste(round(mean(data$timeTracker_OPUFVasAnchoring_seconds), 1), " (", round(sd(data$timeTracker_OPUFVasAnchoring_seconds), 1), ")", sep = ""),
-  paste(round(median(data$timeTracker_OPUFVasAnchoring_seconds), 1), " (", round(quantile(data$timeTracker_OPUFVasAnchoring_seconds, 0.25), 1), "; ", round(quantile(data$timeTracker_OPUFVasAnchoring_seconds, 0.75), 1), ")", sep = ""),
-  round(min(data$timeTracker_OPUFVasAnchoring_seconds), 1),
-  round(max(data$timeTracker_OPUFVasAnchoring_seconds), 1)
+  paste(format(round(mean(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1), 
+        " (", format(round(sd(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1), ")", sep = ""),
+  paste(format(round(median(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1), 
+        " (", format(round(quantile(data$timeTracker_OPUFVasAnchoring_seconds, 0.25), 1), nsmall = 1), "; ", 
+        format(round(quantile(data$timeTracker_OPUFVasAnchoring_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
+  format(round(min(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1),
+  format(round(max(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1)
 )
 
-time_tab[7,] <- c(
-  "PITS-VAS",
-  paste(round(mean(data$timeTracker_OPUFVasAnchoring_seconds), 1), " (", round(sd(data$timeTracker_OPUFVasAnchoring_seconds), 1), ")", sep = ""),
-  paste(round(median(data$timeTracker_OPUFVasAnchoring_seconds), 1), " (", round(quantile(data$timeTracker_OPUFVasAnchoring_seconds, 0.25), 1), "; ", round(quantile(data$timeTracker_OPUFVasAnchoring_seconds, 0.75), 1), ")", sep = ""),
-  round(min(data$timeTracker_OPUFVasAnchoring_seconds), 1),
-  round(max(data$timeTracker_OPUFVasAnchoring_seconds), 1)
-)
-
-time_tab[8,] <- c(
+# Row 8: Total (secs)
+time_tab[7, ] <- c(
   "Total (secs)",
-  paste(round(mean(data$time_taken), 1), " (", round(sd(data$time_taken), 1), ")", sep = ""),
-  paste(round(median(data$time_taken), 1), " (", round(quantile(data$time_taken, 0.25), 1), "; ", round(quantile(data$time_taken, 0.75), 1), ")", sep = ""),
-  round(min(data$time_taken), 1),
-  round(max(data$time_taken), 1)
+  paste(format(round(mean(data$time_taken), 1), nsmall = 1), 
+        " (", format(round(sd(data$time_taken), 1), nsmall = 1), ")", sep = ""),
+  paste(format(round(median(data$time_taken), 1), nsmall = 1), 
+        " (", format(round(quantile(data$time_taken, 0.25), 1), nsmall = 1), "; ", 
+        format(round(quantile(data$time_taken, 0.75), 1), nsmall = 1), ")", sep = ""),
+  format(round(min(data$time_taken), 1), nsmall = 1),
+  format(round(max(data$time_taken), 1), nsmall = 1)
 )
 
-time_tab[9,] <- c(
+# Row 9: Total (mins)
+time_tab[8, ] <- c(
   "Total (mins)",
-  paste(round(mean(data$time_taken_minutes), 2), " (", round(sd(data$time_taken_minutes), 2), ")", sep = ""),
-  paste(round(median(data$time_taken_minutes), 2), " (", round(quantile(data$time_taken_minutes, 0.25), 2), "; ", round(quantile(data$time_taken_minutes, 0.75), 2), ")", sep = ""),
-  round(min(data$time_taken_minutes), 2),
-  round(max(data$time_taken_minutes), 2)
+  paste(format(round(mean(data$time_taken_minutes), 2), nsmall = 2), 
+        " (", format(round(sd(data$time_taken_minutes), 2), nsmall = 2), ")", sep = ""),
+  paste(format(round(median(data$time_taken_minutes), 2), nsmall = 2), 
+        " (", format(round(quantile(data$time_taken_minutes, 0.25), 2), nsmall = 2), "; ", 
+        format(round(quantile(data$time_taken_minutes, 0.75), 2), nsmall = 2), ")", sep = ""),
+  format(round(min(data$time_taken_minutes), 2), nsmall = 2),
+  format(round(max(data$time_taken_minutes), 2), nsmall = 2)
 )
 
-# Optionally, set the column names
 colnames(time_tab) <- c("Section", "Mean (SD)", "Median (Q1; Q3)", "Min", "Max")  # adjusted the column name
 
 
@@ -504,7 +608,7 @@ categories <- c("tired", "walk", "sports", "concentration", "embarrassment", "un
 row_index <- 1
 for (category in categories) {
   for (i in 1:3) {
-    level_tab[row_index, ] <- c(c("Almost never", "Sometimes", "Often")[i], calculate_stats(data[[paste0("opuf_levelRatings_", category, "_", i)]]))
+    level_tab[row_index, ] <- c(c("Almost never", "Sometimes", "Often")[i], calculate_stats(data[[paste0("opuf_levelRatings_", category, "_", i)]], 1))
     row_index <- row_index + 1
   }
 }
@@ -561,13 +665,13 @@ Summary statistics of attribute weightings are presented in @tbl-attribute. On a
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
 # attribute weighting table
 attribute_tab <- matrix(NA, nrow = 14, ncol = 5)
-attribute_tab[1,] <- c("Tired", calculate_stats(data$opuf_swingWeights_tired))
-attribute_tab[2,] <- c("Walking", calculate_stats(data$opuf_swingWeights_walk))
-attribute_tab[3,] <- c("Sports", calculate_stats(data$opuf_swingWeights_sports))
-attribute_tab[4,] <- c("Concentration", calculate_stats(data$opuf_swingWeights_concentration))
-attribute_tab[5,] <- c("Embarrassment", calculate_stats(data$opuf_swingWeights_embarrassment))
-attribute_tab[6,] <- c("Unhappiness", calculate_stats(data$opuf_swingWeights_unhappiness))
-attribute_tab[7,] <- c("Treated differently", calculate_stats(data$opuf_swingWeights_treat))
+attribute_tab[1,] <- c("Tired", calculate_stats(data$opuf_swingWeights_tired, 1))
+attribute_tab[2,] <- c("Walking", calculate_stats(data$opuf_swingWeights_walk, 1))
+attribute_tab[3,] <- c("Sports", calculate_stats(data$opuf_swingWeights_sports, 1))
+attribute_tab[4,] <- c("Concentration", calculate_stats(data$opuf_swingWeights_concentration, 1))
+attribute_tab[5,] <- c("Embarrassment", calculate_stats(data$opuf_swingWeights_embarrassment, 1))
+attribute_tab[6,] <- c("Unhappiness", calculate_stats(data$opuf_swingWeights_unhappiness, 1))
+attribute_tab[7,] <- c("Treated differently", calculate_stats(data$opuf_swingWeights_treat, 1))
 attribute_tab[8,] <- c("Anchoring", "", "", "", "")
 attribute_tab[8,] <- cell_spec(attribute_tab[8,], bold = TRUE) 
 
@@ -587,13 +691,13 @@ opuf_pitsUtility <- opuf_pitsUtility[!is.na(opuf_pitsUtility)]
 censored_opuf_pitsUtility <- ifelse(opuf_pitsUtility < -1, -1, opuf_pitsUtility) 
 
 
-attribute_tab[9 ,] <- c("PITS preferred to death", calculate_stats(preferred_pits))
-attribute_tab[10 ,] <- c("PITS-VAS", calculate_stats(pits_vas))
-attribute_tab[11,] <- c("Dead-VAS", calculate_stats(dead_vas))
-attribute_tab[12,] <- c("PITS VAS uncensored", calculate_stats(opuf_pitsUtility))
-attribute_tab[13,] <- c("PITS VAS censored", calculate_stats(censored_opuf_pitsUtility))
+attribute_tab[9 ,] <- c("PITS preferred to death", calculate_stats(preferred_pits, 1))
+attribute_tab[10 ,] <- c("PITS-VAS", calculate_stats(pits_vas, 1))
+attribute_tab[11,] <- c("Dead-VAS", calculate_stats(dead_vas, 1))
+attribute_tab[12,] <- c("PITS VAS uncensored", calculate_stats(opuf_pitsUtility, 3))
+attribute_tab[13,] <- c("PITS VAS censored", calculate_stats(censored_opuf_pitsUtility, 3))
 
-attribute_tab[14,] <- c("PITS Utility Value", calculate_stats(data$PITS))
+attribute_tab[14,] <- c("PITS Utility Value", calculate_stats(data$PITS, 3))
 
 colnames(attribute_tab) <- colnames(time_tab)
 ```
@@ -665,7 +769,7 @@ hist
 \newpage
 
 ## Social utility function estimation
-Personal utility functions were estimated individually for each participant in our analysis sample via methods outlined in @sec-OPUF_methods. After this, individual PUFs were aggregated into a group utility function and anchored using the group PITS utility value (0.282) to give the social utility function. Descriptive statistics from the social utility function are presented in @tbl-suf whereby the mean values can be used to estimate utility values for WAItE health states. 
+Personal utility functions were estimated individually for each participant in our analysis sample via methods outlined in @sec-OPUF_methods. After this, individual PUFs were aggregated into a group utility function and anchored using the group PITS utility value (0.282) to give the social utility function. Descriptive statistics from the social utility function are presented in @tbl-suf whereby the mean values can be used to estimate utility values for WAItE health states. Confidence intervals were estimated from bootstrap resampling with 10,000 iterations. 
 
 @fig-sufplain presents the mean social utility function (thick line) alongside individual personal utility functions (thin lines) for a selection of 100 WAItE health states ordered from high to low utility according to the social preference. Deviations of individual utility functions from the social preference illustrate the heterogeneity of preference within our analysis sample. Individual personal utility functions shown in @fig-sufplain are anchored using individual PITS utility values rather than the social PITS utility value.   
 
@@ -782,10 +886,10 @@ levels <- c("almost never", "sometimes", "often", "always")
 for (i in 1:nrow(mean_matrix)) {
   for (j in 1:ncol(mean_matrix)) {
     row_label <- paste0(attributes[i], ", ", levels[j])
-    mean_ci <- paste0(round(mean_matrix[i, j], 3), " (", round(ci_lower[i, j], 3), "; ", round(ci_upper[i, j], 3), ")")
-    median_q1_q3 <- paste0(round(median_matrix[i, j], 3), " (", round(q1_matrix[i, j], 3), "; ", round(q3_matrix[i, j], 3), ")")
+    mean_ci <- paste0(format(round(mean_matrix[i, j], 3), nsmall = 3), " (", format(round(ci_lower[i, j], 3), nsmall = 3), "; ", format(round(ci_upper[i, j], 3), nsmall = 3), ")")
+    median_q1_q3 <- paste0(format(round(median_matrix[i, j], 3), nsmall = 3), " (", format(round(q1_matrix[i, j], 3), nsmall = 3), "; ", format(round(q3_matrix[i, j], 3), nsmall = 3), ")")
     min_val <- round(min_matrix[i, j], 3)
-    max_val <- round(max_matrix[i, j], 3)
+    max_val <- format(round(max_matrix[i, j], 3), nsmall = 3)
     
     final_table[[length(final_table) + 1]] <- c(row_label, mean_ci, median_q1_q3, min_val, max_val)
   }
@@ -882,7 +986,7 @@ final_df2[35 ,1] <- "Always"
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
 #| label: tbl-suf
 #| tbl-cap: Social utility function based on 300 PUFs
-kable(final_df2)
+kable(final_df2) 
 ```
 
 ## Preference heterogeneity
@@ -972,7 +1076,7 @@ The value set estimated here offers an alternative choice of preference values t
 
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
 
-v_anchored <- round(as.vector(anchored_matrix[2:5,]), 3)
+v_anchored <- format(round(as.vector(anchored_matrix[2:5,]), 3), nsmall = 3)
 for(i in c(31, 26, 21, 16, 11, 6, 1)){
   dcetto_matrix <- dcetto_matrix[-i]
   dcevas_matrix <- dcevas_matrix[-i]
@@ -1007,9 +1111,9 @@ for (i in seq_along(attribute_names)) {
   # Add the levels for the current attribute
   tab_valuesets <- rbind(tab_valuesets, data.frame(
     `Attribute level` = level_labels,
-    OPUF = v_anchored[(4 * (i - 1) + 1):(4 * i)],
-    `DCE-TTO` = v_dcetto[(4 * (i - 1) + 1):(4 * i)],
-    `DCE-VAS` = v_dcevas[(4 * (i - 1) + 1):(4 * i)]
+    OPUF = format(v_anchored[(4 * (i - 1) + 1):(4 * i)], nsmall = 3),
+    `DCE-TTO` = format(v_dcetto[(4 * (i - 1) + 1):(4 * i)], nsmall = 3),
+    `DCE-VAS` = format(v_dcevas[(4 * (i - 1) + 1):(4 * i)], nsmall = 3)
   ))
 }
 

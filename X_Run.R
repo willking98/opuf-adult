@@ -48,3 +48,5 @@ if (run_scripts == 1) {
 
 # Load final image after running scripts
 load(here("data", "processed", "image.RData"))
+
+source(here("scripts", "helpers", "utils.R"))

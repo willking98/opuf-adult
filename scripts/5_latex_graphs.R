@@ -92,7 +92,7 @@ scale_x_continuous(
 
   
   # Customize y-axis
-  ylab("Social and individual utility values") +
+  ylab("Social and individual utility") +
   
   # Apply minimal theme
   theme_minimal() +
@@ -154,7 +154,7 @@ scale_x_continuous(
 
   
   # Customize y-axis
-  ylab("Social and individual utility values") +
+  ylab("Social and individual utility") +
   
   # Apply minimal theme
   theme_minimal() +
@@ -205,7 +205,7 @@ waite_comparisons <- ggplot() +
   ) +
 
   # Customize y-axis
-  ylab("Social and individual utility values") +
+  ylab("Social and individual utility") +
   
   # Set color palette for the lines
   scale_color_manual(values = viridis_colors) +
@@ -263,7 +263,7 @@ scale_x_continuous(
 
   
   # Customize y-axis
-  ylab("Social and individual utility values") +
+  ylab("Social and individual utility") +
   
   # Apply minimal theme
   theme_minimal() +
@@ -331,7 +331,7 @@ scale_x_continuous(
 
   
   # Customize y-axis
-  ylab("Social and individual utility values") +
+  ylab("Social and individual utility") +
   
   # Apply minimal theme
   theme_minimal() +
@@ -402,7 +402,7 @@ scale_x_continuous(
 
   
   # Customize y-axis
-  ylab("Social and individual utility values") +
+  ylab("Social and individual utility") +
   
   # Apply minimal theme
   theme_minimal() +
