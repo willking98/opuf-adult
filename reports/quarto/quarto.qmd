@@ -607,6 +607,7 @@ ggplot(rai_data, aes(x = Category, y = Value, fill = Category)) +  # Categories 
   labs(x = "Attribute", y = "Attribute weighting", fill = "Attribute") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 22.5, hjust = 1))       # Rotate x-axis labels by 45 degrees
+
 ```
 
 ## Anchoring
