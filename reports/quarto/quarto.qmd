@@ -55,26 +55,26 @@ keywords:
 date: last-modified
 bibliography: bibliography.bib
 csl: vancouver.csl
-# format:
-#   html:
-#     toc: true
-#     toc-location: right
+format:
+  html:
+    toc: true
+    toc-location: right
 # Enable the below sections if you want pdf or docx
 # format:
 #   docx:
 #     toc: false
 #     number-sections: true
 #     highlight-style: github
-format:
-  elsevier-pdf:
-    keep-tex: true
-    journal:
-      name: Health Economics Study Group
-      formatting: preprint
-      # model: 3p # Don't set a model with preprint
-      cite-style: number
-    header-includes:
-      - \usepackage[a4paper,margin=1in,textwidth=6.5in]{geometry}
+# format:
+#   elsevier-pdf:
+#     keep-tex: true
+#     journal:
+#       name: Health Economics Study Group
+#       formatting: preprint
+#       # model: 3p # Don't set a model with preprint
+#       cite-style: number
+#     header-includes:
+#       - \usepackage[a4paper,margin=1in,textwidth=6.5in]{geometry}
 ---
 
 *Disclaimer:* This is a work-in-progress, please do not redistribute or cite without the authors permission. This work was supported by the NIHR-ARC and Newcastle University. 
@@ -109,7 +109,7 @@ This section is composed of two parts. First, attribute ranking is completed whe
 
 ::: {#fig-attribute layout-ncol=2}
 
-![Most important attribute](../../outputs/figures/relative_importance.png){#fig-importantattribute}
+![Most important attribute](/outputs/figures/relative_importance.png){#fig-importantattribute}
 
 ![Swing rating](../../outputs/figures/swing_rating.png){#fig-swing}
 
