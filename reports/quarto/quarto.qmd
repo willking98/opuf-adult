@@ -111,7 +111,7 @@ This section is composed of two parts. First, attribute ranking is completed whe
 
 ![Most important attribute](https://willking98.github.io/opuf-adult/outputs/figures/relative_importance.png){#fig-importantattribute}
 
-![Swing rating](../../outputs/figures/swing_rating.png){#fig-swing}
+![Swing rating](https://willking98.github.io/opuf-adult/outputs/figures/swing_rating.png){#fig-swing}
 
 Attribute weighting
 :::
@@ -121,9 +121,9 @@ This element of the OPUF has varied across different iterations of the survey. S
 
 ::: {#fig-level layout-ncol=2}
 
-![Level rating: Tiredness](../../outputs/figures/level_rating.png){#fig-levelrating}
+![Level rating: Tiredness](https://willking98.github.io/opuf-adult/outputs/figures/level_rating.png){#fig-levelrating}
 
-![Level rating: Treated differently](../../outputs/figures/level_rating2.png){#fig-levelrating2}
+![Level rating: Treated differently](https://willking98.github.io/opuf-adult/outputs/figures/level_rating2.png){#fig-levelrating2}
 
 Level rating
 :::
@@ -135,9 +135,9 @@ A task is required to rescale the latent coefficients estimated via combining le
 
 ::: {#fig-anchoring layout-ncol=2}
 
-![PITS-dead](../../outputs/figures/anchor1.png){#fig-anchor1}
+![PITS-dead](https://willking98.github.io/opuf-adult/outputs/figures/anchor1.png){#fig-anchor1}
 
-![PITS-VAS](../../outputs/figures/anchor2.png){#fig-anchor2}
+![PITS-VAS](https://willking98.github.io/opuf-adult/outputs/figures/anchor2.png){#fig-anchor2}
 
 Anchoring factor
 :::
@@ -582,6 +582,23 @@ demographic_data <- data.frame(
   )
 )
 ```
+
+
+::: {.content-visible when-format="html"}
+```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
+#| label: tbl-demographic
+#| tbl-cap: Summary of demographic information collected in the OPUF
+
+# Create table
+kable(demographic_data, col.names = c("Participant Characteristics (N=300)", "N (%)"), align = c("l", "r")) 
+# , align = c("l", "r"), escape = FALSE) %>%
+#   kable_styling(full_width = FALSE, position = "center") %>%
+#   column_spec(1, bold = TRUE) %>%
+#   add_header_above(c("Participant Characteristics (N=300)" = 1, "N (%)" = 1))
+```
+:::
+
+::: {.content-visible when-format="pdf"}
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
 #| label: tbl-demographic
 #| tbl-cap: Summary of demographic information collected in the OPUF
@@ -594,7 +611,7 @@ kable(demographic_data, "latex", booktabs = TRUE, col.names = c("Participant Cha
 #   column_spec(1, bold = TRUE) %>%
 #   add_header_above(c("Participant Characteristics (N=300)" = 1, "N (%)" = 1))
 ```
-
+:::
 
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
 # Initialize the level_tab matrix
