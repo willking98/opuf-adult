@@ -77,22 +77,30 @@ format:
 #       - \usepackage[a4paper,margin=1in,textwidth=6.5in]{geometry}
 ---
 
+
+
 *Disclaimer:* This is a work-in-progress, please do not redistribute or cite without the authors permission. This work was supported by the NIHR-ARC and Newcastle University. 
 
 *Acknowledgements:* We would like to thank Paul Schneider and Valorem Health for collaborating on this project.
 
 *Code availability:* An interactive document (HTML) which includes the live survey is available [here](https://willking98.github.io/opuf-adult/). Source code for the analysis and this Quarto generated PDF are available [here](https://github.com/willking98/opuf-adult).
 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
-setwd("~/Dropbox/opuf-adult") # convert this to here for reproducibility
-source("X_Run.R")
-```
+
+
+::: {.cell}
+
+:::
+
+
 
 # Introduction {#sec-introduction}
-```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
-# include in thesis but not paper?
-# This chapter presents the introduction, methods, results and discussion from an empirical study developing a utility value set for the WAItE using online personal utility functions (OPUF) with a representative sample of UK adults.  
-```
+
+
+::: {.cell}
+
+:::
+
+
 
 ## Compositional preference elicitation methods
 
@@ -148,34 +156,30 @@ This section presents the logic and underlying mathematics required to convert t
 \newpage
 
 ### Example responses
-```{r, echo=FALSE}
-example_opuf_data <- data.frame(
-  Response = c("Level rating: Never", "Level rating: Almost Never", "Level rating: Sometimes", "Level rating: Often", "Level rating: Always", 
-               "Attribute Weighting"),
-  Tired = c(0, 14, 57, 83, 100, 28),
-  Walking = c(0, 26, 55, 82, 100, 33),
-  Sports = c(0, 21, 63, 85, 100, 36),
-  Concentration = c(0, 15, 54, 86, 100, 45),
-  Embarrassed = c(0, 16, 38, 64, 100, 100),
-  Unhappiness = c(0, 12, 26, 38, 100, 34),
-  Treated = c(0, 19, 66, 91, 100, 56)
-)
 
-```
 
-```{r, echo=FALSE}
-#| label: tbl-exampledata
-#| tbl-cap: Example individual responses to the OPUF
-kable(example_opuf_data) 
+::: {.cell}
 
-# footnote(
-#     general = c("WAItE PITS better than dead = Yes",
-#     "Anchoring Task Response = 20", 
-#                "PITS Utility Value = 0.2"),
-#     footnote_as_chunk = TRUE,
-#     escape = FALSE
-#   )
-```
+:::
+
+::: {#tbl-exampledata .cell tbl-cap='Example individual responses to the OPUF'}
+::: {.cell-output-display}
+
+
+|Response                   | Tired| Walking| Sports| Concentration| Embarrassed| Unhappiness| Treated|
+|:--------------------------|-----:|-------:|------:|-------------:|-----------:|-----------:|-------:|
+|Level rating: Never        |     0|       0|      0|             0|           0|           0|       0|
+|Level rating: Almost Never |    14|      26|     21|            15|          16|          12|      19|
+|Level rating: Sometimes    |    57|      55|     63|            54|          38|          26|      66|
+|Level rating: Often        |    83|      82|     85|            86|          64|          38|      91|
+|Level rating: Always       |   100|     100|    100|           100|         100|         100|     100|
+|Attribute Weighting        |    28|      33|     36|            45|         100|          34|      56|
+
+
+:::
+:::
+
+
 
 Level ratings (presented in @tbl-exampledata)  are converted to coefficients bounded between 0-1 (shown in @eq-level-rescale). Level rating coefficients are presented in @eq-level-matrix. Attribute weights (presented in @tbl-exampledata) are then normalised to sum to the value of 1 by dividing each weight by the sum of all weights (shown in @eq-weight-normalise). Normalised attribute weights are presented in @eq-weight-vector. 
 
@@ -241,24 +245,29 @@ $$ {#eq-anchored-matrix}
 
 Once the attribute and level labels are reintroduced to the anchored coefficient matrix this forms the value set which presents the disutility corresponding to each attribute level combination presented in the WAItE. @tbl-example-valueset presents the WAItE example PUF value set. @eq-HS123 provides examples of how to estimate a utility value given a specific WAItE health state. 
 
-```{r, echo = FALSE}
-example_valueset <- data.frame(
-  "Attribute level" = c("Never", "Almost Never", "Sometimes", "Often", "Always"),
-  Tired = c(0, 0.01, 0.04, 0.06, 0.06),
-  Walking = c(0, 0.02, 0.04, 0.06, 0.08),
-  Sports = c(0, 0.02, 0.06, 0.07, 0.09),
-  Concentration = c(0, 0.02, 0.06, 0.10, 0.11),
-  Embarrassed = c(0, 0.04, 0.09, 0.15, 0.24),
-  Unhappiness = c(0, 0.01, 0.02, 0.03, 0.08),
-  Treated = c(0, 0.02, 0.09, 0.12, 0.14)
-)
-```
 
-```{r, echo = FALSE}
-#| label: tbl-example-valueset
-#| tbl-cap: WAItE example PUF value set
-kable(example_valueset, col.names = c("Attribute level", "Tired", "Walking", "Sports", "Concentration", "Embarrassed", "Unhappiness", "Treated"), digits = 2)
-```
+
+::: {.cell}
+
+:::
+
+::: {#tbl-example-valueset .cell tbl-cap='WAItE example PUF value set'}
+::: {.cell-output-display}
+
+
+|Attribute level | Tired| Walking| Sports| Concentration| Embarrassed| Unhappiness| Treated|
+|:---------------|-----:|-------:|------:|-------------:|-----------:|-----------:|-------:|
+|Never           |  0.00|    0.00|   0.00|          0.00|        0.00|        0.00|    0.00|
+|Almost Never    |  0.01|    0.02|   0.02|          0.02|        0.04|        0.01|    0.02|
+|Sometimes       |  0.04|    0.04|   0.06|          0.06|        0.09|        0.02|    0.09|
+|Often           |  0.06|    0.06|   0.07|          0.10|        0.15|        0.03|    0.12|
+|Always          |  0.06|    0.08|   0.09|          0.11|        0.24|        0.08|    0.14|
+
+
+:::
+:::
+
+
 
 $$
 \begin{aligned}
@@ -295,6 +304,8 @@ This study recruited 300 adults to respond to a quality-of-life survey hosted on
 ## Live survey {#sec-livesurvey}
 ::: {.callout-note collapse="true"}
 ### Live Survey 
+
+
 ```{=html}
 <iframe 
     width="800" 
@@ -303,6 +314,8 @@ This study recruited 300 adults to respond to a quality-of-life survey hosted on
     title="Information">
 </iframe>
 ```
+
+
 :::
 
 :::
@@ -348,204 +361,32 @@ A sample of 334 individuals were approached to participate in the study via the 
 ## Survey duration
 The mean (SD) and median (IQR) survey completion time in minutes was 9.66 (5.85) and 8.15 (5.88; 11.89). @tbl-time summarises how much time was spent completing each individual section of the survey.
 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
-# Time
-# Convert start time from milliseconds to POSIXct
-data$start_time <- as.POSIXct(data$timeTracker_surveyStartTime / 1000, origin = "1970-01-01", tz = "Europe/London")
-
-data$start_time_minutes <- as.POSIXct(((data$timeTracker_surveyStartTime)/1000), origin="1970-01-01", tz="Europe/London")
-data$time_taken_minutes <- as.numeric(as.POSIXct(((data$timeTracker_surveyEndTime)/1000), origin="1970-01-01", tz="Europe/London") - as.POSIXct(((data$timeTracker_surveyStartTime)/1000), origin="1970-01-01", tz="Europe/London"))
-
-# Calculate time taken in seconds
-data$time_taken <- as.numeric(
-  as.POSIXct(data$timeTracker_surveyEndTime / 1000, origin = "1970-01-01", tz = "Europe/London") -
-  as.POSIXct(data$timeTracker_surveyStartTime / 1000, origin = "1970-01-01", tz = "Europe/London"),
-  units = "secs"
-)
-
-# time_tab <- matrix(NA, nrow = 9, ncol = 5)
-#
-# time_tab[1,] <- c(
-#   "WAItE",
-#   paste(format(round(mean(data$timeTracker_EPRO1_seconds), 1), nsmall = 1), " (", format(round(sd(data$timeTracker_EPRO1_seconds), 1), nsmall = 1), ")", sep = ""),
-#   paste(format(round(median(data$timeTracker_EPRO1_seconds), 1), nsmall = 1), " (", format(round(quantile(data$timeTracker_EPRO1_seconds, 0.25), 1), nsmall = 1), "; ", format(round(quantile(data$timeTracker_EPRO1_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
-#   format(round(min(data$timeTracker_EPRO1_seconds), 1), nsmall = 1),
-#   format(round(max(data$timeTracker_EPRO1_seconds), 1), nsmall = 1)
-# )
-#
-# time_tab[2,] <- c(
-#   "Attribute ranking",
-#   paste(format(round(mean(data$timeTracker_OPUFRanking1_seconds), 1), nsmall = 1), " (", format(round(sd(data$timeTracker_OPUFRanking1_seconds), 1), nsmall = 1), ")", sep = ""),
-#   paste(format(round(median(data$timeTracker_OPUFRanking1_seconds), 1), nsmall = 1), " (", format(round(quantile(data$timeTracker_OPUFRanking1_seconds, 0.25), 1), nsmall = 1), "; ", format(round(quantile(data$timeTracker_OPUFRanking1_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
-#   format(round(min(data$timeTracker_OPUFRanking1_seconds), 1), nsmall = 1),
-#   format(round(max(data$timeTracker_OPUFRanking1_seconds), 1), nsmall = 1)
-# )
-#
-# time_tab[3,] <- c(
-#   "Attribute weighting",
-#   paste(format(round(mean(data$timeTracker_OPUFSwingWeight1_seconds), 1), nsmall = 1), " (", format(round(sd(data$timeTracker_OPUFSwingWeight1_seconds), 1), nsmall = 1), ")", sep = ""),
-#   paste(format(round(median(data$timeTracker_OPUFSwingWeight1_seconds), 1), nsmall = 1), " (", format(round(quantile(data$timeTracker_OPUFSwingWeight1_seconds, 0.25), 1), nsmall = 1), "; ", format(round(quantile(data$timeTracker_OPUFSwingWeight1_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
-#   format(round(min(data$timeTracker_OPUFSwingWeight1_seconds), 1), nsmall = 1),
-#   format(round(max(data$timeTracker_OPUFSwingWeight1_seconds), 1), nsmall = 1)
-# )
-#
-# time_tab[4,] <- c(
-#   "Level rating",
-#   paste(format(round(mean(data$timeTracker_OPUFLevelRating_seconds, na.rm=T), 1), nsmall = 1), " (", format(round(sd(data$timeTracker_OPUFLevelRating_seconds, na.rm=T), 1), nsmall = 1), ")", sep = ""),
-#   paste(format(round(median(data$timeTracker_OPUFLevelRating_seconds, na.rm=T), 1), nsmall = 1), " (", format(round(quantile(data$timeTracker_OPUFLevelRating_seconds, 0.25, na.rm=T), 1), nsmall = 1), "; ", format(round(quantile(data$timeTracker_OPUFLevelRating_seconds, 0.75, na.rm=T), 1), nsmall = 1), ")", sep = ""),
-#   format(round(min(data$timeTracker_OPUFLevelRating_seconds, na.rm=T), 1), nsmall = 1),
-#   format(round(max(data$timeTracker_OPUFLevelRating_seconds, na.rm=T), 1), nsmall = 1)
-# )
-#
-# time_tab[5,] <- c(
-#   "PITS vs death",
-#   paste(format(round(mean(data$timeTracker_OPUFDeadChoice_seconds), 1), nsmall = 1), " (", format(round(sd(data$timeTracker_OPUFDeadChoice_seconds), 1), nsmall = 1), ")", sep = ""),
-#   paste(format(round(median(data$timeTracker_OPUFDeadChoice_seconds), 1), nsmall = 1), " (", format(round(quantile(data$timeTracker_OPUFDeadChoice_seconds, 0.25), 1), nsmall = 1), "; ", format(round(quantile(data$timeTracker_OPUFDeadChoice_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
-#   format(round(min(data$timeTracker_OPUFDeadChoice_seconds), 1), nsmall = 1),
-#   format(round(max(data$timeTracker_OPUFDeadChoice_seconds), 1), nsmall = 1)
-# )
-#
-# time_tab[6,] <- c(
-#   "PITS-VAS",
-#   paste(format(round(mean(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1), " (", format(round(sd(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1), ")", sep = ""),
-#   format(paste(format(round(median(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1), " (", format(round(quantile(data$timeTracker_OPUFVasAnchoring_seconds, 0.25), 1), nsmall = 1), "; ", format(round(quantile(data$timeTracker_OPUFVasAnchoring_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
-#   format(round(min(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1),
-#   format(round(max(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1)
-# ))
-#
-# time_tab[7,] <- c(
-#   "PITS-VAS",
-#   paste(format(round(mean(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1), " (", format(round(sd(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1), ")", sep = ""),
-#   paste(format(round(median(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1), " (", format(round(quantile(data$timeTracker_OPUFVasAnchoring_seconds, 0.25), 1), nsmall = 1), "; ", format(round(quantile(data$timeTracker_OPUFVasAnchoring_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
-#   format(round(min(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1),
-#   format(round(max(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1)
-# )
-#
-# time_tab[8,] <- c(
-#   "Total (secs)",
-#   paste(format(round(mean(data$time_taken), 1), nsmall = 1), " (", format(round(sd(data$time_taken), 1), nsmall = 1), ")", sep = ""),
-#   paste(format(round(median(data$time_taken), 1), nsmall = 1), " (", format(round(quantile(data$time_taken, 0.25), 1), nsmall = 1), "; ", format(round(quantile(data$time_taken, 0.75), 1), nsmall = 1), ")", sep = ""),
-#   format(round(min(data$time_taken), 1), nsmall = 1)
-#   format(round(max(data$time_taken), 1), nsmall = 1)
-# )
-#
-# time_tab[9,] <- c(
-#   "Total (mins)",
-#   paste(format(round(mean(data$time_taken_minutes), 2), nsmall = 2), " (", format(round(sd(data$time_taken_minutes), 2), nsmall = 2), ")", sep = ""),
-#   paste(format(round(median(data$time_taken_minutes), 2), nsmall = 2), " (", format(round(quantile(data$time_taken_minutes, 0.25), 2), nsmall = 2), "; ", format(round(quantile(data$time_taken_minutes, 0.75), 2), nsmall = 2), ")", sep = ""),
-#   format(round(min(data$time_taken_minutes), 2), nsmall = 2),
-#   format(round(max(data$time_taken_minutes), 2), nsmall = 2)
-# )
-
-# Initialize the matrix
-time_tab <- matrix(NA, nrow = 8, ncol = 5)
-
-# Row 1: WAItE
-time_tab[1, ] <- c(
-  "WAItE",
-  paste(format(round(mean(data$timeTracker_EPRO1_seconds), 1), nsmall = 1), 
-        " (", format(round(sd(data$timeTracker_EPRO1_seconds), 1), nsmall = 1), ")", sep = ""),
-  paste(format(round(median(data$timeTracker_EPRO1_seconds), 1), nsmall = 1), 
-        " (", format(round(quantile(data$timeTracker_EPRO1_seconds, 0.25), 1), nsmall = 1), "; ", 
-        format(round(quantile(data$timeTracker_EPRO1_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
-  format(round(min(data$timeTracker_EPRO1_seconds), 1), nsmall = 1),
-  format(round(max(data$timeTracker_EPRO1_seconds), 1), nsmall = 1)
-)
-
-# Row 2: Attribute ranking
-time_tab[2, ] <- c(
-  "Attribute ranking",
-  paste(format(round(mean(data$timeTracker_OPUFRanking1_seconds), 1), nsmall = 1), 
-        " (", format(round(sd(data$timeTracker_OPUFRanking1_seconds), 1), nsmall = 1), ")", sep = ""),
-  paste(format(round(median(data$timeTracker_OPUFRanking1_seconds), 1), nsmall = 1), 
-        " (", format(round(quantile(data$timeTracker_OPUFRanking1_seconds, 0.25), 1), nsmall = 1), "; ", 
-        format(round(quantile(data$timeTracker_OPUFRanking1_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
-  format(round(min(data$timeTracker_OPUFRanking1_seconds), 1), nsmall = 1),
-  format(round(max(data$timeTracker_OPUFRanking1_seconds), 1), nsmall = 1)
-)
-
-# Row 3: Attribute weighting
-time_tab[3, ] <- c(
-  "Attribute weighting",
-  paste(format(round(mean(data$timeTracker_OPUFSwingWeight1_seconds), 1), nsmall = 1), 
-        " (", format(round(sd(data$timeTracker_OPUFSwingWeight1_seconds), 1), nsmall = 1), ")", sep = ""),
-  paste(format(round(median(data$timeTracker_OPUFSwingWeight1_seconds), 1), nsmall = 1), 
-        " (", format(round(quantile(data$timeTracker_OPUFSwingWeight1_seconds, 0.25), 1), nsmall = 1), "; ", 
-        format(round(quantile(data$timeTracker_OPUFSwingWeight1_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
-  format(round(min(data$timeTracker_OPUFSwingWeight1_seconds), 1), nsmall = 1),
-  format(round(max(data$timeTracker_OPUFSwingWeight1_seconds), 1), nsmall = 1)
-)
-
-# Row 4: Level rating
-time_tab[4, ] <- c(
-  "Level rating",
-  paste(format(round(mean(data$timeTracker_OPUFLevelRating_seconds, na.rm = TRUE), 1), nsmall = 1), 
-        " (", format(round(sd(data$timeTracker_OPUFLevelRating_seconds, na.rm = TRUE), 1), nsmall = 1), ")", sep = ""),
-  paste(format(round(median(data$timeTracker_OPUFLevelRating_seconds, na.rm = TRUE), 1), nsmall = 1), 
-        " (", format(round(quantile(data$timeTracker_OPUFLevelRating_seconds, 0.25, na.rm = TRUE), 1), nsmall = 1), "; ", 
-        format(round(quantile(data$timeTracker_OPUFLevelRating_seconds, 0.75, na.rm = TRUE), 1), nsmall = 1), ")", sep = ""),
-  format(round(min(data$timeTracker_OPUFLevelRating_seconds, na.rm = TRUE), 1), nsmall = 1),
-  format(round(max(data$timeTracker_OPUFLevelRating_seconds, na.rm = TRUE), 1), nsmall = 1)
-)
-
-# Row 5: PITS vs death
-time_tab[5, ] <- c(
-  "PITS vs death",
-  paste(format(round(mean(data$timeTracker_OPUFDeadChoice_seconds), 1), nsmall = 1), 
-        " (", format(round(sd(data$timeTracker_OPUFDeadChoice_seconds), 1), nsmall = 1), ")", sep = ""),
-  paste(format(round(median(data$timeTracker_OPUFDeadChoice_seconds), 1), nsmall = 1), 
-        " (", format(round(quantile(data$timeTracker_OPUFDeadChoice_seconds, 0.25), 1), nsmall = 1), "; ", 
-        format(round(quantile(data$timeTracker_OPUFDeadChoice_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
-  format(round(min(data$timeTracker_OPUFDeadChoice_seconds), 1), nsmall = 1),
-  format(round(max(data$timeTracker_OPUFDeadChoice_seconds), 1), nsmall = 1)
-)
-
-# Row 6: PITS-VAS
-time_tab[6, ] <- c(
-  "PITS-VAS",
-  paste(format(round(mean(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1), 
-        " (", format(round(sd(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1), ")", sep = ""),
-  paste(format(round(median(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1), 
-        " (", format(round(quantile(data$timeTracker_OPUFVasAnchoring_seconds, 0.25), 1), nsmall = 1), "; ", 
-        format(round(quantile(data$timeTracker_OPUFVasAnchoring_seconds, 0.75), 1), nsmall = 1), ")", sep = ""),
-  format(round(min(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1),
-  format(round(max(data$timeTracker_OPUFVasAnchoring_seconds), 1), nsmall = 1)
-)
-
-# Row 8: Total (secs)
-time_tab[7, ] <- c(
-  "Total (secs)",
-  paste(format(round(mean(data$time_taken), 1), nsmall = 1), 
-        " (", format(round(sd(data$time_taken), 1), nsmall = 1), ")", sep = ""),
-  paste(format(round(median(data$time_taken), 1), nsmall = 1), 
-        " (", format(round(quantile(data$time_taken, 0.25), 1), nsmall = 1), "; ", 
-        format(round(quantile(data$time_taken, 0.75), 1), nsmall = 1), ")", sep = ""),
-  format(round(min(data$time_taken), 1), nsmall = 1),
-  format(round(max(data$time_taken), 1), nsmall = 1)
-)
-
-# Row 9: Total (mins)
-time_tab[8, ] <- c(
-  "Total (mins)",
-  paste(format(round(mean(data$time_taken_minutes), 2), nsmall = 2), 
-        " (", format(round(sd(data$time_taken_minutes), 2), nsmall = 2), ")", sep = ""),
-  paste(format(round(median(data$time_taken_minutes), 2), nsmall = 2), 
-        " (", format(round(quantile(data$time_taken_minutes, 0.25), 2), nsmall = 2), "; ", 
-        format(round(quantile(data$time_taken_minutes, 0.75), 2), nsmall = 2), ")", sep = ""),
-  format(round(min(data$time_taken_minutes), 2), nsmall = 2),
-  format(round(max(data$time_taken_minutes), 2), nsmall = 2)
-)
-
-colnames(time_tab) <- c("Section", "Mean (SD)", "Median (Q1; Q3)", "Min", "Max")  # adjusted the column name
 
 
-```
-```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
-#| label: tbl-time
-#| tbl-cap: Survey completion times (secs)
-kable(time_tab, digits = 3, align = c("l", "r", "r", "r", "r"))
+::: {.cell}
 
-```
+:::
+
+::: {#tbl-time .cell tbl-cap='Survey completion times (secs)'}
+::: {.cell-output-display}
+
+
+|Section             |     Mean (SD)|      Median (Q1; Q3)|   Min|    Max|
+|:-------------------|-------------:|--------------------:|-----:|------:|
+|WAItE               |   73.0 (90.1)|    53.0 (38.0; 77.0)|  10.0| 1066.0|
+|Attribute ranking   |   35.4 (50.6)|    26.0 (16.0; 40.0)|   2.0|  741.0|
+|Attribute weighting |  115.7 (94.9)|   91.5 (69.8; 142.2)|  18.0| 1380.0|
+|Level rating        | 220.5 (206.4)| 171.0 (119.0; 249.0)|  34.0| 2158.0|
+|PITS vs death       |   25.5 (45.4)|    16.5 (11.0; 25.2)|   4.0|  620.0|
+|PITS-VAS            |   37.3 (39.2)|    29.0 (21.0; 45.0)|   5.0|  605.0|
+|Total (secs)        | 579.5 (351.1)| 489.2 (352.5; 713.4)| 126.7| 3738.2|
+|Total (mins)        |   9.66 (5.85)|   8.15 (5.88; 11.89)|  2.11|  62.30|
+
+
+:::
+:::
+
+
 
 ## WAItE descriptive system
 Responses to the WAItE descriptive system are presented in @tbl-demographic. Feeling tired and avoiding doing sport were the attributes that were most frequently experienced by participants in our analysis sample. WAItE summary statistics were in line with results from previous studies [@Robinson2019EstimatingEvaluation].
@@ -555,216 +396,194 @@ Level ratings are presented individually for each different attribute in @tbl-le
 
 \newpage
 
-```{r, echo = FALSE}
-# Data preparation
-demographic_data <- data.frame(
-  `Participant Characteristics`= c(
-    "Age", "18-24", "25-34", "35-44", "45-54", "55-64", "65-90", "Not Stated",
-    "Gender", "Female", "Male", "Non-binary",
-    "Ethnicity", "White", "Asian", "Black", "Mixed", "Other",
-    "Weight Status", "Normal", "Overweight", "Obese", "Underweight", "Prefer not to say",
-    "Education", "Degree", "A Level", "Higher Education", "Other", "GCSE A-C", "GCSE D-G",
-    "Occupation", "Full-time", "Part-time", "Not Paid", "Other", "Student", "Unemployed", 
-    "Not Stated", "Starting a New Job",
-    "WAItE", "Tiredness", "Walking", "Sport", "Concentration", 
-    "Embarrassment", "Unhappiness", "Treated differently", "Total"
-  ),
-   `N (%)`= c(
-    "", "32 (10.9%)", "50 (17%)", "48 (16.3%)", "49 (16.7%)", "81 (27.6%)", "34 (11.6%)", "6 (2.0%)",
-    "", "154 (51%)", "144 (48%)", "1 (0%)",
-    "", "251 (84%)", "23 (8%)", "11 (4%)", "10 (3%)", "5 (2%)",
-    "", "154 (51%)", "104 (35%)", "30 (10%)", "8 (3%)", "4 (1%)",
-    "", "147 (49%)", "64 (21%)", "46 (15%)", "20 (7%)", "18 (6%)", "5 (2%)",
-    "", "130 (43%)", "62 (21%)", "30 (10%)", "31 (10%)", "17 (6%)", "18 (6%)",
-    "9 (3%)", "3 (1%)",
-    "Mean (SD)", "3.4 (0.8)", "2.1 (1.1)", "3.3 (1.3)", "2.7 (1.0)", 
-    "2.2 (1.2)", "2.3 (1.0)", "1.9 (0.9)", "17.8 (4.8)"
-  )
-)
-```
-```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
-#| label: tbl-demographic
-#| tbl-cap: Summary of demographic information collected in the OPUF
-
-# Create table
-kable(demographic_data, "latex", booktabs = TRUE, col.names = c("Participant Characteristics (N=300)", "N (%)"), align = c("l", "r")) %>%
-  kable_styling(full_width = TRUE, latex_options = c("scale_down"))
-# , align = c("l", "r"), escape = FALSE) %>%
-#   kable_styling(full_width = FALSE, position = "center") %>%
-#   column_spec(1, bold = TRUE) %>%
-#   add_header_above(c("Participant Characteristics (N=300)" = 1, "N (%)" = 1))
-```
 
 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
-# Initialize the level_tab matrix
-level_tab <- matrix(NA, nrow = 21, ncol = 5)
-level_tab2 <- matrix(NA, nrow = 28, ncol = 5)
+::: {.cell}
 
-# List of categories
-categories <- c("tired", "walk", "sports", "concentration", "embarrassment", "unhappiness", "treat")
+:::
 
-# Fill the matrix using loops
-row_index <- 1
-for (category in categories) {
-  for (i in 1:3) {
-    level_tab[row_index, ] <- c(c("Almost never", "Sometimes", "Often")[i], calculate_stats(data[[paste0("opuf_levelRatings_", category, "_", i)]], 1))
-    row_index <- row_index + 1
-  }
-}
+::: {#tbl-demographic .cell tbl-cap='Summary of demographic information collected in the OPUF'}
+::: {.cell-output-display}
 
-level_tab2[1,] <- c("Tired", "" , "", "", "")
-level_tab2[1,] <- cell_spec(level_tab2[1,], bold = TRUE) # Bold second row, column A
-level_tab2[2,] <- level_tab[1,]
-level_tab2[3,] <- level_tab[2,]
-level_tab2[4,] <- level_tab[3,]
-level_tab2[5,] <- c("Walking", "" , "", "", "")
-level_tab2[5,] <- cell_spec(level_tab2[5,], bold = TRUE) # Bold third row, column B
-level_tab2[6,] <- level_tab[4,]
-level_tab2[7,] <- level_tab[5,]
-level_tab2[8,] <- level_tab[6,]
-level_tab2[9,] <- c("Sports", "" , "", "", "")
-level_tab2[9,] <- cell_spec(level_tab2[9,], bold = TRUE) # Bold third row, column B
-level_tab2[10,] <- level_tab[7,]
-level_tab2[11,] <- level_tab[8,]
-level_tab2[12,] <- level_tab[9,]
-level_tab2[13,] <- c("Concentration", "" , "", "", "")
-level_tab2[13,] <- cell_spec(level_tab2[13,], bold = TRUE) # Bold third row, column B
-level_tab2[14,] <- level_tab[10,]
-level_tab2[15,] <- level_tab[11,]
-level_tab2[16,] <- level_tab[12,]
-level_tab2[17,] <- c("Embarrassment", "" , "", "", "")
-level_tab2[17,] <- cell_spec(level_tab2[17,], bold = TRUE) # Bold third row, column B
-level_tab2[18,] <- level_tab[13,]
-level_tab2[19,] <- level_tab[14,]
-level_tab2[20,] <- level_tab[15,]
-level_tab2[21,] <- c("Unhappiness", "" , "", "", "")
-level_tab2[21,] <- cell_spec(level_tab2[21,], bold = TRUE) # Bold third row, column B
-level_tab2[22,] <- level_tab[16,]
-level_tab2[23,] <- level_tab[17,]
-level_tab2[24,] <- level_tab[18,]
-level_tab2[25,] <- c("Treated differently", "" , "", "", "")
-level_tab2[25,] <- cell_spec(level_tab2[25,], bold = TRUE) # Bold third row, column B
-level_tab2[26,] <- level_tab[19,]
-level_tab2[27,] <- level_tab[20,]
-level_tab2[28,] <- level_tab[21,]
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedleft}X}
+\toprule
+Participant Characteristics (N=300) & N (\%)\\
+\midrule
+Age & \\
+18-24 & 32 (10.9\%)\\
+25-34 & 50 (17\%)\\
+35-44 & 48 (16.3\%)\\
+45-54 & 49 (16.7\%)\\
+\addlinespace
+55-64 & 81 (27.6\%)\\
+65-90 & 34 (11.6\%)\\
+Not Stated & 6 (2.0\%)\\
+Gender & \\
+Female & 154 (51\%)\\
+\addlinespace
+Male & 144 (48\%)\\
+Non-binary & 1 (0\%)\\
+Ethnicity & \\
+White & 251 (84\%)\\
+Asian & 23 (8\%)\\
+\addlinespace
+Black & 11 (4\%)\\
+Mixed & 10 (3\%)\\
+Other & 5 (2\%)\\
+Weight Status & \\
+Normal & 154 (51\%)\\
+\addlinespace
+Overweight & 104 (35\%)\\
+Obese & 30 (10\%)\\
+Underweight & 8 (3\%)\\
+Prefer not to say & 4 (1\%)\\
+Education & \\
+\addlinespace
+Degree & 147 (49\%)\\
+A Level & 64 (21\%)\\
+Higher Education & 46 (15\%)\\
+Other & 20 (7\%)\\
+GCSE A-C & 18 (6\%)\\
+\addlinespace
+GCSE D-G & 5 (2\%)\\
+Occupation & \\
+Full-time & 130 (43\%)\\
+Part-time & 62 (21\%)\\
+Not Paid & 30 (10\%)\\
+\addlinespace
+Other & 31 (10\%)\\
+Student & 17 (6\%)\\
+Unemployed & 18 (6\%)\\
+Not Stated & 9 (3\%)\\
+Starting a New Job & 3 (1\%)\\
+\addlinespace
+WAItE & Mean (SD)\\
+Tiredness & 3.4 (0.8)\\
+Walking & 2.1 (1.1)\\
+Sport & 3.3 (1.3)\\
+Concentration & 2.7 (1.0)\\
+\addlinespace
+Embarrassment & 2.2 (1.2)\\
+Unhappiness & 2.3 (1.0)\\
+Treated differently & 1.9 (0.9)\\
+Total & 17.8 (4.8)\\
+\bottomrule
+\end{tabu}}
 
-colnames(level_tab2) <- colnames(time_tab)
-```
-```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
-#| label: tbl-level
-#| tbl-cap: Summary of OPUF level ratings by attribute
-kable(level_tab2, digits = 3, align = c("l", "r", "r", "r", "r"))
-```
+
+:::
+:::
+
+::: {.cell}
+
+:::
+
+::: {#tbl-level .cell tbl-cap='Summary of OPUF level ratings by attribute'}
+::: {.cell-output-display}
+
+
+|Section                                                           |                                      Mean (SD)|                                Median (Q1; Q3)|                                            Min|                                            Max|
+|:-----------------------------------------------------------------|----------------------------------------------:|----------------------------------------------:|----------------------------------------------:|----------------------------------------------:|
+|<span style=" font-weight: bold;    " >Tired</span>               | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                                    20.3 (23.2)|                               10.0 (5.0; 25.0)|                                              0|                                            100|
+|Sometimes                                                         |                                    36.3 (19.2)|                              33.5 (20.0; 50.0)|                                              0|                                            100|
+|Often                                                             |                                    62.2 (23.9)|                              70.0 (50.0; 80.0)|                                              0|                                            100|
+|<span style=" font-weight: bold;    " >Walking</span>             | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                                    19.4 (21.8)|                               10.0 (6.0; 21.0)|                                              0|                                            100|
+|Sometimes                                                         |                                    37.7 (19.4)|                              40.0 (24.0; 50.0)|                                              0|                                            100|
+|Often                                                             |                                    63.0 (26.2)|                              71.0 (50.0; 80.0)|                                              0|                                            100|
+|<span style=" font-weight: bold;    " >Sports</span>              | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                                    16.6 (21.0)|                               10.0 (5.0; 20.0)|                                              0|                                            100|
+|Sometimes                                                         |                                    29.5 (22.0)|                              25.0 (10.0; 45.0)|                                              0|                                            100|
+|Often                                                             |                                    49.8 (29.6)|                              50.5 (24.5; 75.0)|                                              0|                                            100|
+|<span style=" font-weight: bold;    " >Concentration</span>       | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                                    21.4 (22.1)|                               14.0 (7.0; 25.0)|                                              0|                                            100|
+|Sometimes                                                         |                                    41.6 (20.1)|                              40.0 (25.8; 53.2)|                                              0|                                            100|
+|Often                                                             |                                    64.5 (26.2)|                              73.0 (50.0; 80.2)|                                              0|                                            100|
+|<span style=" font-weight: bold;    " >Embarrassment</span>       | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                                    16.6 (22.3)|                               10.0 (4.0; 20.0)|                                              0|                                            100|
+|Sometimes                                                         |                                    29.4 (21.6)|                              25.0 (10.0; 50.0)|                                              0|                                            100|
+|Often                                                             |                                    47.9 (30.4)|                              50.0 (20.0; 75.0)|                                              0|                                            100|
+|<span style=" font-weight: bold;    " >Unhappiness</span>         | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                                    21.1 (22.2)|                               13.0 (6.0; 25.0)|                                              0|                                            100|
+|Sometimes                                                         |                                    41.4 (22.1)|                              41.5 (25.0; 56.0)|                                              0|                                            100|
+|Often                                                             |                                    63.6 (28.2)|                              75.0 (50.0; 85.0)|                                              0|                                            100|
+|<span style=" font-weight: bold;    " >Treated differently</span> | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                                    20.9 (24.4)|                               11.0 (5.0; 25.0)|                                              0|                                            100|
+|Sometimes                                                         |                                    35.5 (22.8)|                              34.5 (19.8; 50.0)|                                              0|                                            100|
+|Often                                                             |                                    55.9 (30.6)|                              60.5 (31.0; 80.0)|                                              0|                                            100|
+
+
+:::
+:::
+
+
 
 ## Attribute weights
 Summary statistics of attribute weightings are presented in @tbl-attribute. On average, Tiredness (76.5) and Unhappiness (70) were considered to be more important to participants than Embarrassment (40.1) and Sports (42.3). There was less variability in attribute weighting responses to Tiredness than responses to Treated differently or Embarrassment. @fig-rai illustrates the relative attribute importance (RAI) among WAItE attributes.     
 
 
 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
-# attribute weighting table
-attribute_tab <- matrix(NA, nrow = 14, ncol = 5)
-attribute_tab[1,] <- c("Tired", calculate_stats(data$opuf_swingWeights_tired, 1))
-attribute_tab[2,] <- c("Walking", calculate_stats(data$opuf_swingWeights_walk, 1))
-attribute_tab[3,] <- c("Sports", calculate_stats(data$opuf_swingWeights_sports, 1))
-attribute_tab[4,] <- c("Concentration", calculate_stats(data$opuf_swingWeights_concentration, 1))
-attribute_tab[5,] <- c("Embarrassment", calculate_stats(data$opuf_swingWeights_embarrassment, 1))
-attribute_tab[6,] <- c("Unhappiness", calculate_stats(data$opuf_swingWeights_unhappiness, 1))
-attribute_tab[7,] <- c("Treated differently", calculate_stats(data$opuf_swingWeights_treat, 1))
-attribute_tab[8,] <- c("Anchoring", "", "", "", "")
-attribute_tab[8,] <- cell_spec(attribute_tab[8,], bold = TRUE) 
 
 
-# fix anchorpoint data
-data$preferred_pits[data$opuf_anchorPoint==""] <- NA
-data$preferred_pits[data$opuf_anchorPoint=="dead"] <- 1
-data$preferred_pits[data$opuf_anchorPoint=="pits"] <- 0
-preferred_pits <- data$preferred_pits[!is.na(data$preferred_pits)]
+::: {.cell}
 
-pits_vas <- ifelse(data$opuf_anchorPoint=="dead", data$opuf_anchorVal, NA)
-pits_vas <- pits_vas[!is.na(pits_vas)]
-dead_vas <- ifelse(data$opuf_anchorPoint=="pits", data$opuf_anchorVal, NA)
-dead_vas <- dead_vas[!is.na(dead_vas)]
-opuf_pitsUtility <- data$opuf_pitsUtility
-opuf_pitsUtility <- opuf_pitsUtility[!is.na(opuf_pitsUtility)]
-censored_opuf_pitsUtility <- ifelse(opuf_pitsUtility < -1, -1, opuf_pitsUtility) 
+:::
+
+::: {#tbl-attribute .cell tbl-cap='Summary of OPUF attribute weights and anchoring responses'}
+::: {.cell-output-display}
 
 
-attribute_tab[9 ,] <- c("PITS preferred to death", calculate_stats(preferred_pits, 1))
-attribute_tab[10 ,] <- c("PITS-VAS", calculate_stats(pits_vas, 1))
-attribute_tab[11,] <- c("Dead-VAS", calculate_stats(dead_vas, 1))
-attribute_tab[12,] <- c("PITS VAS uncensored", calculate_stats(opuf_pitsUtility, 3))
-attribute_tab[13,] <- c("PITS VAS censored", calculate_stats(censored_opuf_pitsUtility, 3))
+|Section                                                 |                                      Mean (SD)|                                Median (Q1; Q3)|                                            Min|                                            Max|
+|:-------------------------------------------------------|----------------------------------------------:|----------------------------------------------:|----------------------------------------------:|----------------------------------------------:|
+|Tired                                                   |                                    76.5 (28.4)|                             90.0 (60.0; 100.0)|                                              1|                                            100|
+|Walking                                                 |                                    65.5 (32.5)|                             75.0 (40.0; 100.0)|                                              0|                                            100|
+|Sports                                                  |                                    42.3 (32.8)|                              35.0 (11.0; 70.0)|                                              0|                                            100|
+|Concentration                                           |                                    67.9 (30.9)|                              80.0 (44.0; 99.2)|                                              0|                                            100|
+|Embarrassment                                           |                                    40.1 (34.3)|                               30.0 (9.0; 70.0)|                                              0|                                            100|
+|Unhappiness                                             |                                    70.0 (31.9)|                             80.0 (50.0; 100.0)|                                              0|                                            100|
+|Treated differently                                     |                                    52.1 (35.6)|                              50.0 (15.8; 86.0)|                                              0|                                            100|
+|<span style=" font-weight: bold;    " >Anchoring</span> | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|PITS preferred to death                                 |                                      0.9 (0.3)|                                 1.0 (1.0; 1.0)|                                              0|                                              1|
+|PITS-VAS                                                |                                    56.1 (31.3)|                              54.0 (30.0; 85.0)|                                              0|                                            100|
+|Dead-VAS                                                |                                    42.5 (31.6)|                              38.5 (13.2; 63.5)|                                              1|                                            100|
+|PITS VAS uncensored                                     |                                 -0.025 (5.950)|                           0.500 (0.200; 0.800)|                                            -99|                                              1|
+|PITS VAS censored                                       |                                  0.431 (0.485)|                           0.500 (0.200; 0.800)|                                             -1|                                              1|
+|PITS Utility Value                                      |                                  0.282 (1.456)|                           0.500 (0.200; 0.800)|                                          -14.3|                                              1|
 
-attribute_tab[14,] <- c("PITS Utility Value", calculate_stats(data$PITS, 3))
 
-colnames(attribute_tab) <- colnames(time_tab)
-```
+:::
+:::
 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
-#| label: tbl-attribute
-#| tbl-cap: Summary of OPUF attribute weights and anchoring responses
-kable(attribute_tab, digits = 3, align = c("l", "r", "r", "r", "r"))
-```
+::: {.cell}
 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
-rai_vector <- c(76.513, 65.53, 42.32, 67.897, 40.143, 69.997, 52.093)
-rai_labels <- c("Tired", "Walking", "Sports", "Concentration", "Embarrassment", "Unhappiness", "Treated differently")
-rai_data <- data.frame(
-  Category = rai_labels,  # Categories for the x-axis
-  Value = rai_vector      # Values for the y-axis
-)
+:::
 
-rai_data$Category <- factor(rai_data$Category, levels = unique(rai_data$Category))
-```
+::: {.cell}
+::: {.cell-output-display}
+![Relative attribute importance](quarto_files/figure-html/fig-rai-1.png){#fig-rai width=672}
+:::
+:::
 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
-#| label: fig-rai
-#| fig-cap: Relative attribute importance
 
-ggplot(rai_data, aes(x = Category, y = Value, fill = Category)) +  # Categories on the x-axis
-  geom_col() +                                                  # Bar chart with the provided values
-  scale_fill_viridis(discrete = TRUE) +                          # Apply viridis colors
-  labs(x = "Attribute", y = "Attribute weighting", fill = "Attribute") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 22.5, hjust = 1))       # Rotate x-axis labels by 45 degrees
-
-```
 
 ## Anchoring
 The majority of respondents in the sample preferred the WAItE PITS state to being dead (87\%). Therefore, 13\% of participants answered the dead-VAS and 87\% answered the PITS-VAS. A proportion of participants did not answer the anchoring task (1.67\%). After winsorizing extreme values (top and bottom 0.1\%) [@2003ApplyingTechniques] and conducting multiple imputation by chained equations on the missing values, the mean (SD) and median (IQR) PITS utility value was 0.282 (1.456) and 0.5 (0.6). The distribution of WAItE PITS utility values (after winsorizing and imputation) is presented in @fig-hist.
 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
-hist <- filter(data, PITS>-5.01)
-hist <- ggplot(hist, aes(x = PITS, fill = PITS < -0.05)) +
-  geom_histogram(binwidth = 0.15, color = "black", alpha = 0.9) +
-  scale_fill_manual(values = c("FALSE" = "#f2db0d", "TRUE" = "#625e5e"), 
-                    labels = c("FALSE" = "PITS-VAS", "TRUE" = "Dead-VAS"),
-                    name = "Anchoring task") +
-  labs(x = "WAItE PITS utility",
-       y = "Frequency") +
-  theme_minimal() +
-  theme(
-    plot.title = element_text(hjust = 0.2, face = "bold", size = 14),
-    axis.title.x = element_text(size = 14),
-    axis.title.y = element_text(size = 14),
-    legend.text = element_text(size = 12)
-  ) +
-  theme(
-    axis.title.x = element_text(size = 14, margin = margin(t = 10, r = 0, b = 0, l = 0)),
-    axis.title.y = element_text(size = 14, margin = margin(t = 0, r = 10, b = 0, l = 0)),
-    
-  )
-```
 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
-#| dev: "png"
-#| label: fig-hist
-#| fig-cap: Distribution of PITS utility values
-#| fig.height: 3
-hist
-```
+
+::: {.cell}
+
+:::
+
+::: {.cell}
+::: {.cell-output-display}
+![Distribution of PITS utility values](quarto_files/figure-html/fig-hist-1.png){#fig-hist width=672}
+:::
+:::
+
+
 
 \newpage
 
@@ -773,254 +592,106 @@ Personal utility functions were estimated individually for each participant in o
 
 @fig-sufplain presents the mean social utility function (thick line) alongside individual personal utility functions (thin lines) for a selection of 100 WAItE health states ordered from high to low utility according to the social preference. Deviations of individual utility functions from the social preference illustrate the heterogeneity of preference within our analysis sample. Individual personal utility functions shown in @fig-sufplain are anchored using individual PITS utility values rather than the social PITS utility value.   
 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
-# Bootstrapping 
-#############################################################################
-#setseed
-#############################################################################
-#setseed
-set.seed(1998)
-# Set the number of bootstrap iterations
-n_iterations <- 10000
-
-# Initialize a list to store the mean matrices from each bootstrap iteration
-bootstrap_means <- list()
-bootstrap_medians <- list()
-
-if (method == "median") {
-  for (n in 1:n_iterations) {
-    # Sample with replacement from the results_list
-    sample_indices <- sample(1:length(results_list), replace = TRUE)
-    bootstrap_sample <- results_list[sample_indices]
-
-    # Initialize a matrix to store the sum of the bootstrap sample matrices
-    bootstrap_median_matrix <- matrix(0, nrow = 7, ncol = 4)  
-    #TODO: Above code was previously nrow = 7, ncol = 4??? Figure out why
-    attributes <- c("tired", "walking", "sports", "concentration", "embarrassed", "unhappiness", "treat")
-    levels <- 2:5
-
-    # Populate medians for each attribute and level in a single matrix
-    median_matrix <- do.call(cbind, lapply(seq_along(attributes), function(j) {
-      medians <- sapply(levels, function(lvl) median(sapply(bootstrap_sample, function(mat) mat[lvl, j])))
-      c(0, medians)  # Add 0 at the start for each attribute
-    }))
-
-    # bootstrap_median_matrices <- c(bootstrap_median_matrices, median_matrix) 
-    #
-    # # Calculate the median matrix for this bootstrap sample
-    # bootstrap_median_matrix <- bootstrap_sum_matrix / length(bootstrap_sample)
-    # Anchor it
-    bootstrap_median_matrix <- median_matrix * (1-anchor) 
-
-    # Store the bootstrap mean matrix
-    bootstrap_medians[[n]] <- bootstrap_median_matrix
-  }
-}
-
-if (method == "mean"){
-  # Bootstrap loop
-  for (n in 1:n_iterations) {
-    # Sample with replacement from the results_list
-    sample_indices <- sample(1:length(results_list), replace = TRUE)
-    bootstrap_sample <- results_list[sample_indices]
-
-    # Initialize a matrix to store the sum of the bootstrap sample matrices
-    bootstrap_sum_matrix <- matrix(0, nrow = 7, ncol = 4)  
-    #TODO: Above code was previously nrow = 7, ncol = 4??? Figure out why
-
-    # Sum all matrices in the bootstrap sample
-    for (m in bootstrap_sample) {
-      m <- m[-1,]
-      m <- t(m)
-      bootstrap_sum_matrix <- bootstrap_sum_matrix + m
-    }
-
-    # Calculate the mean matrix for this bootstrap sample
-    bootstrap_mean_matrix <- bootstrap_sum_matrix / length(bootstrap_sample)
-    # Anchor it
-    bootstrap_mean_matrix <- bootstrap_mean_matrix * (1-anchor) 
-
-    # Store the bootstrap mean matrix
-    bootstrap_means[[n]] <- bootstrap_mean_matrix
-  }
-}
-# Convert the list of bootstrap mean matrices into a 3D array
-bootstrap_array <- simplify2array(bootstrap_means)
-if (method == "median"){
-  bootstrap_array <- simplify2array(bootstrap_means)
-}
-# Initialize matrices to store the required statistics
-mean_matrix <- apply(bootstrap_array, c(1, 2), mean)
-median_matrix <- apply(bootstrap_array, c(1, 2), median)
-q1_matrix <- apply(bootstrap_array, c(1, 2), quantile, probs = 0.25)
-q3_matrix <- apply(bootstrap_array, c(1, 2), quantile, probs = 0.75)
-min_matrix <- apply(bootstrap_array, c(1, 2), min)
-max_matrix <- apply(bootstrap_array, c(1, 2), max)
-
-# Updated matrix estimates so that the median,quartiles, min and max aren't from the bootstrapping
-results_list_df <- results_list_df * (1 - anchor)
-median_matrix <- t(matrix(sapply(results_list_df, median), nrow = 5, ncol = 7, byrow=F))
-q1_matrix <- t(matrix(sapply(results_list_df, function(x) quantile(x, probs = 0.25)), nrow = 5, ncol = 7, byrow = F))
-q3_matrix <- t(matrix(sapply(results_list_df, function(x) quantile(x, probs = 0.75)), nrow = 5, ncol = 7, byrow = F))
-min_matrix <- t(matrix(sapply(results_list_df, min), nrow = 5, ncol = 7, byrow=F))
-max_matrix <- t(matrix(sapply(results_list_df, max), nrow = 5, ncol = 7, byrow=F))
-
-median_matrix <- median_matrix[, -1]
-q1_matrix <- q1_matrix[, -1]
-q3_matrix <- q3_matrix[, -1]
-min_matrix <- min_matrix[, -1]
-max_matrix <- max_matrix[, -1]
-
-# Calculate 95% confidence intervals
-ci_lower <- apply(bootstrap_array, c(1, 2), quantile, probs = 0.025)
-ci_upper <- apply(bootstrap_array, c(1, 2), quantile, probs = 0.975)
-
-# Initialize an empty list to store each row of the final table
-final_table <- list()
-
-# Define the attribute names and the levels
-attributes <- c("tired", "walk", "sports", "concentrate", "embarrassment", "unhappiness", "treated differently")
-levels <- c("almost never", "sometimes", "often", "always")
-
-# Iterate through the rows and columns of the matrices
-for (i in 1:nrow(mean_matrix)) {
-  for (j in 1:ncol(mean_matrix)) {
-    row_label <- paste0(attributes[i], ", ", levels[j])
-    mean_ci <- paste0(format(round(mean_matrix[i, j], 3), nsmall = 3), " (", format(round(ci_lower[i, j], 3), nsmall = 3), "; ", format(round(ci_upper[i, j], 3), nsmall = 3), ")")
-    median_q1_q3 <- paste0(format(round(median_matrix[i, j], 3), nsmall = 3), " (", format(round(q1_matrix[i, j], 3), nsmall = 3), "; ", format(round(q3_matrix[i, j], 3), nsmall = 3), ")")
-    min_val <- round(min_matrix[i, j], 3)
-    max_val <- format(round(max_matrix[i, j], 3), nsmall = 3)
-    
-    final_table[[length(final_table) + 1]] <- c(row_label, mean_ci, median_q1_q3, min_val, max_val)
-  }
-}
-
-# Convert the final_table list to a data frame
-final_df <- as.data.frame(do.call(rbind, final_table), stringsAsFactors = FALSE)
-final_df2 <- data.frame(matrix(NA, nrow = 35, ncol = 5))
-colnames(final_df2) <- c("Attribute Level", "Mean (95% CI)", "Median (Q1; Q3)", "Min", "Max")
-
-final_df2[1 ,] <- c("Tired", "" , "", "", "")
-final_df2[1,] <- cell_spec(final_df2[1,], bold = TRUE) # Bold second row, column A
-final_df2[2 ,] <- final_df[1 ,]
-final_df2[3 ,] <- final_df[2 ,]
-final_df2[4 ,] <- final_df[3 ,]
-final_df2[5 ,] <- final_df[4 ,]
-final_df2[2 ,1] <- "Almost never"
-final_df2[3 ,1] <- "Sometimes"
-final_df2[4 ,1] <- "Often"
-final_df2[5 ,1] <- "Always"
-
-final_df2[6 ,] <- c("Walking", "" , "", "", "")
-final_df2[6,] <- cell_spec(final_df2[6,], bold = TRUE) # Bold second row, column A
-final_df2[7 ,] <- final_df[5 ,]
-final_df2[8 ,] <- final_df[6 ,]
-final_df2[9 ,] <- final_df[7 ,]
-final_df2[10,] <- final_df[8 ,]
-final_df2[7 ,1] <- "Almost never"
-final_df2[8 ,1] <- "Sometimes"
-final_df2[9 ,1] <- "Often"
-final_df2[10 ,1] <- "Always"
-
-final_df2[11 ,] <- c("Sports", "" , "", "", "")
-final_df2[11,] <- cell_spec(final_df2[11,], bold = TRUE) # Bold second row, column A
-final_df2[12 ,] <- final_df[9 ,]
-final_df2[13 ,] <- final_df[10 ,]
-final_df2[14 ,] <- final_df[11 ,]
-final_df2[15 ,] <- final_df[12 ,]
-final_df2[12 ,1] <- "Almost never"
-final_df2[13 ,1] <- "Sometimes"
-final_df2[14 ,1] <- "Often"
-final_df2[15 ,1] <- "Always"
-
-final_df2[16,] <- c("Concentration", "" , "", "", "")
-final_df2[16,] <- cell_spec(final_df2[16,], bold = TRUE) # Bold second row, column A
-final_df2[17,] <- final_df[13,]
-final_df2[18,] <- final_df[14,]
-final_df2[19,] <- final_df[15,]
-final_df2[20,] <- final_df[16,]
-final_df2[17 ,1] <- "Almost never"
-final_df2[18 ,1] <- "Sometimes"
-final_df2[19 ,1] <- "Often"
-final_df2[20 ,1] <- "Always"
-
-final_df2[21,] <- c("Embarrassment", "" , "", "", "")
-final_df2[21,] <- cell_spec(final_df2[21,], bold = TRUE) # Bold second row, column A
-final_df2[22,] <- final_df[17,]
-final_df2[23,] <- final_df[18,]
-final_df2[24,] <- final_df[19,]
-final_df2[25,] <- final_df[20,]
-final_df2[22 ,1] <- "Almost never"
-final_df2[23 ,1] <- "Sometimes"
-final_df2[24 ,1] <- "Often"
-final_df2[25 ,1] <- "Always"
-
-final_df2[26,] <- c("Unhappiness", "" , "", "", "")
-final_df2[26,] <- cell_spec(final_df2[26,], bold = TRUE) # Bold second row, column A
-final_df2[27,] <- final_df[21,]
-final_df2[28,] <- final_df[22,]
-final_df2[29,] <- final_df[23,]
-final_df2[30,] <- final_df[24,]
-final_df2[27 ,1] <- "Almost never"
-final_df2[28 ,1] <- "Sometimes"
-final_df2[29 ,1] <- "Often"
-final_df2[30 ,1] <- "Always"
-
-final_df2[31,] <- c("Treated differently", "" , "", "", "")
-final_df2[31,] <- cell_spec(final_df2[31,], bold = TRUE) # Bold second row, column A
-final_df2[32,] <- final_df[25,]
-final_df2[33,] <- final_df[26,]
-final_df2[34,] <- final_df[27,]
-final_df2[35,] <- final_df[28,]
-final_df2[32 ,1] <- "Almost never"
-final_df2[33 ,1] <- "Sometimes"
-final_df2[34 ,1] <- "Often"
-final_df2[35 ,1] <- "Always"
-
-#TODO: IMPORTANT resolve the medians and Qs to be actual not bootstrapped
 
 
+::: {.cell}
 
-```
+:::
 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
-#| label: tbl-suf
-#| tbl-cap: Social utility function based on 300 PUFs
-kable(final_df2, align = c("l", "r", "r", "r", "r")) 
-```
+::: {#tbl-suf .cell tbl-cap='Social utility function based on 300 PUFs'}
+::: {.cell-output-display}
+
+
+|Attribute Level                                                   |                                  Mean (95% CI)|                                Median (Q1; Q3)|                                            Min|                                            Max|
+|:-----------------------------------------------------------------|----------------------------------------------:|----------------------------------------------:|----------------------------------------------:|----------------------------------------------:|
+|<span style=" font-weight: bold;    " >Tired</span>               | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                           0.029 (0.025; 0.033)|                           0.016 (0.007; 0.033)|                                              0|                                          0.279|
+|Sometimes                                                         |                           0.052 (0.048; 0.057)|                           0.043 (0.024; 0.070)|                                              0|                                          0.311|
+|Often                                                             |                           0.088 (0.082; 0.094)|                           0.086 (0.052; 0.112)|                                              0|                                          0.359|
+|Always                                                            |                           0.140 (0.133; 0.148)|                           0.126 (0.101; 0.161)|                                          0.006|                                          0.479|
+|<span style=" font-weight: bold;    " >Walking</span>             | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                           0.021 (0.018; 0.024)|                           0.013 (0.006; 0.026)|                                              0|                                          0.179|
+|Sometimes                                                         |                           0.045 (0.041; 0.049)|                           0.040 (0.019; 0.062)|                                              0|                                          0.192|
+|Often                                                             |                           0.075 (0.069; 0.082)|                           0.074 (0.028; 0.102)|                                              0|                                          0.428|
+|Always                                                            |                           0.116 (0.108; 0.124)|                           0.110 (0.084; 0.141)|                                              0|                                          0.570|
+|<span style=" font-weight: bold;    " >Sports</span>              | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                           0.012 (0.010; 0.015)|                           0.006 (0.001; 0.016)|                                              0|                                          0.127|
+|Sometimes                                                         |                           0.023 (0.020; 0.025)|                           0.015 (0.004; 0.036)|                                              0|                                          0.126|
+|Often                                                             |                           0.038 (0.034; 0.044)|                           0.026 (0.008; 0.059)|                                              0|                                          0.461|
+|Always                                                            |                           0.069 (0.063; 0.076)|                           0.064 (0.029; 0.103)|                                              0|                                          0.524|
+|<span style=" font-weight: bold;    " >Concentration</span>       | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                           0.026 (0.023; 0.030)|                           0.014 (0.006; 0.032)|                                              0|                                          0.229|
+|Sometimes                                                         |                           0.051 (0.047; 0.055)|                           0.044 (0.024; 0.068)|                                              0|                                          0.261|
+|Often                                                             |                           0.080 (0.074; 0.086)|                           0.076 (0.039; 0.107)|                                              0|                                          0.280|
+|Always                                                            |                           0.121 (0.114; 0.128)|                           0.113 (0.088; 0.142)|                                              0|                                          0.532|
+|<span style=" font-weight: bold;    " >Embarrassment</span>       | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                           0.012 (0.010; 0.014)|                           0.004 (0.000; 0.013)|                                              0|                                          0.138|
+|Sometimes                                                         |                           0.022 (0.019; 0.025)|                           0.012 (0.002; 0.031)|                                              0|                                          0.180|
+|Often                                                             |                           0.034 (0.030; 0.038)|                           0.019 (0.004; 0.053)|                                              0|                                          0.359|
+|Always                                                            |                           0.061 (0.056; 0.067)|                           0.053 (0.019; 0.100)|                                              0|                                          0.359|
+|<span style=" font-weight: bold;    " >Unhappiness</span>         | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                           0.025 (0.022; 0.029)|                           0.015 (0.006; 0.031)|                                              0|                                          0.208|
+|Sometimes                                                         |                           0.054 (0.049; 0.059)|                           0.044 (0.022; 0.073)|                                              0|                                          0.371|
+|Often                                                             |                           0.083 (0.076; 0.090)|                           0.081 (0.036; 0.112)|                                              0|                                          0.368|
+|Always                                                            |                           0.124 (0.117; 0.133)|                           0.117 (0.087; 0.146)|                                              0|                                          0.463|
+|<span style=" font-weight: bold;    " >Treated differently</span> | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                           0.019 (0.016; 0.022)|                           0.010 (0.002; 0.022)|                                              0|                                          0.157|
+|Sometimes                                                         |                           0.035 (0.030; 0.039)|                           0.025 (0.006; 0.051)|                                              0|                                          0.359|
+|Often                                                             |                           0.052 (0.047; 0.058)|                           0.040 (0.009; 0.082)|                                              0|                                          0.376|
+|Always                                                            |                           0.087 (0.079; 0.095)|                           0.085 (0.038; 0.117)|                                              0|                                          0.553|
+
+
+:::
+:::
+
+
 
 ## Preference heterogeneity
-After estimating individual PUFs for all participants, pairwise EUD was estimated between all participants. This yielded a [300 $\times$ 300] distance matrix with 44,850 unique pairwise comparisons. The mean (SD) and median (IQR) EUD were `r round(eud_summary[1], 2)` (`r round(eud_summary[2], 2)`) and  `r round(eud_summary[3], 2)` (`r round(eud_summary[4], 2)`; `r round(eud_summary[5], 2)`). The highest and lowest observed EUD were `r round(max(distance_vector), 2)` and `r round(min(distance_vector), 2)`. @fig-eud illustrates the relationship between EUD and WAItE health states. EUD tends to increase as WAItE health states worsen. That is, as the severity of WAItE health states increases, the more heterogeneous preferences become among our sample. 
+After estimating individual PUFs for all participants, pairwise EUD was estimated between all participants. This yielded a [300 $\times$ 300] distance matrix with 44,850 unique pairwise comparisons. The mean (SD) and median (IQR) EUD were 115.73 (253.07) and  61.08 (33.17; 100.31). The highest and lowest observed EUD were 2150.75 and 0. @fig-eud illustrates the relationship between EUD and WAItE health states. EUD tends to increase as WAItE health states worsen. That is, as the severity of WAItE health states increases, the more heterogeneous preferences become among our sample. 
 
 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
-#| dev: "png"
-#| fig.height: 3
-#| label: fig-sufplain
-#| fig-cap: Social and individual utility functions
-plain_chart
-```
 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
-#| dev: "png"
-#| fig.height: 3.5
-#| label: fig-eud
-#| fig-cap: Social and individual utility functions coloured by EUD
-eud_chart
-```
+
+::: {.cell}
+::: {.cell-output-display}
+![Social and individual utility functions](quarto_files/figure-html/fig-sufplain-1.png){#fig-sufplain width=672}
+:::
+:::
+
+::: {.cell}
+::: {.cell-output-display}
+![Social and individual utility functions coloured by EUD](quarto_files/figure-html/fig-eud-1.png){#fig-eud width=672}
+:::
+:::
+
+
 
 ## PERMANOVA
 @tbl-permanova presents the PERMANOVA model results. Presented are within‐group sum‐of‐squares (SS$_W$) for each group individually and for all groups combined, and the corresponding R$^2$, pseudo $F$, and $p$ values. Preference heterogeneity was significantly affected by age ($p$ = 0.03), though the amount of variability in preferences that could be explained by age was relatively small (R$^2$ = 5.7\%). @fig-age presents the difference in preferences between different age groups. Generally, as age increases, health state utility values for each given WAItE health state are higher. That is, younger populations tend to place more disutility on WAItE health problems than older populations. While weight status was not significantly related to preference heterogeneity according to the PERMANOVA model, given the WAItE is a weight-specific measure, it was informative to explore the relationship between preferences and weight status. Though not statistically significant, we can observe a difference in preferences between normal weight and overweight individuals in @fig-weight. For a given WAItE health state, overweight individuals in our sample placed less disutility on that state than did normal weight individuals. 
 
 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
-#| label: tbl-permanova
-#| tbl-cap: Results of PERMANOVA – testing for differences in WAItE health state preferences between group characteristics
-permanova_main <- as.data.frame(permanova_main)
-rownames(permanova_main) <- c("Age", "Weight status", "Education", "Occupation", "Gender", "Ethnicity", "Residual", "Total")
-options(knitr.kable.NA = '')
-kable(permanova_main, col.names = c("Variable", "df", "$SS_W$", "$R^2$", "F", "Pr(>F)"), digits = 3)
-```
+
+
+::: {#tbl-permanova .cell tbl-cap='Results of PERMANOVA – testing for differences in WAItE health state preferences between group characteristics'}
+::: {.cell-output-display}
+
+
+|Variable      |  df|       $SS_W$| $R^2$|     F| Pr(>F)|
+|:-------------|---:|------------:|-----:|-----:|------:|
+|Age           |   6|   663590.648| 0.057| 3.018|  0.030|
+|Weight status |   1|     6892.412| 0.001| 0.188|  0.724|
+|Education     |   5|    33542.464| 0.003| 0.183|  0.968|
+|Occupation    |   7|   290563.598| 0.025| 1.133|  0.270|
+|Gender        |   3|    57313.577| 0.005| 0.521|  0.361|
+|Ethnicity     |   4|   521334.829| 0.045| 3.557|  0.056|
+|Residual      | 273| 10003165.515| 0.864|      |       |
+|Total         | 299| 11576403.042| 1.000|      |       |
+
+
+:::
+:::
+
+
 
 
 ## Sensitivity analysis
@@ -1028,31 +699,56 @@ kable(permanova_main, col.names = c("Variable", "df", "$SS_W$", "$R^2$", "F", "P
 EUD2 was estimated for each pairwise comparison of individuals in our study. The mean (SD) and median (IQR) EUD were 34.30 (13.82) and 32.25 (24.54; 41.27). Results from the PERMANOVA2 analysis are presented in @tbl-permanova2. After exclusion of individual variation in anchoring responses, weight status and age had a significant impact upon heterogeneity within our sample; though the amount of heterogeneity that was explained by these variables was fairly small (4.9\%). 
 
 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
-#| label: tbl-permanova2
-#| tbl-cap: PERMANOVA2 – testing for differences in level rating and attribute weighting preferences between group characteristics
-permanova2 <- as.data.frame(permanova2)
-rownames(permanova2) <- c("Age", "Weight status", "Education", "Occupation", "Gender", "Ethnicity", "Residual", "Total")
-options(knitr.kable.NA = '')
-kable(permanova2, col.names = c("Variable", "df", "$SS_W$", "$R^2$", "F", "Pr(>F)"), digits = 3)
-```
 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
-#| dev: "png"
-#| label: fig-age
-#| fig-cap: Social and individual utility functions grouped by age status
-age_chart
-```
+
+::: {#tbl-permanova2 .cell tbl-cap='PERMANOVA2 – testing for differences in level rating and attribute weighting preferences between group characteristics'}
+::: {.cell-output-display}
+
+
+|Variable      |  df|     $SS_W$| $R^2$|     F| Pr(>F)|
+|:-------------|---:|----------:|-----:|-----:|------:|
+|Age           |   6|   8103.932| 0.040| 2.021|  0.001|
+|Weight status |   1|   1928.488| 0.009| 2.885|  0.011|
+|Education     |   5|   4105.321| 0.020| 1.228|  0.175|
+|Occupation    |   7|   4031.824| 0.020| 0.862|  0.707|
+|Gender        |   3|    751.841| 0.004| 0.375|  0.983|
+|Ethnicity     |   4|   3077.187| 0.015| 1.151|  0.265|
+|Residual      | 273| 182464.444| 0.892|      |       |
+|Total         | 299| 204463.039| 1.000|      |       |
+
+
+:::
+:::
+
+::: {.cell}
+::: {.cell-output-display}
+![Social and individual utility functions grouped by age status](quarto_files/figure-html/fig-age-1.png){#fig-age width=672}
+:::
+:::
+
+
 ### Anchoring preference heterogeneity
-A multivariate Gamma GLM model was estimated to explore preference heterogeneity in anchoring values (presented in @tbl-glmpits). Demographic characteristics were regressed on PITS utility values to examine how demographic information was related to anchoring values. Age, had a significant impact on anchoring preference heterogeneity ($p$ = `r round(summary(gamma_multivar_model)$coefficients[2,4], 3)`), though the point estimate indicated a relatively small effect size. 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
-#| label: tbl-glmpits
-#| tbl-cap: Multivariate Gamma GLM Model – exploring the relationship between PITS utility value and demographic characteristics
-glm <- summary(gamma_multivar_model)$coefficients
-rownames(glm) <- c("Intercept", "Age", "Education", "Occupation", "Gender", "Ethnicity")
-kable(glm, digits = 3, col.names = c("Variable", "$\\beta$", "$SE$", "$t$", "Pr(>|t|)"))
-# include footnotes with AIC(gamma_multivar_model BIC(gamma_multivar_model)
-```
+A multivariate Gamma GLM model was estimated to explore preference heterogeneity in anchoring values (presented in @tbl-glmpits). Demographic characteristics were regressed on PITS utility values to examine how demographic information was related to anchoring values. Age, had a significant impact on anchoring preference heterogeneity ($p$ = 0.003), though the point estimate indicated a relatively small effect size. 
+
+
+::: {#tbl-glmpits .cell tbl-cap='Multivariate Gamma GLM Model – exploring the relationship between PITS utility value and demographic characteristics'}
+::: {.cell-output-display}
+
+
+|Variable   | $\beta$|  $SE$|    $t$| Pr(>&#124;t&#124;)|
+|:----------|-------:|-----:|------:|------------------:|
+|Intercept  |   2.696| 0.031| 88.072|              0.000|
+|Age        |   0.001| 0.000|  3.007|              0.003|
+|Education  |  -0.001| 0.004| -0.186|              0.853|
+|Occupation |  -0.002| 0.002| -0.979|              0.329|
+|Gender     |  -0.012| 0.011| -1.143|              0.254|
+|Ethnicity  |   0.006| 0.005|  1.268|              0.206|
+
+
+:::
+:::
+
+
 # Discussion
 This study is the first time that the OPUF has been used to estimate health state utility values for the WAItE. We obtained a representative sample of high quality data from Prolific, a survey company known for their high quality respondents [@Peer2022DataResearch]. Our average attribute weightings and implied ordering were similar to those exhibited in Robinson et al. (2024) @Robinson2024AUKValue. 
 
@@ -1064,75 +760,72 @@ Preferences elicited through this study were considerably heterogeneous. This ca
 
 A methodological exploration was conducted as a sensitivity analysis to limit the influence that anchoring variation has on the overall preference heterogeneity. We considered this to be a strength of the research as it offers a new approach to decompose preference heterogeneity into anchoring variation and the difference in level ratings and attribute weightings. After exclusion of individual variation in anchoring responses, weight status and age were found to have a significant impact on preference heterogeneity within our sample; though the amount of variation that could be explained was limited. Preference heterogeneity between those of normal weight and those who were overweight is illustrated in @fig-weight.
 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
-#| dev: "png"
-#| label: fig-weight
-#| fig-cap: Social and individual utility functions grouped by weight status
-weight_chart
-```
+
+
+::: {.cell}
+::: {.cell-output-display}
+![Social and individual utility functions grouped by weight status](quarto_files/figure-html/fig-weight-1.png){#fig-weight width=672}
+:::
+:::
+
+
 This method of estimating preference heterogeneity should not be considered the gold standard, as only part of the variation in preferences is explored here. It can however be considered an additional option for future researchers that wish to isolate the effect of anchoring responses on overall preference heterogeneity. It is also, to our knowledge, the first time preference heterogeneity has been decomposed in this way with the OPUF. 
 
 The value set estimated here offers an alternative choice of preference values to the existing value sets estimated using DCE (shown in @tbl-WAItEvalsets). When comparing the anchored coefficients between value sets, one of the key areas of divergence is where levels have been collapsed in the DCE value set. In the OPUF, "I almost never get tired" is given 0.029 compared to 0.064 in the DCE due to collapsing levels. Generally the difference between coefficients that have not been 'collapsed' between the value sets is small suggesting that there is comparability to an extent between the value sets. Anchoring values were broadly similar between studies too. The mean PITS utility values between studies were broadly comparable with a maximum range of 0.059. Interestingly, the EQ-VAS @webb2020transforming anchoring task mean (0.289) was notably similar to the OPUF VAS anchoring task mean (0.282) again supporting the use of VAS for elicitation of PITS utility values. 
 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "hide"}
-
-v_anchored <- format(round(as.vector(anchored_matrix[2:5,]), 3), nsmall = 3)
-for(i in c(31, 26, 21, 16, 11, 6, 1)){
-  dcetto_matrix <- dcetto_matrix[-i]
-  dcevas_matrix <- dcevas_matrix[-i]
-}
-v_dcetto <- dcetto_matrix
-v_dcevas <- dcevas_matrix
 
 
-attribute_names <- c("Tired", "Walking", "Sports", "Concentration", "Embarrassment", "Unhappiness", "Treated differently")
+::: {.cell}
 
-# Level labels
-level_labels <- c("Almost never", "Sometimes", "Often", "Always")
+:::
 
-# Create a placeholder data frame for the final table
-tab_valuesets <- data.frame(
-  `Attribute level` = character(),
-  OPUF = character(),
-  `DCE-TTO` = character(),
-  `DCE-VAS` = character()
-)
+::: {#tbl-WAItEvalsets .cell tbl-cap='Comparison of WAItE utility value sets'}
+::: {.cell-output-display}
 
-# Populate the table by interleaving attributes and levels
-for (i in seq_along(attribute_names)) {
-  # Add the attribute name as a new row
-  tab_valuesets <- rbind(tab_valuesets, data.frame(
-    `Attribute level` = attribute_names[i],
-    OPUF = "",
-    `DCE-TTO` = "",
-    `DCE-VAS` = ""
-  ))
-  
-  # Add the levels for the current attribute
-  tab_valuesets <- rbind(tab_valuesets, data.frame(
-    `Attribute level` = level_labels,
-    OPUF = format(v_anchored[(4 * (i - 1) + 1):(4 * i)], nsmall = 3),
-    `DCE-TTO` = format(v_dcetto[(4 * (i - 1) + 1):(4 * i)], nsmall = 3),
-    `DCE-VAS` = format(v_dcevas[(4 * (i - 1) + 1):(4 * i)], nsmall = 3)
-  ))
-}
 
-tab_valuesets[1, ] <- cell_spec(tab_valuesets[1, ], bold = TRUE) 
-tab_valuesets[6, ] <- cell_spec(tab_valuesets[6, ], bold = TRUE) 
-tab_valuesets[11,] <- cell_spec(tab_valuesets[11,], bold = TRUE) 
-tab_valuesets[16,] <- cell_spec(tab_valuesets[16,], bold = TRUE) 
-tab_valuesets[21,] <- cell_spec(tab_valuesets[21,], bold = TRUE) 
-tab_valuesets[26,] <- cell_spec(tab_valuesets[26,], bold = TRUE) 
-tab_valuesets[31,] <- cell_spec(tab_valuesets[31,], bold = TRUE) 
-# Print the table using kable
+|Attribute Level                                                   |                                           OPUF|                                        DCE-TTO|                                        DCE-VAS|
+|:-----------------------------------------------------------------|----------------------------------------------:|----------------------------------------------:|----------------------------------------------:|
+|<span style=" font-weight: bold;    " >Tired</span>               | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                                          0.029|                                          0.064|                                          0.059|
+|Sometimes                                                         |                                          0.052|                                          0.064|                                          0.059|
+|Often                                                             |                                          0.088|                                          0.064|                                          0.059|
+|Always                                                            |                                          0.140|                                          0.148|                                          0.137|
+|<span style=" font-weight: bold;    " >Walking</span>             | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                                          0.021|                                          0.015|                                          0.013|
+|Sometimes                                                         |                                          0.045|                                          0.015|                                          0.013|
+|Often                                                             |                                          0.075|                                          0.054|                                          0.050|
+|Always                                                            |                                          0.116|                                          0.106|                                          0.098|
+|<span style=" font-weight: bold;    " >Sports</span>              | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                                          0.012|                                          0.021|                                          0.019|
+|Sometimes                                                         |                                          0.023|                                          0.021|                                          0.019|
+|Often                                                             |                                          0.038|                                          0.021|                                          0.019|
+|Always                                                            |                                          0.069|                                          0.058|                                          0.053|
+|<span style=" font-weight: bold;    " >Concentration</span>       | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                                          0.026|                                          0.009|                                          0.008|
+|Sometimes                                                         |                                          0.051|                                          0.053|                                          0.049|
+|Often                                                             |                                          0.080|                                          0.067|                                          0.062|
+|Always                                                            |                                          0.121|                                          0.130|                                          0.120|
+|<span style=" font-weight: bold;    " >Embarrassment</span>       | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                                          0.012|                                          0.007|                                          0.007|
+|Sometimes                                                         |                                          0.022|                                          0.025|                                          0.023|
+|Often                                                             |                                          0.034|                                          0.056|                                          0.051|
+|Always                                                            |                                          0.061|                                          0.069|                                          0.064|
+|<span style=" font-weight: bold;    " >Unhappiness</span>         | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                                          0.025|                                          0.001|                                          0.001|
+|Sometimes                                                         |                                          0.054|                                          0.039|                                          0.036|
+|Often                                                             |                                          0.083|                                          0.076|                                          0.070|
+|Always                                                            |                                          0.124|                                          0.145|                                          0.134|
+|<span style=" font-weight: bold;    " >Treated differently</span> | <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>| <span style=" font-weight: bold;    " ></span>|
+|Almost never                                                      |                                          0.019|                                          0.010|                                          0.009|
+|Sometimes                                                         |                                          0.035|                                          0.030|                                          0.028|
+|Often                                                             |                                          0.052|                                          0.075|                                          0.069|
+|Always                                                            |                                          0.087|                                          0.114|                                          0.105|
 
-```
 
-```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
-#| label: tbl-WAItEvalsets
-#| tbl-cap: Comparison of WAItE utility value sets
-kable(tab_valuesets, digits = 3, col.names = c("Attribute Level", "OPUF", "DCE-TTO", "DCE-VAS"), align = c("l", "r", "r", "r"))
-```
+:::
+:::
+
+
 
 ::: {.content-visible when-format="html"}
 ## Appendix {.appendix}
@@ -1214,3 +907,4 @@ $$ {#eq-pairwiseEUD2}
 Pairwise EUD2 was estimated for all possible combinations of individuals in our analysis sample. EUD2 was stored in a distance matrix of dimensions [300 $\times$ 300], where coordinates [3,7] represents the EUD2 between individual 3 and 7. The mean of the distance matrix provides the overall measure of disimilarity/heterogeneity within the analysis sample.  
 
 :::
+
