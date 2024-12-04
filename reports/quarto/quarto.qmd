@@ -289,7 +289,7 @@ This study recruited 300 adults to respond to a quality-of-life survey hosted on
 7. Survey feedback and demographic questions: Participants were asked about how difficult they found the task to complete and demographic information on age, gender, ethnicity, education, employment and weight status.
 
 
-![WAItE descriptive system](../../outputs/figures/WAItE descriptive.png){#fig-waite-descriptive width=400}
+![WAItE descriptive system](https://willking98.github.io/opuf-adult/outputs/figures/WAItE descriptive.png){#fig-waite-descriptive width=400}
 
 ::: {.content-visible when-format="html"}
 ## Live survey {#sec-livesurvey}
