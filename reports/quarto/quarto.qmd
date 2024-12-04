@@ -109,7 +109,7 @@ This section is composed of two parts. First, attribute ranking is completed whe
 
 ::: {#fig-attribute layout-ncol=2}
 
-![Most important attribute](/outputs/figures/relative_importance.png){#fig-importantattribute}
+![Most important attribute](outputs/figures/relative_importance.png){#fig-importantattribute}
 
 ![Swing rating](../../outputs/figures/swing_rating.png){#fig-swing}
 
