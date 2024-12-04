@@ -548,7 +548,7 @@ kable(time_tab, digits = 3, align = c("l", "r", "r", "r", "r"))
 ```
 
 ## WAItE descriptive system
-Responses to the WAItE descriptive system are presented in @tbl-demographic. Feeling tired and avoiding doing sport were the attributes that were most frequently experienced by participants in our analysis sample. WAItE summary statistics were in line with results from previous studies [@Robinson2019EstimatingEvaluation].
+Responses to the WAItE descriptive system are presented in @tbl-demographic-html. Feeling tired and avoiding doing sport were the attributes that were most frequently experienced by participants in our analysis sample. WAItE summary statistics were in line with results from previous studies [@Robinson2019EstimatingEvaluation].
 
 ## Level ratings
 Level ratings are presented individually for each different attribute in @tbl-level. The best and worst levels (*Always* and *Never*) were fixed at 0 and 100 respectively. The second best level (*Almost never*) had the lowest VAS score in the Sports and Embarrassment attribute, while the second worst level (*Often*) had the highest VAS score in the Concentration attribute. In this question, higher VAS scores indicate worse states of health.
@@ -586,7 +586,7 @@ demographic_data <- data.frame(
 
 ::: {.content-visible when-format="html"}
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
-#| label: tbl-demographic
+#| label: tbl-demographic-html
 #| tbl-cap: Summary of demographic information collected in the OPUF
 
 # Create table
