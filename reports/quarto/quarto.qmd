@@ -343,7 +343,7 @@ An additional analysis of preference heterogeneity in anchoring values was condu
 
 # Results
 ## Study participants
-A sample of 334 individuals were approached to participate in the study via the survey company [Prolific](https://www.prolific.com). Individuals that successfully inputted their unique Prolific ID and obtained a correct completion code from the end of the study were included in the analysis sample and received a small payment (£2.50) for their participation. Seven participants were excluded from the study as they had an incorrect completion code and did not enter the correct unique Prolific ID. Therefore, no data was available on those seven participants and they were excluded from the analysis. An additional participant was excluded from the analysis due to completing the survey in eighteen seconds (well under the pre-specified minimum time limit of 2 minutes). Two respondents timed-out while completing the survey and were therefore not included. Twenty-four individuals chose not complete the study (referred to by Prolific as 'returned' participants). This left an analysis sample of N=300 participants who successfully completed the survey. The sample was representative of the UK based on age, gender and ethnicity. A summary of demographic information collected in the OPUF are presented in @tbl-demographic.  
+A sample of 334 individuals were approached to participate in the study via the survey company [Prolific](https://www.prolific.com). Individuals that successfully inputted their unique Prolific ID and obtained a correct completion code from the end of the study were included in the analysis sample and received a small payment (£2.50) for their participation. Seven participants were excluded from the study as they had an incorrect completion code and did not enter the correct unique Prolific ID. Therefore, no data was available on those seven participants and they were excluded from the analysis. An additional participant was excluded from the analysis due to completing the survey in eighteen seconds (well under the pre-specified minimum time limit of 2 minutes). Two respondents timed-out while completing the survey and were therefore not included. Twenty-four individuals chose not complete the study (referred to by Prolific as 'returned' participants). This left an analysis sample of N=300 participants who successfully completed the survey. The sample was representative of the UK based on age, gender and ethnicity. A summary of demographic information collected in the OPUF are presented in @tbl-demographic-html.  
 
 ## Survey duration
 The mean (SD) and median (IQR) survey completion time in minutes was 9.66 (5.85) and 8.15 (5.88; 11.89). @tbl-time summarises how much time was spent completing each individual section of the survey.
@@ -550,11 +550,6 @@ kable(time_tab, digits = 3, align = c("l", "r", "r", "r", "r"))
 ## WAItE descriptive system
 Responses to the WAItE descriptive system are presented in @tbl-demographic-html. Feeling tired and avoiding doing sport were the attributes that were most frequently experienced by participants in our analysis sample. WAItE summary statistics were in line with results from previous studies [@Robinson2019EstimatingEvaluation].
 
-## Level ratings
-Level ratings are presented individually for each different attribute in @tbl-level. The best and worst levels (*Always* and *Never*) were fixed at 0 and 100 respectively. The second best level (*Almost never*) had the lowest VAS score in the Sports and Embarrassment attribute, while the second worst level (*Often*) had the highest VAS score in the Concentration attribute. In this question, higher VAS scores indicate worse states of health.
-
-\newpage
-
 ```{r, echo = FALSE}
 # Data preparation
 demographic_data <- data.frame(
@@ -583,7 +578,6 @@ demographic_data <- data.frame(
 )
 ```
 
-
 ::: {.content-visible when-format="html"}
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
 #| label: tbl-demographic-html
@@ -597,6 +591,13 @@ kable(demographic_data, col.names = c("Participant Characteristics (N=300)", "N 
 #   add_header_above(c("Participant Characteristics (N=300)" = 1, "N (%)" = 1))
 ```
 :::
+## Level ratings
+Level ratings are presented individually for each different attribute in @tbl-level. The best and worst levels (*Always* and *Never*) were fixed at 0 and 100 respectively. The second best level (*Almost never*) had the lowest VAS score in the Sports and Embarrassment attribute, while the second worst level (*Often*) had the highest VAS score in the Concentration attribute. In this question, higher VAS scores indicate worse states of health.
+
+\newpage
+
+
+
 
 ::: {.content-visible when-format="pdf"}
 ```{r, echo = F, message = FALSE, warning = FALSE, results = "show"}
