@@ -12,6 +12,7 @@ library(kableExtra)
 library(mice)
 library(ggplot2)
 library(viridis)
+library(gt)
 
 #-------------------------
 # Global options

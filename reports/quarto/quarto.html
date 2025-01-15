@@ -1,0 +1,3735 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="William King*">
+<meta name="author" content="Tomos Robinson">
+<meta name="author" content="Angela Bate">
+<meta name="author" content="Laura Ternent">
+<meta name="dcterms.date" content="2025-01-14">
+<meta name="keywords" content="Health state valuation, preference elicitation, quality of life">
+
+<title>quarto</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="quarto_files/libs/clipboard/clipboard.min.js"></script>
+<script src="quarto_files/libs/quarto-html/quarto.js"></script>
+<script src="quarto_files/libs/quarto-html/popper.min.js"></script>
+<script src="quarto_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="quarto_files/libs/quarto-html/anchor.min.js"></script>
+<link href="quarto_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="quarto_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="quarto_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="quarto_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="quarto_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-opufadult" id="toc-sec-opufadult" class="nav-link active" data-scroll-target="#sec-opufadult">OPUF Adult</a>
+  <ul class="collapse">
+  <li><a href="#sec-introduction" id="toc-sec-introduction" class="nav-link" data-scroll-target="#sec-introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#compositional-preference-elicitation-methods" id="toc-compositional-preference-elicitation-methods" class="nav-link" data-scroll-target="#compositional-preference-elicitation-methods">Compositional preference elicitation methods</a></li>
+  <li><a href="#from-puf-to-opuf" id="toc-from-puf-to-opuf" class="nav-link" data-scroll-target="#from-puf-to-opuf">From PUF to OPUF</a></li>
+  <li><a href="#an-overview-of-the-opuf-structure" id="toc-an-overview-of-the-opuf-structure" class="nav-link" data-scroll-target="#an-overview-of-the-opuf-structure">An overview of the OPUF structure</a></li>
+  <li><a href="#sec-OPUF_methods" id="toc-sec-OPUF_methods" class="nav-link" data-scroll-target="#sec-OPUF_methods">OPUF logic and mathematics</a></li>
+  <li><a href="#aggregation-to-social-utility-function" id="toc-aggregation-to-social-utility-function" class="nav-link" data-scroll-target="#aggregation-to-social-utility-function">Aggregation to social utility function</a></li>
+  </ul></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
+  <ul class="collapse">
+  <li><a href="#recruitment" id="toc-recruitment" class="nav-link" data-scroll-target="#recruitment">Recruitment</a></li>
+  <li><a href="#sec-surveystructure" id="toc-sec-surveystructure" class="nav-link" data-scroll-target="#sec-surveystructure">Survey structure</a></li>
+  <li><a href="#sec-livesurvey" id="toc-sec-livesurvey" class="nav-link" data-scroll-target="#sec-livesurvey">Live survey</a></li>
+  <li><a href="#missing-data" id="toc-missing-data" class="nav-link" data-scroll-target="#missing-data">Missing data</a></li>
+  <li><a href="#sec-opuf-preference-heterogeneity" id="toc-sec-opuf-preference-heterogeneity" class="nav-link" data-scroll-target="#sec-opuf-preference-heterogeneity">Preference heterogeneity</a></li>
+  <li><a href="#permutational-analysis-of-variance" id="toc-permutational-analysis-of-variance" class="nav-link" data-scroll-target="#permutational-analysis-of-variance">Permutational analysis of variance</a></li>
+  <li><a href="#sec-opuf-eud2" id="toc-sec-opuf-eud2" class="nav-link" data-scroll-target="#sec-opuf-eud2">Sensitivity analysis</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul class="collapse">
+  <li><a href="#study-participants" id="toc-study-participants" class="nav-link" data-scroll-target="#study-participants">Study participants</a></li>
+  <li><a href="#survey-duration" id="toc-survey-duration" class="nav-link" data-scroll-target="#survey-duration">Survey duration</a></li>
+  <li><a href="#waite-descriptive-system" id="toc-waite-descriptive-system" class="nav-link" data-scroll-target="#waite-descriptive-system">WAItE descriptive system</a></li>
+  <li><a href="#level-ratings-1" id="toc-level-ratings-1" class="nav-link" data-scroll-target="#level-ratings-1">Level ratings</a></li>
+  <li><a href="#attribute-weights" id="toc-attribute-weights" class="nav-link" data-scroll-target="#attribute-weights">Attribute weights</a></li>
+  <li><a href="#anchoring" id="toc-anchoring" class="nav-link" data-scroll-target="#anchoring">Anchoring</a></li>
+  <li><a href="#social-utility-function-estimation" id="toc-social-utility-function-estimation" class="nav-link" data-scroll-target="#social-utility-function-estimation">Social utility function estimation</a></li>
+  <li><a href="#preference-heterogeneity" id="toc-preference-heterogeneity" class="nav-link" data-scroll-target="#preference-heterogeneity">Preference heterogeneity</a></li>
+  <li><a href="#permanova" id="toc-permanova" class="nav-link" data-scroll-target="#permanova">PERMANOVA</a></li>
+  <li><a href="#sensitivity-analysis" id="toc-sensitivity-analysis" class="nav-link" data-scroll-target="#sensitivity-analysis">Sensitivity analysis</a></li>
+  </ul></li>
+  <li><a href="#sec-opuf-discussion" id="toc-sec-opuf-discussion" class="nav-link" data-scroll-target="#sec-opuf-discussion">Discussion</a></li>
+  
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<p class="subtitle lead">Development of a value-based scoring system for the WAItE using the OPUF in a sample of adults</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Authors</div>
+  <div class="quarto-title-meta-heading">Affiliations</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">William King* <a href="mailto:w.king2@newcastle.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Newcastle University
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Tomos Robinson </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Newcastle University
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Angela Bate </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Northumbria University
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Laura Ternent </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Newcastle University
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 14, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p><strong>Background:</strong> Online personal utility functions (OPUF) present a new method for eliciting preferences. In this study we used the OPUF to elicit a health state utility value set for the Weight-specific Adolescent Instrument for Economic-evaluation (WAItE) with a representative sample of the UK adult population.</p>
+    <p><strong>Methods:</strong> WAItE OPUF survey design was informed by prior qualitative work. The survey consisted of the WAItE descriptive system, attribute weighting, level rating (per attribute) and a VAS anchoring task. Personal utility functions were estimated on the individual level for all participants. Personal utility functions were aggregated and combined with the anchoring factor to give the social utility function and utility value set. Preference heterogeneity was assessed using Euclidean distance and PERMANOVA to explore preference variation within the sample. An experimental sensitivity analysis dichotomised preference heterogeneity into anchoring variation and attribute weighting/level rating variation.</p>
+    <p><strong>Results:</strong> A total of 300 participants completed the WAItE OPUF survey. The sample was broadly representative of the UK adult population. Participants, on average, took less than 10 minutes to complete the survey. The most important attributes were tiredness and unhappiness, while least important attributes were sports and embarrassment. Social utility values and the anchoring utility value estimated were comparable to previous studies. Preferences generally were heterogeneous, especially among different ages. Younger participants assigned lower utility values to WAItE health states and provided significantly lower scores on the VAS anchoring task compared to older participants.</p>
+    <p><strong>Conclusion:</strong> This study successfully elicited health state utility values for the WAItE using the OPUF. Preference heterogeneity analysis identified differences in preferences for different age groups and a further valuation study is ongoing to explore whether this heterogeneity exists between adults and adolescents.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>Health state valuation, preference elicitation, quality of life</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="sec-opufadult" class="level1">
+<h1>OPUF Adult</h1>
+<p><em>Disclaimer:</em> This is a work-in-progress, please do not redistribute or cite without the authors permission. This work was supported by the NIHR-ARC and Newcastle University.</p>
+<p><em>Acknowledgements:</em> We would like to thank Paul Schneider and Valorem Health for collaborating on this project.</p>
+<p><em>Code availability:</em> An interactive document (HTML) which includes the live survey is available <a href="https://willking98.github.io/opuf-adult/">here</a>. Source code for the analysis and this Quarto generated PDF are available <a href="https://github.com/willking98/opuf-adult">here</a>.</p>
+<section id="sec-introduction" class="level2">
+<h2 class="anchored" data-anchor-id="sec-introduction">Introduction</h2>
+<section id="compositional-preference-elicitation-methods" class="level3">
+<h3 class="anchored" data-anchor-id="compositional-preference-elicitation-methods">Compositional preference elicitation methods</h3>
+<p>Preference elicitation methods typically, fall into two categories: compositional and decompositional <span class="citation" data-cites="Keeney1979DecisionsTrade-Offs Marsh2016MultipleForce Belton2002MultipleAnalysis">(<a href="#ref-Keeney1979DecisionsTrade-Offs" role="doc-biblioref">1</a>–<a href="#ref-Belton2002MultipleAnalysis" role="doc-biblioref">3</a>)</span>. That is, methods such as DCE, BWS and TTO elicit preference orderings from individuals for an entire health state (composed of a combination of attributes and levels) and then responses are decomposed to identify marginal contributions of each attribute and level in each health state. Models like multinomial logit, mixed logit and latent class are frequently used to decompose responses to decompositional preference elicitation tasks <span class="citation" data-cites="Hauber2016StatisticalForce">(<a href="#ref-Hauber2016StatisticalForce" role="doc-biblioref">4</a>)</span>. Coefficients estimated in these models form the basis of dis/utility values for each attribute and level in a descriptive system.</p>
+<p>Conversely, compositional methods seek to identify preferences for each attribute weighting and level rating individually for the number of attributes and levels in a given descriptive system. Therefore, statistical models to elicit coefficients for each individual attribute and level are not required and responses to each attribute weighting and level rating are combined (in addition to an anchoring factor) to yield dis/utility values for each attribute and level in the descriptive system. Compositional approaches can take many forms from simple VAS scores to using semantic categories and ranking methods <span class="citation" data-cites="BanaECosta1999TheApplication Danner2011IntegratingPreferences Oliveira2018ValuingStates">(<a href="#ref-BanaECosta1999TheApplication" role="doc-biblioref">5</a>–<a href="#ref-Oliveira2018ValuingStates" role="doc-biblioref">7</a>)</span>. These approaches have previously been used successfully in multi-criteria decision analysis (MCDA), but have been used less extensively in the preference elicitation space. Since the development of the OPUF, compositional approaches to elicit preferences have become more commonplace and a number of countries are using the OPUF to elicit value sets specific to their population <span class="citation" data-cites="Brodszky2023PCR108States">(<a href="#ref-Brodszky2023PCR108States" role="doc-biblioref">8</a>)</span>.</p>
+</section>
+<section id="from-puf-to-opuf" class="level3">
+<h3 class="anchored" data-anchor-id="from-puf-to-opuf">From PUF to OPUF</h3>
+<p>Personal utility functions (PUF) were first used in the context of preference elicitation by Devlin et al.&nbsp;(2019) <span class="citation" data-cites="Devlin2019AFunctions">(<a href="#ref-Devlin2019AFunctions" role="doc-biblioref">9</a>)</span> to estimate the feasibility for using this approach to estimate a value set for the EQ-5D-5L. Since the feasibility for the underlying PUF methods were established, the approach has been expanded by Schneider and colleagues <span class="citation" data-cites="Schneider2022TheStates">(<a href="#ref-Schneider2022TheStates" role="doc-biblioref">10</a>)</span> and converted into an online personal utility functions (OPUF) survey built initially using RShiny and subsequently using Javascript (available <a href="https://eq5d5l.me">here</a>). Since the development of the OPUF, a number of descriptive systems and different research teams have begun using this method to elicit value sets <span class="citation" data-cites="Bray2024DevelopmentImpairment Brodszky2023PCR108States">(<a href="#ref-Brodszky2023PCR108States" role="doc-biblioref">8</a>,<a href="#ref-Bray2024DevelopmentImpairment" role="doc-biblioref">11</a>)</span>.</p>
+</section>
+<section id="an-overview-of-the-opuf-structure" class="level3">
+<h3 class="anchored" data-anchor-id="an-overview-of-the-opuf-structure">An overview of the OPUF structure</h3>
+<section id="attribute-weighting" class="level4">
+<h4 class="anchored" data-anchor-id="attribute-weighting">Attribute weighting</h4>
+<p>This section is composed of two parts. First, attribute ranking is completed where participants identify their most important attribute (<a href="#fig-importantattribute" class="quarto-xref">Figure&nbsp;1 (a)</a>). Second, respondents complete the attribute weighting (swing weighting) where the relative importance of other attributes is ascertained using their most important attribute as a reference point (<a href="#fig-swing" class="quarto-xref">Figure&nbsp;1 (b)</a>). These questions are presented in <a href="#fig-attribute" class="quarto-xref">Figure&nbsp;1</a>.</p>
+<div id="fig-attribute" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-attribute-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-attribute" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-importantattribute" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-importantattribute-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://willking98.github.io/opuf-adult/outputs/figures/relative_importance.png" class="img-fluid figure-img" data-ref-parent="fig-attribute">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-importantattribute-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Most important attribute
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-attribute" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-swing" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-swing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://willking98.github.io/opuf-adult/outputs/figures/swing_rating.png" class="img-fluid figure-img" data-ref-parent="fig-attribute">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-swing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Swing rating
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-attribute-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Attribute weighting
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="level-ratings" class="level4">
+<h4 class="anchored" data-anchor-id="level-ratings">Level ratings</h4>
+<p>This element of the OPUF has varied across different iterations of the survey. Schnieder et al.&nbsp;(2022) <span class="citation" data-cites="Schneider2022TheStates">(<a href="#ref-Schneider2022TheStates" role="doc-biblioref">10</a>)</span> asked participants to rank the levels within the descriptive system generally (i.e.&nbsp;for any given attribute), while other iterations have administered separate level rating questions for each attribute in the descriptive system <span class="citation" data-cites="Bray2024DevelopmentImpairment">(<a href="#ref-Bray2024DevelopmentImpairment" role="doc-biblioref">11</a>)</span>. Selection of method requires a trade-off between participant burden and sensitivity of level ratings to each attribute. <a href="#fig-level" class="quarto-xref">Figure&nbsp;2</a> presents the level rating question for the tiredness and treated differently attributes of the WAItE.</p>
+<div id="fig-level" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-level-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-level" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-levelrating" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-levelrating-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://willking98.github.io/opuf-adult/outputs/figures/level_rating.png" class="img-fluid figure-img" data-ref-parent="fig-level">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-levelrating-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Level rating: Tiredness
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-level" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-levelrating2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-levelrating2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://willking98.github.io/opuf-adult/outputs/figures/level_rating2.png" class="img-fluid figure-img" data-ref-parent="fig-level">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-levelrating2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Level rating: Treated differently
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-level-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Level rating
+</figcaption>
+</figure>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="anchoring-factor" class="level4">
+<h4 class="anchored" data-anchor-id="anchoring-factor">Anchoring factor</h4>
+<p>A task is required to rescale the latent coefficients estimated via combining level ratings and attribute weights onto the QALY scale. Participants are presented with a binary choice between the PITS state (or another state) of a given descriptive system and “being dead” (<a href="#fig-anchor1" class="quarto-xref">Figure&nbsp;3 (a)</a>). If the PITS state is chosen, participants are asked to rank the PITS state on a VAS from 1 (full health) to 0 (dead). If “being dead” is chosen, participants are asked to rank “being dead” on a VAS from 1 (full health) to 0 (PITS state) (<a href="#fig-anchor2" class="quarto-xref">Figure&nbsp;3 (b)</a>). Responses to these respective questions provide the anchoring factor. Anchoring questions, such that PITS is preferred to dead, are presented in <a href="#fig-anchoring" class="quarto-xref">Figure&nbsp;3</a>.</p>
+<div id="fig-anchoring" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anchoring-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-anchoring" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-anchor1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-anchor1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://willking98.github.io/opuf-adult/outputs/figures/anchor1.png" class="img-fluid figure-img" data-ref-parent="fig-anchoring">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-anchor1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) PITS-dead
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-anchoring" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-anchor2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-anchor2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://willking98.github.io/opuf-adult/outputs/figures/anchor2.png" class="img-fluid figure-img" data-ref-parent="fig-anchoring">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-anchor2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) PITS-VAS
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anchoring-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Anchoring factor
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="sec-OPUF_methods" class="level3">
+<h3 class="anchored" data-anchor-id="sec-OPUF_methods">OPUF logic and mathematics</h3>
+<p>This section presents the logic and underlying mathematics required to convert the raw OPUF responses from one person into an anchored value set for the WAItE descriptive system. This example assumes that level ratings are obtained for each attribute separately, therefore the mathematics presented here differs to those presented elsewhere <span class="citation" data-cites="Schneider2022TheStates">(<a href="#ref-Schneider2022TheStates" role="doc-biblioref">10</a>)</span>. Example response data are used for demonstration in this section and are presented in <a href="#tbl-exampledata" class="quarto-xref">Table&nbsp;1</a>.</p>
+<div style="page-break-after: always;"></div>
+<section id="example-responses" class="level4">
+<h4 class="anchored" data-anchor-id="example-responses">Example responses</h4>
+<div class="cell">
+<div id="tbl-exampledata" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-exampledata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Example individual responses to the OPUF
+</figcaption>
+<div aria-describedby="tbl-exampledata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div id="ypjyjepbep" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ypjyjepbep table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ypjyjepbep thead, #ypjyjepbep tbody, #ypjyjepbep tfoot, #ypjyjepbep tr, #ypjyjepbep td, #ypjyjepbep th {
+  border-style: none;
+}
+
+#ypjyjepbep p {
+  margin: 0;
+  padding: 0;
+}
+
+#ypjyjepbep .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ypjyjepbep .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ypjyjepbep .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ypjyjepbep .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ypjyjepbep .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ypjyjepbep .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ypjyjepbep .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ypjyjepbep .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ypjyjepbep .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ypjyjepbep .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ypjyjepbep .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ypjyjepbep .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ypjyjepbep .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ypjyjepbep .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ypjyjepbep .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ypjyjepbep .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ypjyjepbep .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ypjyjepbep .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ypjyjepbep .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ypjyjepbep .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ypjyjepbep .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ypjyjepbep .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ypjyjepbep .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ypjyjepbep .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ypjyjepbep .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ypjyjepbep .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ypjyjepbep .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ypjyjepbep .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ypjyjepbep .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ypjyjepbep .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ypjyjepbep .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ypjyjepbep .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ypjyjepbep .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ypjyjepbep .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ypjyjepbep .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ypjyjepbep .gt_left {
+  text-align: left;
+}
+
+#ypjyjepbep .gt_center {
+  text-align: center;
+}
+
+#ypjyjepbep .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ypjyjepbep .gt_font_normal {
+  font-weight: normal;
+}
+
+#ypjyjepbep .gt_font_bold {
+  font-weight: bold;
+}
+
+#ypjyjepbep .gt_font_italic {
+  font-style: italic;
+}
+
+#ypjyjepbep .gt_super {
+  font-size: 65%;
+}
+
+#ypjyjepbep .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ypjyjepbep .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ypjyjepbep .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ypjyjepbep .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ypjyjepbep .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ypjyjepbep .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ypjyjepbep .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#ypjyjepbep .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ypjyjepbep div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="Response" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Response</th>
+<th id="Tired" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tired</th>
+<th id="Walking" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Walking</th>
+<th id="Sports" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Sports</th>
+<th id="Concentration" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Concentration</th>
+<th id="Embarrassed" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Embarrassed</th>
+<th id="Unhappiness" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Unhappiness</th>
+<th id="Treated" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Treated</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Response">Level rating: Never</td>
+<td class="gt_row gt_right" headers="Tired">0</td>
+<td class="gt_row gt_right" headers="Walking">0</td>
+<td class="gt_row gt_right" headers="Sports">0</td>
+<td class="gt_row gt_right" headers="Concentration">0</td>
+<td class="gt_row gt_right" headers="Embarrassed">0</td>
+<td class="gt_row gt_right" headers="Unhappiness">0</td>
+<td class="gt_row gt_right" headers="Treated">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Response">Level rating: Almost Never</td>
+<td class="gt_row gt_right" headers="Tired">14</td>
+<td class="gt_row gt_right" headers="Walking">26</td>
+<td class="gt_row gt_right" headers="Sports">21</td>
+<td class="gt_row gt_right" headers="Concentration">15</td>
+<td class="gt_row gt_right" headers="Embarrassed">16</td>
+<td class="gt_row gt_right" headers="Unhappiness">12</td>
+<td class="gt_row gt_right" headers="Treated">19</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Response">Level rating: Sometimes</td>
+<td class="gt_row gt_right" headers="Tired">57</td>
+<td class="gt_row gt_right" headers="Walking">55</td>
+<td class="gt_row gt_right" headers="Sports">63</td>
+<td class="gt_row gt_right" headers="Concentration">54</td>
+<td class="gt_row gt_right" headers="Embarrassed">38</td>
+<td class="gt_row gt_right" headers="Unhappiness">26</td>
+<td class="gt_row gt_right" headers="Treated">66</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Response">Level rating: Often</td>
+<td class="gt_row gt_right" headers="Tired">83</td>
+<td class="gt_row gt_right" headers="Walking">82</td>
+<td class="gt_row gt_right" headers="Sports">85</td>
+<td class="gt_row gt_right" headers="Concentration">86</td>
+<td class="gt_row gt_right" headers="Embarrassed">64</td>
+<td class="gt_row gt_right" headers="Unhappiness">38</td>
+<td class="gt_row gt_right" headers="Treated">91</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Response">Level rating: Always</td>
+<td class="gt_row gt_right" headers="Tired">100</td>
+<td class="gt_row gt_right" headers="Walking">100</td>
+<td class="gt_row gt_right" headers="Sports">100</td>
+<td class="gt_row gt_right" headers="Concentration">100</td>
+<td class="gt_row gt_right" headers="Embarrassed">100</td>
+<td class="gt_row gt_right" headers="Unhappiness">100</td>
+<td class="gt_row gt_right" headers="Treated">100</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Response">Attribute Weighting</td>
+<td class="gt_row gt_right" headers="Tired">28</td>
+<td class="gt_row gt_right" headers="Walking">33</td>
+<td class="gt_row gt_right" headers="Sports">36</td>
+<td class="gt_row gt_right" headers="Concentration">45</td>
+<td class="gt_row gt_right" headers="Embarrassed">100</td>
+<td class="gt_row gt_right" headers="Unhappiness">34</td>
+<td class="gt_row gt_right" headers="Treated">56</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Level ratings (presented in <a href="#tbl-exampledata" class="quarto-xref">Table&nbsp;1</a>) are converted to coefficients bounded between 0-1 (shown in <a href="#eq-level-rescale" class="quarto-xref">Equation&nbsp;1</a>). Level rating coefficients are presented in <a href="#eq-level-matrix" class="quarto-xref">Equation&nbsp;2</a>. Attribute weights (presented in <a href="#tbl-exampledata" class="quarto-xref">Table&nbsp;1</a>) are then normalised to sum to the value of 1 by dividing each weight by the sum of all weights (shown in <a href="#eq-weight-normalise" class="quarto-xref">Equation&nbsp;3</a>). Normalised attribute weights are presented in <a href="#eq-weight-vector" class="quarto-xref">Equation&nbsp;4</a>.</p>
+<p><span id="eq-level-rescale"><span class="math display">\[
+    L_{ij} \cdot 0.01
+\tag{1}\]</span></span></p>
+<p><span id="eq-level-matrix"><span class="math display">\[
+L_{ij} =
+\begin{bmatrix}
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0.14 &amp; 0.26 &amp; 0.21 &amp; 0.15 &amp; 0.16 &amp; 0.12 &amp; 0.19 \\
+0.57 &amp; 0.55 &amp; 0.63 &amp; 0.54 &amp; 0.38 &amp; 0.26 &amp; 0.66 \\
+0.83 &amp; 0.82 &amp; 0.85 &amp; 0.86 &amp; 0.64 &amp; 0.38 &amp; 0.91 \\
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
+\end{bmatrix}
+\tag{2}\]</span></span></p>
+<p><span id="eq-weight-normalise"><span class="math display">\[
+    \frac{w_{j}}{\sum{w_j}}
+\tag{3}\]</span></span></p>
+<p><span id="eq-weight-vector"><span class="math display">\[
+w_j = \begin{bmatrix}
+    0.08&amp; 0.10&amp; 0.11&amp; 0.14&amp; 0.30&amp; 0.10&amp; 0.17
+\end{bmatrix}
+\tag{4}\]</span></span></p>
+<p>Combining the attribute weights (<a href="#eq-weight-vector" class="quarto-xref">Equation&nbsp;4</a>) with the level coefficients (<a href="#eq-level-matrix" class="quarto-xref">Equation&nbsp;2</a>) via element-wise multiplication (shown in <a href="#eq-element-wise-multiplication" class="quarto-xref">Equation&nbsp;5</a> gives the coefficient matrix presented in <a href="#eq-coeff-matrix" class="quarto-xref">Equation&nbsp;6</a>. Once the coefficient matrix has been estimated, preference values can be estimated on the 0-1 QALY scale where the worst health state (PITS state denoted 5555555) is zero and the best health state (denoted 1111111) is one. These latent coefficients must now be rescaled to incorporate the results from the PITS anchoring task so that the minimum utility value possible is equal to the PITS value.</p>
+<p><span id="eq-element-wise-multiplication"><span class="math display">\[
+    L_{ij} \cdot  w_{j} = {M}_{ij}
+\tag{5}\]</span></span></p>
+<p><span id="eq-coeff-matrix"><span class="math display">\[
+M_{ij} =  
+\begin{bmatrix}
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0.01 &amp; 0.03 &amp; 0.02 &amp; 0.02 &amp; 0.05 &amp; 0.01 &amp; 0.03 \\
+0.05 &amp; 0.05 &amp; 0.07 &amp; 0.07 &amp; 0.11 &amp; 0.03 &amp; 0.11 \\
+0.07 &amp; 0.08 &amp; 0.09 &amp; 0.12 &amp; 0.19 &amp; 0.04 &amp; 0.15 \\
+0.08 &amp; 0.10 &amp; 0.11 &amp; 0.14 &amp; 0.30 &amp; 0.10 &amp; 0.17
+\end{bmatrix}
+\tag{6}\]</span></span></p>
+<p>To rescale the latent coefficient matrix to incorporate the anchoring task, the coefficient matrix is multiplied by the compliment of the PITS value (shown in <a href="#eq-anchoring" class="quarto-xref">Equation&nbsp;7</a>) to give the anchored coefficient matrix presented in <a href="#eq-anchored-matrix" class="quarto-xref">Equation&nbsp;8</a>.</p>
+<p><span id="eq-anchoring"><span class="math display">\[
+    M_{ij} \cdot (1-P) \quad \backepsilon \quad P = 0.2
+\tag{7}\]</span></span></p>
+<p><span id="eq-anchored-matrix"><span class="math display">\[
+V_{ij} =  
+\begin{bmatrix}
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0.01 &amp; 0.02 &amp; 0.02 &amp; 0.02 &amp; 0.04 &amp; 0.01 &amp; 0.02 \\
+0.04 &amp; 0.04 &amp; 0.06 &amp; 0.06 &amp; 0.09 &amp; 0.02 &amp; 0.09 \\
+0.06 &amp; 0.06 &amp; 0.07 &amp; 0.10 &amp; 0.15 &amp; 0.03 &amp; 0.12 \\
+0.06 &amp; 0.08 &amp; 0.09 &amp; 0.11 &amp; 0.24 &amp; 0.08 &amp; 0.14 \\
+\end{bmatrix}
+\tag{8}\]</span></span></p>
+<p>Once the attribute and level labels are reintroduced to the anchored coefficient matrix this forms the value set which presents the disutility corresponding to each attribute level combination presented in the WAItE. <a href="#tbl-example-valueset" class="quarto-xref">Table&nbsp;2</a> presents the WAItE example PUF value set. <a href="#eq-HS123" class="quarto-xref">Equation&nbsp;9</a> provides examples of how to estimate a utility value given a specific WAItE health state.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `as.tibble()` was deprecated in tibble 2.0.0.
+ℹ Please use `as_tibble()` instead.
+ℹ The signature and semantics have changed, see `?as_tibble`.</code></pre>
+</div>
+<div id="tbl-example-valueset" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-example-valueset-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: WAItE example PUF value set
+</figcaption>
+<div aria-describedby="tbl-example-valueset-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div id="jlwcbwdcgt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jlwcbwdcgt table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#jlwcbwdcgt thead, #jlwcbwdcgt tbody, #jlwcbwdcgt tfoot, #jlwcbwdcgt tr, #jlwcbwdcgt td, #jlwcbwdcgt th {
+  border-style: none;
+}
+
+#jlwcbwdcgt p {
+  margin: 0;
+  padding: 0;
+}
+
+#jlwcbwdcgt .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#jlwcbwdcgt .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#jlwcbwdcgt .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#jlwcbwdcgt .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#jlwcbwdcgt .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jlwcbwdcgt .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jlwcbwdcgt .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jlwcbwdcgt .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#jlwcbwdcgt .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#jlwcbwdcgt .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#jlwcbwdcgt .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#jlwcbwdcgt .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#jlwcbwdcgt .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#jlwcbwdcgt .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#jlwcbwdcgt .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#jlwcbwdcgt .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#jlwcbwdcgt .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#jlwcbwdcgt .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#jlwcbwdcgt .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jlwcbwdcgt .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#jlwcbwdcgt .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#jlwcbwdcgt .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#jlwcbwdcgt .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jlwcbwdcgt .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#jlwcbwdcgt .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#jlwcbwdcgt .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jlwcbwdcgt .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jlwcbwdcgt .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#jlwcbwdcgt .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jlwcbwdcgt .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#jlwcbwdcgt .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jlwcbwdcgt .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jlwcbwdcgt .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jlwcbwdcgt .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jlwcbwdcgt .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jlwcbwdcgt .gt_left {
+  text-align: left;
+}
+
+#jlwcbwdcgt .gt_center {
+  text-align: center;
+}
+
+#jlwcbwdcgt .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#jlwcbwdcgt .gt_font_normal {
+  font-weight: normal;
+}
+
+#jlwcbwdcgt .gt_font_bold {
+  font-weight: bold;
+}
+
+#jlwcbwdcgt .gt_font_italic {
+  font-style: italic;
+}
+
+#jlwcbwdcgt .gt_super {
+  font-size: 65%;
+}
+
+#jlwcbwdcgt .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#jlwcbwdcgt .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#jlwcbwdcgt .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#jlwcbwdcgt .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#jlwcbwdcgt .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#jlwcbwdcgt .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#jlwcbwdcgt .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#jlwcbwdcgt .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#jlwcbwdcgt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="Attribute-level" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Attribute level</th>
+<th id="Tired" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Tired</th>
+<th id="Walking" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Walking</th>
+<th id="Sports" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Sports</th>
+<th id="Concentration" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Concentration</th>
+<th id="Embarrassed" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Embarrassed</th>
+<th id="Unhappiness" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Unhappiness</th>
+<th id="Treated" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Treated</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Attribute level">Never</td>
+<td class="gt_row gt_right" headers="Tired">0.00</td>
+<td class="gt_row gt_right" headers="Walking">0.00</td>
+<td class="gt_row gt_right" headers="Sports">0.00</td>
+<td class="gt_row gt_right" headers="Concentration">0.00</td>
+<td class="gt_row gt_right" headers="Embarrassed">0.00</td>
+<td class="gt_row gt_right" headers="Unhappiness">0.00</td>
+<td class="gt_row gt_right" headers="Treated">0.00</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Attribute level">Almost Never</td>
+<td class="gt_row gt_right" headers="Tired">0.01</td>
+<td class="gt_row gt_right" headers="Walking">0.02</td>
+<td class="gt_row gt_right" headers="Sports">0.02</td>
+<td class="gt_row gt_right" headers="Concentration">0.02</td>
+<td class="gt_row gt_right" headers="Embarrassed">0.04</td>
+<td class="gt_row gt_right" headers="Unhappiness">0.01</td>
+<td class="gt_row gt_right" headers="Treated">0.02</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Attribute level">Sometimes</td>
+<td class="gt_row gt_right" headers="Tired">0.04</td>
+<td class="gt_row gt_right" headers="Walking">0.04</td>
+<td class="gt_row gt_right" headers="Sports">0.06</td>
+<td class="gt_row gt_right" headers="Concentration">0.06</td>
+<td class="gt_row gt_right" headers="Embarrassed">0.09</td>
+<td class="gt_row gt_right" headers="Unhappiness">0.02</td>
+<td class="gt_row gt_right" headers="Treated">0.09</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Attribute level">Often</td>
+<td class="gt_row gt_right" headers="Tired">0.06</td>
+<td class="gt_row gt_right" headers="Walking">0.06</td>
+<td class="gt_row gt_right" headers="Sports">0.07</td>
+<td class="gt_row gt_right" headers="Concentration">0.10</td>
+<td class="gt_row gt_right" headers="Embarrassed">0.15</td>
+<td class="gt_row gt_right" headers="Unhappiness">0.03</td>
+<td class="gt_row gt_right" headers="Treated">0.12</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Attribute level">Always</td>
+<td class="gt_row gt_right" headers="Tired">0.06</td>
+<td class="gt_row gt_right" headers="Walking">0.08</td>
+<td class="gt_row gt_right" headers="Sports">0.09</td>
+<td class="gt_row gt_right" headers="Concentration">0.11</td>
+<td class="gt_row gt_right" headers="Embarrassed">0.24</td>
+<td class="gt_row gt_right" headers="Unhappiness">0.08</td>
+<td class="gt_row gt_right" headers="Treated">0.14</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p><span id="eq-HS123"><span class="math display">\[
+\begin{aligned}
+\text{Health State [5555555]} &amp; \Rightarrow 1 - (0.06 + 0.08 + 0.09 + 0.11 + 0.24 + 0.08 + 0.14) = 0.20 \\
+\text{Health State [5223445]} &amp; \Rightarrow 1 - (0.06 + 0.02 + 0.02 + 0.06 + 0.15 + 0.03 + 0.14) = 0.52 \\
+\text{Health State [2222222]} &amp; \Rightarrow 1 - (0.03 + 0.02 + 0.01 + 0.01 + 0.02 + 0.02 + 0.04) = 0.85
+\end{aligned}
+\tag{9}\]</span></span></p>
+</section>
+</section>
+<section id="aggregation-to-social-utility-function" class="level3">
+<h3 class="anchored" data-anchor-id="aggregation-to-social-utility-function">Aggregation to social utility function</h3>
+<p>The OPUF is designed to be able to estimate personal utility functions and so estimation occurs on an individual basis. Aggregating personal utility functions to a social utility function (SUF) takes place by taking a mean of all the individual personal utility functions from your sample. This operation is presented in <a href="#eq-meanvalueset" class="quarto-xref">Equation&nbsp;10</a>.</p>
+<p><span id="eq-meanvalueset"><span class="math display">\[
+\bar{V}_{{ij}} = \frac{\sum_{V_{{ij}}}^{}}{N}
+\tag{10}\]</span></span></p>
+</section>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<section id="recruitment" class="level3">
+<h3 class="anchored" data-anchor-id="recruitment">Recruitment</h3>
+<p>This study recruited 300 adults to respond to a quality-of-life survey hosted online. Study participants were recruited based on specific quotas (age, ethnicity and gender) to form a representative sample based on UK census data. The survey was hosted on the <a href="https://www.prolific.com">Prolific</a> platform which invited paid respondents to complete the WAItE version of the OPUF survey. A demonstration of the OPUF survey and questions is available <a href="https://survey.valorem.health/waite_opuf_adult2">here</a>. Informed consent was obtained at the outset of the survey and participants reserved the right to withdraw at any point without giving a reason. Participants who withdrew were not paid and their data deleted. Participation in this survey was estimated to take approximately fifteen minutes to complete and participants received £2.50 as a payment upon completion. This is in line with reimbursements rates from other OPUF studies <span class="citation" data-cites="Schneider2022TheStates Bray2024DevelopmentImpairment">(<a href="#ref-Schneider2022TheStates" role="doc-biblioref">10</a>,<a href="#ref-Bray2024DevelopmentImpairment" role="doc-biblioref">11</a>)</span> and is in line with recommended reimbursement rates from <a href="https://www.prolific.com">Prolific</a>. The survey was designed to be an unassisted survey administered online (no face-to-face contact) and no identifiable data was collected. Statistical analysis was conducted on the survey data. Newcastle University Medical School Ethics Committee approved this study (reference 49737/2023). The survey structure is detailed in <a href="#sec-surveystructure" class="quarto-xref">Section&nbsp;1.2.2</a>.</p>
+</section>
+<section id="sec-surveystructure" class="level3">
+<h3 class="anchored" data-anchor-id="sec-surveystructure">Survey structure</h3>
+<ol type="1">
+<li>Consent and Prolific ID: Participants were asked to consent to participate and enter their unique Prolific ID. This enables demographic information held by Prolific on their participants to be linked to each respondent.</li>
+<li>WAItE descriptive system: Participants were asked to complete the WAItE descriptive system (presented in <a href="#fig-waite-descriptive" class="quarto-xref">Figure&nbsp;4</a>) to describe their current health state.</li>
+<li>Attribute selection: Participants were presented with the worst level for each WAItE attribute and asked to choose which health problem would have the most negative impact on their quality of life. The attribute chosen is then used in the subsequent attribute swing weighting task.</li>
+<li>Attribute swing weighting: Participants were presented with each attribute in the WAItE and asked to consider an improvement from the worst level of that attribute to the best level of that attribute. Participants were asked to rank this improvement on a visual slider from 0-100 where the most important attribute (chosen in the previous task) is fixed at 100. Participants were reminded to use their most important attribute as a reference point.</li>
+<li>Level rating: Participants were presented with a specific attribute of the WAItE and shown each level within that attribute. Levels best and worst (never and always) were fixed at 0 and 100 respectively. Participants were asked to rank the intermediate levels within each attribute using the fixed levels as a reference point.</li>
+<li>Anchoring: Participants were presented with a binary choice asking whether they prefer the worst state of the WAItE (PITS state) or death. If participants choose the worst state of the WAItE, a second question is asked which asks them to rank the WAITE PITS state on a visual analogue scale where zero is labelled as being dead and one hundred is labelled as no health problems. If participants choose death in the binary choice, they were asked to rank being dead on a visual analogue scale where zero is labelled as the WAItE PITS state and one hundred is labelled as no health problems.</li>
+<li>Survey feedback and demographic questions: Participants were asked about how difficult they found the task to complete and demographic information on age, gender, ethnicity, education, employment and weight status.</li>
+</ol>
+<div id="fig-waite-descriptive" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-waite-descriptive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://willking98.github.io/opuf-adult/outputs/figures/WAItE%20descriptive.png" class="img-fluid figure-img" width="400">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-waite-descriptive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: WAItE descriptive system
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-livesurvey" class="level3">
+<h3 class="anchored" data-anchor-id="sec-livesurvey">Live survey</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Live Survey
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<iframe width="800" height="600" src="https://survey.valorem.health/waite_opuf_adult2" title="Information">
+</iframe>
+</div>
+</div>
+</div>
+</section>
+<section id="missing-data" class="level3">
+<h3 class="anchored" data-anchor-id="missing-data">Missing data</h3>
+<p>Through the survey design process, the potential for large amounts of missing data was mitigated by ensuring responses were compulsory to certain questions. However for ethical reasons, we allowed participants to not answer the questions relating to death. For participants who do not provide responses to the anchoring questions, their responses were imputed using multiple imputation by chained equations (MICE) <span class="citation" data-cites="White2011MultiplePractice">(<a href="#ref-White2011MultiplePractice" role="doc-biblioref">12</a>)</span> which were informed by demographic information and attribute weighting responses.</p>
+</section>
+<section id="sec-opuf-preference-heterogeneity" class="level3">
+<h3 class="anchored" data-anchor-id="sec-opuf-preference-heterogeneity">Preference heterogeneity</h3>
+<p>As PUFs are estimated on an individual basis, exploring preference heterogeneity between individuals in the sample is straightforward. Investigating the heterogeneity of preferences between individuals, requires a measure of dis/similarity to quantify how far apart two PUFs are <span class="citation" data-cites="Schneider2024ExploringLevel">(<a href="#ref-Schneider2024ExploringLevel" role="doc-biblioref">13</a>)</span>. The measurement and estimation of preference heterogeneity in this section will follow methods detailed by Schneider et al.&nbsp;(2024) <span class="citation" data-cites="Schneider2024ExploringLevel">(<a href="#ref-Schneider2024ExploringLevel" role="doc-biblioref">13</a>)</span>. Each PUF estimated in this study was represented by a vector of 78,125 health state utility values for each respondent in the sample. In order to assess the dis/similarity between these PUFs, we used the euclidean difference measure (EUD). Analogous to a line between two points on a two dimensional plane, the EUD between two PUFs denotes the shortest path length in a 78,125 dimensional space. It is computed as the square root of the sum of the squared differences between the PUFs of individuals <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> (presented in <a href="#eq-EUD" class="quarto-xref">Equation&nbsp;11</a>). Once PUFs have been estimated for all individuals in the sample, pairwise EUD was estimated for all possible pairwise combinations within the sample. Pairwise EUD was stored in an [N <span class="math inline">\(\times\)</span> N] distance matrix.</p>
+<p><span id="eq-EUD"><span class="math display">\[
+  \begin{aligned}
+    d_{EUD}(i,j) &amp; =\sqrt{\sum_{}^{}(u_{i}(s_{1})-u_{j}(s_{1}))^{2}+ ... +(u_{i}(s_{78125})-u_{j}(s_{78125}))^{2}}\\
+      &amp; \backepsilon \quad \quad s = \{1111111, 2111111, ..., 5555555\}\\
+  \end{aligned}
+\tag{11}\]</span></span></p>
+</section>
+<section id="permutational-analysis-of-variance" class="level3">
+<h3 class="anchored" data-anchor-id="permutational-analysis-of-variance">Permutational analysis of variance</h3>
+<p>Permutational analysis of variance (PERMANOVA), analogous to analysis of variance, is a geometric partitioning of variation across a multivariate data cloud, defined in the space of any given dissimilarity measure, in response to one or more groups <span class="citation" data-cites="Anderson2017 Anderson2013PERMANOVATesting">(<a href="#ref-Anderson2017" role="doc-biblioref">14</a>,<a href="#ref-Anderson2013PERMANOVATesting" role="doc-biblioref">15</a>)</span>. This method of statistical testing has been used most commonly in ecological research to test for population dispersion among different subgroups <span class="citation" data-cites="Souza2013PopulationEstuary">(<a href="#ref-Souza2013PopulationEstuary" role="doc-biblioref">16</a>)</span>. PERMANOVA decomposes the total distances between observations (SS<span class="math inline">\(_T\)</span>) into within-groups (SS<span class="math inline">\(_W\)</span>) and between groups sum-of-squares (SS<span class="math inline">\(_B\)</span>). <a href="#eq-sumsquares" class="quarto-xref">Equation&nbsp;12</a> details the estimation of total and within-groups sum-of-squares. Mathematical notation presented here is reproduced from Schneider et al.&nbsp;(2024) <span class="citation" data-cites="Schneider2024ExploringLevel">(<a href="#ref-Schneider2024ExploringLevel" role="doc-biblioref">13</a>)</span> for consistency.</p>
+<p><span id="eq-sumsquares"><span class="math display">\[
+    SS_{T} = \frac{1}{N}\sum_{i=1}^{N-1}\sum_{j=i+1}^{N}d(i,j)^{2}; \quad SS_{W} = \sum_{i=1}^{N-1}\sum_{j=i+1}^{N}d(i,j)^{2}\epsilon_{ij}^{\ell}/n_{\ell}
+\tag{12}\]</span></span></p>
+<p>where N is the total sample size (=300), <span class="math inline">\(d(i,j)^2\)</span> is the squared distance between the PUFs of participants <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>, <span class="math inline">\(\epsilon_{i,j}\)</span> indicator which is 1, if participants <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> belong to the same group, and 0 if they do not, and <span class="math inline">\(n_{\ell}\)</span> is the size for group <span class="math inline">\(\ell\)</span>. Then, SS<span class="math inline">\(_B\)</span> can then be calculated as SS<span class="math inline">\(_B\)</span> = SS<span class="math inline">\(_T\)</span> – SS<span class="math inline">\(_W\)</span>, which allows calculating the pseudo F statistic for <span class="math inline">\(p\)</span> groups:</p>
+<p><span id="eq-ssb"><span class="math display">\[
+F= \frac{(\frac{SS_B}{p-1})}{(\frac{SS_W}{N-p})}
+\tag{13}\]</span></span></p>
+<p>Further details about the mathematical and statistical properties of PERMANOVA are available elsewhere <span class="citation" data-cites="Schneider2024ExploringLevel Anderson2017 Anderson2013PERMANOVATesting">(<a href="#ref-Schneider2024ExploringLevel" role="doc-biblioref">13</a>–<a href="#ref-Anderson2013PERMANOVATesting" role="doc-biblioref">15</a>)</span>. In this study, we used PERMANOVA to explore the variability in WAItE health state preferences (individual value sets) between various subgroups. A multivariate PERMANOVA model was estimated with subgroups of: age, gender, self-reported weight status, education, employment status and ethnicity.</p>
+</section>
+<section id="sec-opuf-eud2" class="level3">
+<h3 class="anchored" data-anchor-id="sec-opuf-eud2">Sensitivity analysis</h3>
+<p>In an experimental sensitivity analysis, preference heterogeneity was assessed using EUD estimated based on individual’s personal utility functions anchored using the social PITS utility value (henceforth referred to as EUD2). This differed to prior preference heterogeneity estimation as individual variation in PITS utility values were not included in the EUD2 estimation. EUD2 was entirely composed by differences in level ratings and attribute weights. Further details on the derivation of EUD2 are presented in the online <a href="https://willking98.github.io/opuf-adult/">Appendix</a>.</p>
+<p>An additional analysis of preference heterogeneity in anchoring values was conducted using a generalised linear model. A multivariate Gamma GLM (with log-link function) was constructed to explore the relationship between PITS utility values and demographic information. This facilitated exploration into how anchoring preferences differed among different demographic subgroups in our sample.</p>
+</section>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<section id="study-participants" class="level3">
+<h3 class="anchored" data-anchor-id="study-participants">Study participants</h3>
+<p>A sample of 334 individuals were approached to participate in the study via the survey company <a href="https://www.prolific.com">Prolific</a>. Individuals that successfully inputted their unique Prolific ID and obtained a correct completion code from the end of the study were included in the analysis sample and received a small payment (£2.50) for their participation. Seven participants were excluded from the study as they had an incorrect completion code and did not enter the correct unique Prolific ID. Therefore, no data was available on those seven participants and they were excluded from the analysis. An additional participant was excluded from the analysis due to completing the survey in eighteen seconds (well under the pre-specified minimum time limit of 2 minutes). Two respondents timed-out while completing the survey and were therefore not included. Twenty-four individuals chose not complete the study (referred to by Prolific as ‘returned’ participants). This left an analysis sample of N=300 participants who successfully completed the survey. The sample was representative of the UK based on age, gender and ethnicity. A summary of demographic information collected in the OPUF are presented in <a href="#tbl-demographic-html" class="quarto-xref">Table&nbsp;4</a>.</p>
+</section>
+<section id="survey-duration" class="level3">
+<h3 class="anchored" data-anchor-id="survey-duration">Survey duration</h3>
+<p>The mean (SD) and median (IQR) survey completion time in minutes was 9.66 (5.85) and 8.15 (5.88; 11.89). <a href="#tbl-time" class="quarto-xref">Table&nbsp;3</a> summarises how much time was spent completing each individual section of the survey.</p>
+<div class="cell">
+<div id="tbl-time" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-time-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Survey completion times (secs)
+</figcaption>
+<div aria-describedby="tbl-time-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 20%">
+<col style="width: 30%">
+<col style="width: 8%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Section</th>
+<th style="text-align: right;">Mean (SD)</th>
+<th style="text-align: right;">Median (Q1; Q3)</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">WAItE</td>
+<td style="text-align: right;">73.0 (90.1)</td>
+<td style="text-align: right;">53.0 (38.0; 77.0)</td>
+<td style="text-align: right;">10.0</td>
+<td style="text-align: right;">1066.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Attribute ranking</td>
+<td style="text-align: right;">35.4 (50.6)</td>
+<td style="text-align: right;">26.0 (16.0; 40.0)</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">741.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Attribute weighting</td>
+<td style="text-align: right;">115.7 (94.9)</td>
+<td style="text-align: right;">91.5 (69.8; 142.2)</td>
+<td style="text-align: right;">18.0</td>
+<td style="text-align: right;">1380.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Level rating</td>
+<td style="text-align: right;">220.5 (206.4)</td>
+<td style="text-align: right;">171.0 (119.0; 249.0)</td>
+<td style="text-align: right;">34.0</td>
+<td style="text-align: right;">2158.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PITS vs death</td>
+<td style="text-align: right;">25.5 (45.4)</td>
+<td style="text-align: right;">16.5 (11.0; 25.2)</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">620.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PITS-VAS</td>
+<td style="text-align: right;">37.3 (39.2)</td>
+<td style="text-align: right;">29.0 (21.0; 45.0)</td>
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">605.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Total (secs)</td>
+<td style="text-align: right;">579.5 (351.1)</td>
+<td style="text-align: right;">489.2 (352.5; 713.4)</td>
+<td style="text-align: right;">126.7</td>
+<td style="text-align: right;">3738.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Total (mins)</td>
+<td style="text-align: right;">9.66 (5.85)</td>
+<td style="text-align: right;">8.15 (5.88; 11.89)</td>
+<td style="text-align: right;">2.11</td>
+<td style="text-align: right;">62.30</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="waite-descriptive-system" class="level3">
+<h3 class="anchored" data-anchor-id="waite-descriptive-system">WAItE descriptive system</h3>
+<p>Responses to the WAItE descriptive system are presented in <a href="#tbl-demographic-html" class="quarto-xref">Table&nbsp;4</a>. Feeling tired and avoiding doing sport were the attributes that were most frequently experienced by participants in our analysis sample. WAItE summary statistics were in line with results from previous studies <span class="citation" data-cites="Robinson2019EstimatingEvaluation">(<a href="#ref-Robinson2019EstimatingEvaluation" role="doc-biblioref">17</a>)</span>.</p>
+<div class="cell">
+<div id="tbl-demographic-html" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-demographic-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: Summary of demographic information collected in the OPUF
+</figcaption>
+<div aria-describedby="tbl-demographic-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Participant Characteristics (N=300)</th>
+<th style="text-align: right;">N (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Age</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">18-24</td>
+<td style="text-align: right;">32 (10.9%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">25-34</td>
+<td style="text-align: right;">50 (17%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">35-44</td>
+<td style="text-align: right;">48 (16.3%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">45-54</td>
+<td style="text-align: right;">49 (16.7%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">55-64</td>
+<td style="text-align: right;">81 (27.6%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">65-90</td>
+<td style="text-align: right;">34 (11.6%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Not Stated</td>
+<td style="text-align: right;">6 (2.0%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gender</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Female</td>
+<td style="text-align: right;">154 (51%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Male</td>
+<td style="text-align: right;">144 (48%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Non-binary</td>
+<td style="text-align: right;">1 (0%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ethnicity</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">White</td>
+<td style="text-align: right;">251 (84%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Asian</td>
+<td style="text-align: right;">23 (8%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Black</td>
+<td style="text-align: right;">11 (4%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mixed</td>
+<td style="text-align: right;">10 (3%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Other</td>
+<td style="text-align: right;">5 (2%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Weight Status</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Normal</td>
+<td style="text-align: right;">154 (51%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Overweight</td>
+<td style="text-align: right;">104 (35%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Obese</td>
+<td style="text-align: right;">30 (10%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Underweight</td>
+<td style="text-align: right;">8 (3%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Prefer not to say</td>
+<td style="text-align: right;">4 (1%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Education</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Degree</td>
+<td style="text-align: right;">147 (49%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A Level</td>
+<td style="text-align: right;">64 (21%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Higher Education</td>
+<td style="text-align: right;">46 (15%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Other</td>
+<td style="text-align: right;">20 (7%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GCSE A-C</td>
+<td style="text-align: right;">18 (6%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GCSE D-G</td>
+<td style="text-align: right;">5 (2%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Occupation</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Full-time</td>
+<td style="text-align: right;">130 (43%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Part-time</td>
+<td style="text-align: right;">62 (21%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Not Paid</td>
+<td style="text-align: right;">30 (10%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Other</td>
+<td style="text-align: right;">31 (10%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Student</td>
+<td style="text-align: right;">17 (6%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Unemployed</td>
+<td style="text-align: right;">18 (6%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Not Stated</td>
+<td style="text-align: right;">9 (3%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Starting a New Job</td>
+<td style="text-align: right;">3 (1%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">WAItE</td>
+<td style="text-align: right;">Mean (SD)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tiredness</td>
+<td style="text-align: right;">3.4 (0.8)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Walking</td>
+<td style="text-align: right;">2.1 (1.1)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sport</td>
+<td style="text-align: right;">3.3 (1.3)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Concentration</td>
+<td style="text-align: right;">2.7 (1.0)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Embarrassment</td>
+<td style="text-align: right;">2.2 (1.2)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Unhappiness</td>
+<td style="text-align: right;">2.3 (1.0)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Treated differently</td>
+<td style="text-align: right;">1.9 (0.9)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Total</td>
+<td style="text-align: right;">17.8 (4.8)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="level-ratings-1" class="level3">
+<h3 class="anchored" data-anchor-id="level-ratings-1">Level ratings</h3>
+<p>Level ratings are presented individually for each different attribute in <a href="#tbl-level" class="quarto-xref">Table&nbsp;5</a>. The best and worst levels (<em>Always</em> and <em>Never</em>) were fixed at 0 and 100 respectively. The second best level (<em>Almost never</em>) had the lowest VAS score in the Sports and Embarrassment attribute, while the second worst level (<em>Often</em>) had the highest VAS score in the Concentration attribute. In this question, higher VAS scores indicate worse states of health.</p>
+<div style="page-break-after: always;"></div>
+<div class="cell">
+<div id="tbl-level" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-level-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5: Summary of OPUF level ratings by attribute
+</figcaption>
+<div aria-describedby="tbl-level-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Section</th>
+<th style="text-align: right;">Mean (SD)</th>
+<th style="text-align: right;">Median (Q1; Q3)</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Tired</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">20.3 (23.2)</td>
+<td style="text-align: right;">10.0 (5.0; 25.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">36.3 (19.2)</td>
+<td style="text-align: right;">33.5 (20.0; 50.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">62.2 (23.9)</td>
+<td style="text-align: right;">70.0 (50.0; 80.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Walking</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">19.4 (21.8)</td>
+<td style="text-align: right;">10.0 (6.0; 21.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">37.7 (19.4)</td>
+<td style="text-align: right;">40.0 (24.0; 50.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">63.0 (26.2)</td>
+<td style="text-align: right;">71.0 (50.0; 80.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Sports</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">16.6 (21.0)</td>
+<td style="text-align: right;">10.0 (5.0; 20.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">29.5 (22.0)</td>
+<td style="text-align: right;">25.0 (10.0; 45.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">49.8 (29.6)</td>
+<td style="text-align: right;">50.5 (24.5; 75.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Concentration</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">21.4 (22.1)</td>
+<td style="text-align: right;">14.0 (7.0; 25.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">41.6 (20.1)</td>
+<td style="text-align: right;">40.0 (25.8; 53.2)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">64.5 (26.2)</td>
+<td style="text-align: right;">73.0 (50.0; 80.2)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Embarrassment</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">16.6 (22.3)</td>
+<td style="text-align: right;">10.0 (4.0; 20.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">29.4 (21.6)</td>
+<td style="text-align: right;">25.0 (10.0; 50.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">47.9 (30.4)</td>
+<td style="text-align: right;">50.0 (20.0; 75.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Unhappiness</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">21.1 (22.2)</td>
+<td style="text-align: right;">13.0 (6.0; 25.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">41.4 (22.1)</td>
+<td style="text-align: right;">41.5 (25.0; 56.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">63.6 (28.2)</td>
+<td style="text-align: right;">75.0 (50.0; 85.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Treated differently</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">20.9 (24.4)</td>
+<td style="text-align: right;">11.0 (5.0; 25.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">35.5 (22.8)</td>
+<td style="text-align: right;">34.5 (19.8; 50.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">55.9 (30.6)</td>
+<td style="text-align: right;">60.5 (31.0; 80.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="attribute-weights" class="level3">
+<h3 class="anchored" data-anchor-id="attribute-weights">Attribute weights</h3>
+<p>Summary statistics of attribute weightings are presented in <a href="#tbl-attribute" class="quarto-xref">Table&nbsp;6</a>. On average, Tiredness (76.5) and Unhappiness (70) were considered to be more important to participants than Embarrassment (40.1) and Sports (42.3). There was less variability in attribute weighting responses to Tiredness than responses to Treated differently or Embarrassment. <a href="#fig-rai" class="quarto-xref">Figure&nbsp;5</a> illustrates the relative attribute importance (RAI) among WAItE attributes.</p>
+<div class="cell">
+<div id="tbl-attribute" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-attribute-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6: Summary of OPUF attribute weights and anchoring responses
+</figcaption>
+<div aria-describedby="tbl-attribute-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Section</th>
+<th style="text-align: right;">Mean (SD)</th>
+<th style="text-align: right;">Median (Q1; Q3)</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Tired</td>
+<td style="text-align: right;">76.5 (28.4)</td>
+<td style="text-align: right;">90.0 (60.0; 100.0)</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Walking</td>
+<td style="text-align: right;">65.5 (32.5)</td>
+<td style="text-align: right;">75.0 (40.0; 100.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sports</td>
+<td style="text-align: right;">42.3 (32.8)</td>
+<td style="text-align: right;">35.0 (11.0; 70.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Concentration</td>
+<td style="text-align: right;">67.9 (30.9)</td>
+<td style="text-align: right;">80.0 (44.0; 99.2)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Embarrassment</td>
+<td style="text-align: right;">40.1 (34.3)</td>
+<td style="text-align: right;">30.0 (9.0; 70.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Unhappiness</td>
+<td style="text-align: right;">70.0 (31.9)</td>
+<td style="text-align: right;">80.0 (50.0; 100.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Treated differently</td>
+<td style="text-align: right;">52.1 (35.6)</td>
+<td style="text-align: right;">50.0 (15.8; 86.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Anchoring</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PITS preferred to death</td>
+<td style="text-align: right;">0.9 (0.3)</td>
+<td style="text-align: right;">1.0 (1.0; 1.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PITS-VAS</td>
+<td style="text-align: right;">56.1 (31.3)</td>
+<td style="text-align: right;">54.0 (30.0; 85.0)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dead-VAS</td>
+<td style="text-align: right;">42.5 (31.6)</td>
+<td style="text-align: right;">38.5 (13.2; 63.5)</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PITS VAS uncensored</td>
+<td style="text-align: right;">-0.025 (5.950)</td>
+<td style="text-align: right;">0.500 (0.200; 0.800)</td>
+<td style="text-align: right;">-99</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PITS VAS censored</td>
+<td style="text-align: right;">0.431 (0.485)</td>
+<td style="text-align: right;">0.500 (0.200; 0.800)</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PITS Utility Value</td>
+<td style="text-align: right;">0.282 (1.456)</td>
+<td style="text-align: right;">0.500 (0.200; 0.800)</td>
+<td style="text-align: right;">-14.3</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-rai" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="quarto_files/figure-html/fig-rai-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Relative attribute importance
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="anchoring" class="level3">
+<h3 class="anchored" data-anchor-id="anchoring">Anchoring</h3>
+<p>The majority of respondents in the sample preferred the WAItE PITS state to being dead (87%). Therefore, 13% of participants answered the dead-VAS and 87% answered the PITS-VAS. A proportion of participants did not answer the anchoring task (1.67%). After winsorizing extreme values (top and bottom 0.1%) <span class="citation" data-cites="2003ApplyingTechniques">(<a href="#ref-2003ApplyingTechniques" role="doc-biblioref">18</a>)</span> and conducting multiple imputation by chained equations on the missing values, the mean (SD) and median (IQR) PITS utility value was 0.282 (1.456) and 0.5 (0.6). The distribution of WAItE PITS utility values (after winsorizing and imputation) is presented in <a href="#fig-hist" class="quarto-xref">Figure&nbsp;6</a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-hist" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="quarto_files/figure-html/fig-hist-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Distribution of PITS utility values
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="social-utility-function-estimation" class="level3">
+<h3 class="anchored" data-anchor-id="social-utility-function-estimation">Social utility function estimation</h3>
+<p>Personal utility functions were estimated individually for each participant in our analysis sample via methods outlined in <a href="#sec-OPUF_methods" class="quarto-xref">Section&nbsp;1.1.4</a>. After this, individual PUFs were aggregated into a group utility function and anchored using the group PITS utility value (0.282) to give the social utility function. Descriptive statistics from the social utility function are presented in <a href="#tbl-suf" class="quarto-xref">Table&nbsp;7</a> whereby the mean values can be used to estimate utility values for WAItE health states. Confidence intervals were estimated from bootstrap resampling with 10,000 iterations.</p>
+<p><a href="#fig-sufplain" class="quarto-xref">Figure&nbsp;7</a> presents the mean social utility function (thick line) alongside individual personal utility functions (thin lines) for a selection of 100 WAItE health states ordered from high to low utility according to the social preference. Deviations of individual utility functions from the social preference illustrate the heterogeneity of preference within our analysis sample. Individual personal utility functions shown in <a href="#fig-sufplain" class="quarto-xref">Figure&nbsp;7</a> are anchored using individual PITS utility values rather than the social PITS utility value.</p>
+<div class="cell">
+<div id="tbl-suf" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-suf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7: Social utility function based on 300 PUFs
+</figcaption>
+<div aria-describedby="tbl-suf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Attribute Level</th>
+<th style="text-align: right;">Mean (95% CI)</th>
+<th style="text-align: right;">Median (Q1; Q3)</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Tired</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">0.029 (0.025; 0.033)</td>
+<td style="text-align: right;">0.016 (0.007; 0.033)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.279</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">0.052 (0.048; 0.057)</td>
+<td style="text-align: right;">0.043 (0.024; 0.070)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.311</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">0.088 (0.082; 0.094)</td>
+<td style="text-align: right;">0.086 (0.052; 0.112)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.359</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Always</td>
+<td style="text-align: right;">0.140 (0.133; 0.148)</td>
+<td style="text-align: right;">0.126 (0.101; 0.161)</td>
+<td style="text-align: right;">0.006</td>
+<td style="text-align: right;">0.479</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Walking</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">0.021 (0.018; 0.024)</td>
+<td style="text-align: right;">0.013 (0.006; 0.026)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.179</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">0.045 (0.041; 0.049)</td>
+<td style="text-align: right;">0.040 (0.019; 0.062)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.192</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">0.075 (0.069; 0.082)</td>
+<td style="text-align: right;">0.074 (0.028; 0.102)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.428</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Always</td>
+<td style="text-align: right;">0.116 (0.108; 0.124)</td>
+<td style="text-align: right;">0.110 (0.084; 0.141)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.570</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Sports</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">0.012 (0.010; 0.015)</td>
+<td style="text-align: right;">0.006 (0.001; 0.016)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.127</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">0.023 (0.020; 0.025)</td>
+<td style="text-align: right;">0.015 (0.004; 0.036)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.126</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">0.038 (0.034; 0.044)</td>
+<td style="text-align: right;">0.026 (0.008; 0.059)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.461</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Always</td>
+<td style="text-align: right;">0.069 (0.063; 0.076)</td>
+<td style="text-align: right;">0.064 (0.029; 0.103)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.524</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Concentration</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">0.026 (0.023; 0.030)</td>
+<td style="text-align: right;">0.014 (0.006; 0.032)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.229</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">0.051 (0.047; 0.055)</td>
+<td style="text-align: right;">0.044 (0.024; 0.068)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.261</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">0.080 (0.074; 0.086)</td>
+<td style="text-align: right;">0.076 (0.039; 0.107)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.280</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Always</td>
+<td style="text-align: right;">0.121 (0.114; 0.128)</td>
+<td style="text-align: right;">0.113 (0.088; 0.142)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.532</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Embarrassment</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">0.012 (0.010; 0.014)</td>
+<td style="text-align: right;">0.004 (0.000; 0.013)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.138</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">0.022 (0.019; 0.025)</td>
+<td style="text-align: right;">0.012 (0.002; 0.031)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.180</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">0.034 (0.030; 0.038)</td>
+<td style="text-align: right;">0.019 (0.004; 0.053)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.359</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Always</td>
+<td style="text-align: right;">0.061 (0.056; 0.067)</td>
+<td style="text-align: right;">0.053 (0.019; 0.100)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.359</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Unhappiness</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">0.025 (0.022; 0.029)</td>
+<td style="text-align: right;">0.015 (0.006; 0.031)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.208</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">0.054 (0.049; 0.059)</td>
+<td style="text-align: right;">0.044 (0.022; 0.073)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.371</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">0.083 (0.076; 0.090)</td>
+<td style="text-align: right;">0.081 (0.036; 0.112)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.368</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Always</td>
+<td style="text-align: right;">0.124 (0.117; 0.133)</td>
+<td style="text-align: right;">0.117 (0.087; 0.146)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.463</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Treated differently</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">0.019 (0.016; 0.022)</td>
+<td style="text-align: right;">0.010 (0.002; 0.022)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.157</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">0.035 (0.030; 0.039)</td>
+<td style="text-align: right;">0.025 (0.006; 0.051)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.359</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">0.052 (0.047; 0.058)</td>
+<td style="text-align: right;">0.040 (0.009; 0.082)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.376</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Always</td>
+<td style="text-align: right;">0.087 (0.079; 0.095)</td>
+<td style="text-align: right;">0.085 (0.038; 0.117)</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.553</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="preference-heterogeneity" class="level3">
+<h3 class="anchored" data-anchor-id="preference-heterogeneity">Preference heterogeneity</h3>
+<p>After estimating individual PUFs for all participants, pairwise EUD was estimated between all participants. This yielded a [300 <span class="math inline">\(\times\)</span> 300] distance matrix with 44,850 unique pairwise comparisons. The mean (SD) and median (IQR) EUD were 115.73 (253.07) and 61.08 (33.17; 100.31). The highest and lowest observed EUD were 2150.75 and 0. <a href="#fig-eud" class="quarto-xref">Figure&nbsp;8</a> illustrates the relationship between EUD and WAItE health states. EUD tends to increase as WAItE health states worsen. That is, as the severity of WAItE health states increases, the more heterogeneous preferences become among our sample.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-sufplain" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sufplain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="quarto_files/figure-html/fig-sufplain-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sufplain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Social and individual utility functions
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-eud" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-eud-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="quarto_files/figure-html/fig-eud-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eud-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Social and individual utility functions coloured by EUD
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="permanova" class="level3">
+<h3 class="anchored" data-anchor-id="permanova">PERMANOVA</h3>
+<p><a href="#tbl-permanova" class="quarto-xref">Table&nbsp;8</a> presents the PERMANOVA model results. Presented are within‐group sum‐of‐squares (SS<span class="math inline">\(_W\)</span>) for each group individually and for all groups combined, and the corresponding R<span class="math inline">\(^2\)</span>, pseudo <span class="math inline">\(F\)</span>, and <span class="math inline">\(p\)</span> values. Preference heterogeneity was significantly affected by age (<span class="math inline">\(p\)</span> = 0.03), though the amount of variability in preferences that could be explained by age was relatively small (R<span class="math inline">\(^2\)</span> = 5.7%). <a href="#fig-age" class="quarto-xref">Figure&nbsp;9</a> presents the difference in preferences between different age groups. Generally, as age increases, health state utility values for each given WAItE health state are higher. That is, younger populations tend to place more disutility on WAItE health problems than older populations. While weight status was not significantly related to preference heterogeneity according to the PERMANOVA model, given the WAItE is a weight-specific measure, it was informative to explore the relationship between preferences and weight status. Though not statistically significant, we can observe a difference in preferences between normal weight and overweight individuals in <a href="#fig-weight" class="quarto-xref">Figure&nbsp;10</a>. For a given WAItE health state, overweight individuals in our sample placed less disutility on that state than did normal weight individuals.</p>
+<div class="cell">
+<div id="tbl-permanova" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-permanova-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8: Results of PERMANOVA – testing for differences in WAItE health state preferences between group characteristics
+</figcaption>
+<div aria-describedby="tbl-permanova-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;"><span class="math inline">\(SS_W\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(R^2\)</span></th>
+<th style="text-align: right;">F</th>
+<th style="text-align: right;">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Age</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">663590.648</td>
+<td style="text-align: right;">0.057</td>
+<td style="text-align: right;">3.018</td>
+<td style="text-align: right;">0.030</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Weight status</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6892.412</td>
+<td style="text-align: right;">0.001</td>
+<td style="text-align: right;">0.188</td>
+<td style="text-align: right;">0.724</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Education</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">33542.464</td>
+<td style="text-align: right;">0.003</td>
+<td style="text-align: right;">0.183</td>
+<td style="text-align: right;">0.968</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Occupation</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">290563.598</td>
+<td style="text-align: right;">0.025</td>
+<td style="text-align: right;">1.133</td>
+<td style="text-align: right;">0.270</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gender</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">57313.577</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">0.521</td>
+<td style="text-align: right;">0.361</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ethnicity</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">521334.829</td>
+<td style="text-align: right;">0.045</td>
+<td style="text-align: right;">3.557</td>
+<td style="text-align: right;">0.056</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Residual</td>
+<td style="text-align: right;">273</td>
+<td style="text-align: right;">10003165.515</td>
+<td style="text-align: right;">0.864</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Total</td>
+<td style="text-align: right;">299</td>
+<td style="text-align: right;">11576403.042</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="sensitivity-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="sensitivity-analysis">Sensitivity analysis</h3>
+<section id="attribute-weighting-and-level-rating-preference-heterogeneity" class="level4">
+<h4 class="anchored" data-anchor-id="attribute-weighting-and-level-rating-preference-heterogeneity">Attribute weighting and level rating preference heterogeneity</h4>
+<p>EUD2 was estimated for each pairwise comparison of individuals in our study. The mean (SD) and median (IQR) EUD were 34.30 (13.82) and 32.25 (24.54; 41.27). Results from the PERMANOVA2 analysis are presented in <a href="#tbl-permanova2" class="quarto-xref">Table&nbsp;9</a>. After exclusion of individual variation in anchoring responses, weight status and age had a significant impact upon heterogeneity within our sample; though the amount of heterogeneity that was explained by these variables was fairly small (4.9%).</p>
+<div class="cell">
+<div id="tbl-permanova2" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-permanova2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9: PERMANOVA2 – testing for differences in level rating and attribute weighting preferences between group characteristics
+</figcaption>
+<div aria-describedby="tbl-permanova2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;"><span class="math inline">\(SS_W\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(R^2\)</span></th>
+<th style="text-align: right;">F</th>
+<th style="text-align: right;">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Age</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">8103.932</td>
+<td style="text-align: right;">0.040</td>
+<td style="text-align: right;">2.021</td>
+<td style="text-align: right;">0.001</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Weight status</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1928.488</td>
+<td style="text-align: right;">0.009</td>
+<td style="text-align: right;">2.885</td>
+<td style="text-align: right;">0.011</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Education</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4105.321</td>
+<td style="text-align: right;">0.020</td>
+<td style="text-align: right;">1.228</td>
+<td style="text-align: right;">0.175</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Occupation</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">4031.824</td>
+<td style="text-align: right;">0.020</td>
+<td style="text-align: right;">0.862</td>
+<td style="text-align: right;">0.707</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gender</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">751.841</td>
+<td style="text-align: right;">0.004</td>
+<td style="text-align: right;">0.375</td>
+<td style="text-align: right;">0.983</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ethnicity</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3077.187</td>
+<td style="text-align: right;">0.015</td>
+<td style="text-align: right;">1.151</td>
+<td style="text-align: right;">0.265</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Residual</td>
+<td style="text-align: right;">273</td>
+<td style="text-align: right;">182464.444</td>
+<td style="text-align: right;">0.892</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Total</td>
+<td style="text-align: right;">299</td>
+<td style="text-align: right;">204463.039</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-age" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="quarto_files/figure-html/fig-age-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Social and individual utility functions grouped by age status
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="anchoring-preference-heterogeneity" class="level4">
+<h4 class="anchored" data-anchor-id="anchoring-preference-heterogeneity">Anchoring preference heterogeneity</h4>
+<p>A multivariate Gamma GLM model was estimated to explore preference heterogeneity in anchoring values (presented in <a href="#tbl-glmpits" class="quarto-xref">Table&nbsp;10</a>). Demographic characteristics were regressed on PITS utility values to examine how demographic information was related to anchoring values. Age, had a significant impact on anchoring preference heterogeneity (<span class="math inline">\(p\)</span> = 0.003), though the point estimate indicated a relatively small effect size.</p>
+<div class="cell">
+<div id="tbl-glmpits" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-glmpits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;10: Multivariate Gamma GLM Model – exploring the relationship between PITS utility value and demographic characteristics
+</figcaption>
+<div aria-describedby="tbl-glmpits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: right;"><span class="math inline">\(\beta\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(SE\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(t\)</span></th>
+<th style="text-align: right;">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Intercept</td>
+<td style="text-align: right;">2.696</td>
+<td style="text-align: right;">0.031</td>
+<td style="text-align: right;">88.072</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Age</td>
+<td style="text-align: right;">0.001</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">3.007</td>
+<td style="text-align: right;">0.003</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Education</td>
+<td style="text-align: right;">-0.001</td>
+<td style="text-align: right;">0.004</td>
+<td style="text-align: right;">-0.186</td>
+<td style="text-align: right;">0.853</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Occupation</td>
+<td style="text-align: right;">-0.002</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">-0.979</td>
+<td style="text-align: right;">0.329</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gender</td>
+<td style="text-align: right;">-0.012</td>
+<td style="text-align: right;">0.011</td>
+<td style="text-align: right;">-1.143</td>
+<td style="text-align: right;">0.254</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ethnicity</td>
+<td style="text-align: right;">0.006</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">1.268</td>
+<td style="text-align: right;">0.206</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="sec-opuf-discussion" class="level2">
+<h2 class="anchored" data-anchor-id="sec-opuf-discussion">Discussion</h2>
+<p>This study is the first time that the OPUF has been used to estimate health state utility values for the WAItE. We obtained a representative sample of high quality data from Prolific, a survey company known for their high quality respondents <span class="citation" data-cites="Peer2022DataResearch">(<a href="#ref-Peer2022DataResearch" role="doc-biblioref">19</a>)</span>. Our average attribute weightings and implied ordering were similar to those exhibited in Robinson et al.&nbsp;(2024) <span class="citation" data-cites="Robinson2024AUKValue">(<a href="#ref-Robinson2024AUKValue" role="doc-biblioref">20</a>)</span>.</p>
+<p>Anchoring of the WAItE PITS state was a difficult procedure that required a number of methodological decisions. We decided to use uncensored responses to the Dead-VAS task which meant that data from one respondent (-99) skewed the mean PITS utility value quite substantially. To mitigate the impact of extreme values on the mean, we conducted winsorization of values lying in the outer 0.1% of the distribution. This practice, while effective at limiting the influence of extreme values on the mean, could understate the genuine variability in the data. However, winsorization would likely have had less of a distributional effect than exclusion altogether.</p>
+<p>The social utility function elicited through this study, and underlying utility value set, present monotonic preferences which behave as one would have expected ex-ante (based on qualitative piloting work). Tiredness and Unhappiness were considered the most important attributes while Embarrassment and Sports the least important. As well as concurring with previous qualitative work, this is also in accordance with previous valuation work done with the WAItE <span class="citation" data-cites="Robinson2024AUKValue">(<a href="#ref-Robinson2024AUKValue" role="doc-biblioref">20</a>)</span>. Prior valuation work, which used a DCE to elicit preferences, yielded latent coefficients which violated the rational choice axiom of monotonicity. In the OPUF, monotonicity is essentially forced through the choice architecture of the level rating and the additional prompt to reconsider responses that are not monotonic. Forced monotonicity, in this context, could be problematic for eliciting unbiased preferences if preferences for certain health states are truly not monotonic. For example, prior qualitative work has suggested that “I almost never get tired” might be preferable to “I never get tired” in some circumstances where respondents are thinking about experiencing insomnia and sleep quality. This being said, the WAItE descriptive system was designed to be a monotonic descriptive system, validated using Rasch analysis, and so having a monotonic utility value set makes logical sense.</p>
+<p>Preferences elicited through this study were considerably heterogeneous. This can be understood through the mean EUD value (47.6) but also illustrated in <a href="#fig-sufplain" class="quarto-xref">Figure&nbsp;7</a> through the deviations of individual PUFs from the social utility function. Following on from prior work <span class="citation" data-cites="Schneider2024ExploringLevel">(<a href="#ref-Schneider2024ExploringLevel" role="doc-biblioref">13</a>)</span>, we estimated EUD by calculating a distance matrix between each pairwise comparison of individual value sets for all 78125 WAItE health states. The implication of estimating distance (preference heterogeneity) by using individual value sets allows for much of the preference heterogeneity that exists to be composed of differences in individual anchoring values (PITS state responses) rather than differences in level ratings and attribute weightings. This methodological decision, ultimately, results in the majority of EUD being composed of differences in anchoring values and this finding is important to acknowledge. Anchoring differences are important to present and explore, though in this preference heterogeneity analysis could be drowning out the heterogeneity in level ratings and attribute weighting. An example of this can be shown through the age preference heterogeneity in <a href="#fig-age" class="quarto-xref">Figure&nbsp;9</a> and <a href="#tbl-glmpits" class="quarto-xref">Table&nbsp;10</a>. Preference heterogeneity is evident between individuals above and below age 35 and if we consider the mean PITS values for those two subgroups (age <span class="math inline">\(&lt;\)</span> 35 = -0.281; age <span class="math inline">\(&gt;\)</span> 34 = 0.487) we can see that a clear difference in anchoring responses is evident.</p>
+<p>A methodological exploration was conducted as a sensitivity analysis to limit the influence that anchoring variation has on the overall preference heterogeneity. We considered this to be a strength of the research as it offers a new approach to decompose preference heterogeneity into anchoring variation and the difference in level ratings and attribute weightings. After exclusion of individual variation in anchoring responses, weight status and age were found to have a significant impact on preference heterogeneity within our sample; though the amount of variation that could be explained was limited. Preference heterogeneity between those of normal weight and those who were overweight is illustrated in <a href="#fig-weight" class="quarto-xref">Figure&nbsp;10</a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-weight" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-weight-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="quarto_files/figure-html/fig-weight-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-weight-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Social and individual utility functions grouped by weight status
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>This method of estimating preference heterogeneity should not be considered the gold standard, as only part of the variation in preferences is explored here. It can however be considered an additional option for future researchers that wish to isolate the effect of anchoring responses on overall preference heterogeneity. It is also, to our knowledge, the first time preference heterogeneity has been decomposed in this way with the OPUF.</p>
+<p>The value set estimated here offers an alternative choice of preference values to the existing value sets estimated using DCE (shown in <a href="#tbl-WAItEvalsets" class="quarto-xref">Table&nbsp;11</a>). When comparing the anchored coefficients between value sets, one of the key areas of divergence is where levels have been collapsed in the DCE value set. In the OPUF, “I almost never get tired” is given 0.029 compared to 0.064 in the DCE due to collapsing levels. Generally the difference between coefficients that have not been ‘collapsed’ between the value sets is small suggesting that there is comparability to an extent between the value sets. Anchoring values were broadly similar between studies too. The mean PITS utility values between studies were broadly comparable with a maximum range of 0.059. Interestingly, the EQ-VAS <span class="citation" data-cites="webb2020transforming">(<a href="#ref-webb2020transforming" role="doc-biblioref">21</a>)</span> anchoring task mean (0.289) was notably similar to the OPUF VAS anchoring task mean (0.282) again supporting the use of VAS for elicitation of PITS utility values.</p>
+<div class="cell">
+<div id="tbl-WAItEvalsets" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-WAItEvalsets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11: Comparison of WAItE utility value sets
+</figcaption>
+<div aria-describedby="tbl-WAItEvalsets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Attribute Level</th>
+<th style="text-align: right;">OPUF</th>
+<th style="text-align: right;">DCE-TTO</th>
+<th style="text-align: right;">DCE-VAS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Tired</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">0.029</td>
+<td style="text-align: right;">0.064</td>
+<td style="text-align: right;">0.059</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">0.052</td>
+<td style="text-align: right;">0.064</td>
+<td style="text-align: right;">0.059</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">0.088</td>
+<td style="text-align: right;">0.064</td>
+<td style="text-align: right;">0.059</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Always</td>
+<td style="text-align: right;">0.140</td>
+<td style="text-align: right;">0.148</td>
+<td style="text-align: right;">0.137</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Walking</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">0.021</td>
+<td style="text-align: right;">0.015</td>
+<td style="text-align: right;">0.013</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">0.045</td>
+<td style="text-align: right;">0.015</td>
+<td style="text-align: right;">0.013</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">0.075</td>
+<td style="text-align: right;">0.054</td>
+<td style="text-align: right;">0.050</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Always</td>
+<td style="text-align: right;">0.116</td>
+<td style="text-align: right;">0.106</td>
+<td style="text-align: right;">0.098</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Sports</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">0.012</td>
+<td style="text-align: right;">0.021</td>
+<td style="text-align: right;">0.019</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">0.023</td>
+<td style="text-align: right;">0.021</td>
+<td style="text-align: right;">0.019</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">0.038</td>
+<td style="text-align: right;">0.021</td>
+<td style="text-align: right;">0.019</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Always</td>
+<td style="text-align: right;">0.069</td>
+<td style="text-align: right;">0.058</td>
+<td style="text-align: right;">0.053</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Concentration</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">0.026</td>
+<td style="text-align: right;">0.009</td>
+<td style="text-align: right;">0.008</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">0.051</td>
+<td style="text-align: right;">0.053</td>
+<td style="text-align: right;">0.049</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">0.080</td>
+<td style="text-align: right;">0.067</td>
+<td style="text-align: right;">0.062</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Always</td>
+<td style="text-align: right;">0.121</td>
+<td style="text-align: right;">0.130</td>
+<td style="text-align: right;">0.120</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Embarrassment</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">0.012</td>
+<td style="text-align: right;">0.007</td>
+<td style="text-align: right;">0.007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">0.022</td>
+<td style="text-align: right;">0.025</td>
+<td style="text-align: right;">0.023</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">0.034</td>
+<td style="text-align: right;">0.056</td>
+<td style="text-align: right;">0.051</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Always</td>
+<td style="text-align: right;">0.061</td>
+<td style="text-align: right;">0.069</td>
+<td style="text-align: right;">0.064</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Unhappiness</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">0.025</td>
+<td style="text-align: right;">0.001</td>
+<td style="text-align: right;">0.001</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">0.054</td>
+<td style="text-align: right;">0.039</td>
+<td style="text-align: right;">0.036</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">0.083</td>
+<td style="text-align: right;">0.076</td>
+<td style="text-align: right;">0.070</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Always</td>
+<td style="text-align: right;">0.124</td>
+<td style="text-align: right;">0.145</td>
+<td style="text-align: right;">0.134</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span style=" font-weight: bold;    ">Treated differently</span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+<td style="text-align: right;"><span style=" font-weight: bold;    "></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Almost never</td>
+<td style="text-align: right;">0.019</td>
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.009</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">0.035</td>
+<td style="text-align: right;">0.030</td>
+<td style="text-align: right;">0.028</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">0.052</td>
+<td style="text-align: right;">0.075</td>
+<td style="text-align: right;">0.069</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Always</td>
+<td style="text-align: right;">0.087</td>
+<td style="text-align: right;">0.114</td>
+<td style="text-align: right;">0.105</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+
+</section>
+
+<div id="quarto-appendix" class="default"><section id="appendix" class="level2 appendix"><h2 class="anchored quarto-appendix-heading">Appendix</h2><div class="quarto-appendix-contents">
+
+<section id="sec-appendix1" class="level3">
+<h3 class="anchored" data-anchor-id="sec-appendix1">Derivation of EUD2</h3>
+<p>Matrices <span class="math inline">\(\tilde{M}_{1ij}\)</span> and <span class="math inline">\(\tilde{M}_{2ij}\)</span> denote latent coefficient matrices from individual 1 and 2, for attributes <span class="math inline">\(i\)</span> and levels <span class="math inline">\(j\)</span>, from the analysis sample. Matrices <span class="math inline">\(\tilde{M}_{1ij}\)</span> and <span class="math inline">\(\tilde{M}_{2ij}\)</span> were then anchored using the social PITS utility value 0.282 (shown in <a href="#eq-anchoring-matrices" class="quarto-xref">Equation&nbsp;16</a>).</p>
+<p><span id="eq-coef-1"><span class="math display">\[
+\tilde{M}_{1ij} =  
+\begin{bmatrix}
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0.03 &amp; 0.02 &amp; 0.01 &amp; 0.01 &amp; 0.02 &amp; 0.03 &amp; 0.05 \\
+0.11 &amp; 0.07 &amp; 0.05 &amp; 0.03 &amp; 0.07 &amp; 0.05 &amp; 0.11 \\
+0.15 &amp; 0.09 &amp; 0.07 &amp; 0.04 &amp; 0.12 &amp; 0.08 &amp; 0.19 \\
+0.17 &amp; 0.11 &amp; 0.08 &amp; 0.10 &amp; 0.14 &amp; 0.10 &amp; 0.30
+\end{bmatrix}
+\tag{14}\]</span></span></p>
+<p><span id="eq-coef-2"><span class="math display">\[
+\tilde{M}_{2ij} =  
+\begin{bmatrix}
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0.05 &amp; 0.02 &amp; 0.01 &amp; 0.01 &amp; 0.02 &amp; 0.03 &amp; 0.03 \\
+0.15 &amp; 0.11 &amp; 0.03 &amp; 0.05 &amp; 0.09 &amp; 0.04 &amp; 0.09 \\
+0.18 &amp; 0.13 &amp; 0.05 &amp; 0.06 &amp; 0.14 &amp; 0.06 &amp; 0.16 \\
+0.21 &amp; 0.15 &amp; 0.06 &amp; 0.11 &amp; 0.17 &amp; 0.08 &amp; 0.23
+\end{bmatrix}
+\tag{15}\]</span></span></p>
+<p><span id="eq-anchoring-matrices"><span class="math display">\[
+    \tilde{V}_{1ij} = \tilde{M}_{1ij} \cdot (1-0.282); \quad
+    \tilde{V}_{2ij} = \tilde{M}_{2ij} \cdot (1-0.282)
+\tag{16}\]</span></span></p>
+<p><span id="eq-vcoeff"><span class="math display">\[
+\tilde{V}_{1ij} =  
+\begin{bmatrix}
+0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 \\
+0.02 &amp; 0.01 &amp; 0.01 &amp; 0.01 &amp; 0.01 &amp; 0.02 &amp; 0.04 \\
+0.08 &amp; 0.05 &amp; 0.04 &amp; 0.02 &amp; 0.05 &amp; 0.04 &amp; 0.08 \\
+0.11 &amp; 0.06 &amp; 0.05 &amp; 0.03 &amp; 0.09 &amp; 0.06 &amp; 0.14 \\
+0.12 &amp; 0.08 &amp; 0.06 &amp; 0.07 &amp; 0.1 &amp; 0.07 &amp; 0.22
+\end{bmatrix}
+\tag{17}\]</span></span></p>
+<p><span id="eq-vcoeff2"><span class="math display">\[
+\tilde{V}_{2ij} =  
+\begin{bmatrix}
+0.00 &amp; 0.00 &amp; 0.00 &amp; 0.00 &amp; 0.00 &amp; 0.00 &amp; 0.00 \\
+0.04 &amp; 0.01 &amp; 0.01 &amp; 0.01 &amp; 0.01 &amp; 0.02 &amp; 0.02 \\
+0.11 &amp; 0.08 &amp; 0.02 &amp; 0.04 &amp; 0.06 &amp; 0.03 &amp; 0.06 \\
+0.13 &amp; 0.09 &amp; 0.04 &amp; 0.04 &amp; 0.10 &amp; 0.04 &amp; 0.11 \\
+0.15 &amp; 0.11 &amp; 0.04 &amp; 0.08 &amp; 0.12 &amp; 0.06 &amp; 0.17
+\end{bmatrix}
+\tag{18}\]</span></span></p>
+<p>Once anchored coefficient matrices <a href="#eq-vcoeff" class="quarto-xref">Equation&nbsp;17</a> and <a href="#eq-vcoeff2" class="quarto-xref">Equation&nbsp;18</a> are estimated, a complete profile of health state utility values for individual 1 and 2 are estimated for all 78,125 unique health states described by the WAItE. This yields a [78125 <span class="math inline">\(\times\)</span> 1] vector for each individual ranging from (1, 0.282) (shown in <a href="#eq-healthstate-utilities" class="quarto-xref">Equation&nbsp;19</a>}).</p>
+<p><span id="eq-healthstate-utilities"><span class="math display">\[
+\begin{aligned}  
+\tilde{U}_{1,s} &amp;=  \{1, 0.98, 0.96, ..., 0.282\}; \quad \tilde{U}_{2,s} =  \{1, 0.97, 0.95, ..., 0.282\} \\
+&amp;\backepsilon \quad \quad s = \{1111111, 2111111, ..., 5555555\}
+\end{aligned}
+\tag{19}\]</span></span></p>
+<p>To estimate euclidean distance between the two health state utility vectors, the square root of the sum of the squared differences between each element in the vector is calculated (shown in <a href="#eq-EUD" class="quarto-xref">Equation&nbsp;11</a>, and populated for responses from individual 1 and 2 in <a href="#eq-pairwiseEUD2" class="quarto-xref">Equation&nbsp;21</a>).</p>
+<p><span id="eq-EUD2"><span class="math display">\[
+  \begin{aligned}
+    d_{EUD2}(i,j) &amp; =\sqrt{\sum_{}^{}(u_{i}(s_{1})-u_{j}(s_{1}))^{2}+ ... +(u_{i}(s_{78125})-u_{j}(s_{78125}))^{2}}\\
+      &amp; \backepsilon \quad \quad s = \{1111111, 2111111, ..., 5555555\}\\
+  \end{aligned}
+\tag{20}\]</span></span></p>
+<p><span id="eq-pairwiseEUD2"><span class="math display">\[
+d_{EUD2}(i,j) = \sqrt{\{(1-1)^2+(0.98-0.97)^2+(0.96-0.95)^2+ ... +(0.282-0.282)^2\}}
+\tag{21}\]</span></span></p>
+<p>Pairwise EUD2 was estimated for all possible combinations of individuals in our analysis sample. EUD2 was stored in a distance matrix of dimensions [300 <span class="math inline">\(\times\)</span> 300], where coordinates [3,7] represents the EUD2 between individual 3 and 7. The mean of the distance matrix provides the overall measure of disimilarity/heterogeneity within the analysis sample.</p>
+
+</section>
+</div></section><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-Keeney1979DecisionsTrade-Offs" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Keeney RL, Raiffa H. <a href="https://doi.org/10.1109/TSMC.1979.4310245"><span class="nocase">Decisions with Multiple Objectives: Preferences and Value Trade-Offs</span></a>. Vol. 9. 1979. </div>
+</div>
+<div id="ref-Marsh2016MultipleForce" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Marsh K, Ijzerman M, Thokala P, Baltussen R, Boysen M, Kaló Z, et al. <a href="https://doi.org/10.1016/j.jval.2015.12.016"><span class="nocase">Multiple Criteria Decision Analysis for Health Care Decision Making - Emerging Good Practices: Report 2 of the ISPOR MCDA Emerging Good Practices Task Force</span></a>. Value in Health. 2016;19(2). </div>
+</div>
+<div id="ref-Belton2002MultipleAnalysis" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Belton V, Stewart TJ. <a href="https://doi.org/10.1007/978-1-4615-1495-4"><span>Multiple Criteria Decision Analysis</span></a>. Springer US; 2002. </div>
+</div>
+<div id="ref-Hauber2016StatisticalForce" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Hauber AB, González JM, Groothuis-Oudshoorn CGM, Prior T, Marshall DA, Cunningham C, et al. <a href="https://doi.org/10.1016/j.jval.2016.04.004"><span class="nocase">Statistical Methods for the Analysis of Discrete Choice Experiments: A Report of the ISPOR Conjoint Analysis Good Research Practices Task Force</span></a>. Value in Health. 2016;19(4). </div>
+</div>
+<div id="ref-BanaECosta1999TheApplication" class="csl-entry" role="listitem">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Bana E Costa CA, Vansnick JC. <a href="https://doi.org/10.1007/978-94-017-0647-6{\_}9"><span class="nocase">The MACBETH Approach: Basic Ideas, Software, and an Application</span></a>. In 1999. </div>
+</div>
+<div id="ref-Danner2011IntegratingPreferences" class="csl-entry" role="listitem">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">Danner M, Hummel JM, Volz F, Van Manen JG, Wiegard B, Dintsios CM, et al. <a href="https://doi.org/10.1017/S0266462311000523"><span class="nocase">Integrating patients’ views into health technology assessment: Analytic hierarchy process (AHP) as a method to elicit patient preferences</span></a>. International Journal of Technology Assessment in Health Care. 2011;27(4). </div>
+</div>
+<div id="ref-Oliveira2018ValuingStates" class="csl-entry" role="listitem">
+<div class="csl-left-margin">7. </div><div class="csl-right-inline">Oliveira MD, Agostinho A, Ferreira L, Nicola P, Bana E Costa C. <a href="https://doi.org/10.1186/s12955-018-1056-y"><span class="nocase">Valuing health states: Is the MACBETH approach useful for valuing EQ-5D-3L health states?</span></a> Health and Quality of Life Outcomes. 2018;16(1). </div>
+</div>
+<div id="ref-Brodszky2023PCR108States" class="csl-entry" role="listitem">
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">Brodszky V, Plankó S, Schneider P, Devlin N. <a href="https://doi.org/10.1016/j.jval.2023.09.2547"><span class="nocase">PCR108 Pilot Testing the Hungarian Version of Online Elicitation of Personal Utility Functions Tool for Valuing EQ-5D-5L Health States</span></a>. Value in Health. 2023 Dec;26(12):S469. </div>
+</div>
+<div id="ref-Devlin2019AFunctions" class="csl-entry" role="listitem">
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">Devlin NJ, Shah KK, Mulhern BJ, Pantiri K, Hout B van. <a href="https://doi.org/10.1007/s10198-018-0993-z"><span class="nocase">A new method for valuing health: directly eliciting personal utility functions</span></a>. European Journal of Health Economics. 2019;20(2). </div>
+</div>
+<div id="ref-Schneider2022TheStates" class="csl-entry" role="listitem">
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">Schneider PP, Hout B van, Heisen M, Brazier J, Devlin N. <a href="https://doi.org/10.12688/wellcomeopenres.17518.1"><span class="nocase">The Online Elicitation of Personal Utility Functions (OPUF) tool: a new method for valuing health states</span></a>. Wellcome Open Res. 2022;7:14. </div>
+</div>
+<div id="ref-Bray2024DevelopmentImpairment" class="csl-entry" role="listitem">
+<div class="csl-left-margin">11. </div><div class="csl-right-inline">Bray N, Tudor Edwards R, Schneider P. <span class="nocase">Development of a value-based scoring system for the MobQoL-7D: a novel tool for measuring quality-adjusted life years in the context of mobility impairment</span>. Disability and Rehabilitation [Internet]. 2024;1–10. Available from: <a href="https://doi.org/10.1080/09638288.2023.2297929">https://doi.org/10.1080/09638288.2023.2297929</a></div>
+</div>
+<div id="ref-White2011MultiplePractice" class="csl-entry" role="listitem">
+<div class="csl-left-margin">12. </div><div class="csl-right-inline">White IR, Royston P, Wood AM. <a href="https://doi.org/10.1002/sim.4067"><span class="nocase">Multiple imputation using chained equations: Issues and guidance for practice</span></a>. Statistics in Medicine. 2011;30(4). </div>
+</div>
+<div id="ref-Schneider2024ExploringLevel" class="csl-entry" role="listitem">
+<div class="csl-left-margin">13. </div><div class="csl-right-inline">Schneider P, Devlin N, Hout B van, Brazier J. <a href="https://doi.org/10.1002/hec.4805"><span class="nocase">Exploring health preference heterogeneity in the UK: Using the online elicitation of personal utility functions approach to construct EQ-5D-5L value functions on societal, group and individual level</span></a>. Health Economics (United Kingdom). 2024;33(5). </div>
+</div>
+<div id="ref-Anderson2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">14. </div><div class="csl-right-inline">Anderson MJ.<a href="https://doi.org/10.1002/9781118445112.stat07841"><span class="nocase">Permutational Multivariate Analysis of Variance ( PERMANOVA ) </span></a>. In: Wiley StatsRef: Statistics reference online. 2017. </div>
+</div>
+<div id="ref-Anderson2013PERMANOVATesting" class="csl-entry" role="listitem">
+<div class="csl-left-margin">15. </div><div class="csl-right-inline">Anderson MJ, Walsh DCI. <a href="https://doi.org/10.1890/12-2010.1"><span class="nocase">PERMANOVA, ANOSIM, and the Mantel test in the face of heterogeneous dispersions: What null hypothesis are you testing?</span></a> Ecological Monographs. 2013;83(4). </div>
+</div>
+<div id="ref-Souza2013PopulationEstuary" class="csl-entry" role="listitem">
+<div class="csl-left-margin">16. </div><div class="csl-right-inline">Souza AT, Dias E, Nogueira A, Campos J, Marques JC, Martins I. <a href="https://doi.org/10.1016/j.seares.2013.01.005"><span class="nocase">Population ecology and habitat preferences of juvenile flounder Platichthys flesus (Actinopterygii: Pleuronectidae) in a temperate estuary</span></a>. Journal of Sea Research. 2013;79. </div>
+</div>
+<div id="ref-Robinson2019EstimatingEvaluation" class="csl-entry" role="listitem">
+<div class="csl-left-margin">17. </div><div class="csl-right-inline">Robinson T, Oluboyede Y. <a href="https://doi.org/10.1016/j.jval.2018.09.2839"><span class="nocase">Estimating CHU-9D Utility Scores from the WAItE: A Mapping Algorithm for Economic Evaluation</span></a>. Value in Health. 2019;22(2). </div>
+</div>
+<div id="ref-2003ApplyingTechniques" class="csl-entry" role="listitem">
+<div class="csl-left-margin">18. </div><div class="csl-right-inline"><a href="https://doi.org/10.1016/b978-0-12-751541-0.x5021-4"><span>Applying Contemporary Statistical Techniques</span></a>. 2003. </div>
+</div>
+<div id="ref-Peer2022DataResearch" class="csl-entry" role="listitem">
+<div class="csl-left-margin">19. </div><div class="csl-right-inline">Peer E, Rothschild D, Gordon A, Evernden Z, Damer E. <a href="https://doi.org/10.3758/s13428-021-01694-3"><span class="nocase">Data quality of platforms and panels for online behavioral research</span></a>. Behavior Research Methods. 2022;54(4). </div>
+</div>
+<div id="ref-Robinson2024AUKValue" class="csl-entry" role="listitem">
+<div class="csl-left-margin">20. </div><div class="csl-right-inline">Robinson T, Oluboyede Y. A UK value set for the WAItE. 2024. </div>
+</div>
+<div id="ref-webb2020transforming" class="csl-entry" role="listitem">
+<div class="csl-left-margin">21. </div><div class="csl-right-inline">Webb EJ, O’Dwyer J, Meads D, Kind P, Wright P. Transforming discrete choice experiment latent scale values for EQ-5D-3L using the visual analogue scale. The European Journal of Health Economics. 2020;21:787–800. </div>
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
